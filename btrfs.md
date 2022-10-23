@@ -1,4 +1,4 @@
-#克隆btrfs（ubunut linux）
+# 克隆btrfs（ubunut linux）
 
 git config --global http.postBuffer 524288000                   //之前克隆过程中会出错（fatal: 过早的文件结束符(EOF)），使用此命令后解决
 git clone --depth 1 https://github.com/kdave/btrfs-devel        //之所以添加depth 1，是为了减少克隆下载时间
@@ -10,7 +10,7 @@ modified: include/uapi/linux/netfilter/xt_CONNMARK.h
 ubunut linux是基于virtualBox的虚拟机。
 
 
-#修改代码并提交patch
+# 修改代码并提交patch
 
 git add xxx
 git commit -s
