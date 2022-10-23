@@ -1,9 +1,9 @@
 # 克隆btrfs（ubunut linux）
 
-git config --global http.postBuffer 524288000                   //之前克隆过程中会出错（fatal: 过早的文件结束符(EOF)），使用此命令后解决
-git clone --depth 1 https://github.com/kdave/btrfs-devel        //之所以添加depth 1，是为了减少克隆下载时间
+git config --global http.postBuffer 524288000                   //之前克隆过程中会出错（fatal: 过早的文件结束符(EOF)），使用此命令后解决<br>
+git clone --depth 1 https://github.com/kdave/btrfs-devel        //之所以添加depth 1，是为了减少克隆下载时间<br>
 
-遇到的问题:基于windows 10克隆，会出如下错误，因此放弃了在windows上直接克隆。网上给的原因一个是用了windows预留字，一个是大小写非敏感。
+遇到的问题:基于windows 10克隆，会出如下错误，因此放弃了在windows上直接克隆。网上给的原因一个是用了windows预留字，一个是大小写非敏感。<br>
 deleted: drivers/gpu/drm/nouveau/nvkm/subdev/i2c/aux.c
 modified: include/uapi/linux/netfilter/xt_CONNMARK.h
 
