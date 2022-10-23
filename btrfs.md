@@ -20,22 +20,22 @@ git format-patch -1           //生产patch
 <空行>
 <详细描述>
 
-./scripts/get_maintainer.pl fs/btrfs/extent-tree.c
-Chris Mason <clm@fb.com> (maintainer:BTRFS FILE SYSTEM)
-Josef Bacik <josef@toxicpanda.com> (maintainer:BTRFS FILE SYSTEM)
-David Sterba <dsterba@suse.com> (maintainer:BTRFS FILE SYSTEM)
-linux-btrfs@vger.kernel.org (open list:BTRFS FILE SYSTEM)
-linux-kernel@vger.kernel.org (open list)
+./scripts/get_maintainer.pl fs/btrfs/extent-tree.c<br>
+Chris Mason <clm@fb.com> (maintainer:BTRFS FILE SYSTEM)<br>
+Josef Bacik <josef@toxicpanda.com> (maintainer:BTRFS FILE SYSTEM)<br>
+David Sterba <dsterba@suse.com> (maintainer:BTRFS FILE SYSTEM)<br>
+linux-btrfs@vger.kernel.org (open list:BTRFS FILE SYSTEM)<br>
+linux-kernel@vger.kernel.org (open list)<br>
 
-vi ~/.gitconfig
-[sendemail]
-        from = chenzufei@gmail.com
-        smtpencryption = tls
-        smtpserver = smtp.gmail.com
-        smtpuser = chenzufei@gmail.com
-        smtppass = xxxxx               //gmail启用了应用专用密码
-        smtpserverport = 587
-        suppresscc = self   
-        chainreplyto = false
+vi ~/.gitconfig<br>
+[sendemail]<br>
+        from = chenzufei@gmail.com<br>
+        smtpencryption = tls<br>
+        smtpserver = smtp.gmail.com<br>
+        smtpuser = chenzufei@gmail.com<br>
+        smtppass = xxxxx               //gmail启用了应用专用密码<br>
+        smtpserverport = 587<br>
+        suppresscc = self<br>   
+        chainreplyto = false<br>
 
-git send-email --to chenzufei@163.com 0001-btrfs-test.patch --smtp-debug=1    //成功发送了邮件
+git send-email --to chenzufei@163.com 0001-btrfs-test.patch --smtp-debug=1    //成功发送了邮件<br>
