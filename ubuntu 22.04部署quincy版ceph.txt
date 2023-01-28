@@ -1,0 +1,111 @@
+
+ubuntu 22.04部署quincy版ceph：
+
+环境说明：
+	      ceph-mon	ceph-mgr	ceph-osd
+ceph100	  √	           √	     √，vdb
+ceph101	  √	           √	     √，vdb
+ceph102	  √	           ×	     √，vdb
+
+
+1、基于virtualBox 6.1.28安装一个ubuntu 22.04 server。
+（1）网卡1选择“网络地址转换(NAT)”，网卡2选择“桥接网卡”。
+（2）存储：硬盘1选择20GB，硬盘2选择10GB。
+（3）不要安装自带的docker。
+
+2、安装官方docker：
+（1）安装docker所需依赖
+apt update
+apt-get install ca-certificates curl gnupg lsb-release
+（2）安装证书
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+（3）建立docker资源库
+sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+（4）安装docker
+apt-get install docker-ce docker-ce-cli containerd.io
+（5）启动docker
+systemctl start docker
+（6）设置Docker服务在每次开机时自动启动
+sudo systemctl enable docker
+（7）查看docker运行状态
+systemctl status docker
+3、安装lvm2
+apt install lvm2 -y
+4、修改hostname，关闭防火墙，并在主机ceph100 hosts文件中将3台主机信息写入。
+hostnamectl set-hostname ceph100
+systemctl stop ufw
+cat >> /etc/hosts <<EOF
+192.168.209.100 ceph100
+192.168.209.101 ceph101
+192.168.209.102 ceph102
+EOF
+5、基于ceph100克隆虚拟机ceph101和ceph102。
+6、安装cephadm并初始化单节点集群（主机ceph100上执行）
+wget https://mirrors.aliyun.com/ceph/debian-17.2.4/pool/main/c/ceph/cephadm_17.2.4-1focal_amd64.deb
+dpkg -i cephadm_17.2.4-1focal_amd64.deb
+cephadm bootstrap --mon-ip 192.168.209.100 --cluster-network 192.168.209.0/24 --allow-fqdn-hostname
+
+备注：
+（1）这个步骤会Pulling container image quay.io/ceph/ceph:v17, 这个步骤在肯德基很快下载完成，在家用移动宽带一直不成功。
+（2）配置初始化完成后，可以使用浏览器访问https://192.168.209.100:8443访问dashboard。对应登录用户名密码会在初始化完成后打印到屏幕，如果忘记了可以使用下方命令重置。
+     ceph dashboard set-login-credentials admin -i ./test.txt   # 密码预先放在test.txt文件中
+
+7、添加节点，实现高可用（主机ceph100上执行）
+ssh-copy-id -f -i /etc/ceph/ceph.pub ceph101
+ssh-copy-id -f -i /etc/ceph/ceph.pub ceph102
+# 安装ceph工具包，包括ceph、rbd、mount
+apt install ceph-common
+ceph orch host add ceph101
+ceph orch host add ceph102
+
+8、创建osd（主机ceph100上执行）
+ceph orch daemon add osd ceph100:/dev/sdb
+ceph orch daemon add osd ceph101:/dev/sdb
+ceph orch daemon add osd ceph102:/dev/sdb
+
+9、创建mds和fs（主机ceph100上执行）
+ceph osd pool create cephfs_data
+ceph osd pool create cephfs_metadata
+ceph fs new cephfs cephfs_metadata cephfs_data
+ceph orch apply mds cephfs --placement="3 ceph100 ceph101 ceph102"
+
+10、客户端挂载（主机ceph100上执行）
+（1）kernel挂载
+mount -t ceph 192.168.209.100:6789:/ /mnt/kernel-cephfs -o name=admin,secret=AQDrUctjWF7UOhAAshrcxJknL/gj4z3r1JUCDQ==
+
+备注：
+secret从如下文件获取/etc/ceph/ceph.client.admin.keyring
+
+（2）fuse挂载
+apt install ceph-fuse
+ceph-fuse -m 192.168.209.100:6789 /mnt/fuse-cephfs/
+
+
+11、其他
+（1）网络配置
+/etc/netplan/00-installer-config.yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: true
+    enp0s8:
+      dhcp4: false
+      addresses: [192.168.209.100/24]
+  version: 2
+
+netplan apply
+
+（2）ssh root登录
+sudo passwd root
+/etc/ssh/sshd_config
+PermitRootLogin yes
+sudo systemctl restart ssh
+
+（3）一些ceph命令
+rados ls -p cephfs_metadata                       #查询对象id
+rados -p cephfs_metadata listomapkeys objectid  
+ceph orch ls         #列出集群内运行的组件
+ceph orch host ls    #列出集群内的主机
+ceph orch ps         #列出集群内容器的详细信息
+
+
