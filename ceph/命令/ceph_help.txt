@@ -1081,3 +1081,380 @@ zabbix config-set <key> <value>                                 Set a configurat
 zabbix config-show                                              Show current configuration
 zabbix discovery                                                Discovering Zabbix data
 zabbix send                                                     Force sending data to Zabbix
+
+
+
+
+
+
+
+docker ps
+root@ceph100:~# docker ps
+CONTAINER ID   IMAGE                                     COMMAND                  CREATED         STATUS         PORTS     NAMES
+c27c31495e28   quay.io/ceph/ceph                         "/usr/bin/ceph-osd -…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-osd-0
+a61e1499be97   quay.io/ceph/ceph:v17                     "/usr/bin/ceph-mgr -…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-mgr-ceph100-wzncva
+22d00071313c   quay.io/ceph/ceph                         "/usr/bin/ceph-mds -…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-mds-cephfs-ceph100-sxvbgs
+5c10fb8bc792   quay.io/prometheus/node-exporter:v1.3.1   "/bin/node_exporter …"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-node-exporter-ceph100
+6221d7ec24c7   quay.io/prometheus/prometheus:v2.33.4     "/bin/prometheus --c…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-prometheus-ceph100
+6591b1c1a687   quay.io/ceph/ceph-grafana:8.3.5           "/bin/sh -c 'grafana…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-grafana-ceph100
+791fc6df2c8f   quay.io/ceph/ceph                         "/usr/bin/ceph-crash…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-crash-ceph100
+ffcea38aa877   quay.io/ceph/ceph:v17                     "/usr/bin/ceph-mon -…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-mon-ceph100
+c517249046b1   quay.io/prometheus/alertmanager:v0.23.0   "/bin/alertmanager -…"   3 minutes ago   Up 3 minutes             ceph-63f4b6e8-9c8b-11ed-b51b-291c7c855967-alertmanager-ceph100
+
+docker exec -it 22d00071313c /bin/bash
+ceph --admin-daemon /var/run/ceph/ceph-mds.cephfs.ceph100.sxvbgs.asok help
+{
+    "cache drop": "trim cache and optionally request client to release all caps and flush the journal",
+    "cache status": "show cache status",
+    "client config": "Config a CephFS client session",
+    "client evict": "Evict client session(s) based on a filter",
+    "client ls": "List client sessions based on a filter",
+    "config diff": "dump diff of current config and default config",
+    "config diff get": "dump diff get <field>: dump diff of current and default config setting <field>",
+    "config get": "config get <field>: get the config value",
+    "config help": "get config setting schema and descriptions",
+    "config set": "config set <field> <val> [<val> ...]: set a config variable",
+    "config show": "dump current config settings",
+    "config unset": "config unset <field>: unset a config variable",
+    "cpu_profiler": "run cpu profiling on daemon",
+    "damage ls": "List detected metadata damage",
+    "damage rm": "Remove a damage table entry",
+    "dirfrag ls": "List fragments in directory",
+    "dirfrag merge": "De-fragment directory by path",
+    "dirfrag split": "Fragment directory by path",
+    "dump cache": "dump metadata cache (optionally to a file)",
+    "dump inode": "dump inode by inode number",
+    "dump loads": "dump metadata loads",
+    "dump snaps": "dump snapshots",
+    "dump tree": "dump metadata cache for subtree",
+    "dump_blocked_ops": "show the blocked ops currently in flight",
+    "dump_historic_ops": "show recent ops",
+    "dump_historic_ops_by_duration": "show recent ops, sorted by op duration",
+    "dump_mempools": "get mempool stats",
+    "dump_ops_in_flight": "show the ops currently in flight",
+    "exit": "Terminate this MDS",
+    "export dir": "migrate a subtree to named MDS",
+    "flush journal": "Flush the journal to the backing store",
+    "flush_path": "flush an inode (and its dirfrags)",
+    "force_readonly": "Force MDS to read-only mode",
+    "get subtrees": "Return the subtree map",
+    "get_command_descriptions": "list available commands",
+    "git_version": "get git sha1",
+    "heap": "show heap usage info (available only if compiled with tcmalloc)",
+    "help": "list available commands",
+    "injectargs": "inject configuration arguments into running daemon",
+    "log dump": "dump recent log entries to log file",
+    "log flush": "flush log entries to log file",
+    "log reopen": "reopen log file",
+    "openfiles ls": "List the opening files and their caps",
+    "ops": "show the ops currently in flight",
+    "osdmap barrier": "Wait until the MDS has this OSD map epoch",
+    "perf dump": "dump perfcounters value",
+    "perf histogram dump": "dump perf histogram values",
+    "perf histogram schema": "dump perf histogram schema",
+    "perf reset": "perf reset <name>: perf reset all or one perfcounter name",
+    "perf schema": "dump perfcounters schema",
+    "respawn": "Respawn this MDS",
+    "scrub abort": "Abort in progress scrub operations(s)",
+    "scrub pause": "Pause in progress scrub operations(s)",
+    "scrub resume": "Resume paused scrub operations(s)",
+    "scrub start": "scrub and inode and output results",
+    "scrub status": "Status of scrub operations(s)",
+    "scrub_path": "scrub an inode and output results",
+    "session config": "Config a CephFS client session",
+    "session evict": "Evict client session(s) based on a filter",
+    "session kill": "Evict a client session by id",
+    "session ls": "Enumerate connected CephFS clients",
+    "session ls": "List client sessions based on a filter",
+    "status": "high-level status of MDS",
+    "tag path": "Apply scrub tag recursively",
+    "version": "get ceph version"
+}
+
+
+[root@ceph100 ceph]# ceph --admin-daemon /var/run/ceph/ceph-mgr.ceph100.wzncva.asok help
+{
+    "config diff": "dump diff of current config and default config",
+    "config diff get": "dump diff get <field>: dump diff of current and default config setting <field>",
+    "config get": "config get <field>: get the config value",
+    "config help": "get config setting schema and descriptions",
+    "config set": "config set <field> <val> [<val> ...]: set a config variable",
+    "config show": "dump current config settings",
+    "config unset": "config unset <field>: unset a config variable",
+    "dump_cache": "show in-memory metadata cache contents",
+    "dump_mempools": "get mempool stats",
+    "dump_osd_network": "Dump osd heartbeat network ping times",
+    "get_command_descriptions": "list available commands",
+    "git_version": "get git sha1",
+    "help": "list available commands",
+    "injectargs": "inject configuration arguments into running daemon",
+    "kick_stale_sessions": "kick sessions that were remote reset",
+    "log dump": "dump recent log entries to log file",
+    "log flush": "flush log entries to log file",
+    "log reopen": "reopen log file",
+    "mds_requests": "show in-progress mds requests",
+    "mds_sessions": "show mds session state",
+    "mgr_status": "Dump mgr status",
+    "objecter_requests": "show in-progress osd requests",
+    "perf dump": "dump perfcounters value",
+    "perf histogram dump": "dump perf histogram values",
+    "perf histogram schema": "dump perf histogram schema",
+    "perf reset": "perf reset <name>: perf reset all or one perfcounter name",
+    "perf schema": "dump perfcounters schema",
+    "status": "show overall client status",
+    "version": "get ceph version"
+}
+
+
+[root@ceph100 ceph]# ceph --admin-daemon /var/run/ceph/ceph-mon.ceph100.asok help
+{
+    "add_bootstrap_peer_hint": "add peer address as potential bootstrap peer for cluster bringup",
+    "add_bootstrap_peer_hintv": "add peer address vector as potential bootstrap peer for cluster bringup",
+    "compact": "cause compaction of monitor's leveldb/rocksdb storage",
+    "config diff": "dump diff of current config and default config",
+    "config diff get": "dump diff get <field>: dump diff of current and default config setting <field>",
+    "config get": "config get <field>: get the config value",
+    "config help": "get config setting schema and descriptions",
+    "config set": "config set <field> <val> [<val> ...]: set a config variable",
+    "config show": "dump current config settings",
+    "config unset": "config unset <field>: unset a config variable",
+    "connection scores dump": "show the scores used in connectivity-based elections",
+    "connection scores reset": "reset the scores used in connectivity-based elections",
+    "dump_historic_ops": "dump_historic_ops",
+    "dump_mempools": "get mempool stats",
+    "get_command_descriptions": "list available commands",
+    "git_version": "get git sha1",
+    "heap": "show heap usage info (available only if compiled with tcmalloc)",
+    "help": "list available commands",
+    "injectargs": "inject configuration arguments into running daemon",
+    "log dump": "dump recent log entries to log file",
+    "log flush": "flush log entries to log file",
+    "log reopen": "reopen log file",
+    "mon_status": "report status of monitors",
+    "ops": "show the ops currently in flight",
+    "perf dump": "dump perfcounters value",
+    "perf histogram dump": "dump perf histogram values",
+    "perf histogram schema": "dump perf histogram schema",
+    "perf reset": "perf reset <name>: perf reset all or one perfcounter name",
+    "perf schema": "dump perfcounters schema",
+    "quorum enter": "force monitor back into quorum",
+    "quorum exit": "force monitor out of the quorum",
+    "sessions": "list existing sessions",
+    "smart": "Query health metrics for underlying device",
+    "sync_force": "force sync of and clear monitor store",
+    "version": "get ceph version"
+}
+
+
+[root@ceph100 ceph]# ceph --admin-daemon /var/run/ceph/ceph-osd.0.asok help
+{
+    "bench": "OSD benchmark: write <count> <size>-byte objects(with <obj_size> <obj_num>), (default count=1G default size=4MB). Results in log.",
+    "bluefs debug_inject_read_zeros": "Injects 8K zeros into next BlueFS read. Debug only.",
+    "bluefs files list": "print files in bluefs",
+    "bluefs stats": "Dump internal statistics for bluefs.",
+    "bluestore allocator dump block": "dump allocator free regions",
+    "bluestore allocator fragmentation block": "give allocator fragmentation (0-no fragmentation, 1-absolute fragmentation)",
+    "bluestore allocator score block": "give score on allocator fragmentation (0-no fragmentation, 1-absolute fragmentation)",
+    "bluestore bluefs device info": "Shows space report for bluefs devices. This also includes an estimation for space available to bluefs at main device. alloc_size, if set, specifies the custom bluefs allocation unit size for the estimation above.",
+    "cache drop": "Drop all OSD caches",
+    "cache status": "Get OSD caches statistics",
+    "calc_objectstore_db_histogram": "Generate key value histogram of kvdb(rocksdb) which used by bluestore",
+    "cluster_log": "log a message to the cluster log",
+    "compact": "Commpact object store's omap. WARNING: Compaction probably slows your requests",
+    "config diff": "dump diff of current config and default config",
+    "config diff get": "dump diff get <field>: dump diff of current and default config setting <field>",
+    "config get": "config get <field>: get the config value",
+    "config help": "get config setting schema and descriptions",
+    "config set": "config set <field> <val> [<val> ...]: set a config variable",
+    "config show": "dump current config settings",
+    "config unset": "config unset <field>: unset a config variable",
+    "cpu_profiler": "run cpu profiling on daemon",
+    "debug dump_missing": "dump missing objects to a named file",
+    "debug kick_recovery_wq": "set osd_recovery_delay_start to <val>",
+    "deep_scrub": "Trigger a scheduled deep scrub ",
+    "dump_blocked_ops": "show the blocked ops currently in flight",
+    "dump_blocklist": "dump blocklisted clients and times",
+    "dump_historic_ops": "show recent ops",
+    "dump_historic_ops_by_duration": "show slowest recent ops, sorted by duration",
+    "dump_historic_slow_ops": "show slowest recent ops",
+    "dump_mempools": "get mempool stats",
+    "dump_objectstore_kv_stats": "print statistics of kvdb which used by bluestore",
+    "dump_op_pq_state": "dump op queue state",
+    "dump_ops_in_flight": "show the ops currently in flight",
+    "dump_osd_network": "Dump osd heartbeat network ping times",
+    "dump_pg_recovery_stats": "dump pg recovery statistics",
+    "dump_pgstate_history": "show recent state history",
+    "dump_pool_statfs": "Dump store's statistics for the given pool",
+    "dump_recovery_reservations": "show recovery reservations",
+    "dump_scrub_reservations": "show scrub reservations",
+    "dump_scrubs": "print scheduled scrubs",
+    "dump_watchers": "show clients which have active watches, and on which objects",
+    "flush_journal": "flush the journal to permanent store",
+    "flush_pg_stats": "flush pg stats",
+    "flush_store_cache": "Flush bluestore internal cache",
+    "get_command_descriptions": "list available commands",
+    "get_heap_property": "get malloc extension heap property",
+    "get_latest_osdmap": "force osd to update the latest map from the mon",
+    "get_mapped_pools": "dump pools whose PG(s) are mapped to this OSD.",
+    "getomap": "output entire object map",
+    "git_version": "get git sha1",
+    "heap": "show heap usage info (available only if compiled with tcmalloc)",
+    "help": "list available commands",
+    "injectargs": "inject configuration arguments into running daemon",
+    "injectdataerr": "inject data error to an object",
+    "injectfull": "Inject a full disk (optional count times)",
+    "injectmdataerr": "inject metadata error to an object",
+    "list_devices": "list OSD devices.",
+    "list_unfound": "list unfound objects on this pg, perhaps starting at an offset given in JSON",
+    "log dump": "dump recent log entries to log file",
+    "log flush": "flush log entries to log file",
+    "log reopen": "reopen log file",
+    "mark_unfound_lost": "mark all unfound objects in this pg as lost, either removing or reverting to a prior version if one is available",
+    "objecter_requests": "show in-progress osd requests",
+    "ops": "show the ops currently in flight",
+    "perf dump": "dump perfcounters value",
+    "perf histogram dump": "dump perf histogram values",
+    "perf histogram schema": "dump perf histogram schema",
+    "perf reset": "perf reset <name>: perf reset all or one perfcounter name",
+    "perf schema": "dump perfcounters schema",
+    "query": "show details of a specific pg",
+    "reset_pg_recovery_stats": "reset pg recovery statistics",
+    "rmomapkey": "remove omap key",
+    "scrub": "Trigger a scheduled scrub ",
+    "scrub_purged_snaps": "Scrub purged_snaps vs snapmapper index",
+    "scrubdebug": "debug the scrubber",
+    "send_beacon": "send OSD beacon to mon immediately",
+    "set_heap_property": "update malloc extension heap property",
+    "set_recovery_delay": "Delay osd recovery by specified seconds",
+    "setomapheader": "set omap header",
+    "setomapval": "set omap key",
+    "smart": "probe OSD devices for SMART data.",
+    "status": "high-level status of OSD",
+    "truncobj": "truncate object to length",
+    "version": "get ceph version"
+}
+
+
+[root@ceph100 ceph]# ceph --admin-daemon /var/run/ceph/ceph-osd.0.asok bluefs files list
+[
+    {
+        "name": "db/000045.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000046.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000082.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000089.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000096.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000097.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000098.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000099.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000100.sst",
+        "db": 196608
+    },
+    {
+        "name": "db/000104.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000105.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000106.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000107.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000108.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000109.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000116.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000117.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000118.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000119.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000120.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/000121.sst",
+        "db": 131072
+    },
+    {
+        "name": "db/000126.sst",
+        "db": 65536
+    },
+    {
+        "name": "db/CURRENT",
+        "db": 65536
+    },
+    {
+        "name": "db/IDENTITY",
+        "db": 65536
+    },
+    {
+        "name": "db/LOCK"
+    },
+    {
+        "name": "db/MANIFEST-000122",
+        "db": 65536
+    },
+    {
+        "name": "db/OPTIONS-000113",
+        "db": 65536
+    },
+    {
+        "name": "db/OPTIONS-000125",
+        "db": 65536
+    },
+    {
+        "name": "db.wal/000123.log",
+        "db": 3276800
+    },
+    {
+        "name": "sharding/def",
+        "db": 65536
+    }
+]
+

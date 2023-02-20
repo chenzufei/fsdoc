@@ -189,5 +189,12 @@ GENERIC OPTIONS:
   --version         show version and quit
 
 
+rados lspools
+rados -p cephfs_metadata ls
+rados -p cephfs_metadata get 100.00000000.inode /home/file2
+
+root@ceph100:/mnt/kernel-cephfs/dir2# rados -p cephfs_data ls
+10000000001.00000000
+
 
 

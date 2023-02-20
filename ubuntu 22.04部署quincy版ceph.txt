@@ -108,4 +108,10 @@ ceph orch ls         #列出集群内运行的组件
 ceph orch host ls    #列出集群内的主机
 ceph orch ps         #列出集群内容器的详细信息
 
+（4）nfs
+server：起nfs服务，export
+client:
+apt install nfs-common
+mount -t nfs 192.168.209.101:/fs1 nfs
+
 
