@@ -1,0 +1,1083 @@
+root@ceph100:/mnt/kernel-cephfs/dir1# ceph -h
+
+ General usage:
+ ==============
+usage: ceph [-h] [-c CEPHCONF] [-i INPUT_FILE] [-o OUTPUT_FILE] [--setuser SETUSER] [--setgroup SETGROUP] [--id CLIENT_ID]
+            [--name CLIENT_NAME] [--cluster CLUSTER] [--admin-daemon ADMIN_SOCKET] [-s] [-w] [--watch-debug] [--watch-info]
+            [--watch-sec] [--watch-warn] [--watch-error] [-W WATCH_CHANNEL] [--version] [--verbose] [--concise]
+            [-f {json,json-pretty,xml,xml-pretty,plain,yaml}] [--connect-timeout CLUSTER_TIMEOUT] [--block] [--period PERIOD]
+
+Ceph administration tool
+
+options:
+  -h, --help            request mon help
+  -c CEPHCONF, --conf CEPHCONF
+                        ceph configuration file
+  -i INPUT_FILE, --in-file INPUT_FILE
+                        input file, or "-" for stdin
+  -o OUTPUT_FILE, --out-file OUTPUT_FILE
+                        output file, or "-" for stdout
+  --setuser SETUSER     set user file permission
+  --setgroup SETGROUP   set group file permission
+  --id CLIENT_ID, --user CLIENT_ID
+                        client id for authentication
+  --name CLIENT_NAME, -n CLIENT_NAME
+                        client name for authentication
+  --cluster CLUSTER     cluster name
+  --admin-daemon ADMIN_SOCKET
+                        submit admin-socket commands ("help" for help)
+  -s, --status          show cluster status
+  -w, --watch           watch live cluster changes
+  --watch-debug         watch debug events
+  --watch-info          watch info events
+  --watch-sec           watch security events
+  --watch-warn          watch warn events
+  --watch-error         watch error events
+  -W WATCH_CHANNEL, --watch-channel WATCH_CHANNEL
+                        watch live cluster changes on a specific channel (e.g., cluster, audit, cephadm, or '*' for all)
+  --version, -v         display version
+  --verbose             make verbose
+  --concise             make less verbose
+  -f {json,json-pretty,xml,xml-pretty,plain,yaml}, --format {json,json-pretty,xml,xml-pretty,plain,yaml}
+  --connect-timeout CLUSTER_TIMEOUT
+                        set a timeout for connecting to the cluster
+  --block               block until completion (scrub and deep-scrub only)
+  --period PERIOD, -p PERIOD
+                        polling period, default 1.0 second (for polling commands only)
+
+ Local commands:
+ ===============
+
+ping <mon.id>           Send simple presence/life test to a mon
+                        <mon.id> may be 'mon.*' for all mons
+daemon {type.id|path} <cmd>
+                        Same as --admin-daemon, but auto-find admin socket
+daemonperf {type.id | path} [stat-pats] [priority] [<interval>] [<count>]
+daemonperf {type.id | path} list|ls [stat-pats] [priority]
+                        Get selected perf stats from daemon/admin socket
+                        Optional shell-glob comma-delim match string stat-pats
+                        Optional selection priority (can abbreviate name):
+                         critical, interesting, useful, noninteresting, debug
+                        List shows a table of all available stats
+                        Run <count> times (default forever),
+                         once per <interval> seconds (default 1)
+
+
+ Monitor commands:
+ =================
+alerts send                                                     (re)send alerts immediately
+auth add <entity> [<caps>...]                                   add auth info for <entity> from input file, or random key if
+                                                                 no input is given, and/or any caps specified in the command
+auth caps <entity> <caps>...                                    update caps for <name> from caps specified in the command
+auth export [<entity>]                                          write keyring for requested entity, or master keyring if none
+                                                                 given
+auth get <entity>                                               write keyring file with requested key
+auth get-key <entity>                                           display requested key
+auth get-or-create <entity> [<caps>...]                         add auth info for <entity> from input file, or random key if
+                                                                 no input given, and/or any caps specified in the command
+auth get-or-create-key <entity> [<caps>...]                     get, or add, key for <name> from system/caps pairs specified
+                                                                 in the command.  If key already exists, any given caps must
+                                                                 match the existing caps for that key.
+auth import                                                     auth import: read keyring file from -i <file>
+auth ls                                                         list authentication state
+auth print-key <entity>                                         display requested key
+auth print_key <entity>                                         display requested key
+auth rm <entity>                                                remove all caps for <name>
+balancer dump <plan>                                            Show an optimization plan
+balancer eval [<option>]                                        Evaluate data distribution for the current cluster or specific
+                                                                 pool or specific plan
+balancer eval-verbose [<option>]                                Evaluate data distribution for the current cluster or specific
+                                                                 pool or specific plan (verbosely)
+balancer execute <plan>                                         Execute an optimization plan
+balancer ls                                                     List all plans
+balancer mode <mode:none|crush-compat|upmap>                    Set balancer mode
+balancer off                                                    Disable automatic balancing
+balancer on                                                     Enable automatic balancing
+balancer optimize <plan> [<pools>...]                           Run optimizer to create a new plan
+balancer pool add <pools>...                                    Enable automatic balancing for specific pools
+balancer pool ls                                                List automatic balancing pools  Note that empty list means all
+                                                                 existing pools will be automatic balancing targets, which is
+                                                                 the default behaviour of balancer.
+balancer pool rm <pools>...                                     Disable automatic balancing for specific pools
+balancer reset                                                  Discard all optimization plans
+balancer rm <plan>                                              Discard an optimization plan
+balancer show <plan>                                            Show details of an optimization plan
+balancer status                                                 Show balancer status
+cephadm check-host <host> [<addr>]                              Check whether we can access and manage a remote host
+cephadm clear-key                                               Clear cluster SSH key
+cephadm clear-ssh-config                                        Clear the ssh_config file
+cephadm config-check disable <check_name>                       Disable a specific configuration check
+cephadm config-check enable <check_name>                        Enable a specific configuration check
+cephadm config-check ls [--format {plain|json|json-pretty|yaml| List the available configuration checks and their current state
+ xml-pretty|xml}]
+cephadm config-check status                                     Show whether the configuration checker feature is enabled/
+                                                                 disabled
+cephadm generate-key                                            Generate a cluster SSH key (if not present)
+cephadm get-extra-ceph-conf                                     Get extra ceph conf that is appended
+cephadm get-pub-key                                             Show SSH public key for connecting to cluster hosts
+cephadm get-ssh-config                                          Returns the ssh config as used by cephadm
+cephadm get-user                                                Show user for SSHing to cluster hosts
+cephadm osd activate <host>...                                  Start OSD containers for existing OSDs
+cephadm prepare-host <host> [<addr>]                            Prepare a remote host for use with cephadm
+cephadm registry-login [<url>] [<username>] [<password>]        Set custom registry login info by providing url, username and
+                                                                 password or json file with login info (-i <file>)
+cephadm set-extra-ceph-conf                                     Text that is appended to all daemon's ceph.conf. Mainly a
+                                                                 workaround, till `config generate-minimal-conf` generates a
+                                                                 complete ceph.conf.  Warning: this is a dangerous operation.
+cephadm set-priv-key                                            Set cluster SSH private key (use -i <private_key>)
+cephadm set-pub-key                                             Set cluster SSH public key (use -i <public_key>)
+cephadm set-ssh-config                                          Set the ssh_config file (use -i <ssh_config>)
+cephadm set-user <user>                                         Set user for SSHing to cluster hosts, passwordless sudo will
+                                                                 be needed for non-root users
+config assimilate-conf                                          Assimilate options from a conf, and return a new, minimal conf
+                                                                 file
+config dump                                                     Show all configuration option(s)
+config generate-minimal-conf                                    Generate a minimal ceph.conf file
+config get <who> [<key>]                                        Show configuration option(s) for an entity
+config help <key>                                               Describe a configuration option
+config log [<num:int>]                                          Show recent history of config changes
+config ls                                                       List available configuration options
+config reset <num:int>                                          Revert configuration to a historical version specified by <num>
+config rm <who> <name>                                          Clear a configuration option for one or more entities
+config set <who> <name> <value> [--force]                       Set a configuration option for one or more entities
+config show <who> [<key>]                                       Show running configuration
+config show-with-defaults <who>                                 Show running configuration (including compiled-in defaults)
+config-key dump [<key>]                                         dump keys and values (with optional prefix)
+config-key exists <key>                                         check for <key>'s existence
+config-key get <key>                                            get <key>
+config-key ls                                                   list keys
+config-key rm <key>                                             rm <key>
+config-key set <key> [<val>]                                    set <key> to value <val>
+crash archive <id>                                              Acknowledge a crash and silence health warning(s)
+crash archive-all                                               Acknowledge all new crashes and silence health warning(s)
+crash info <id>                                                 show crash dump metadata
+crash json_report <hours:int>                                   Crashes in the last <hours> hours
+crash ls [--format <value>]                                     Show new and archived crash dumps
+crash ls-new [--format <value>]                                 Show new crash dumps
+crash post                                                      Add a crash dump (use -i <jsonfile>)
+crash prune <keep:int>                                          Remove crashes older than <keep> days
+crash rm <id>                                                   Remove a saved crash <id>
+crash stat                                                      Summarize recorded crashes
+dashboard ac-role-add-scope-perms <rolename> <scopename>        Add the scope permissions for a role
+ [<permissions>...]
+dashboard ac-role-create [<rolename>] [<description>]           Create a new access control role
+dashboard ac-role-del-scope-perms <rolename> [<scopename>]      Delete the scope permissions for a role
+dashboard ac-role-delete [<rolename>]                           Delete an access control role
+dashboard ac-role-show [<rolename>]                             Show role info
+dashboard ac-user-add-roles <username> [<roles>...]             Add roles to user
+dashboard ac-user-create <username> [<rolename>] [<name>]       Create a user. Password read from -i <file>
+ [<email>] [--enabled] [--force-password] [--pwd_expiration_
+ date <int>] [--pwd-update-required]
+dashboard ac-user-del-roles <username> [<roles>...]             Delete roles from user
+dashboard ac-user-delete [<username>]                           Delete user
+dashboard ac-user-disable [<username>]                          Disable a user
+dashboard ac-user-enable [<username>]                           Enable a user
+dashboard ac-user-set-info <username> <name> [<email>]          Set user info
+dashboard ac-user-set-password <username> [--force-password]    Set user password from -i <file>
+dashboard ac-user-set-password-hash <username>                  Set user password bcrypt hash from -i <file>
+dashboard ac-user-set-roles <username> [<roles>...]             Set user roles
+dashboard ac-user-show [<username>]                             Show user info
+dashboard create-self-signed-cert                               Create self signed certificate
+dashboard debug [<action:enable|disable|status>]                Control and report debug status in Ceph-Dashboard
+dashboard feature [<action:enable|disable|status>] [<features:  Enable or disable features in Ceph-Mgr Dashboard
+ rbd|mirroring|iscsi|cephfs|rgw|nfs>...]
+dashboard get-account-lockout-attempts                          Get the ACCOUNT_LOCKOUT_ATTEMPTS option value
+dashboard get-alertmanager-api-host                             Get the ALERTMANAGER_API_HOST option value
+dashboard get-alertmanager-api-ssl-verify                       Get the ALERTMANAGER_API_SSL_VERIFY option value
+dashboard get-audit-api-enabled                                 Get the AUDIT_API_ENABLED option value
+dashboard get-audit-api-log-payload                             Get the AUDIT_API_LOG_PAYLOAD option value
+dashboard get-enable-browsable-api                              Get the ENABLE_BROWSABLE_API option value
+dashboard get-ganesha-clusters-rados-pool-namespace             Get the GANESHA_CLUSTERS_RADOS_POOL_NAMESPACE option value
+dashboard get-grafana-api-password                              Get the GRAFANA_API_PASSWORD option value
+dashboard get-grafana-api-ssl-verify                            Get the GRAFANA_API_SSL_VERIFY option value
+dashboard get-grafana-api-url                                   Get the GRAFANA_API_URL option value
+dashboard get-grafana-api-username                              Get the GRAFANA_API_USERNAME option value
+dashboard get-grafana-frontend-api-url                          Get the GRAFANA_FRONTEND_API_URL option value
+dashboard get-grafana-update-dashboards                         Get the GRAFANA_UPDATE_DASHBOARDS option value
+dashboard get-iscsi-api-ssl-verification                        Get the ISCSI_API_SSL_VERIFICATION option value
+dashboard get-issue-tracker-api-key                             Get the ISSUE_TRACKER_API_KEY option value
+dashboard get-jwt-token-ttl                                     Get the JWT token TTL in seconds
+dashboard get-login-banner                                      Get the custom login banner text
+dashboard get-prometheus-api-host                               Get the PROMETHEUS_API_HOST option value
+dashboard get-prometheus-api-ssl-verify                         Get the PROMETHEUS_API_SSL_VERIFY option value
+dashboard get-pwd-policy-check-complexity-enabled               Get the PWD_POLICY_CHECK_COMPLEXITY_ENABLED option value
+dashboard get-pwd-policy-check-exclusion-list-enabled           Get the PWD_POLICY_CHECK_EXCLUSION_LIST_ENABLED option value
+dashboard get-pwd-policy-check-length-enabled                   Get the PWD_POLICY_CHECK_LENGTH_ENABLED option value
+dashboard get-pwd-policy-check-oldpwd-enabled                   Get the PWD_POLICY_CHECK_OLDPWD_ENABLED option value
+dashboard get-pwd-policy-check-repetitive-chars-enabled         Get the PWD_POLICY_CHECK_REPETITIVE_CHARS_ENABLED option value
+dashboard get-pwd-policy-check-sequential-chars-enabled         Get the PWD_POLICY_CHECK_SEQUENTIAL_CHARS_ENABLED option value
+dashboard get-pwd-policy-check-username-enabled                 Get the PWD_POLICY_CHECK_USERNAME_ENABLED option value
+dashboard get-pwd-policy-enabled                                Get the PWD_POLICY_ENABLED option value
+dashboard get-pwd-policy-exclusion-list                         Get the PWD_POLICY_EXCLUSION_LIST option value
+dashboard get-pwd-policy-min-complexity                         Get the PWD_POLICY_MIN_COMPLEXITY option value
+dashboard get-pwd-policy-min-length                             Get the PWD_POLICY_MIN_LENGTH option value
+dashboard get-rest-requests-timeout                             Get the REST_REQUESTS_TIMEOUT option value
+dashboard get-rgw-api-access-key                                Get the RGW_API_ACCESS_KEY option value
+dashboard get-rgw-api-admin-resource                            Get the RGW_API_ADMIN_RESOURCE option value
+dashboard get-rgw-api-secret-key                                Get the RGW_API_SECRET_KEY option value
+dashboard get-rgw-api-ssl-verify                                Get the RGW_API_SSL_VERIFY option value
+dashboard get-user-pwd-expiration-span                          Get the USER_PWD_EXPIRATION_SPAN option value
+dashboard get-user-pwd-expiration-warning-1                     Get the USER_PWD_EXPIRATION_WARNING_1 option value
+dashboard get-user-pwd-expiration-warning-2                     Get the USER_PWD_EXPIRATION_WARNING_2 option value
+dashboard grafana dashboards update                             Push dashboards to Grafana
+dashboard iscsi-gateway-add [<name>]                            Add iSCSI gateway configuration. Gateway URL read from -i
+                                                                 <file>
+dashboard iscsi-gateway-list                                    List iSCSI gateways
+dashboard iscsi-gateway-rm [<name>]                             Remove iSCSI gateway configuration
+dashboard reset-account-lockout-attempts                        Reset the ACCOUNT_LOCKOUT_ATTEMPTS option to its default value
+dashboard reset-alertmanager-api-host                           Reset the ALERTMANAGER_API_HOST option to its default value
+dashboard reset-alertmanager-api-ssl-verify                     Reset the ALERTMANAGER_API_SSL_VERIFY option to its default
+                                                                 value
+dashboard reset-audit-api-enabled                               Reset the AUDIT_API_ENABLED option to its default value
+dashboard reset-audit-api-log-payload                           Reset the AUDIT_API_LOG_PAYLOAD option to its default value
+dashboard reset-enable-browsable-api                            Reset the ENABLE_BROWSABLE_API option to its default value
+dashboard reset-ganesha-clusters-rados-pool-namespace           Reset the GANESHA_CLUSTERS_RADOS_POOL_NAMESPACE option to its
+                                                                 default value
+dashboard reset-grafana-api-password                            Reset the GRAFANA_API_PASSWORD option to its default value
+dashboard reset-grafana-api-ssl-verify                          Reset the GRAFANA_API_SSL_VERIFY option to its default value
+dashboard reset-grafana-api-url                                 Reset the GRAFANA_API_URL option to its default value
+dashboard reset-grafana-api-username                            Reset the GRAFANA_API_USERNAME option to its default value
+dashboard reset-grafana-frontend-api-url                        Reset the GRAFANA_FRONTEND_API_URL option to its default value
+dashboard reset-grafana-update-dashboards                       Reset the GRAFANA_UPDATE_DASHBOARDS option to its default value
+dashboard reset-iscsi-api-ssl-verification                      Reset the ISCSI_API_SSL_VERIFICATION option to its default
+                                                                 value
+dashboard reset-issue-tracker-api-key                           Reset the ISSUE_TRACKER_API_KEY option to its default value
+dashboard reset-prometheus-api-host                             Reset the PROMETHEUS_API_HOST option to its default value
+dashboard reset-prometheus-api-ssl-verify                       Reset the PROMETHEUS_API_SSL_VERIFY option to its default value
+dashboard reset-pwd-policy-check-complexity-enabled             Reset the PWD_POLICY_CHECK_COMPLEXITY_ENABLED option to its
+                                                                 default value
+dashboard reset-pwd-policy-check-exclusion-list-enabled         Reset the PWD_POLICY_CHECK_EXCLUSION_LIST_ENABLED option to
+                                                                 its default value
+dashboard reset-pwd-policy-check-length-enabled                 Reset the PWD_POLICY_CHECK_LENGTH_ENABLED option to its
+                                                                 default value
+dashboard reset-pwd-policy-check-oldpwd-enabled                 Reset the PWD_POLICY_CHECK_OLDPWD_ENABLED option to its
+                                                                 default value
+dashboard reset-pwd-policy-check-repetitive-chars-enabled       Reset the PWD_POLICY_CHECK_REPETITIVE_CHARS_ENABLED option to
+                                                                 its default value
+dashboard reset-pwd-policy-check-sequential-chars-enabled       Reset the PWD_POLICY_CHECK_SEQUENTIAL_CHARS_ENABLED option to
+                                                                 its default value
+dashboard reset-pwd-policy-check-username-enabled               Reset the PWD_POLICY_CHECK_USERNAME_ENABLED option to its
+                                                                 default value
+dashboard reset-pwd-policy-enabled                              Reset the PWD_POLICY_ENABLED option to its default value
+dashboard reset-pwd-policy-exclusion-list                       Reset the PWD_POLICY_EXCLUSION_LIST option to its default value
+dashboard reset-pwd-policy-min-complexity                       Reset the PWD_POLICY_MIN_COMPLEXITY option to its default value
+dashboard reset-pwd-policy-min-length                           Reset the PWD_POLICY_MIN_LENGTH option to its default value
+dashboard reset-rest-requests-timeout                           Reset the REST_REQUESTS_TIMEOUT option to its default value
+dashboard reset-rgw-api-access-key                              Reset the RGW_API_ACCESS_KEY option to its default value
+dashboard reset-rgw-api-admin-resource                          Reset the RGW_API_ADMIN_RESOURCE option to its default value
+dashboard reset-rgw-api-secret-key                              Reset the RGW_API_SECRET_KEY option to its default value
+dashboard reset-rgw-api-ssl-verify                              Reset the RGW_API_SSL_VERIFY option to its default value
+dashboard reset-user-pwd-expiration-span                        Reset the USER_PWD_EXPIRATION_SPAN option to its default value
+dashboard reset-user-pwd-expiration-warning-1                   Reset the USER_PWD_EXPIRATION_WARNING_1 option to its default
+                                                                 value
+dashboard reset-user-pwd-expiration-warning-2                   Reset the USER_PWD_EXPIRATION_WARNING_2 option to its default
+                                                                 value
+dashboard set-account-lockout-attempts <value>                  Set the ACCOUNT_LOCKOUT_ATTEMPTS option value
+dashboard set-alertmanager-api-host <value>                     Set the ALERTMANAGER_API_HOST option value
+dashboard set-alertmanager-api-ssl-verify <value>               Set the ALERTMANAGER_API_SSL_VERIFY option value
+dashboard set-audit-api-enabled <value>                         Set the AUDIT_API_ENABLED option value
+dashboard set-audit-api-log-payload <value>                     Set the AUDIT_API_LOG_PAYLOAD option value
+dashboard set-enable-browsable-api <value>                      Set the ENABLE_BROWSABLE_API option value
+dashboard set-ganesha-clusters-rados-pool-namespace <value>     Set the GANESHA_CLUSTERS_RADOS_POOL_NAMESPACE option value
+dashboard set-grafana-api-password                              Set the GRAFANA_API_PASSWORD option value read from -i <file>
+dashboard set-grafana-api-ssl-verify <value>                    Set the GRAFANA_API_SSL_VERIFY option value
+dashboard set-grafana-api-url <value>                           Set the GRAFANA_API_URL option value
+dashboard set-grafana-api-username <value>                      Set the GRAFANA_API_USERNAME option value
+dashboard set-grafana-frontend-api-url <value>                  Set the GRAFANA_FRONTEND_API_URL option value
+dashboard set-grafana-update-dashboards <value>                 Set the GRAFANA_UPDATE_DASHBOARDS option value
+dashboard set-iscsi-api-ssl-verification <value>                Set the ISCSI_API_SSL_VERIFICATION option value
+dashboard set-issue-tracker-api-key                             Set the ISSUE_TRACKER_API_KEY option value read from -i <file>
+dashboard set-jwt-token-ttl <seconds:int>                       Set the JWT token TTL in seconds
+dashboard set-login-banner                                      Set the custom login banner read from -i <file>
+dashboard set-login-credentials <username>                      Set the login credentials. Password read from -i <file>
+dashboard set-prometheus-api-host <value>                       Set the PROMETHEUS_API_HOST option value
+dashboard set-prometheus-api-ssl-verify <value>                 Set the PROMETHEUS_API_SSL_VERIFY option value
+dashboard set-pwd-policy-check-complexity-enabled <value>       Set the PWD_POLICY_CHECK_COMPLEXITY_ENABLED option value
+dashboard set-pwd-policy-check-exclusion-list-enabled <value>   Set the PWD_POLICY_CHECK_EXCLUSION_LIST_ENABLED option value
+dashboard set-pwd-policy-check-length-enabled <value>           Set the PWD_POLICY_CHECK_LENGTH_ENABLED option value
+dashboard set-pwd-policy-check-oldpwd-enabled <value>           Set the PWD_POLICY_CHECK_OLDPWD_ENABLED option value
+dashboard set-pwd-policy-check-repetitive-chars-enabled <value> Set the PWD_POLICY_CHECK_REPETITIVE_CHARS_ENABLED option value
+dashboard set-pwd-policy-check-sequential-chars-enabled <value> Set the PWD_POLICY_CHECK_SEQUENTIAL_CHARS_ENABLED option value
+dashboard set-pwd-policy-check-username-enabled <value>         Set the PWD_POLICY_CHECK_USERNAME_ENABLED option value
+dashboard set-pwd-policy-enabled <value>                        Set the PWD_POLICY_ENABLED option value
+dashboard set-pwd-policy-exclusion-list <value>                 Set the PWD_POLICY_EXCLUSION_LIST option value
+dashboard set-pwd-policy-min-complexity <value>                 Set the PWD_POLICY_MIN_COMPLEXITY option value
+dashboard set-pwd-policy-min-length <value>                     Set the PWD_POLICY_MIN_LENGTH option value
+dashboard set-rest-requests-timeout <value>                     Set the REST_REQUESTS_TIMEOUT option value
+dashboard set-rgw-api-access-key                                Set the RGW_API_ACCESS_KEY option value read from -i <file>
+dashboard set-rgw-api-admin-resource <value>                    Set the RGW_API_ADMIN_RESOURCE option value
+dashboard set-rgw-api-secret-key                                Set the RGW_API_SECRET_KEY option value read from -i <file>
+dashboard set-rgw-api-ssl-verify <value>                        Set the RGW_API_SSL_VERIFY option value
+dashboard set-user-pwd-expiration-span <value>                  Set the USER_PWD_EXPIRATION_SPAN option value
+dashboard set-user-pwd-expiration-warning-1 <value>             Set the USER_PWD_EXPIRATION_WARNING_1 option value
+dashboard set-user-pwd-expiration-warning-2 <value>             Set the USER_PWD_EXPIRATION_WARNING_2 option value
+dashboard sso disable                                           Disable Single Sign-On
+dashboard sso enable saml2                                      Enable SAML2 Single Sign-On
+dashboard sso setup saml2 <ceph_dashboard_base_url> <idp_       Setup SAML2 Single Sign-On
+ metadata> [<idp_username_attribute>] [<idp_entity_id>] [<sp_x_
+ 509_cert>] [<sp_private_key>]
+dashboard sso show saml2                                        Show SAML2 configuration
+dashboard sso status                                            Get Single Sign-On status
+dashboard unset-login-banner                                    Unset the custom login banner
+device check-health                                             Check life expectancy of devices
+device get-health-metrics <devid> [<sample>]                    Show stored device metrics for the device
+device info <devid>                                             Show information about a device
+device light <enable:on|off> <devid> [<light_type:ident|        Enable or disable the device light. Default type is `ident` '
+ fault>] [--force]                                               Usage: device light (on|off) <devid> [ident|fault] [--force]'
+device ls                                                       Show devices
+device ls-by-daemon <who>                                       Show devices associated with a daemon
+device ls-by-host <host>                                        Show devices on a host
+device ls-lights                                                List currently active device indicator lights
+device monitoring off                                           Disable device health monitoring
+device monitoring on                                            Enable device health monitoring
+device predict-life-expectancy <devid>                          Predict life expectancy with local predictor
+device query-daemon-health-metrics <who>                        Get device health metrics for a given daemon
+device rm-life-expectancy <devid>                               Clear predicted device life expectancy
+device scrape-daemon-health-metrics <who>                       Scrape and store device health metrics for a given daemon
+device scrape-health-metrics [<devid>]                          Scrape and store device health metrics
+device set-life-expectancy <devid> <from> [<to>]                Set predicted device life expectancy
+df [<detail:detail>]                                            show cluster free space stats
+features                                                        report of connected features
+fs add_data_pool <fs_name> <pool>                               add data pool <pool>
+fs authorize <filesystem> <entity> <caps>...                    add auth for <entity> to access file system <filesystem> based
+                                                                 on following directory and permissions pairs
+fs clone cancel <vol_name> <clone_name> [<group_name>]          Cancel an pending or ongoing clone operation.
+fs clone status <vol_name> <clone_name> [<group_name>]          Get status on a cloned subvolume.
+fs compat <fs_name> <subop:rm_compat|rm_incompat|add_compat|    manipulate compat settings
+ add_incompat> <feature:int> [<feature_str>]
+fs compat show <fs_name>                                        show fs compatibility settings
+fs dump [<epoch:int>]                                           dump all CephFS status, optionally from epoch
+fs fail <fs_name>                                               bring the file system down and all of its ranks
+fs feature ls                                                   list available cephfs features to be set/unset
+fs flag set <flag_name:enable_multiple> <val> [--yes-i-really-  Set a global CephFS flag
+ mean-it]
+fs get <fs_name>                                                get info about one filesystem
+fs ls                                                           list filesystems
+fs lsflags <fs_name>                                            list the flags set on a ceph filesystem
+fs mirror disable <fs_name>                                     disable mirroring for a ceph filesystem
+fs mirror enable <fs_name>                                      enable mirroring for a ceph filesystem
+fs mirror peer_add <fs_name> <uuid> <remote_cluster_spec>       add a mirror peer for a ceph filesystem
+ <remote_fs_name>
+fs mirror peer_remove <fs_name> <uuid>                          remove a mirror peer for a ceph filesystem
+fs new <fs_name> <metadata> <data> [--force] [--allow-          make new filesystem using named pools <metadata> and <data>
+ dangerous-metadata-overlay] [<fscid:int>] [--recover]
+fs perf stats [<mds_rank>] [<client_id>] [<client_ip>]          retrieve ceph fs performance stats
+fs rename <fs_name> <new_fs_name> [--yes-i-really-mean-it]      rename a ceph file system
+fs required_client_features <fs_name> <subop:add|rm> <val>      add/remove required features of clients
+fs reset <fs_name> [--yes-i-really-mean-it]                     disaster recovery only: reset to a single-MDS map
+fs rm <fs_name> [--yes-i-really-mean-it]                        disable the named filesystem
+fs rm_data_pool <fs_name> <pool>                                remove data pool <pool>
+fs set <fs_name> <var:max_mds|max_file_size|allow_new_snaps|    set fs parameter <var> to <val>
+ inline_data|cluster_down|allow_dirfrags|balancer|standby_
+ count_wanted|session_timeout|session_autoclose|allow_standby_
+ replay|down|joinable|min_compat_client> <val> [--yes-i-really-
+ mean-it] [--yes-i-really-really-mean-it]
+fs set-default <fs_name>                                        set the default to the named filesystem
+fs snap-schedule activate <path> [<repeat>] [<start>]           Activate a snapshot schedule for <path>
+ [<subvol>] [<fs>]
+fs snap-schedule add <path> <snap_schedule> [<start>] [<fs>]    Set a snapshot schedule for <path>
+ [<subvol>]
+fs snap-schedule deactivate <path> [<repeat>] [<start>]         Deactivate a snapshot schedule for <path>
+ [<subvol>] [<fs>]
+fs snap-schedule list <path> [<subvol>] [--recursive] [--fs     Get current snapshot schedule for <path>
+ <value>] [--format <value>]
+fs snap-schedule remove <path> [<repeat>] [<start>] [<subvol>]  Remove a snapshot schedule for <path>
+ [<fs>]
+fs snap-schedule retention add <path> <retention_spec_or_       Set a retention specification for <path>
+ period> [<retention_count>] [<fs>] [<subvol>]
+fs snap-schedule retention remove <path> <retention_spec_or_    Remove a retention specification for <path>
+ period> [<retention_count>] [<fs>] [<subvol>]
+fs snap-schedule status [<path>] [<subvol>] [<fs>] [--format    List current snapshot schedules
+ <value>]
+fs snapshot mirror add <fs_name> [<path>]                       Add a directory for snapshot mirroring
+fs snapshot mirror daemon status                                Get mirror daemon status
+fs snapshot mirror dirmap <fs_name> [<path>]                    Get current mirror instance map for a directory
+fs snapshot mirror disable [<fs_name>]                          Disable snapshot mirroring for a filesystem
+fs snapshot mirror enable [<fs_name>]                           Enable snapshot mirroring for a filesystem
+fs snapshot mirror peer_add <fs_name> [<remote_cluster_spec>]   Add a remote filesystem peer
+ [<remote_fs_name>] [<remote_mon_host>] [<cephx_key>]
+fs snapshot mirror peer_bootstrap create <fs_name> <client_     Bootstrap a filesystem peer
+ name> [<site_name>]
+fs snapshot mirror peer_bootstrap import <fs_name> [<token>]    Import a bootstrap token
+fs snapshot mirror peer_list [<fs_name>]                        List configured peers for a file system
+fs snapshot mirror peer_remove <fs_name> [<peer_uuid>]          Remove a filesystem peer
+fs snapshot mirror remove <fs_name> [<path>]                    Remove a snapshot mirrored directory
+fs snapshot mirror show distribution [<fs_name>]                Get current instance to directory map for a filesystem
+fs status [<fs>] [--format <value>]                             Show the status of a CephFS filesystem
+fs subvolume authorize <vol_name> <sub_name> <auth_id> [<group_ Allow a cephx auth ID access to a subvolume
+ name>] [<access_level>] [<tenant_id>] [--allow-existing-id]
+fs subvolume authorized_list <vol_name> <sub_name> [<group_     List auth IDs that have access to a subvolume
+ name>]
+fs subvolume create <vol_name> <sub_name> [<size:int>] [<group_ Create a CephFS subvolume in a volume, and optionally, with a
+ name>] [<pool_layout>] [<uid:int>] [<gid:int>] [<mode>] [--     specific size (in bytes), a specific data pool layout, a
+ namespace-isolated]                                             specific mode, in a specific subvolume group and in separate
+                                                                 RADOS namespace
+fs subvolume deauthorize <vol_name> <sub_name> <auth_id>        Deny a cephx auth ID access to a subvolume
+ [<group_name>]
+fs subvolume evict <vol_name> <sub_name> <auth_id> [<group_     Evict clients based on auth IDs and subvolume mounted
+ name>]
+fs subvolume exist <vol_name> [<group_name>]                    Check a volume for the existence of a subvolume, optionally in
+                                                                 a specified subvolume group
+fs subvolume getpath <vol_name> <sub_name> [<group_name>]       Get the mountpath of a CephFS subvolume in a volume, and
+                                                                 optionally, in a specific subvolume group
+fs subvolume info <vol_name> <sub_name> [<group_name>]          Get the information of a CephFS subvolume in a volume, and
+                                                                 optionally, in a specific subvolume group
+fs subvolume ls <vol_name> [<group_name>]                       List subvolumes
+fs subvolume metadata get <vol_name> <sub_name> <key_name>      Get custom metadata associated with the key of a CephFS
+ [<group_name>]                                                  subvolume in a volume, and optionally, in a specific
+                                                                 subvolume group
+fs subvolume metadata ls <vol_name> <sub_name> [<group_name>]   List custom metadata (key-value pairs) of a CephFS subvolume
+                                                                 in a volume, and optionally, in a specific subvolume group
+fs subvolume metadata rm <vol_name> <sub_name> <key_name>       Remove custom metadata (key-value) associated with the key of
+ [<group_name>] [--force]                                        a CephFS subvolume in a volume, and optionally, in a specific
+                                                                 subvolume group
+fs subvolume metadata set <vol_name> <sub_name> <key_name>      Set custom metadata (key-value) for a CephFS subvolume in a
+ <value> [<group_name>]                                          volume, and optionally, in a specific subvolume group
+fs subvolume pin <vol_name> <sub_name> <pin_type:export|        Set MDS pinning policy for subvolume
+ distributed|random> <pin_setting> [<group_name>]
+fs subvolume resize <vol_name> <sub_name> <new_size> [<group_   Resize a CephFS subvolume
+ name>] [--no-shrink]
+fs subvolume rm <vol_name> <sub_name> [<group_name>] [--force]  Delete a CephFS subvolume in a volume, and optionally, in a
+ [--retain-snapshots]                                            specific subvolume group, force deleting a cancelled or
+                                                                 failed clone, and retaining existing subvolume snapshots
+fs subvolume snapshot clone <vol_name> <sub_name> <snap_name>   Clone a snapshot to target subvolume
+ <target_sub_name> [<pool_layout>] [<group_name>] [<target_
+ group_name>]
+fs subvolume snapshot create <vol_name> <sub_name> <snap_name>  Create a snapshot of a CephFS subvolume in a volume, and
+ [<group_name>]                                                  optionally, in a specific subvolume group
+fs subvolume snapshot info <vol_name> <sub_name> <snap_name>    Get the information of a CephFS subvolume snapshot and
+ [<group_name>]                                                  optionally, in a specific subvolume group
+fs subvolume snapshot ls <vol_name> <sub_name> [<group_name>]   List subvolume snapshots
+fs subvolume snapshot metadata get <vol_name> <sub_name> <snap_ Get custom metadata associated with the key of a CephFS
+ name> <key_name> [<group_name>]                                 subvolume snapshot in a volume, and optionally, in a specific
+                                                                 subvolume group
+fs subvolume snapshot metadata ls <vol_name> <sub_name> <snap_  List custom metadata (key-value pairs) of a CephFS subvolume
+ name> [<group_name>]                                            snapshot in a volume, and optionally, in a specific subvolume
+                                                                 group
+fs subvolume snapshot metadata rm <vol_name> <sub_name> <snap_  Remove custom metadata (key-value) associated with the key of
+ name> <key_name> [<group_name>] [--force]                       a CephFS subvolume snapshot in a volume, and optionally, in a
+                                                                 specific subvolume group
+fs subvolume snapshot metadata set <vol_name> <sub_name> <snap_ Set custom metadata (key-value) for a CephFS subvolume
+ name> <key_name> <value> [<group_name>]                         snapshot in a volume, and optionally, in a specific subvolume
+                                                                 group
+fs subvolume snapshot protect <vol_name> <sub_name> <snap_      (deprecated) Protect snapshot of a CephFS subvolume in a
+ name> [<group_name>]                                            volume, and optionally, in a specific subvolume group
+fs subvolume snapshot rm <vol_name> <sub_name> <snap_name>      Delete a snapshot of a CephFS subvolume in a volume, and
+ [<group_name>] [--force]                                        optionally, in a specific subvolume group
+fs subvolume snapshot unprotect <vol_name> <sub_name> <snap_    (deprecated) Unprotect a snapshot of a CephFS subvolume in a
+ name> [<group_name>]                                            volume, and optionally, in a specific subvolume group
+fs subvolumegroup create <vol_name> <group_name> [<size:int>]   Create a CephFS subvolume group in a volume, and optionally,
+ [<pool_layout>] [<uid:int>] [<gid:int>] [<mode>]                with a specific data pool layout, and a specific numeric mode
+fs subvolumegroup exist <vol_name>                              Check a volume for the existence of subvolumegroup
+fs subvolumegroup getpath <vol_name> <group_name>               Get the mountpath of a CephFS subvolume group in a volume
+fs subvolumegroup info <vol_name> <group_name>                  Get the metadata of a CephFS subvolume group in a volume,
+fs subvolumegroup ls <vol_name>                                 List subvolumegroups
+fs subvolumegroup pin <vol_name> <group_name> <pin_type:export| Set MDS pinning policy for subvolumegroup
+ distributed|random> <pin_setting>
+fs subvolumegroup resize <vol_name> <group_name> <new_size> [-- Resize a CephFS subvolume group
+ no-shrink]
+fs subvolumegroup rm <vol_name> <group_name> [--force]          Delete a CephFS subvolume group in a volume
+fs subvolumegroup snapshot create <vol_name> <group_name>       Create a snapshot of a CephFS subvolume group in a volume
+ <snap_name>
+fs subvolumegroup snapshot ls <vol_name> <group_name>           List subvolumegroup snapshots
+fs subvolumegroup snapshot rm <vol_name> <group_name> <snap_    Delete a snapshot of a CephFS subvolume group in a volume
+ name> [--force]
+fs volume create <name> [<placement>]                           Create a CephFS volume
+fs volume info <vol_name>                                       Get the information of a CephFS volume
+fs volume ls                                                    List volumes
+fs volume rename <vol_name> <new_vol_name> [--yes-i-really-     Rename a CephFS volume by passing --yes-i-really-mean-it flag
+ mean-it]
+fs volume rm <vol_name> [<yes-i-really-mean-it>]                Delete a FS volume by passing --yes-i-really-mean-it flag
+fsid                                                            show cluster FSID/UUID
+health [<detail:detail>]                                        show cluster health
+health mute <code> [<ttl>] [--sticky]                           mute health alert
+health unmute [<code>]                                          unmute existing health alert mute(s)
+healthcheck history clear                                       Clear the healthcheck history
+healthcheck history ls [--format {plain|json|json-pretty|yaml}] List all the healthchecks being tracked  The format options
+                                                                 are parsed in ceph_argparse, before they get evaluated here
+                                                                 so we can safely assume that what we have to process is valid.
+                                                                 ceph_argparse will throw a ValueError if the cast to our
+                                                                 Format class fails.  Args:     format (Format, optional):
+                                                                 output format. Defaults to Format.plain.  Returns:
+                                                                 HandleCommandResult: return code, stdout and stderr returned
+                                                                 to the caller
+influx config-set <key> <value>                                 Set a configuration value
+influx config-show                                              Show current configuration
+influx config-show                                              Show current configuration
+influx send                                                     Force sending data to Influx
+influx send                                                     Force sending data to Influx
+insights                                                        Retrieve insights report
+insights prune-health [<hours:int>]                             Remove health history older than <hours> hours
+iostat [<width:int>] [--print-header]                           Get IO rates
+k8sevents ceph                                                  List Ceph events tracked & sent to the kubernetes cluster
+k8sevents clear-config                                          Clear external kubernetes configuration settings
+k8sevents ls                                                    List all current Kuberenetes events from the Ceph namespace
+k8sevents set-access <key>                                      Set kubernetes access credentials. <key> must be cacrt or
+                                                                 token and use -i <filename> syntax (e.g., ceph k8sevents set-
+                                                                 access cacrt -i /root/ca.crt).
+k8sevents set-config <key> <value>                              Set kubernetes config paramters. <key> must be server or
+                                                                 namespace (e.g., ceph k8sevents set-config server https://
+                                                                 localhost:30433).
+k8sevents status                                                Show the status of the data gathering threads
+log <logtext>...                                                log supplied text to the monitor log
+log last [<num:int>] [<level:debug|info|sec|warn|error>]        print last few lines of the cluster log
+ [<channel:*|cluster|audit|cephadm>]
+mds count-metadata <property>                                   count MDSs by metadata field property
+mds fail <role_or_gid>                                          Mark MDS failed: trigger a failover if a standby is available
+mds metadata [<who>]                                            fetch metadata for mds <role>
+mds ok-to-stop <ids>...                                         check whether stopping the specified MDS would reduce
+                                                                 immediate availability
+mds repaired <role>                                             mark a damaged MDS rank as no longer damaged
+mds rm <gid:int>                                                remove nonactive mds
+mds versions                                                    check running versions of MDSs
+mgr count-metadata <property>                                   count ceph-mgr daemons by metadata field property
+mgr dump [<epoch:int>]                                          dump the latest MgrMap
+mgr fail [<who>]                                                treat the named manager daemon as failed
+mgr metadata [<who>]                                            dump metadata for all daemons or a specific daemon
+mgr module disable <module>                                     disable mgr module
+mgr module enable <module> [--force]                            enable mgr module
+mgr module ls                                                   list active mgr modules
+mgr self-test background start <workload:command_spam|throw_    Activate a background workload (one of command_spam, throw_
+ exception|shutdown>                                             exception)
+mgr self-test background stop                                   Stop background workload if any is running
+mgr self-test cluster-log <channel> <priority> <message>        Create an audit log record.
+mgr self-test config get <key>                                  Peek at a configuration value
+mgr self-test config get_localized <key>                        Peek at a configuration value (localized variant)
+mgr self-test eval [<s>]                                        eval given source
+mgr self-test health clear [<checks>...]                        Clear health checks by name. If no names provided, clear all.
+mgr self-test health set <checks>                               Set a health check from a JSON-formatted description.
+mgr self-test insights_set_now_offset <hours:int>               Set the now time for the insights module.
+mgr self-test module <module>                                   Run another module's self_test() method
+mgr self-test python-version                                    Query the version of the embedded Python runtime
+mgr self-test remote                                            Test inter-module calls
+mgr self-test run                                               Run mgr python interface tests
+mgr services                                                    list service endpoints provided by mgr modules
+mgr stat                                                        dump basic info about the mgr cluster state
+mgr versions                                                    check running versions of ceph-mgr daemons
+mon add <name> <addr> [<location>...]                           add new monitor named <name> at <addr>, possibly with CRUSH
+                                                                 location <location>
+mon add disallowed_leader <name>                                prevent the named mon from being a leader
+mon count-metadata <property>                                   count mons by metadata field property
+mon dump [<epoch:int>]                                          dump formatted monmap (optionally from epoch)
+mon enable-msgr2                                                enable the msgr2 protocol on port 3300
+mon enable_stretch_mode <tiebreaker_mon> <new_crush_rule>       enable stretch mode, changing the peering rules and failure
+ <dividing_bucket>                                               handling on all pools with <tiebreaker_mon> as the tiebreaker
+                                                                 and setting <dividing_bucket> locations as the units for
+                                                                 stretching across
+mon feature ls [--with-value]                                   list available mon map features to be set/unset
+mon feature set <feature_name> [--yes-i-really-mean-it]         set provided feature on mon map
+mon getmap [<epoch:int>]                                        get monmap
+mon metadata [<id>]                                             fetch metadata for mon <id>
+mon ok-to-add-offline                                           check whether adding a mon and not starting it would break
+                                                                 quorum
+mon ok-to-rm <id>                                               check whether removing the specified mon would break quorum
+mon ok-to-stop <ids>...                                         check whether mon(s) can be safely stopped without reducing
+                                                                 immediate availability
+mon rm <name>                                                   remove monitor named <name>
+mon rm disallowed_leader <name>                                 allow the named mon to be a leader again
+mon scrub                                                       scrub the monitor stores
+mon set election_strategy <strategy>                            set the election strategy to use; choices classic, disallow,
+                                                                 connectivity
+mon set-addrs <name> <addrs>                                    set the addrs (IPs and ports) a specific monitor binds to
+mon set-rank <name> <rank:int>                                  set the rank for the specified mon
+mon set-weight <name> <weight:int>                              set the weight for the specified mon
+mon set_location <name> <args>...                               specify location <args> for the monitor <name>, using CRUSH
+                                                                 bucket names
+mon set_new_tiebreaker <name> [--yes-i-really-mean-it]          switch the stretch tiebreaker to be the named mon
+mon stat                                                        summarize monitor status
+mon versions                                                    check running versions of monitors
+nfs cluster config get <cluster_id>                             Fetch NFS-Ganesha config
+nfs cluster config get <cluster_id>                             Fetch NFS-Ganesha config
+nfs cluster config reset <cluster_id>                           Reset NFS-Ganesha Config to default
+nfs cluster config reset <cluster_id>                           Reset NFS-Ganesha Config to default
+nfs cluster config set <cluster_id>                             Set NFS-Ganesha config by `-i <config_file>`
+nfs cluster config set <cluster_id>                             Set NFS-Ganesha config by `-i <config_file>`
+nfs cluster create <cluster_id> [<placement>] [--ingress] [--   Create an NFS Cluster
+ virtual_ip <value>] [--port <int>]
+nfs cluster create <cluster_id> [<placement>] [--ingress] [--   Create an NFS Cluster
+ virtual_ip <value>] [--port <int>]
+nfs cluster delete <cluster_id>                                 Removes an NFS Cluster (DEPRECATED)
+nfs cluster delete <cluster_id>                                 Removes an NFS Cluster (DEPRECATED)
+nfs cluster info [<cluster_id>]                                 Displays NFS Cluster info
+nfs cluster info [<cluster_id>]                                 Displays NFS Cluster info
+nfs cluster ls                                                  List NFS Clusters
+nfs cluster ls                                                  List NFS Clusters
+nfs cluster rm <cluster_id>                                     Removes an NFS Cluster
+nfs cluster rm <cluster_id>                                     Removes an NFS Cluster
+nfs export apply <cluster_id>                                   Create or update an export by `-i <json_or_ganesha_export_
+                                                                 file>`
+nfs export apply <cluster_id>                                   Create or update an export by `-i <json_or_ganesha_export_
+                                                                 file>`
+nfs export create cephfs <cluster_id> <pseudo_path> <fsname>    Create a CephFS export
+ [<path>] [--readonly] [--client_addr <value>...] [--squash
+ <value>]
+nfs export create cephfs <cluster_id> <pseudo_path> <fsname>    Create a CephFS export
+ [<path>] [--readonly] [--client_addr <value>...] [--squash
+ <value>]
+nfs export create rgw <cluster_id> <pseudo_path> [<bucket>]     Create an RGW export
+ [<user_id>] [--readonly] [--client_addr <value>...] [--squash
+ <value>]
+nfs export create rgw <cluster_id> <pseudo_path> [<bucket>]     Create an RGW export
+ [<user_id>] [--readonly] [--client_addr <value>...] [--squash
+ <value>]
+nfs export delete <cluster_id> <pseudo_path>                    Delete a cephfs export (DEPRECATED)
+nfs export delete <cluster_id> <pseudo_path>                    Delete a cephfs export (DEPRECATED)
+nfs export get <cluster_id> <pseudo_path>                       Fetch a export of a NFS cluster given the pseudo path/binding (
+                                                                 DEPRECATED)
+nfs export get <cluster_id> <pseudo_path>                       Fetch a export of a NFS cluster given the pseudo path/binding (
+                                                                 DEPRECATED)
+nfs export info <cluster_id> <pseudo_path>                      Fetch a export of a NFS cluster given the pseudo path/binding
+nfs export info <cluster_id> <pseudo_path>                      Fetch a export of a NFS cluster given the pseudo path/binding
+nfs export ls <cluster_id> [--detailed]                         List exports of a NFS cluster
+nfs export ls <cluster_id> [--detailed]                         List exports of a NFS cluster
+nfs export rm <cluster_id> <pseudo_path>                        Remove a cephfs export
+nfs export rm <cluster_id> <pseudo_path>                        Remove a cephfs export
+node ls [<type:all|osd|mon|mds|mgr>]                            list all nodes in cluster [type]
+orch <action:start|stop|restart|redeploy|reconfig> <service_    Start, stop, restart, redeploy, or reconfig an entire service (
+ name>                                                           i.e. all daemons)
+orch apply [<service_type:mon|mgr|rbd-mirror|cephfs-mirror|     Update the size or placement for a service or apply a large
+ crash|alertmanager|grafana|node-exporter|prometheus|loki|       yaml spec
+ promtail|mds|rgw|nfs|iscsi|snmp-gateway>] [<placement>] [--
+ dry-run] [--format {plain|json|json-pretty|yaml|xml-pretty|
+ xml}] [--unmanaged] [--no-overwrite]
+orch apply iscsi <pool> <api_user> <api_password> [<trusted_ip_ Scale an iSCSI service
+ list>] [<placement>] [--unmanaged] [--dry-run] [--format
+ {plain|json|json-pretty|yaml|xml-pretty|xml}] [--no-overwrite]
+orch apply mds <fs_name> [<placement>] [--dry-run] [--          Update the number of MDS instances for the given fs_name
+ unmanaged] [--format {plain|json|json-pretty|yaml|xml-pretty|
+ xml}] [--no-overwrite]
+orch apply nfs <svc_id> [<placement>] [--format {plain|json|    Scale an NFS service
+ json-pretty|yaml|xml-pretty|xml}] [--port <int>] [--dry-run]
+ [--unmanaged] [--no-overwrite]
+orch apply osd [--all-available-devices] [--format {plain|json| Create OSD daemon(s) on all available devices
+ json-pretty|yaml|xml-pretty|xml}] [--unmanaged] [--dry-run] [-
+ -no-overwrite]
+orch apply rgw <svc_id> [<placement>] [--realm <value>] [--     Update the number of RGW instances for the given zone
+ zone <value>] [--port <int>] [--ssl] [--dry-run] [--format
+ {plain|json|json-pretty|yaml|xml-pretty|xml}] [--unmanaged] [-
+ -no-overwrite]
+orch apply snmp-gateway <snmp_version:V2c|V3> <destination>     Add a Prometheus to SNMP gateway service (cephadm only)
+ [<port:int>] [<engine_id>] [<auth_protocol:MD5|SHA>]
+ [<privacy_protocol:DES|AES>] [<placement>] [--unmanaged] [--
+ dry-run] [--format {plain|json|json-pretty|yaml|xml-pretty|
+ xml}] [--no-overwrite]
+orch cancel                                                     Cancel ongoing background operations
+orch client-keyring ls [--format {plain|json|json-pretty|yaml|  List client keyrings under cephadm management
+ xml-pretty|xml}]
+orch client-keyring rm <entity>                                 Remove client keyring from cephadm management
+orch client-keyring set <entity> <placement> [<owner>] [<mode>] Add or update client keyring under cephadm management
+orch daemon <action:start|stop|restart|reconfig> <name>         Start, stop, restart, (redeploy,) or reconfig a specific daemon
+orch daemon add [<daemon_type:mon|mgr|rbd-mirror|cephfs-mirror| Add daemon(s)
+ crash|alertmanager|grafana|node-exporter|prometheus|loki|
+ promtail|mds|rgw|nfs|iscsi|snmp-gateway>] [<placement>]
+orch daemon add iscsi <pool> <api_user> <api_password>          Start iscsi daemon(s)
+ [<trusted_ip_list>] [<placement>]
+orch daemon add mds <fs_name> [<placement>]                     Start MDS daemon(s)
+orch daemon add nfs <svc_id> [<placement>]                      Start NFS daemon(s)
+orch daemon add osd [<svc_arg>] [<method:raw|lvm>]              Create OSD daemon(s) on specified host and device(s) (e.g.,
+                                                                 ceph orch daemon add osd myhost:/dev/sdb)
+orch daemon add rgw <svc_id> [<placement>] [--port <int>] [--   Start RGW daemon(s)
+ ssl]
+orch daemon redeploy <name> [<image>]                           Redeploy a daemon (with a specifc image)
+orch daemon rm <names>... [--force]                             Remove specific daemon(s)
+orch device ls [<hostname>...] [--format {plain|json|json-      List devices on a host
+ pretty|yaml|xml-pretty|xml}] [--refresh] [--wide]
+orch device zap <hostname> <path> [--force]                     Zap (erase!) a device so it can be re-used
+orch host add <hostname> [<addr>] [<labels>...] [--maintenance] Add a host
+orch host drain <hostname> [--force]                            drain all daemons from a host
+orch host label add <hostname> <label>                          Add a host label
+orch host label rm <hostname> <label> [--force]                 Remove a host label
+orch host ls [--format {plain|json|json-pretty|yaml|xml-pretty| List hosts
+ xml}] [--host_pattern <value>] [--label <value>] [--host_
+ status <value>]
+orch host maintenance enter <hostname> [--force]                Prepare a host for maintenance by shutting down and disabling
+                                                                 all Ceph daemons (cephadm only)
+orch host maintenance exit <hostname>                           Return a host from maintenance, restarting all Ceph daemons (
+                                                                 cephadm only)
+orch host ok-to-stop <hostname>                                 Check if the specified host can be safely stopped without
+                                                                 reducing availability
+orch host rescan <hostname> [--with-summary]                    Perform a disk rescan on a host
+orch host rm <hostname> [--force] [--offline]                   Remove a host
+orch host set-addr <hostname> <addr>                            Update a host address
+orch ls [<service_type>] [<service_name>] [--export] [--format  List services known to orchestrator
+ {plain|json|json-pretty|yaml|xml-pretty|xml}] [--refresh]
+orch osd rm <osd_id>... [--replace] [--force] [--zap]           Remove OSD daemons
+orch osd rm status [--format {plain|json|json-pretty|yaml|xml-  Status of OSD removal operation
+ pretty|xml}]
+orch osd rm stop <osd_id>...                                    Cancel ongoing OSD removal operation
+orch pause                                                      Pause orchestrator background work
+orch ps [<hostname>] [--service_name <value>] [--daemon_type    List daemons known to orchestrator
+ <value>] [--daemon_id <value>] [--format {plain|json|json-
+ pretty|yaml|xml-pretty|xml}] [--refresh]
+orch resume                                                     Resume orchestrator background work (if paused)
+orch rm <service_name> [--force]                                Remove a service
+orch set backend [<module_name>]                                Select orchestrator module backend
+orch status [--detail] [--format {plain|json|json-pretty|yaml|  Report configured backend and its status
+ xml-pretty|xml}]
+orch tuned-profile apply [<profile_name>] [<placement>]         Add or update a tuned profile
+ [<settings>] [--no-overwrite]
+orch upgrade check [<image>] [<ceph_version>]                   Check service versions vs available and target containers
+orch upgrade ls [<image>] [--tags] [--show-all-versions]        Check for available versions (or tags) we can upgrade to
+orch upgrade pause                                              Pause an in-progress upgrade
+orch upgrade resume                                             Resume paused upgrade
+orch upgrade start [<image>] [--daemon_types <value>] [--hosts  Initiate upgrade
+ <value>] [--services <value>] [--limit <int>] [--ceph_version
+ <value>]
+orch upgrade status                                             Check service versions vs available and target containers
+orch upgrade stop                                               Stop an in-progress upgrade
+osd blocked-by                                                  print histogram of which OSDs are blocking their peers
+osd blocklist [<range>] <blocklistop:add|rm> <addr> [<expire:   add (optionally until <expire> seconds from now) or remove
+ float>]                                                         <addr> from blocklist
+osd blocklist clear                                             clear all blocklisted clients
+osd blocklist ls                                                show blocklisted clients
+osd count-metadata <property>                                   count OSDs by metadata field property
+osd crush add <id|osd.id> <weight:float> <args>...              add or update crushmap position and weight for <name> with
+                                                                 <weight> and location <args>
+osd crush add-bucket <name> <type> [<args>...]                  add no-parent (probably root) crush bucket <name> of type
+                                                                 <type> to location <args>
+osd crush class create <class>                                  create crush device class <class>
+osd crush class ls                                              list all crush device classes
+osd crush class ls-osd <class>                                  list all osds belonging to the specific <class>
+osd crush class rename <srcname> <dstname>                      rename crush device class <srcname> to <dstname>
+osd crush class rm <class>                                      remove crush device class <class>
+osd crush create-or-move <id|osd.id> <weight:float> <args>...   create entry or move existing entry for <name> <weight> at/to
+                                                                 location <args>
+osd crush dump                                                  dump crush map
+osd crush get-device-class <ids>...                             get classes of specified osd(s) <id> [<id>...]
+osd crush get-tunable <tunable:straw_calc_version>              get crush tunable <tunable>
+osd crush link <name> <args>...                                 link existing entry for <name> under location <args>
+osd crush ls <node>                                             list items beneath a node in the CRUSH tree
+osd crush move <name> <args>...                                 move existing entry for <name> to location <args>
+osd crush rename-bucket <srcname> <dstname>                     rename bucket <srcname> to <dstname>
+osd crush reweight <name> <weight:float>                        change <name>'s weight to <weight> in crush map
+osd crush reweight-all                                          recalculate the weights for the tree to ensure they sum
+                                                                 correctly
+osd crush reweight-subtree <name> <weight:float>                change all leaf items beneath <name> to <weight> in crush map
+osd crush rm <name> [<ancestor>]                                remove <name> from crush map (everywhere, or just at
+                                                                 <ancestor>)
+osd crush rm-device-class <ids>...                              remove class of the osd(s) <id> [<id>...],or use <all|any> to
+                                                                 remove all.
+osd crush rule create-erasure <name> [<profile>]                create crush rule <name> for erasure coded pool created with
+                                                                 <profile> (default default)
+osd crush rule create-replicated <name> <root> <type> [<class>] create crush rule <name> for replicated pool to start from
+                                                                 <root>, replicate across buckets of type <type>, use devices
+                                                                 of type <class> (ssd or hdd)
+osd crush rule create-simple <name> <root> <type> [<mode:       create crush rule <name> to start from <root>, replicate
+ firstn|indep>]                                                  across buckets of type <type>, using a choose mode of <firstn|
+                                                                 indep> (default firstn; indep best for erasure pools)
+osd crush rule dump [<name>]                                    dump crush rule <name> (default all)
+osd crush rule ls                                               list crush rules
+osd crush rule ls-by-class <class>                              list all crush rules that reference the same <class>
+osd crush rule rename <srcname> <dstname>                       rename crush rule <srcname> to <dstname>
+osd crush rule rm <name>                                        remove crush rule <name>
+osd crush set <id|osd.id> <weight:float> <args>...              update crushmap position and weight for <name> to <weight>
+                                                                 with location <args>
+osd crush set [<prior_version:int>]                             set crush map from input file
+osd crush set-all-straw-buckets-to-straw2                       convert all CRUSH current straw buckets to use the straw2
+                                                                 algorithm
+osd crush set-device-class <class> <ids>...                     set the <class> of the osd(s) <id> [<id>...],or use <all|any>
+                                                                 to set all.
+osd crush set-tunable <tunable:straw_calc_version> <value:int>  set crush tunable <tunable> to <value>
+osd crush show-tunables                                         show current crush tunables
+osd crush swap-bucket <source> <dest> [--yes-i-really-mean-it]  swap existing bucket contents from (orphan) bucket <source>
+                                                                 and <target>
+osd crush tree [--show-shadow]                                  dump crush buckets and items in a tree view
+osd crush tunables <profile:legacy|argonaut|bobtail|firefly|    set crush tunables values to <profile>
+ hammer|jewel|optimal|default>
+osd crush unlink <name> [<ancestor>]                            unlink <name> from crush map (everywhere, or just at
+                                                                 <ancestor>)
+osd crush weight-set create <pool> <mode:flat|positional>       create a weight-set for a given pool
+osd crush weight-set create-compat                              create a default backward-compatible weight-set
+osd crush weight-set dump                                       dump crush weight sets
+osd crush weight-set ls                                         list crush weight sets
+osd crush weight-set reweight <pool> <item> <weight:float>...   set weight for an item (bucket or osd) in a pool's weight-set
+osd crush weight-set reweight-compat <item> <weight:float>...   set weight for an item (bucket or osd) in the backward-
+                                                                 compatible weight-set
+osd crush weight-set rm <pool>                                  remove the weight-set for a given pool
+osd crush weight-set rm-compat                                  remove the backward-compatible weight-set
+osd deep-scrub <who>                                            initiate deep scrub on osd <who>, or use <all|any> to deep
+                                                                 scrub all
+osd destroy <id|osd.id> [--force] [--yes-i-really-mean-it]      mark osd as being destroyed. Keeps the ID intact (allowing
+                                                                 reuse), but removes cephx keys, config-key data and lockbox
+                                                                 keys, rendering data permanently unreadable.
+osd df [<output_method:plain|tree>] [<filter_by:class|name>]    show OSD utilization
+ [<filter>]
+osd down <ids>... [--definitely-dead]                           set osd(s) <id> [<id>...] down, or use <any|all> to set all
+                                                                 osds down
+osd dump [<epoch:int>]                                          print summary of OSD map
+osd erasure-code-profile get <name>                             get erasure code profile <name>
+osd erasure-code-profile ls                                     list all erasure code profiles
+osd erasure-code-profile rm <name>                              remove erasure code profile <name>
+osd erasure-code-profile set <name> [<profile>...] [--force]    create erasure code profile <name> with [<key[=value]> ...]
+                                                                 pairs. Add a --force at the end to override an existing
+                                                                 profile (VERY DANGEROUS)
+osd find <id|osd.id>                                            find osd <id> in the CRUSH map and show its location
+osd force-create-pg <pgid> [--yes-i-really-mean-it]             force creation of pg <pgid>
+osd force_healthy_stretch_mode [--yes-i-really-mean-it]         force a healthy stretch mode, requiring the full number of
+                                                                 CRUSH buckets to peer and letting all non-tiebreaker monitors
+                                                                 be elected leader
+osd force_recovery_stretch_mode [--yes-i-really-mean-it]        try and force a recovery stretch mode, increasing the pool
+                                                                 size to its non-failure value if currently degraded and all
+                                                                 monitor buckets are up
+osd get-require-min-compat-client                               get the minimum client version we will maintain compatibility
+                                                                 with
+osd getcrushmap [<epoch:int>]                                   get CRUSH map
+osd getmap [<epoch:int>]                                        get OSD map
+osd getmaxosd                                                   show largest OSD id
+osd in <ids>...                                                 set osd(s) <id> [<id>...] in, can use <any|all> to
+                                                                 automatically set all previously out osds in
+osd info [<id|osd.id>]                                          print osd's {id} information (instead of all osds from map)
+osd last-stat-seq <id|osd.id>                                   get the last pg stats sequence number reported for this osd
+osd lost <id|osd.id> [--yes-i-really-mean-it]                   mark osd as permanently lost. THIS DESTROYS DATA IF NO MORE
+                                                                 REPLICAS EXIST, BE CAREFUL
+osd ls [<epoch:int>]                                            show all OSD ids
+osd ls-tree [<epoch:int>] <name>                                show OSD ids under bucket <name> in the CRUSH map
+osd map <pool> <object> [<nspace>]                              find pg for <object> in <pool> with [namespace]
+osd metadata [<id|osd.id>]                                      fetch metadata for osd {id} (default all)
+osd new <uuid> [<id|osd.id>]                                    Create a new OSD. If supplied, the `id` to be replaced needs
+                                                                 to exist and have been previously destroyed. Reads secrets
+                                                                 from JSON file via `-i <file>` (see man page).
+osd numa-status                                                 show NUMA status of OSDs
+osd ok-to-stop <ids>... [<max:int>]                             check whether osd(s) can be safely stopped without reducing
+                                                                 immediate data availability
+osd out <ids>...                                                set osd(s) <id> [<id>...] out, or use <any|all> to set all
+                                                                 osds out
+osd pause                                                       pause osd
+osd perf                                                        print dump of OSD perf summary stats
+osd perf counters get <query_id:int>                            fetch osd perf counters
+osd perf query add <query:client_id|rbd_image_id|all_subkeys>   add osd perf query
+osd perf query remove <query_id:int>                            remove osd perf query
+osd pg-temp <pgid> [<id|osd.id>...]                             set pg_temp mapping pgid:[<id> [<id>...]] (developers only)
+osd pg-upmap <pgid> <id|osd.id>...                              set pg_upmap mapping <pgid>:[<id> [<id>...]] (developers only)
+osd pg-upmap-items <pgid> <id|osd.id>...                        set pg_upmap_items mapping <pgid>:{<id> to <id>, [...]} (
+                                                                 developers only)
+osd pool application disable <pool> <app> [--yes-i-really-mean- disables use of an application <app> on pool <poolname>
+ it]
+osd pool application enable <pool> <app> [--yes-i-really-mean-  enable use of an application <app> [cephfs,rbd,rgw] on pool
+ it]                                                             <poolname>
+osd pool application get [<pool>] [<app>] [<key>]               get value of key <key> of application <app> on pool <poolname>
+osd pool application rm <pool> <app> <key>                      removes application <app> metadata key <key> on pool <poolname>
+osd pool application set <pool> <app> <key> <value>             sets application <app> metadata key <key> to <value> on pool
+                                                                 <poolname>
+osd pool autoscale-status [--format <value>]                    report on pool pg_num sizing recommendation and intent
+osd pool cancel-force-backfill <who>...                         restore normal recovery priority of specified pool <who>
+osd pool cancel-force-recovery <who>...                         restore normal recovery priority of specified pool <who>
+osd pool create <pool> [<pg_num:int>] [<pgp_num:int>] [<pool_   create pool
+ type:replicated|erasure>] [<erasure_code_profile>] [<rule>]
+ [<expected_num_objects:int>] [<size:int>] [<pg_num_min:int>]
+ [<pg_num_max:int>] [<autoscale_mode:on|off|warn>] [--bulk]
+ [<target_size_bytes:int>] [<target_size_ratio:float>]
+osd pool deep-scrub <who>...                                    initiate deep-scrub on pool <who>
+osd pool force-backfill <who>...                                force backfill of specified pool <who> first
+osd pool force-recovery <who>...                                force recovery of specified pool <who> first
+osd pool get <pool> <var:size|min_size|pg_num|pgp_num|crush_    get pool parameter <var>
+ rule|hashpspool|nodelete|nopgchange|nosizechange|write_
+ fadvise_dontneed|noscrub|nodeep-scrub|hit_set_type|hit_set_
+ period|hit_set_count|hit_set_fpp|use_gmt_hitset|target_max_
+ objects|target_max_bytes|cache_target_dirty_ratio|cache_
+ target_dirty_high_ratio|cache_target_full_ratio|cache_min_
+ flush_age|cache_min_evict_age|erasure_code_profile|min_read_
+ recency_for_promote|all|min_write_recency_for_promote|fast_
+ read|hit_set_grade_decay_rate|hit_set_search_last_n|scrub_min_
+ interval|scrub_max_interval|deep_scrub_interval|recovery_
+ priority|recovery_op_priority|scrub_priority|compression_mode|
+ compression_algorithm|compression_required_ratio|compression_
+ max_blob_size|compression_min_blob_size|csum_type|csum_min_
+ block|csum_max_block|allow_ec_overwrites|fingerprint_
+ algorithm|pg_autoscale_mode|pg_autoscale_bias|pg_num_min|pg_
+ num_max|target_size_bytes|target_size_ratio|dedup_tier|dedup_
+ chunk_algorithm|dedup_cdc_chunk_size|eio|bulk>
+osd pool get noautoscale                                        Get the noautoscale flag to see if all pools are setting the
+                                                                 autoscaler on or off as well as newly created pools in the
+                                                                 future.
+osd pool get-quota <pool>                                       obtain object or byte limits for pool
+osd pool ls [<detail:detail>]                                   list pools
+osd pool mksnap <pool> <snap>                                   make snapshot <snap> in <pool>
+osd pool rename <srcpool> <destpool>                            rename <srcpool> to <destpool>
+osd pool repair <who>...                                        initiate repair on pool <who>
+osd pool rm <pool> [<pool2>] [--yes-i-really-really-mean-it] [- remove pool
+ -yes-i-really-really-mean-it-not-faking]
+osd pool rmsnap <pool> <snap>                                   remove snapshot <snap> from <pool>
+osd pool scrub <who>...                                         initiate scrub on pool <who>
+osd pool set <pool> <var:size|min_size|pg_num|pgp_num|pgp_num_  set pool parameter <var> to <val>
+ actual|crush_rule|hashpspool|nodelete|nopgchange|nosizechange|
+ write_fadvise_dontneed|noscrub|nodeep-scrub|hit_set_type|hit_
+ set_period|hit_set_count|hit_set_fpp|use_gmt_hitset|target_
+ max_bytes|target_max_objects|cache_target_dirty_ratio|cache_
+ target_dirty_high_ratio|cache_target_full_ratio|cache_min_
+ flush_age|cache_min_evict_age|min_read_recency_for_promote|
+ min_write_recency_for_promote|fast_read|hit_set_grade_decay_
+ rate|hit_set_search_last_n|scrub_min_interval|scrub_max_
+ interval|deep_scrub_interval|recovery_priority|recovery_op_
+ priority|scrub_priority|compression_mode|compression_
+ algorithm|compression_required_ratio|compression_max_blob_
+ size|compression_min_blob_size|csum_type|csum_min_block|csum_
+ max_block|allow_ec_overwrites|fingerprint_algorithm|pg_
+ autoscale_mode|pg_autoscale_bias|pg_num_min|pg_num_max|target_
+ size_bytes|target_size_ratio|dedup_tier|dedup_chunk_algorithm|
+ dedup_cdc_chunk_size|eio|bulk> <val> [--yes-i-really-mean-it]
+osd pool set noautoscale                                        set the noautoscale for all pools (including newly created
+                                                                 pools in the future) and complete all on-going progress
+                                                                 events regarding PG-autoscaling.
+osd pool set threshold <num:float>                              set the autoscaler threshold  A.K.A. the factor by which the
+                                                                 new PG_NUM must vary from the existing PG_NUM
+osd pool set-quota <pool> <field:max_objects|max_bytes> <val>   set object or byte limit on pool
+osd pool stats [<pool_name>]                                    obtain stats from all pools, or from specified pool
+osd pool unset noautoscale                                      Unset the noautoscale flag so all pools will have autoscale
+                                                                 enabled (including newly created pools in the future).
+osd primary-affinity <id|osd.id> <weight:float>                 adjust osd primary-affinity from 0.0 <= <weight> <= 1.0
+osd primary-temp <pgid> <id|osd.id>                             set primary_temp mapping pgid:<id>|-1 (developers only)
+osd purge <id|osd.id> [--force] [--yes-i-really-mean-it]        purge all osd data from the monitors including the OSD id and
+                                                                 CRUSH position
+osd purge-new <id|osd.id> [--yes-i-really-mean-it]              purge all traces of an OSD that was partially created but
+                                                                 never started
+osd repair <who>                                                initiate repair on osd <who>, or use <all|any> to repair all
+osd require-osd-release <release:octopus|pacific|quincy> [--    set the minimum allowed OSD release to participate in the
+ yes-i-really-mean-it]                                           cluster
+osd reweight <id|osd.id> <weight:float>                         reweight osd to 0.0 < <weight> < 1.0
+osd reweight-by-pg [<oload:int>] [<max_change:float>] [<max_    reweight OSDs by PG distribution [overload-percentage-for-
+ osds:int>] [<pools>...]                                         consideration, default 120]
+osd reweight-by-utilization [<oload:int>] [<max_change:float>]  reweight OSDs by utilization [overload-percentage-for-
+ [<max_osds:int>] [--no-increasing]                              consideration, default 120]
+osd reweightn <weights>                                         reweight osds with {<id>: <weight>,...}
+osd rm-pg-upmap <pgid>                                          clear pg_upmap mapping for <pgid> (developers only)
+osd rm-pg-upmap-items <pgid>                                    clear pg_upmap_items mapping for <pgid> (developers only)
+osd safe-to-destroy <ids>...                                    check whether osd(s) can be safely destroyed without reducing
+                                                                 data durability
+osd scrub <who>                                                 initiate scrub on osd <who>, or use <all|any> to scrub all
+osd set <key:full|pause|noup|nodown|noout|noin|nobackfill|      set <key>
+ norebalance|norecover|noscrub|nodeep-scrub|notieragent|
+ nosnaptrim|pglog_hardlimit> [--yes-i-really-mean-it]
+osd set-backfillfull-ratio <ratio:float>                        set usage ratio at which OSDs are marked too full to backfill
+osd set-full-ratio <ratio:float>                                set usage ratio at which OSDs are marked full
+osd set-group <flags> <who>...                                  set <flags> for batch osds or crush nodes, <flags> must be a
+                                                                 comma-separated subset of {noup,nodown,noin,noout}
+osd set-nearfull-ratio <ratio:float>                            set usage ratio at which OSDs are marked near-full
+osd set-require-min-compat-client <version> [--yes-i-really-    set the minimum client version we will maintain compatibility
+ mean-it]                                                        with
+osd setcrushmap [<prior_version:int>]                           set crush map from input file
+osd setmaxosd <newmax:int>                                      set new maximum osd value
+osd stat                                                        print summary of OSD map
+osd status [<bucket>]                                           Show the status of OSDs within a bucket, or all
+osd stop <ids>...                                               stop the corresponding osd daemons and mark them as down
+osd test-reweight-by-pg [<oload:int>] [<max_change:float>]      dry run of reweight OSDs by PG distribution [overload-
+ [<max_osds:int>] [<pools>...]                                   percentage-for-consideration, default 120]
+osd test-reweight-by-utilization [<oload:int>] [<max_change:    dry run of reweight OSDs by utilization [overload-percentage-
+ float>] [<max_osds:int>] [--no-increasing]                      for-consideration, default 120]
+osd tier add <pool> <tierpool> [--force-nonempty]               add the tier <tierpool> (the second one) to base pool <pool> (
+                                                                 the first one)
+osd tier add-cache <pool> <tierpool> <size:int>                 add a cache <tierpool> (the second one) of size <size> to
+                                                                 existing pool <pool> (the first one)
+osd tier cache-mode <pool> <mode:writeback|readproxy|readonly|  specify the caching mode for cache tier <pool>
+ none> [--yes-i-really-mean-it]
+osd tier rm <pool> <tierpool>                                   remove the tier <tierpool> (the second one) from base pool
+                                                                 <pool> (the first one)
+osd tier rm-overlay <pool>                                      remove the overlay pool for base pool <pool>
+osd tier set-overlay <pool> <overlaypool>                       set the overlay pool for base pool <pool> to be <overlaypool>
+osd tree [<epoch:int>] [<states:up|down|in|out|destroyed>...]   print OSD tree
+osd tree-from [<epoch:int>] <bucket> [<states:up|down|in|out|   print OSD tree in bucket
+ destroyed>...]
+osd unpause                                                     unpause osd
+osd unset <key:full|pause|noup|nodown|noout|noin|nobackfill|    unset <key>
+ norebalance|norecover|noscrub|nodeep-scrub|notieragent|
+ nosnaptrim>
+osd unset-group <flags> <who>...                                unset <flags> for batch osds or crush nodes, <flags> must be a
+                                                                 comma-separated subset of {noup,nodown,noin,noout}
+osd utilization                                                 get basic pg distribution stats
+osd versions                                                    check running versions of OSDs
+pg cancel-force-backfill <pgid>...                              restore normal backfill priority of <pgid>
+pg cancel-force-recovery <pgid>...                              restore normal recovery priority of <pgid>
+pg debug <debugop:unfound_objects_exist|degraded_pgs_exist>     show debug info about pgs
+pg deep-scrub <pgid>                                            start deep-scrub on <pgid>
+pg dump [<dumpcontents:all|summary|sum|delta|pools|osds|pgs|    show human-readable versions of pg map (only 'all' valid with
+ pgs_brief>...]                                                  plain)
+pg dump_json [<dumpcontents:all|summary|sum|pools|osds|pgs>...] show human-readable version of pg map in json only
+pg dump_pools_json                                              show pg pools info in json only
+pg dump_stuck [<stuckops:inactive|unclean|stale|undersized|     show information about stuck pgs
+ degraded>...] [<threshold:int>]
+pg force-backfill <pgid>...                                     force backfill of <pgid> first
+pg force-recovery <pgid>...                                     force recovery of <pgid> first
+pg getmap                                                       get binary pg map to -o/stdout
+pg ls [<pool:int>] [<states>...]                                list pg with specific pool, osd, state
+pg ls-by-osd <id|osd.id> [<pool:int>] [<states>...]             list pg on osd [osd]
+pg ls-by-pool <poolstr> [<states>...]                           list pg with pool = [poolname]
+pg ls-by-primary <id|osd.id> [<pool:int>] [<states>...]         list pg with primary = [osd]
+pg map <pgid>                                                   show mapping of pg to osds
+pg repair <pgid>                                                start repair on <pgid>
+pg repeer <pgid>                                                force a PG to repeer
+pg scrub <pgid>                                                 start scrub on <pgid>
+pg stat                                                         show placement group status.
+progress                                                        Show progress of recovery operations
+progress clear                                                  Reset progress tracking
+progress json                                                   Show machine readable progress information
+progress off                                                    Disable progress tracking
+progress on                                                     Enable progress tracking
+prometheus file_sd_config                                       Return file_sd compatible prometheus config for mgr cluster
+quorum_status                                                   report status of monitor quorum
+rbd mirror snapshot schedule add <level_spec> <interval>        Add rbd mirror snapshot schedule
+ [<start_time>]
+rbd mirror snapshot schedule list [<level_spec>]                List rbd mirror snapshot schedule
+rbd mirror snapshot schedule remove <level_spec> [<interval>]   Remove rbd mirror snapshot schedule
+ [<start_time>]
+rbd mirror snapshot schedule status [<level_spec>]              Show rbd mirror snapshot schedule status
+rbd perf image counters [<pool_spec>] [<sort_by:write_ops|      Retrieve current RBD IO performance counters
+ write_bytes|write_latency|read_ops|read_bytes|read_latency>]
+rbd perf image stats [<pool_spec>] [<sort_by:write_ops|write_   Retrieve current RBD IO performance stats
+ bytes|write_latency|read_ops|read_bytes|read_latency>]
+rbd task add flatten <image_spec>                               Flatten a cloned image asynchronously in the background
+rbd task add migration abort <image_spec>                       Abort a prepared migration asynchronously in the background
+rbd task add migration commit <image_spec>                      Commit an executed migration asynchronously in the background
+rbd task add migration execute <image_spec>                     Execute an image migration asynchronously in the background
+rbd task add remove <image_spec>                                Remove an image asynchronously in the background
+rbd task add trash remove <image_id_spec>                       Remove an image from the trash asynchronously in the background
+rbd task cancel <task_id>                                       Cancel a pending or running asynchronous task
+rbd task list [<task_id>]                                       List pending or running asynchronous tasks
+rbd trash purge schedule add <level_spec> <interval> [<start_   Add rbd trash purge schedule
+ time>]
+rbd trash purge schedule list [<level_spec>]                    List rbd trash purge schedule
+rbd trash purge schedule remove <level_spec> [<interval>]       Remove rbd trash purge schedule
+ [<start_time>]
+rbd trash purge schedule status [<level_spec>]                  Show rbd trash purge schedule status
+report [<tags>...]                                              report full status of cluster, optional title tag strings
+restful create-key <key_name>                                   Create an API key with this name
+restful create-self-signed-cert                                 Create localized self signed certificate
+restful delete-key <key_name>                                   Delete an API key with this name
+restful list-keys                                               List all API keys
+restful restart                                                 Restart API server
+service dump                                                    dump service map
+service status                                                  dump service state
+status                                                          show cluster status
+telegraf config-set <key> <value>                               Set a configuration value
+telegraf config-show                                            Show current configuration
+telegraf send                                                   Force sending data to Telegraf
+telemetry channel ls                                            List all channels
+telemetry collection ls                                         List all collections
+telemetry diff                                                  Show the diff between opted-in collection and available
+                                                                 collection
+telemetry disable channel [<channels>...]                       Disable a list of channels
+telemetry disable channel all [<channels>...]                   Disable all channels
+telemetry enable channel [<channels>...]                        Enable a list of channels
+telemetry enable channel all [<channels>...]                    Enable all channels
+telemetry off                                                   Disable telemetry reports from this cluster
+telemetry on [<license>]                                        Enable telemetry reports from this cluster
+telemetry preview [<channels>...]                               Preview a sample report of the most recent collections
+                                                                 available (except for 'device')
+telemetry preview-all                                           Preview a sample report of the most recent collections
+                                                                 available of all channels (including 'device')
+telemetry preview-device                                        Preview a sample device report of the most recent device
+                                                                 collection
+telemetry send [<endpoint:ceph|device>...] [<license>]          Send a sample report
+telemetry show [<channels>...]                                  Show a sample report of opted-in collections (except for '
+                                                                 device')
+telemetry show-all                                              Show a sample report of all enabled channels (including '
+                                                                 device' channel)
+telemetry show-device                                           Show a sample device report
+telemetry status                                                Show current configuration
+tell <type.id> <args>...                                        send a command to a specific daemon
+test_orchestrator load_data                                     load dummy data into test orchestrator
+time-sync-status                                                show time sync status
+versions                                                        check running versions of ceph daemons
+zabbix config-set <key> <value>                                 Set a configuration value
+zabbix config-show                                              Show current configuration
+zabbix discovery                                                Discovering Zabbix data
+zabbix send                                                     Force sending data to Zabbix
