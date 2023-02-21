@@ -1,0 +1,87 @@
+
+以17.2.0为基础
+
+client和mds的消息
+
+
+
+struct MetaRequest
+{
+  ceph_mds_request_head head;
+  filepath path, path2;
+}
+
+class MClientRequest   的祖先class Message中有ceph::buffer::list       payload;
+{
+  decode_payload
+  encode_payload
+}
+
+struct ceph_mds_request_head head;
+
+Client::make_request
+Client::send_request
+   Client::build_client_request
+      session->con->send_message2   //传入的是MClientRequest，并且已经encode好了payload
+	    AsyncConnection::send_message(Message *m)
+		   ProtocolV2::send_message
+		      ProtocolV2::prepare_send_message  //根据payload准备header和footer
+
+
+ProtocolV2::write_event             这部分比较模糊
+ProtocolV2::write_message
+
+
+
+
+下盘的数据结构见：cinode.h和cinode.cc
+                  CInode::encode_store
+				  InodeStoreBase::encode_bare
+
+struct inode_t {        //mdstypes.h
+  inodeno_t ino = 0;
+  uint32_t   rdev = 0;
+  utime_t    ctime;
+  utime_t    btime;
+  uint32_t   mode = 0;
+  uid_t      uid = 0;
+  gid_t      gid = 0;
+  int32_t    nlink = 0;
+  ceph_dir_layout dir_layout = {};
+  file_layout_t layout;
+  compact_set<int64_t, std::less<int64_t>, Allocator<int64_t>> old_pools;
+  ...
+}
+
+
+CDentry.h和CDentry.cc
+
+CDentry::encode_remote
+CDentry::decode_remote
+CDentry::dump
+
+
+CDir.h和CDir.cc
+
+CDir::commit
+CDir::_omap_commit_ops
+
+
+
+
+rename和link： 采用两阶段事务
+
+
+Server::_link_remote
+  op = MMDSPeerRequest::OP_LINKPREP;
+  mds->send_message_mds
+
+
+Server::_commit_peer_link
+Server::_commit_peer_rmdir
+Server::_commit_peer_rename
+Server::_committed_peer
+
+hardlink:
+struct inode_backtrace_t
+
