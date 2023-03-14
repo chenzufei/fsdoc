@@ -1,0 +1,2634 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://ceph.com/en/news/blog/2015/v0-94-hammer-released/
+Subject: =?utf-8?Q?Ceph.io=20=E2=80=94=20v0.94=20Hammer=20released?=
+Date: Sat, 22 Oct 2022 10:07:10 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--teYjochQJ3GXHUZF1M7GMLISn5qJw0QxVC1EPP8X7K----"
+
+
+------MultipartBoundary--teYjochQJ3GXHUZF1M7GMLISn5qJw0QxVC1EPP8X7K----
+Content-Type: text/html
+Content-ID: <frame-AC55B50CE2EE516682FA8749F222FCFE@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://ceph.com/en/news/blog/2015/v0-94-hammer-released/
+
+<!DOCTYPE html><html lang=3D"en" dir=3D"ltr" class=3D"js js-focus-visible" =
+data-js-focus-visible=3D""><head prefix=3D"og: http://ogp.me/ns"><meta http=
+-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><meta http-e=
+quiv=3D"X-UA-Compatible" content=3D"ie=3Dedge"><meta name=3D"viewport" cont=
+ent=3D"width=3Ddevice-width,initial-scale=3D1"><meta name=3D"theme-color" c=
+ontent=3D"#f1726c"><title>Ceph.io =E2=80=94 v0.94 Hammer released</title><m=
+eta name=3D"description" content=3D"Ceph is an open source distributed stor=
+age system designed to evolve with data."><link rel=3D"alternate" hreflang=
+=3D"en" href=3D"https://ceph.io/en/news/blog/2015/v0-94-hammer-released/"><=
+link rel=3D"canonical" href=3D"https://ceph.io/en/news/blog/2015/v0-94-hamm=
+er-released/"><link rel=3D"preconnect" href=3D"https://fonts.googleapis.com=
+/"><link rel=3D"preconnect" href=3D"https://fonts.gstatic.com/" crossorigin=
+=3D""><link rel=3D"stylesheet" href=3D"https://ceph.com/css/main.css"><link=
+ rel=3D"stylesheet" href=3D"https://fonts.googleapis.com/css2?family=3DInte=
+r:wght@400;600&amp;display=3Dswap"><link rel=3D"icon" type=3D"image/png" hr=
+ef=3D"https://ceph.com/assets/favicons/favicon-16x16.png" sizes=3D"16x16"><=
+link rel=3D"icon" type=3D"image/png" href=3D"https://ceph.com/assets/favico=
+ns/favicon-32x32.png" sizes=3D"32x32"><link rel=3D"icon" type=3D"image/png"=
+ href=3D"https://ceph.com/assets/favicons/favicon-96x96.png" sizes=3D"96x96=
+"><link rel=3D"icon" type=3D"image/png" href=3D"https://ceph.com/assets/fav=
+icons/android-chrome-192x192.png" sizes=3D"192x192"><link rel=3D"apple-touc=
+h-icon" sizes=3D"57x57" href=3D"https://ceph.com/assets/favicons/apple-touc=
+h-icon-57x57.png"><link rel=3D"apple-touch-icon" sizes=3D"60x60" href=3D"ht=
+tps://ceph.com/assets/favicons/apple-touch-icon-60x60.png"><link rel=3D"app=
+le-touch-icon" sizes=3D"72x72" href=3D"https://ceph.com/assets/favicons/app=
+le-touch-icon-72x72.png"><link rel=3D"apple-touch-icon" sizes=3D"76x76" hre=
+f=3D"https://ceph.com/assets/favicons/apple-touch-icon-76x76.png"><link rel=
+=3D"apple-touch-icon" sizes=3D"114x114" href=3D"https://ceph.com/assets/fav=
+icons/apple-touch-icon-114x114.png"><link rel=3D"apple-touch-icon" sizes=3D=
+"120x120" href=3D"https://ceph.com/assets/favicons/apple-touch-icon-120x120=
+.png"><link rel=3D"apple-touch-icon" sizes=3D"144x144" href=3D"https://ceph=
+.com/assets/favicons/apple-touch-icon-144x144.png"><link rel=3D"apple-touch=
+-icon" sizes=3D"152x152" href=3D"https://ceph.com/assets/favicons/apple-tou=
+ch-icon-152x152.png"><link rel=3D"apple-touch-icon" sizes=3D"180x180" href=
+=3D"https://ceph.com/assets/favicons/apple-touch-icon-180x180.png"><link re=
+l=3D"mask-icon" href=3D"https://ceph.com/assets/favicons/safari-pinned-tab.=
+svg" color=3D"#f0424d"><link rel=3D"manifest" href=3D"https://ceph.com/asse=
+ts/favicons/manifest.json"><meta property=3D"og:locale" content=3D"en"><met=
+a property=3D"og:title" content=3D"v0.94 Hammer released - Ceph"><meta prop=
+erty=3D"og:url" content=3D"https://ceph.io/en/news/blog/2015/v0-94-hammer-r=
+eleased/"><meta property=3D"og:type" content=3D"website"><meta property=3D"=
+og:image" content=3D"/assets/favicons/logo-meta-share.png"><meta property=
+=3D"og:site_name" content=3D"Ceph"><meta name=3D"twitter:card" content=3D"s=
+ummary"><meta name=3D"twitter:site" content=3D"@ceph"><meta name=3D"twitter=
+:title" content=3D"v0.94 Hammer released - Ceph"><meta name=3D"twitter:url"=
+ content=3D"https://ceph.io/en/news/blog/2015/v0-94-hammer-released/"><meta=
+ name=3D"twitter:image" content=3D"/assets/favicons/logo-meta-share.png"></=
+head><body class=3D"blog-post"><div class=3D"scroll-offset" data-scroll-off=
+set=3D""></div><header class=3D"site-header" data-site-header=3D""><div cla=
+ss=3D"flex flex--align-center flex--justify-between wrapper"><a class=3D"si=
+te-header__logo" href=3D"https://ceph.com/en/"><svg xmlns=3D"http://www.w3.=
+org/2000/svg" width=3D"154" height=3D"42" viewBox=3D"0 0 154 42" aria-hidde=
+n=3D"true" focusable=3D"false"><g fill=3D"#f0424d" class=3D"logo-ceph__icon=
+"><path d=3D"M35 38c-1.4-.8-2.3-1.7-2.5-2.7s.2-2 1.3-3.3A16.2 16.2 0 0021.6=
+ 5.2h-.1A16.2 16.2 0 009.2 32c1.1 1.3 1.5 2.3 1.4 3.2S9.5 37.2 8 38a22.8 22=
+.8 0 01-5.7-7.2A21.3 21.3 0 010 21.4 21.4 21.4 0 0121.5 0h.1A21.4 21.4 0 01=
+43 21.4a21.6 21.6 0 01-.6 4.9 21 21 0 01-1.6 4.5 22.7 22.7 0 01-5.7 7.2"></=
+path><path d=3D"M27.2 42a8 8 0 01-2-2 8.7 8.7 0 01-1.6-5.3 11.8 11.8 0 01.9=
+-4.2 12 12 0 012.3-3.7l.2-.2a10.3 10.3 0 001-1.4 7 7 0 001-2 7.5 7.5 0 00-6=
+.3-9.2 7.3 7.3 0 00-1.1 0h-.1a7.4 7.4 0 00-4 1 7.5 7.5 0 00-2.2 2 7.5 7.5 0=
+ 00-1.2 6.2 7.2 7.2 0 00.8 2 9.7 9.7 0 001.1 1.4l.2.3a11.9 11.9 0 012.3 3.6=
+ 11.8 11.8 0 011 4.2 8.8 8.8 0 01-1.8 5.4 8 8 0 01-1.9 1.9l-1.2-.4A21.3 21.=
+3 0 0111 40a6 6 0 003.2-5.3 6.4 6.4 0 00-1.7-4.2l-.3-.4-.9-1a12.8 12.8 0 01=
+-.2-15 13 13 0 013.7-3.5 12.8 12.8 0 015-1.8 13.3 13.3 0 011.7-.2h.2a13.4 1=
+3.4 0 011.8.2 12.8 12.8 0 014.9 1.8A13 13 0 0132 14a12.7 12.7 0 01-.2 15l-.=
+9 1-.3.4a6.5 6.5 0 00-1.7 4.3 6 6 0 003.1 5.4 21.4 21.4 0 01-3.6 1.5l-1.2.4=
+"></path><path d=3D"M21.5 25.8a4.2 4.2 0 114.2-4.2 4.2 4.2 0 01-4.2 4.2"></=
+path></g><g fill=3D"#3b434a" class=3D"logo-ceph__text"><path d=3D"M75.6 26.=
+4c0 5.5-.5 7-1.8 8.4-.8.8-2 1.3-4.3 1.3h-8.2c-2.6 0-4.2-.4-5.3-1.5-1.7-1.8-=
+2.2-3.8-2.2-11.8s.5-10 2.2-11.8c1-1 2.7-1.5 5.3-1.5h8c2.5 0 3.6.5 4.4 1.3 1=
+.3 1.3 1.8 3 1.8 8h-5c-.1-3.5-.3-4-.6-4.3s-.6-.5-1.8-.5H62c-1.5 0-2 .1-2.3.=
+5-.5.5-.7 1.5-.7 8.3s.2 7.7.7 8.2c.4.4.8.5 2.3.5h6.2c1.1 0 1.6 0 2-.4s.5-1.=
+4.5-4.7h5M84.3 20.4h12.2c0-4.5-.3-5.5-.8-6-.3-.3-.7-.5-2.3-.5h-6c-1.6 0-2 .=
+2-2.4.6s-.6 1.3-.7 5.9zm0 4c0 5.3.4 6.3.8 6.7s.7.5 2.2.5h7c1 0 1.4-.2 1.7-.=
+5s.4-1 .5-3.3h5c0 4.2-.4 5.6-1.8 7-.8.8-2 1.3-4.3 1.3h-8.7c-2.6 0-4.2-.4-5.=
+3-1.5-1.7-1.7-2.2-3.8-2.2-11.8s.5-10 2.2-11.8c1.1-1 2.7-1.5 5.3-1.5H94c2.6 =
+0 4.3.5 5.3 1.4 1.7 1.8 2.2 3.8 2.2 11.6V24c0 .4-.1.6-.6.6H84.3M121.6 31c-.=
+4.4-1 .6-2.7.6H115a10.1 10.1 0 01-4.8-1.5l-.3-.1V15.5a10.7 10.7 0 015-1.5h4=
+c1.6 0 2.2.2 2.7.6.7.8 1 2.2 1 8.2s-.2 7.4-1 8.1zm-1.5-21.6h-3.6c-2.2 0-3.3=
+.5-6.6 3.3V9.4h-5.2V42h5.2v-9c3.3 2.7 4.4 3.2 6.6 3.2h3.6c2.9 0 4.3-.5 5.5-=
+1.6 1.4-1.5 2-3.5 2-11.8s-.6-10.3-2-11.8c-1.2-1.1-2.6-1.6-5.5-1.6M152.4 11c=
+-1-1-2.3-1.6-4.6-1.6h-4.2c-2.2 0-3.3.5-6.7 3.3V2.5a18.8 18.8 0 00-5-2v35.6h=
+5V15.5l1.1-.5a9.1 9.1 0 014-1h3.4c1.7 0 2.2.2 2.8.7a3.4 3.4 0 01.6 2.6V36h5=
+.2V17c0-3.7-.6-5-1.6-6"></path></g></svg> <span class=3D"visually-hidden">C=
+eph.io Homepage</span> </a><a class=3D"site-header__menu-open" href=3D"http=
+s://ceph.com/en/news/blog/2015/v0-94-hammer-released/#menu" data-menu-open=
+=3D""><svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"24" height=3D"24" =
+viewBox=3D"0 0 24 24" aria-hidden=3D"true" focusable=3D"false"><g fill=3D"n=
+one" fill-rule=3D"evenodd" stroke=3D"#0a0c38" stroke-linecap=3D"square" str=
+oke-width=3D"2"><path d=3D"M1 12h22M1 5h22M12 19h11"></path></g></svg> <spa=
+n class=3D"visually-hidden">Open menu</span></a><div class=3D"site-header__=
+menu" id=3D"menu" data-menu=3D"" aria-hidden=3D"false"><a class=3D"site-hea=
+der__menu-close" href=3D"https://ceph.com/en/news/blog/2015/v0-94-hammer-re=
+leased/#menu-toggle" data-menu-close=3D""><svg xmlns=3D"http://www.w3.org/2=
+000/svg" width=3D"24" height=3D"24" viewBox=3D"0 0 24 24" aria-hidden=3D"tr=
+ue" focusable=3D"false"><g fill=3D"none" fill-rule=3D"evenodd" stroke=3D"#0=
+00" stroke-linecap=3D"square" stroke-width=3D"2"><path d=3D"M16 8l-8 8M16 1=
+6L8 8"></path></g></svg> <span class=3D"visually-hidden">Close menu</span><=
+/a><div class=3D"site-header__overflow"><nav aria-label=3D"main"><ul class=
+=3D"nav-primary"><li><a href=3D"https://ceph.com/en/discover/">Discover</a>=
+</li><li><a href=3D"https://ceph.com/en/users/">Users</a></li><li><a href=
+=3D"https://ceph.com/en/developers/">Developers</a></li><li><a href=3D"http=
+s://ceph.com/en/community/">Community</a></li><li><a href=3D"https://ceph.c=
+om/en/news/" aria-current=3D"page">News</a></li><li><a href=3D"https://ceph=
+.com/en/foundation/">Foundation</a></li></ul></nav></div></div></div></head=
+er><main id=3D"main"><div class=3D"wrapper"><nav aria-label=3D"secondary"><=
+ul class=3D"nav-secondary" data-nav-secondary=3D""><li class=3D"nav-seconda=
+ry__wrapper"><a class=3D"nav-secondary__top" href=3D"https://ceph.com/en/ne=
+ws/" data-nav-secondary-toggle=3D"">News</a><ul class=3D"nav-secondary__sub=
+" data-nav-secondary-sub=3D"" aria-hidden=3D"false"><li><a href=3D"https://=
+ceph.com/en/news/blog/" aria-current=3D"page">Ceph Blog</a></li><li><a href=
+=3D"https://ceph.com/en/news/publications/">Publications</a></li><li><a hre=
+f=3D"https://ceph.com/en/news/contribute/">Contribute Content</a></li></ul>=
+</li></ul></nav><section class=3D"section"><div class=3D"grid lg:grid--cols=
+-auto-72"><div><h1 class=3D"h1">v0.94 Hammer released</h1><div class=3D"fle=
+x flex--gap-8 flex--pipe mb-7 lg:mb-9 xl:mb-10"><time class=3D"mb-0 p-sm" d=
+atetime=3D"Mon Apr 06 2015 20:00:00 GMT-0400 (Eastern Daylight Time)">Apr 7=
+, 2015</time> <span class=3D"mb-0 p-sm text-semibold">sage</span></div></di=
+v></div><div class=3D"grid lg:grid--cols-auto-72 to-lg:grid--gap-0 lg:grid-=
+-gap-16 xl:grid--gap-20"><div><div class=3D"intro-para richtext"><p>This ma=
+jor release is expected to form the basis of the next long-term stable seri=
+es. It is intended to supersede v0.80.x Firefly.</p><p>Highlights since Gia=
+nt include:</p><ul><li><em>RADOS Performance</em>: a range of improvements =
+have been made in the OSD and client-side librados code that improve the th=
+roughput on flash backends and improve parallelism and scaling on fast mach=
+ines.</li><li><em>Simplified RGW deployment</em>: the ceph-deploy tool now =
+has a new =E2=80=98ceph-deploy rgw create HOST=E2=80=99 command that quickl=
+y deploys a instance of the S3/Swift gateway using the embedded Civetweb se=
+rver. This is vastly simpler than the previous Apache-based deployment. The=
+re are a few rough edges (e.g., around SSL support) but we encourage users =
+to try&nbsp;<a href=3D"http://docs.ceph.com/docs/master/start/quick-ceph-de=
+ploy/#add-an-rgw-instance">the new method</a>.</li><li><em>RGW object versi=
+oning</em>: RGW now supports the S3 object versioning API, which preserves =
+old version of objects instead of overwriting them.</li><li><em>RGW bucket =
+sharding</em>: RGW can now shard the bucket index for large buckets across,=
+ improving performance for very large buckets.</li><li><em>RBD object maps<=
+/em>: RBD now has an object map function that tracks which parts of the ima=
+ge are allocating, improving performance for clones and for commands like e=
+xport and delete.</li><li><em>RBD mandatory locking</em>: RBD has a new man=
+datory locking framework (still disabled by default) that adds additional s=
+afeguards to prevent multiple clients from using the same image at the same=
+ time.</li><li><em>RBD copy-on-read</em>: RBD now supports copy-on-read for=
+ image clones, improving performance for some workloads.</li><li><em>CephFS=
+ snapshot improvements</em>: Many many bugs have been fixed with CephFS sna=
+pshots. Although they are still disabled by default, stability has improved=
+ significantly.</li><li><em>CephFS Recovery tools</em>: We have built some =
+journal recovery and diagnostic tools. Stability and performance of single-=
+MDS systems is vastly improved in Giant, and more improvements have been ma=
+de now in Hammer. Although we still recommend caution when storing importan=
+t data in CephFS, we do encourage testing for non-critical workloads so tha=
+t we can better guage the feature, usability, performance, and stability ga=
+ps.</li><li><em>CRUSH improvements</em>: We have added a new straw2 bucket =
+algorithm that reduces the amount of data migration required when changes a=
+re made to the cluster.</li><li><em>Shingled erasure codes (SHEC)</em>: The=
+ OSDs now have experimental support for shingled erasure codes, which allow=
+ a small amount of additional storage to be traded for improved recovery pe=
+rformance.</li><li><em>RADOS cache tiering</em>: A series of changes have b=
+een made in the cache tiering code that improve performance and reduce late=
+ncy.</li><li><em>Experimental RDMA support</em>: There is now experimental =
+support for RDMA via the Accelio (libxio) library.</li><li><em>New administ=
+rator commands</em>: The =E2=80=98ceph osd df=E2=80=99 command shows pertin=
+ent details on OSD disk utilizations. The =E2=80=98ceph pg ls ...=E2=80=99 =
+command makes it much simpler to query PG states while diagnosing cluster i=
+ssues.</li></ul><p>Other highlights since Firefly include:</p><ul><li><em>C=
+ephFS</em>: we have fixed a raft of bugs in CephFS and built some basic jou=
+rnal recovery and diagnostic tools. Stability and performance of single-MDS=
+ systems is vastly improved in Giant. Although we do not yet recommend Ceph=
+FS for production deployments, we do encourage testing for non-critical wor=
+kloads so that we can better guage the feature, usability, performance, and=
+ stability gaps.</li><li><em>Local Recovery Codes</em>: the OSDs now suppor=
+t an erasure-coding scheme that stores some additional data blocks to reduc=
+e the IO required to recover from single OSD failures.</li><li><em>Degraded=
+ vs misplaced</em>: the Ceph health reports from =E2=80=98ceph -s=E2=80=99 =
+and related commands now make a distinction between data that is degraded (=
+there are fewer than the desired number of copies) and data that is misplac=
+ed (stored in the wrong location in the cluster). The distinction is import=
+ant because the latter does not compromise data safety.</li><li><em>Tiering=
+ improvements</em>: we have made several improvements to the cache tiering =
+implementation that improve performance. Most notably, objects are not prom=
+oted into the cache tier by a single read; they must be found to be suffici=
+ently hot before that happens.</li><li><em>Monitor performance</em>: the mo=
+nitors now perform writes to the local data store asynchronously, improving=
+ overall responsiveness.</li><li><em>Recovery tools</em>: the ceph-objectst=
+ore-tool is greatly expanded to allow manipulation of an individual OSDs da=
+ta store for debugging and repair purposes. This is most heavily used by ou=
+r QA infrastructure to exercise recovery code.</li></ul><p>I would like to =
+take this opportunity to call out the amazing growth in contributors to Cep=
+h beyond the core development team from Inktank. Hammer features major new =
+features and improvements from Intel, Fujitsu, UnitedStack, Yahoo, UbuntuKy=
+lin, CohortFS, Mellanox, CERN, Deutsche Telekom, Mirantis, and SanDisk.</p>=
+<h3 id=3D"dedication">DEDICATION <a class=3D"link-anchor" href=3D"https://c=
+eph.com/en/news/blog/2015/v0-94-hammer-released/#dedication">=C2=B6</a></h3=
+><p>This release is dedicated in memoriam to Sandon Van Ness, aka Houkouonc=
+hi, who unexpectedly passed away a few weeks ago. Sandon was responsible fo=
+r maintaining the large and complex Sepia lab that houses the Ceph project=
+=E2=80=99s build and test infrastructure. His efforts have made an importan=
+t impact on our ability to reliably test Ceph with a relatively small group=
+ of people. He was a valued member of the team and we will miss him. H is a=
+lso for Houkouonchi.</p><h3 id=3D"upgrading">UPGRADING <a class=3D"link-anc=
+hor" href=3D"https://ceph.com/en/news/blog/2015/v0-94-hammer-released/#upgr=
+ading">=C2=B6</a></h3><ul><li><p>If your existing cluster is running a vers=
+ion older than v0.80.x Firefly, please first upgrade to the latest Firefly =
+release before moving on to Giant. We have not tested upgrades directly fro=
+m Emperor, Dumpling, or older releases.We&nbsp;<em>have</em>&nbsp;tested:</=
+p><blockquote><ul><li>Firefly to Hammer</li><li>Firefly to Giant to Hammer<=
+/li><li>Dumpling to Firefly to Hammer</li></ul></blockquote></li><li><p>Ple=
+ase upgrade daemons in the following order:</p><blockquote><ol><li>Monitors=
+</li><li>OSDs</li><li>MDSs and/or radosgw</li></ol></blockquote><p>Note tha=
+t the relative ordering of OSDs and monitors should not matter, but we prim=
+arily tested upgrading monitors first.</p></li><li><p>The ceph-osd daemons =
+will perform a disk-format upgrade improve the PG metadata layout and to re=
+pair a minor bug in the on-disk format. It may take a minute or two for thi=
+s to complete, depending on how many objects are stored on the node; do not=
+ be alarmed if they do not marked =E2=80=9Cup=E2=80=9D by the cluster immed=
+iately after starting.</p></li><li><p>If upgrading from v0.93, set</p><p>os=
+d enable degraded writes =3D false</p><p>on all osds prior to upgrading. Th=
+e degraded writes feature has been reverted due to 11155.</p></li><li><p>Th=
+e LTTNG tracing in librbd and librados is disabled in the release packages =
+until we find a way to avoid violating distro security policies when linkin=
+g libust.</p></li></ul><h3 id=3D"upgrading-from-v0.80.x-giant">UPGRADING FR=
+OM V0.80.X GIANT <a class=3D"link-anchor" href=3D"https://ceph.com/en/news/=
+blog/2015/v0-94-hammer-released/#upgrading-from-v0.80.x-giant">=C2=B6</a></=
+h3><ul><li><p>librbd and librados include lttng tracepoints on distros with=
+ liblttng 2.4 or later (only Ubuntu Trusty for the <a href=3D"http://ceph.c=
+om/">ceph.com</a> packages). When running a daemon that uses these librarie=
+s, i.e. an application that calls fork(2) or clone(2) without exec(3), you =
+must set LD_PRELOAD=3Dliblttng-ust-fork.so.0 to prevent a crash in the lttn=
+g atexit handler when the process exits. The only ceph tool that requires t=
+his is rbd-fuse.</p></li><li><p>If rgw_socket_path is defined and rgw_front=
+ends defines a socket_port and socket_host, we now allow the rgw_frontends =
+settings to take precedence. This change should only affect users who have =
+made non-standard changes to their radosgw configuration.</p></li><li><p>If=
+ you are upgrading specifically from v0.92, you must stop all OSD daemons a=
+nd flush their journals (ceph-osd&nbsp;-i&nbsp;NNN&nbsp;--flush-journal) be=
+fore upgrading. There was a transaction encoding bug in v0.92 that broke co=
+mpatibility. Upgrading from v0.93, v0.91, or anything earlier is safe.</p><=
+/li><li><p>The experimental =E2=80=98keyvaluestore-dev=E2=80=99 OSD backend=
+ has been renamed =E2=80=98keyvaluestore=E2=80=99 (for simplicity) and mark=
+ed as experimental. To enable this untested feature and acknowledge that yo=
+u understand that it is untested and may destroy data, you need to add the =
+following to your ceph.conf:</p><p>enable experimental unrecoverable data c=
+orrupting featuers =3D keyvaluestore</p></li><li><p>The following librados =
+C API function calls take a =E2=80=98flags=E2=80=99 argument whose value is=
+ now correctly interpreted:</p><blockquote><p>rados_write_op_operate() rado=
+s_aio_write_op_operate() rados_read_op_operate() rados_aio_read_op_operate(=
+)</p></blockquote><p>The flags were not correctly being translated from the=
+ librados constants to the internal values. Now they are. Any code that is =
+passing flags to these methods should be audited to ensure that they are us=
+ing the correct LIBRADOS_OP_FLAG_* constants.</p></li><li><p>The =E2=80=98r=
+ados=E2=80=99 CLI =E2=80=98copy=E2=80=99 and =E2=80=98cppool=E2=80=99 comma=
+nds now use the copy-from operation, which means the latest CLI cannot run =
+these commands against pre-firefly OSDs.</p></li><li><p>The librados watch/=
+notify API now includes a watch_flush() operation to flush the async queue =
+of notify operations. This should be called by any watch/notify user prior =
+to rados_shutdown().</p></li><li><p>The =E2=80=98category=E2=80=99 field fo=
+r objects has been removed. This was originally added to track PG stat summ=
+ations over different categories of objects for use by radosgw. It is no lo=
+nger has any known users and is prone to abuse because it can lead to a pg_=
+stat_t structure that is unbounded. The librados API calls that accept this=
+ field now ignore it, and the OSD no longers tracks the per-category summat=
+ions.</p></li><li><p>The output for =E2=80=98rados df=E2=80=99 has changed.=
+ The =E2=80=98category=E2=80=99 level has been eliminated, so there is now =
+a single stat object per pool. The structure of the JSON output is differen=
+t, and the plaintext output has one less column.</p></li><li><p>The =E2=80=
+=98rados create<objectname>[category]=E2=80=99 optional category argument i=
+s no longer supported or recognized.</objectname></p></li><li><p><a href=3D=
+"http://rados.py/">rados.py</a>=E2=80=99s Rados class no longer has a __del=
+__ method; it was causing problems on interpreter shutdown and use of threa=
+ds. If your code has Rados objects with limited lifetimes and you=E2=80=99r=
+e concerned about locked resources, call Rados.shutdown() explicitly.</p></=
+li><li><p>There is a new version of the librados watch/notify API with vast=
+ly improved semantics. Any applications using this interface are encouraged=
+ to migrate to the new API. The old API calls are marked as deprecated and =
+will eventually be removed.</p></li><li><p>The librados rados_unwatch() cal=
+l used to be safe to call on an invalid handle. The new version has undefin=
+ed behavior when passed a bogus value (for example, when rados_watch() retu=
+rns an error and handle is not defined).</p></li><li><p>The structure of th=
+e formatted =E2=80=98pg stat=E2=80=99 command is changed for the portion th=
+at counts states by name to avoid using the =E2=80=98+=E2=80=99 character (=
+which appears in state names) as part of the XML token (it is not legal).</=
+p></li><li><p>Previously, the formatted output of =E2=80=98ceph pg stat -f =
+...=E2=80=99 was a full pg dump that included all metadata about all PGs in=
+ the system. It is now a concise summary of high-level PG stats, just like =
+the unformatted =E2=80=98ceph pg stat=E2=80=99 command.</p></li><li><p>All =
+JSON dumps of floating point values were incorrecting surrounding the value=
+ with quotes. These quotes have been removed. Any consumer of structured JS=
+ON output that was consuming the floating point values was previously havin=
+g to interpret the quoted string and will most likely need to be fixed to t=
+ake the unquoted number.</p></li><li><p>New ability to list all objects fro=
+m all namespaces can fail or return incomplete results when not all OSDs ha=
+ve been upgraded. Features rados =E2=80=93all ls, rados cppool, rados expor=
+t, rados cache-flush-evict-all and rados cache-try-flush-evict-all can also=
+ fail or return incomplete results.</p></li><li><p>Due to a change in the L=
+inux kernel version 3.18 and the limits of the FUSE interface, ceph-fuse ne=
+eds be mounted as root on at least some systems. See issues #9997, #10277, =
+and #10542 for details.</p></li></ul><h3 id=3D"upgrading-from-v0.80x-firefl=
+y-(additional-notes)">UPGRADING FROM V0.80X FIREFLY (ADDITIONAL NOTES) <a c=
+lass=3D"link-anchor" href=3D"https://ceph.com/en/news/blog/2015/v0-94-hamme=
+r-released/#upgrading-from-v0.80x-firefly-(additional-notes)">=C2=B6</a></h=
+3><ul><li><p>The client-side caching for librbd is now enabled by default (=
+rbd cache =3D true). A safety option (rbd cache writethrough until flush =
+=3D true) is also enabled so that writeback caching is not used until the l=
+ibrary observes a =E2=80=98flush=E2=80=99 command, indicating that the libr=
+bd users is passing that operation through from the guest VM. This avoids p=
+otential data loss when used with older versions of qemu that do not suppor=
+t flush.</p><blockquote><p>leveldb_write_buffer_size =3D 8*1024*1024 =3D 33=
+554432 // 8MB leveldb_cache_size =3D 512*1024*1204 =3D 536870912 // 512MB l=
+eveldb_block_size =3D 64*1024 =3D 65536 // 64KB leveldb_compression =3D fal=
+se leveldb_log =3D =E2=80=9C=E2=80=9D</p></blockquote><p>OSDs will still ma=
+intain the following osd-specific defaults:</p><blockquote><p>leveldb_log =
+=3D =E2=80=9C=E2=80=9D</p></blockquote></li><li><p>The =E2=80=98rados getxa=
+ttr ...=E2=80=99 command used to add a gratuitous newline to the attr value=
+; it now does not.</p></li><li><p>The&nbsp;*_kb&nbsp;perf&nbsp;counters on =
+the monitor have been removed. These are replaced with a new set of&nbsp;*_=
+bytes&nbsp;counters (e.g.,&nbsp;cluster_osd_kb&nbsp;is replaced by&nbsp;clu=
+ster_osd_bytes).</p></li><li><p>The&nbsp;rd_kb&nbsp;and&nbsp;wr_kb&nbsp;fie=
+lds in the JSON dumps for pool stats (accessed via the&nbsp;ceph&nbsp;df&nb=
+sp;detail&nbsp;-f&nbsp;json-pretty&nbsp;and related commands) have been rep=
+laced with corresponding&nbsp;*_bytes&nbsp;fields. Similarly, thetotal_spac=
+e,&nbsp;total_used, and&nbsp;total_avail&nbsp;fields are replaced with&nbsp=
+;total_bytes,&nbsp;total_used_bytes, and&nbsp;total_avail_bytes&nbsp;fields=
+.</p></li><li><p>The&nbsp;rados&nbsp;df&nbsp;--format=3Djson&nbsp;output&nb=
+sp;read_bytes&nbsp;and&nbsp;write_bytes&nbsp;fields were incorrectly report=
+ing ops; this is now fixed.</p></li><li><p>The&nbsp;rados&nbsp;df&nbsp;--fo=
+rmat=3Djson&nbsp;output previously included&nbsp;read_kb&nbsp;and&nbsp;writ=
+e_kb&nbsp;fields; these have been removed. Please use&nbsp;read_bytes&nbsp;=
+and&nbsp;write_bytes&nbsp;instead (and divide by 1024 if appropriate).</p><=
+/li><li><p>The experimental keyvaluestore-dev OSD backend had an on-disk fo=
+rmat change that prevents existing OSD data from being upgraded. This affec=
+ts developers and testers only.</p></li><li><p>mon-specific and osd-specifi=
+c leveldb options have been removed. From this point onward users should us=
+e the&nbsp;leveldb_*&nbsp;generic options and add the options in the approp=
+riate sections of their configuration files. Monitors will still maintain t=
+he following monitor-specific defaults:</p><blockquote><p>leveldb_write_buf=
+fer_size =3D 8*1024*1024 =3D 33554432 // 8MB leveldb_cache_size =3D 512*102=
+4*1204 =3D 536870912 // 512MB leveldb_block_size =3D 64*1024 =3D 65536 // 6=
+4KB leveldb_compression =3D false leveldb_log =3D =E2=80=9C=E2=80=9D</p></b=
+lockquote><p>OSDs will still maintain the following osd-specific defaults:<=
+/p><blockquote><p>leveldb_log =3D =E2=80=9C=E2=80=9D</p></blockquote></li><=
+li><p>CephFS support for the legacy anchor table has finally been removed. =
+Users with file systems created before firefly should ensure that inodes wi=
+th multiple hard links are modified&nbsp;<em>prior</em>&nbsp;to the upgrade=
+ to ensure that the backtraces are written properly. For example:</p><p>sud=
+o find /mnt/cephfs -type f -links +1 -exec touch \{\} \;</p></li><li><p>We =
+disallow nonsensical =E2=80=98tier cache-mode=E2=80=99 transitions. From th=
+is point onward, =E2=80=98writeback=E2=80=99 can only transition to =E2=80=
+=98forward=E2=80=99 and =E2=80=98forward=E2=80=99 can transition to 1) =E2=
+=80=98writeback=E2=80=99 if there are dirty objects, or 2) any if there are=
+ no dirty objects.</p></li></ul><h3 id=3D"notable-changes-since-v0.93">NOTA=
+BLE CHANGES SINCE V0.93 <a class=3D"link-anchor" href=3D"https://ceph.com/e=
+n/news/blog/2015/v0-94-hammer-released/#notable-changes-since-v0.93">=C2=B6=
+</a></h3><ul><li>build: a few cmake fixes (Matt Benjamin)</li><li>build: fi=
+x build on RHEL/CentOS 5.9 (Rohan Mars)</li><li>build: reorganize Makefile =
+to allow modular builds (Boris Ranto)</li><li>ceph-fuse: be more forgiving =
+on remount (#10982 Greg Farnum)</li><li>ceph: improve CLI parsing (#11093 D=
+avid Zafman)</li><li>common: fix cluster logging to default channel (#11177=
+ Sage Weil)</li><li>crush: fix parsing of straw2 buckets (#11015 Sage Weil)=
+</li><li>doc: update man pages (David Zafman)</li><li>librados: fix leak in=
+ C_TwoContexts (Xiong Yiliang)</li><li>librados: fix leak in watch/notify p=
+ath (Sage Weil)</li><li>librbd: fix and improve AIO cache invalidation (#10=
+958 Jason Dillaman)</li><li>librbd: fix memory leak (Jason Dillaman)</li><l=
+i>librbd: fix ordering/queueing of resize operations (Jason Dillaman)</li><=
+li>librbd: validate image is r/w on resize/flatten (Jason Dillaman)</li><li=
+>librbd: various internal locking fixes (Jason Dillaman)</li><li>lttng: tra=
+cing is disabled until we streamline dependencies (Josh Durgin)</li><li>mon=
+: add bootstrap-rgw profile (Sage Weil)</li><li>mon: do not pollute mon dir=
+ with CSV files from CRUSH check (Loic Dachary)</li><li>mon: fix clock drif=
+t time check interval (#10546 Joao Eduardo Luis)</li><li>mon: fix units in =
+store stats (Joao Eduardo Luis)</li><li>mon: improve error handling on eras=
+ure code profile set (#10488, #11144 Loic Dachary)</li><li>mon: set {read,w=
+rite}_tier on =E2=80=98osd tier add-cache ...=E2=80=99 (Jianpeng Ma)</li><l=
+i>ms: xio: fix misc bugs (Matt Benjamin, Vu Pham)</li><li>osd: DBObjectMap:=
+ fix locking to prevent rare crash (#9891 Samuel Just)</li><li>osd: fix and=
+ document last_epoch_started semantics (Samuel Just)</li><li>osd: fix diver=
+gent entry handling on PG split (Samuel Just)</li><li>osd: fix leak on shut=
+down (Kefu Chai)</li><li>osd: fix recording of digest on scrub (Samuel Just=
+)</li><li>osd: fix whiteout handling (Sage Weil)</li><li>rbd: allow v2 stri=
+ping parameters for clones and imports (Jason Dillaman)</li><li>rbd: fix fo=
+rmatted output of image features (Jason Dillaman)</li><li>rbd: updat eman p=
+age (Ilya Dryomov)</li><li>rgw: don=E2=80=99t overwrite bucket/object owner=
+ when setting ACLs (#10978 Yehuda Sadeh)</li><li>rgw: enable IPv6 for civet=
+web (#10965 Yehuda Sadeh)</li><li>rgw: fix sysvinit script when rgw_socket_=
+path is not defined (#11159 Yehuda Sadeh, Dan Mick)</li><li>rgw: pass civet=
+web configurables through (#10907 Yehuda Sadeh)</li><li>rgw: use new watch/=
+notify API (Yehuda Sadeh, Sage Weil)</li><li>osd: reverted degraded writes =
+feature due to 11155</li></ul><h3 id=3D"notable-changes-since-v0.87.x-giant=
+">NOTABLE CHANGES SINCE V0.87.X GIANT <a class=3D"link-anchor" href=3D"http=
+s://ceph.com/en/news/blog/2015/v0-94-hammer-released/#notable-changes-since=
+-v0.87.x-giant">=C2=B6</a></h3><ul><li>add experimental features option (Sa=
+ge Weil)</li><li>arch: fix NEON feaeture detection (#10185 Loic Dachary)</l=
+i><li>asyncmsgr: misc fixes (Haomai Wang)</li><li>buffer: add =E2=80=98shar=
+eable=E2=80=99 construct (Matt Benjamin)</li><li>buffer: add list::get_cont=
+iguous (Sage Weil)</li><li>buffer: avoid rebuild if buffer already contiguo=
+us (Jianpeng Ma)</li><li>build: CMake support (Ali Maredia, Casey Bodley, A=
+dam Emerson, Marcus Watts, Matt Benjamin)</li><li>build: a few cmake fixes =
+(Matt Benjamin)</li><li>build: aarch64 build fixes (Noah Watkins, Haomai Wa=
+ng)</li><li>build: adjust build deps for yasm, virtualenv (Jianpeng Ma)</li=
+><li>build: fix =E2=80=98make check=E2=80=99 races (#10384 Loic Dachary)</l=
+i><li>build: fix build on RHEL/CentOS 5.9 (Rohan Mars)</li><li>build: fix p=
+kg names when libkeyutils is missing (Pankag Garg, Ken Dreyer)</li><li>buil=
+d: improve build dependency tooling (Loic Dachary)</li><li>build: reorganiz=
+e Makefile to allow modular builds (Boris Ranto)</li><li>build: support for=
+ jemalloc (Shishir Gowda)</li><li>ceph-disk: Scientific Linux support (Dan =
+van der Ster)</li><li>ceph-disk: allow journal partition re-use (#10146 Loi=
+c Dachary, Dav van der Ster)</li><li>ceph-disk: call partx/partprobe consis=
+tency (#9721 Loic Dachary)</li><li>ceph-disk: do not re-use partition if en=
+cryption is required (Loic Dachary)</li><li>ceph-disk: fix dmcrypt key perm=
+issions (Loic Dachary)</li><li>ceph-disk: fix umount race condition (#10096=
+ Blaine Gardner)</li><li>ceph-disk: improved systemd support (Owen Synge)</=
+li><li>ceph-disk: init=3Dnone option (Loic Dachary)</li><li>ceph-disk: misc=
+ fixes (Christos Stavrakakis)</li><li>ceph-disk: respect =E2=80=93statedir =
+for keyring (Loic Dachary)</li><li>ceph-disk: set guid if reusing journal p=
+artition (Dan van der Ster)</li><li>ceph-disk: support LUKS for encrypted p=
+artitions (Andrew Bartlett, Loic Dachary)</li><li>ceph-fuse, libcephfs: POS=
+IX file lock support (Yan, Zheng)</li><li>ceph-fuse, libcephfs: allow xattr=
+ caps in inject_release_failure (#9800 John Spray)</li><li>ceph-fuse, libce=
+phfs: fix I_COMPLETE_ORDERED checks (#9894 Yan, Zheng)</li><li>ceph-fuse, l=
+ibcephfs: fix cap flush overflow (Greg Farnum, Yan, Zheng)</li><li>ceph-fus=
+e, libcephfs: fix root inode xattrs (Yan, Zheng)</li><li>ceph-fuse, libceph=
+fs: preserve dir ordering (#9178 Yan, Zheng)</li><li>ceph-fuse, libcephfs: =
+trim inodes before reconnecting to MDS (Yan, Zheng)</li><li>ceph-fuse,libce=
+phfs: add support for O_NOFOLLOW and O_PATH (Greg Farnum)</li><li>ceph-fuse=
+,libcephfs: resend requests before completing cap reconnect (#10912 Yan, Zh=
+eng)</li><li>ceph-fuse: be more forgiving on remount (#10982 Greg Farnum)</=
+li><li>ceph-fuse: fix dentry invalidation on 3.18+ kernels (#9997 Yan, Zhen=
+g)</li><li>ceph-fuse: fix kernel cache trimming (#10277 Yan, Zheng)</li><li=
+>ceph-fuse: select kernel cache invalidation mechanism based on kernel vers=
+ion (Greg Farnum)</li><li>ceph-monstore-tool: fix shutdown (#10093 Loic Dac=
+hary)</li><li>ceph-monstore-tool: fix/improve CLI (Joao Eduardo Luis)</li><=
+li>ceph-objectstore-tool: fix import (#10090 David Zafman)</li><li>ceph-obj=
+ectstore-tool: improved import (David Zafman)</li><li>ceph-objectstore-tool=
+: many improvements and tests (David Zafman)</li><li>ceph-objectstore-tool:=
+ many many improvements (David Zafman)</li><li>ceph-objectstore-tool: misc =
+improvements, fixes (#9870 #9871 David Zafman)</li><li>ceph.spec: package r=
+bd-replay-prep (Ken Dreyer)</li><li>ceph: add =E2=80=98ceph osd df [tree]=
+=E2=80=99 command (#10452 Mykola Golub)</li><li>ceph: do not parse injectar=
+gs twice (Loic Dachary)</li><li>ceph: fix =E2=80=98ceph tell ...=E2=80=99 c=
+ommand validation (#10439 Joao Eduardo Luis)</li><li>ceph: improve =E2=80=
+=98ceph osd tree=E2=80=99 output (Mykola Golub)</li><li>ceph: improve CLI p=
+arsing (#11093 David Zafman)</li><li>ceph: make =E2=80=98ceph -s=E2=80=99 o=
+utput more readable (Sage Weil)</li><li>ceph: make =E2=80=98ceph -s=E2=80=
+=99 show PG state counts in sorted order (Sage Weil)</li><li>ceph: make =E2=
+=80=98ceph tell mon.* version=E2=80=99 work (Mykola Golub)</li><li>ceph: ne=
+w =E2=80=98ceph tell mds.$name_or_rank_or_gid=E2=80=99 (John Spray)</li><li=
+>ceph: show primary-affinity in =E2=80=98ceph osd tree=E2=80=99 (Mykola Gol=
+ub)</li><li>ceph: test robustness (Joao Eduardo Luis)</li><li>ceph_objectst=
+ore_tool: behave with sharded flag (#9661 David Zafman)</li><li>cephfs-jour=
+nal-tool: add recover_dentries function (#9883 John Spray)</li><li>cephfs-j=
+ournal-tool: fix journal import (#10025 John Spray)</li><li>cephfs-journal-=
+tool: skip up to expire_pos (#9977 John Spray)</li><li>cleanup rados.h defi=
+nitions with macros (Ilya Dryomov)</li><li>common: add =E2=80=98perf reset =
+...=E2=80=99 admin command (Jianpeng Ma)</li><li>common: add TableFormatter=
+ (Andreas Peters)</li><li>common: add newline to flushed json output (Sage =
+Weil)</li><li>common: check syncfs() return code (Jianpeng Ma)</li><li>comm=
+on: do not unlock rwlock on destruction (Federico Simoncelli)</li><li>commo=
+n: filtering for =E2=80=98perf dump=E2=80=99 (John Spray)</li><li>common: f=
+ix Formatter factory breakage (#10547 Loic Dachary)</li><li>common: fix blo=
+ck device discard check (#10296 Sage Weil)</li><li>common: make json-pretty=
+ output prettier (Sage Weil)</li><li>common: remove broken CEPH_LOCKDEP opt=
+oin (Kefu Chai)</li><li>common: shared_cache unit tests (Cheng Cheng)</li><=
+li>common: support new gperftools header locations (Key Dreyer)</li><li>con=
+fig: add $cctid meta variable (Adam Crume)</li><li>crush: fix buffer overru=
+n for poorly formed rules (#9492 Johnu George)</li><li>crush: fix detach_bu=
+cket (#10095 Sage Weil)</li><li>crush: fix parsing of straw2 buckets (#1101=
+5 Sage Weil)</li><li>crush: fix several bugs in adjust_item_weight (Rongze =
+Zhu)</li><li>crush: fix tree bucket behavior (Rongze Zhu)</li><li>crush: im=
+prove constness (Loic Dachary)</li><li>crush: new and improved straw2 bucke=
+t type (Sage Weil, Christina Anderson, Xiaoxi Chen)</li><li>crush: straw bu=
+cket weight calculation fixes (#9998 Sage Weil)</li><li>crush: update tries=
+ stats for indep rules (#10349 Loic Dachary)</li><li>crush: use larger choo=
+se_tries value for erasure code rulesets (#10353 Loic Dachary)</li><li>crus=
+htool: add =E2=80=93location<id>command (Sage Weil, Loic Dachary)</id></li>=
+<li>debian,rpm: move RBD udev rules to ceph-common (#10864 Ken Dreyer)</li>=
+<li>debian: split python-ceph into python-{rbd,rados,cephfs} (Boris Ranto)<=
+/li><li>default to libnss instead of crypto++ (Federico Gimenez)</li><li>do=
+c: CephFS disaster recovery guidance (John Spray)</li><li>doc: CephFS for e=
+arly adopters (John Spray)</li><li>doc: add build-doc guidlines for Fedora =
+and CentOS/RHEL (Nilamdyuti Goswami)</li><li>doc: add dumpling to firefly u=
+pgrade section (#7679 John Wilkins)</li><li>doc: ceph osd reweight vs crush=
+ weight (Laurent Guerby)</li><li>doc: do not suggest dangerous XFS nobarrie=
+r option (Dan van der Ster)</li><li>doc: document erasure coded pool operat=
+ions (#9970 Loic Dachary)</li><li>doc: document the LRC per-layer plugin co=
+nfiguration (Yuan Zhou)</li><li>doc: enable rbd cache on openstack deployme=
+nts (Sebastien Han)</li><li>doc: erasure code doc updates (Loic Dachary)</l=
+i><li>doc: file system osd config settings (Kevin Dalley)</li><li>doc: fix =
+OpenStack Glance docs (#10478 Sebastien Han)</li><li>doc: improved installa=
+tion nots on CentOS/RHEL installs (John Wilkins)</li><li>doc: key/value sto=
+re config reference (John Wilkins)</li><li>doc: misc cleanups (Adam Spiers,=
+ Sebastien Han, Nilamdyuti Goswami, Ken Dreyer, John Wilkins)</li><li>doc: =
+misc improvements (Nilamdyuti Goswami, John Wilkins, Chris Holcombe)</li><l=
+i>doc: misc updates (#9793 #9922 #10204 #10203 Travis Rhoden, Hazem, Ayari,=
+ Florian Coste, Andy Allan, Frank Yu, Baptiste Veuillez-Mainard, Yuan Zhou,=
+ Armando Segnini, Robert Jansen, Tyler Brekke, Viktor Suprun)</li><li>doc: =
+misc updates (Alfredo Deza, VRan Liu)</li><li>doc: misc updates (Nilamdyuti=
+ Goswami, John Wilkins)</li><li>doc: new man pages (Nilamdyuti Goswami)</li=
+><li>doc: preflight doc fixes (John Wilkins)</li><li>doc: replace cloudfile=
+s with swiftclient Python Swift example (Tim Freund)</li><li>doc: update PG=
+ count guide (Gerben Meijer, Laurent Guerby, Loic Dachary)</li><li>doc: upd=
+ate man pages (David Zafman)</li><li>doc: update openstack docs for Juno (S=
+ebastien Han)</li><li>doc: update release descriptions (Ken Dreyer)</li><li=
+>doc: update sepia hardware inventory (Sandon Van Ness)</li><li>erasure-cod=
+e: add mSHEC erasure code support (Takeshi Miyamae)</li><li>erasure-code: i=
+mproved docs (#10340 Loic Dachary)</li><li>erasure-code: set max_size to 20=
+ (#10363 Loic Dachary)</li><li>fix cluster logging from non-mon daemons (Sa=
+ge Weil)</li><li>init-ceph: check for systemd-run before using it (Boris Ra=
+nto)</li><li><a href=3D"http://install-deps.sh/">install-deps.sh</a>: do no=
+t require sudo when root (Loic Dachary)</li><li>keyvaluestore: misc fixes (=
+Haomai Wang)</li><li>keyvaluestore: performance improvements (Haomai Wang)<=
+/li><li>libcephfs,ceph-fuse: add =E2=80=98status=E2=80=99 asok (John Spray)=
+</li><li>libcephfs,ceph-fuse: fix getting zero-length xattr (#10552 Yan, Zh=
+eng)</li><li>libcephfs: fix dirfrag trimming (#10387 Yan, Zheng)</li><li>li=
+bcephfs: fix mount timeout (#10041 Yan, Zheng)</li><li>libcephfs: fix test =
+(#10415 Yan, Zheng)</li><li>libcephfs: fix use-afer-free on umount (#10412 =
+Yan, Zheng)</li><li>libcephfs: include ceph and git version in client metad=
+ata (Sage Weil)</li><li>librados, osd: new watch/notify implementation (Sag=
+e Weil)</li><li>librados: add blacklist_add convenience method (Jason Dilla=
+man)</li><li>librados: add rados_pool_get_base_tier() call (Adam Crume)</li=
+><li>librados: add watch_flush() operation (Sage Weil, Haomai Wang)</li><li=
+>librados: avoid memcpy on getxattr, read (Jianpeng Ma)</li><li>librados: c=
+ap buffer length (Loic Dachary)</li><li>librados: create ioctx by pool id (=
+Jason Dillaman)</li><li>librados: do notify completion in fast-dispatch (Sa=
+ge Weil)</li><li>librados: drop =E2=80=98category=E2=80=99 feature (Sage We=
+il)</li><li>librados: expose rados_{read|write}_op_assert_version in C API =
+(Kim Vandry)</li><li>librados: fix infinite loop with skipped map epochs (#=
+9986 Ding Dinghua)</li><li>librados: fix iterator operator=3D bugs (#10082 =
+David Zafman, Yehuda Sadeh)</li><li>librados: fix leak in C_TwoContexts (Xi=
+ong Yiliang)</li><li>librados: fix leak in watch/notify path (Sage Weil)</l=
+i><li>librados: fix null deref when pool DNE (#9944 Sage Weil)</li><li>libr=
+ados: fix objecter races (#9617 Josh Durgin)</li><li>librados: fix pool del=
+etion handling (#10372 Sage Weil)</li><li>librados: fix pool name caching (=
+#10458 Radoslaw Zarzynski)</li><li>librados: fix resource leak, misc bugs (=
+#10425 Radoslaw Zarzynski)</li><li>librados: fix some watch/notify locking =
+(Jason Dillaman, Josh Durgin)</li><li>librados: fix timer race from recent =
+refactor (Sage Weil)</li><li>librados: new fadvise API (Ma Jianpeng)</li><l=
+i>librados: only export public API symbols (Jason Dillaman)</li><li>librado=
+s: remove shadowed variable (Kefu Chain)</li><li>librados: translate op fla=
+gs from C APIs (Matthew Richards)</li><li>libradosstriper: fix remove() (Do=
+ngmao Zhang)</li><li>libradosstriper: fix shutdown hang (Dongmao Zhang)</li=
+><li>libradosstriper: fix stat strtoll (Dongmao Zhang)</li><li>libradosstri=
+per: fix trunc method (#10129 Sebastien Ponce)</li><li>libradosstriper: fix=
+ write_full when ENOENT (#10758 Sebastien Ponce)</li><li>libradosstriper: m=
+isc fixes (Sebastien Ponce)</li><li>librbd: CRC protection for RBD image ma=
+p (Jason Dillaman)</li><li>librbd: add missing python docstrings (Jason Dil=
+laman)</li><li>librbd: add per-image object map for improved performance (J=
+ason Dillaman)</li><li>librbd: add readahead (Adam Crume)</li><li>librbd: a=
+dd support for an =E2=80=9Cobject map=E2=80=9D indicating which objects exi=
+st (Jason Dillaman)</li><li>librbd: adjust internal locking (Josh Durgin, J=
+ason Dillaman)</li><li>librbd: better handling of watch errors (Jason Dilla=
+man)</li><li>librbd: complete pending ops before closing image (#10299 Josh=
+ Durgin)</li><li>librbd: coordinate maint operations through lock owner (Ja=
+son Dillaman)</li><li>librbd: copy-on-read (Min Chen, Li Wang, Yunchuan Wen=
+, Cheng Cheng, Jason Dillaman)</li><li>librbd: differentiate between R/O vs=
+ R/W features (Jason Dillaman)</li><li>librbd: don=E2=80=99t close a closed=
+ parent in failure path (#10030 Jason Dillaman)</li><li>librbd: enforce wri=
+te ordering with a snapshot (Jason Dillaman)</li><li>librbd: exclusive imag=
+e locking (Jason Dillaman)</li><li>librbd: fadvise API (Ma Jianpeng)</li><l=
+i>librbd: fadvise-style hints; add misc hints for certain operations (Jianp=
+eng Ma)</li><li>librbd: fix and improve AIO cache invalidation (#10958 Jaso=
+n Dillaman)</li><li>librbd: fix cache tiers in list_children and snap_unpro=
+tect (Adam Crume)</li><li>librbd: fix coverity false-positives (Jason Dilla=
+man)</li><li>librbd: fix diff test (#10002 Josh Durgin)</li><li>librbd: fix=
+ list_children from invalid pool ioctxs (#10123 Jason Dillaman)</li><li>lib=
+rbd: fix locking for readahead (#10045 Jason Dillaman)</li><li>librbd: fix =
+memory leak (Jason Dillaman)</li><li>librbd: fix ordering/queueing of resiz=
+e operations (Jason Dillaman)</li><li>librbd: fix performance regression in=
+ ObjectCacher (#9513 Adam Crume)</li><li>librbd: fix snap create races (Jas=
+on Dillaman)</li><li>librbd: fix write vs import race (#10590 Jason Dillama=
+n)</li><li>librbd: flush AIO operations asynchronously (#10714 Jason Dillam=
+an)</li><li>librbd: gracefully handle deleted/renamed pools (#10270 Jason D=
+illaman)</li><li>librbd: lttng tracepoints (Adam Crume)</li><li>librbd: mak=
+e async versions of long-running maint operations (Jason Dillaman)</li><li>=
+librbd: misc fixes (Xinxin Shu, Jason Dillaman)</li><li>librbd: mock tests =
+(Jason Dillaman)</li><li>librbd: only export public API symbols (Jason Dill=
+aman)</li><li>librbd: optionally blacklist clients before breaking locks (#=
+10761 Jason Dillaman)</li><li>librbd: prevent copyup during shrink (Jason D=
+illaman)</li><li>librbd: refactor unit tests to use fixtures (Jason Dillama=
+n)</li><li>librbd: validate image is r/w on resize/flatten (Jason Dillaman)=
+</li><li>librbd: various internal locking fixes (Jason Dillaman)</li><li>ma=
+ny coverity fixes (Danny Al-Gaaf)</li><li>many many coverity cleanups (Dann=
+y Al-Gaaf)</li><li>mds: =E2=80=98flush journal=E2=80=99 admin command (John=
+ Spray)</li><li>mds: ENOSPC and OSDMap epoch barriers (#7317 John Spray)</l=
+i><li>mds: a whole bunch of initial scrub infrastructure (Greg Farnum)</li>=
+<li>mds: add cephfs-table-tool (John Spray)</li><li>mds: asok command for f=
+etching subtree map (John Spray)</li><li>mds: avoid sending traceless repli=
+es in most cases (Yan, Zheng)</li><li>mds: constify MDSCacheObjects (John S=
+pray)</li><li>mds: dirfrag buf fix (Yan, Zheng)</li><li>mds: disallow most =
+commands on inactive MDS=E2=80=99s (Greg Farnum)</li><li>mds: drop dentries=
+, leases on deleted directories (#10164 Yan, Zheng)</li><li>mds: export dir=
+ asok command (John Spray)</li><li>mds: fix MDLog IO callback deadlock (Joh=
+n Spray)</li><li>mds: fix compat_version for MClientSession (#9945 John Spr=
+ay)</li><li>mds: fix deadlock during journal probe vs purge (#10229 Yan, Zh=
+eng)</li><li>mds: fix race trimming log segments (Yan, Zheng)</li><li>mds: =
+fix reply snapbl (Yan, Zheng)</li><li>mds: fix sessionmap lifecycle bugs (Y=
+an, Zheng)</li><li>mds: fix stray/purge perfcounters (#10388 John Spray)</l=
+i><li>mds: handle heartbeat_reset during shutdown (#10382 John Spray)</li><=
+li>mds: handle zero-size xattr (#10335 Yan, Zheng)</li><li>mds: initialize =
+root inode xattr version (Yan, Zheng)</li><li>mds: introduce auth caps (Joh=
+n Spray)</li><li>mds: many many snapshot-related fixes (Yan, Zheng)</li><li=
+>mds: misc bugs (Greg Farnum, John Spray, Yan, Zheng, Henry Change)</li><li=
+>mds: refactor, improve Session storage (John Spray)</li><li>mds: store bac=
+ktrace for stray dir (Yan, Zheng)</li><li>mds: subtree quota support (Yunch=
+uan Wen)</li><li>mds: verify backtrace when fetching dirfrag (#9557 Yan, Zh=
+eng)</li><li>memstore: free space tracking (John Spray)</li><li>misc cleanu=
+p (Danny Al-Gaaf, David Anderson)</li><li>misc coverity fixes (Danny Al-Gaa=
+f)</li><li>misc coverity fixes (Danny Al-Gaaf)</li><li>misc: various valgri=
+nd fixes and cleanups (Danny Al-Gaaf)</li><li>mon: =E2=80=98osd crush rewei=
+ght-all=E2=80=99 command (Sage Weil)</li><li>mon: add =E2=80=98ceph osd ren=
+ame-bucket ...=E2=80=99 command (Loic Dachary)</li><li>mon: add bootstrap-r=
+gw profile (Sage Weil)</li><li>mon: add max pgs per osd warning (Sage Weil)=
+</li><li>mon: add noforward flag for some mon commands (Mykola Golub)</li><=
+li>mon: allow adding tiers to fs pools (#10135 John Spray)</li><li>mon: all=
+ow full flag to be manually cleared (#9323 Sage Weil)</li><li>mon: clean up=
+ auth list output (Loic Dachary)</li><li>mon: delay failure injection (Joao=
+ Eduardo Luis)</li><li>mon: disallow empty pool names (#10555 Wido den Holl=
+ander)</li><li>mon: do not deactivate last mds (#10862 John Spray)</li><li>=
+mon: do not pollute mon dir with CSV files from CRUSH check (Loic Dachary)<=
+/li><li>mon: drop old ceph_mon_store_converter (Sage Weil)</li><li>mon: fix=
+ =E2=80=98ceph pg dump_stuck degraded=E2=80=99 (Xinxin Shu)</li><li>mon: fi=
+x =E2=80=98mds fail=E2=80=99 for standby MDSs (John Spray)</li><li>mon: fix=
+ =E2=80=98osd crush link=E2=80=99 id resolution (John Spray)</li><li>mon: f=
+ix =E2=80=98profile osd=E2=80=99 use of config-key function on mon (#10844 =
+Joao Eduardo Luis)</li><li>mon: fix&nbsp;<em>_ratio</em>&nbsp;units and typ=
+es (Sage Weil)</li><li>mon: fix JSON dumps to dump floats as flots and not =
+strings (Sage Weil)</li><li>mon: fix MDS health status from peons (#10151 J=
+ohn Spray)</li><li>mon: fix caching for min_last_epoch_clean (#9987 Sage We=
+il)</li><li>mon: fix clock drift time check interval (#10546 Joao Eduardo L=
+uis)</li><li>mon: fix compatset initalization during mkfs (Joao Eduardo Lui=
+s)</li><li>mon: fix error output for add_data_pool (#9852 Joao Eduardo Luis=
+)</li><li>mon: fix feature tracking during elections (Joao Eduardo Luis)</l=
+i><li>mon: fix formatter =E2=80=98pg stat=E2=80=99 command output (Sage Wei=
+l)</li><li>mon: fix mds gid/rank/state parsing (John Spray)</li><li>mon: fi=
+x misc error paths (Joao Eduardo Luis)</li><li>mon: fix paxos off-by-one co=
+rner case (#9301 Sage Weil)</li><li>mon: fix paxos timeouts (#10220 Joao Ed=
+uardo Luis)</li><li>mon: fix stashed monmap encoding (#5203 Xie Rui)</li><l=
+i>mon: fix units in store stats (Joao Eduardo Luis)</li><li>mon: get canoni=
+cal OSDMap from leader (#10422 Sage Weil)</li><li>mon: ignore failure repor=
+ts from before up_from (#10762 Dan van der Ster, Sage Weil)</li><li>mon: im=
+plement =E2=80=98fs reset=E2=80=99 command (John Spray)</li><li>mon: improv=
+e error handling on erasure code profile set (#10488, #11144 Loic Dachary)<=
+/li><li>mon: improved corrupt CRUSH map detection (Joao Eduardo Luis)</li><=
+li>mon: include entity name in audit log for forwarded requests (#9913 Joao=
+ Eduardo Luis)</li><li>mon: include pg_temp count in osdmap summary (Sage W=
+eil)</li><li>mon: log health summary to cluster log (#9440 Joao Eduardo Lui=
+s)</li><li>mon: make =E2=80=98mds fail=E2=80=99 idempotent (John Spray)</li=
+><li>mon: make pg dump {sum,pgs,pgs_brief} work for format=3Dplain (#5963 #=
+6759 Mykola Golub)</li><li>mon: new =E2=80=98ceph pool ls [detail]=E2=80=99=
+ command (Sage Weil)</li><li>mon: new pool safety flags nodelete, nopgchang=
+e, nosizechange (#9792 Mykola Golub)</li><li>mon: new, friendly =E2=80=98ce=
+ph pg ls ...=E2=80=99 command (Xinxin Shu)</li><li>mon: paxos: allow reads =
+while proposing (#9321 #9322 Joao Eduardo Luis)</li><li>mon: prevent MDS tr=
+ansition from STOPPING (#10791 Greg Farnum)</li><li>mon: propose all pendin=
+g work in one transaction (Sage Weil)</li><li>mon: remove pg_temps for none=
+xistent pools (Joao Eduardo Luis)</li><li>mon: require mon_allow_pool_delet=
+e option to remove pools (Sage Weil)</li><li>mon: respect down flag when pr=
+omoting standbys (John Spray)</li><li>mon: set globalid prealloc to larger =
+value (Sage Weil)</li><li>mon: set {read,write}_tier on =E2=80=98osd tier a=
+dd-cache ...=E2=80=99 (Jianpeng Ma)</li><li>mon: skip zeroed osd stats in g=
+et_rule_avail (#10257 Joao Eduardo Luis)</li><li>mon: validate min_size ran=
+ge (Jianpeng Ma)</li><li>mon: wait for writeable before cross-proposing (#9=
+794 Joao Eduardo Luis)</li><li>mount.ceph: fix suprious error message (#103=
+51 Yan, Zheng)</li><li>ms: xio: fix misc bugs (Matt Benjamin, Vu Pham)</li>=
+<li>msgr: async: bind threads to CPU cores, improved poll (Haomai Wang)</li=
+><li>msgr: async: many fixes, unit tests (Haomai Wang)</li><li>msgr: async:=
+ several fixes (Haomai Wang)</li><li>msgr: asyncmessenger: add kqueue suppo=
+rt (#9926 Haomai Wang)</li><li>msgr: avoid useless new/delete (Haomai Wang)=
+</li><li>msgr: fix RESETSESSION bug (#10080 Greg Farnum)</li><li>msgr: fix =
+crc configuration (Mykola Golub)</li><li>msgr: fix delay injection bug (#99=
+10 Sage Weil, Greg Farnum)</li><li>msgr: misc unit tests (Haomai Wang)</li>=
+<li>msgr: new AsymcMessenger alternative implementation (Haomai Wang)</li><=
+li>msgr: prefetch data when doing recv (Yehuda Sadeh)</li><li>msgr: simple:=
+ fix rare deadlock (Greg Farnum)</li><li>msgr: simple: retry binding to por=
+t on failure (#10029 Wido den Hollander)</li><li>msgr: xio: XioMessenger RD=
+MA support (Casey Bodley, Vu Pham, Matt Benjamin)</li><li>objectstore: depr=
+ecate collection attrs (Sage Weil)</li><li>osd, librados: fadvise-style lib=
+rados hints (Jianpeng Ma)</li><li>osd, librados: fix xattr_cmp_u64 (Dongmao=
+ Zhang)</li><li>osd, librados: revamp PG listing API to handle namespaces (=
+#9031 #9262 #9438 David Zafman)</li><li>osd, mds: =E2=80=98ops=E2=80=99 as =
+shorthand for =E2=80=98dump_ops_in_flight=E2=80=99 on asok (Sage Weil)</li>=
+<li>osd, mon: add checksums to all OSDMaps (Sage Weil)</li><li>osd, mon: se=
+nd intiial pg create time from mon to osd (#9887 David Zafman)</li><li>osd,=
+mon: add =E2=80=98norebalance=E2=80=99 flag (Kefu Chai)</li><li>osd,mon: sp=
+ecify OSD features explicitly in MOSDBoot (#10911 Sage Weil)</li><li>osd: D=
+BObjectMap: fix locking to prevent rare crash (#9891 Samuel Just)</li><li>o=
+sd: EIO on whole-object reads when checksum is wrong (Sage Weil)</li><li>os=
+d: add erasure code corpus (Loic Dachary)</li><li>osd: add fadvise flags to=
+ ObjectStore API (Jianpeng Ma)</li><li>osd: add get_latest_osdmap asok comm=
+and (#9483 #9484 Mykola Golub)</li><li>osd: add misc tests (Loic Dachary, D=
+anny Al-Gaaf)</li><li>osd: add option to prioritize heartbeat network traff=
+ic (Jian Wen)</li><li>osd: add support for the SHEC erasure-code algorithm =
+(Takeshi Miyamae, Loic Dachary)</li><li>osd: allow deletion of objects with=
+ watcher (#2339 Sage Weil)</li><li>osd: allow recovery while below min_size=
+ (Samuel Just)</li><li>osd: allow recovery with fewer than min_size OSDs (S=
+amuel Just)</li><li>osd: allow sparse read for Push/Pull (Haomai Wang)</li>=
+<li>osd: allow whiteout deletion in cache pool (Sage Weil)</li><li>osd: all=
+ow writes to degraded objects (Samuel Just)</li><li>osd: allow writes to de=
+graded objects (Samuel Just)</li><li>osd: avoid publishing unchanged PG sta=
+ts (Sage Weil)</li><li>osd: batch pg log trim (Xinze Chi)</li><li>osd: cach=
+e pool: ignore min flush age when cache is full (Xinze Chi)</li><li>osd: ca=
+che recent ObjectContexts (Dong Yuan)</li><li>osd: cache reverse_nibbles ha=
+sh value (Dong Yuan)</li><li>osd: clean up internal ObjectStore interface (=
+Sage Weil)</li><li>osd: cleanup boost optionals (William Kennington)</li><l=
+i>osd: clear cache on interval change (Samuel Just)</li><li>osd: do no prox=
+y reads unless target OSDs are new (#10788 Sage Weil)</li><li>osd: do not a=
+bort deep scrub on missing hinfo (#10018 Loic Dachary)</li><li>osd: do not =
+update digest on inconsistent object (#10524 Samuel Just)</li><li>osd: don=
+=E2=80=99t record digests for snapdirs (#10536 Samuel Just)</li><li>osd: dr=
+op upgrade support for pre-dumpling (Sage Weil)</li><li>osd: enable and use=
+ posix_fadvise (Sage Weil)</li><li>osd: erasure coding: allow <a href=3D"ht=
+tp://bench.sh/">bench.sh</a> to test ISA backend (Yuan Zhou)</li><li>osd: e=
+rasure-code: encoding regression tests, corpus (#9420 Loic Dachary)</li><li=
+>osd: erasure-code: enforce chunk size alignment (#10211 Loic Dachary)</li>=
+<li>osd: erasure-code: jerasure support for NEON (Loic Dachary)</li><li>osd=
+: erasure-code: relax cauchy w restrictions (#10325 David Zhang, Loic Dacha=
+ry)</li><li>osd: erasure-code: update gf-complete to latest upstream (Loic =
+Dachary)</li><li>osd: expose non-journal backends via ceph-osd CLI (Hoamai =
+Wang)</li><li>osd: filejournal: don=E2=80=99t cache journal when not using =
+direct IO (Jianpeng Ma)</li><li>osd: fix JSON output for stray OSDs (Loic D=
+achary)</li><li>osd: fix OSDCap parser on old (el6) boost::spirit (#10757 K=
+efu Chai)</li><li>osd: fix OSDCap parsing on el6 (#10757 Kefu Chai)</li><li=
+>osd: fix ObjectStore::Transaction encoding version (#10734 Samuel Just)</l=
+i><li>osd: fix WBTHrottle perf counters (Haomai Wang)</li><li>osd: fix and =
+document last_epoch_started semantics (Samuel Just)</li><li>osd: fix auth o=
+bject selection during repair (#10524 Samuel Just)</li><li>osd: fix backfil=
+l bug (#10150 Samuel Just)</li><li>osd: fix bug in pending digest updates (=
+#10840 Samuel Just)</li><li>osd: fix cancel_proxy_read_ops (Sage Weil)</li>=
+<li>osd: fix cleanup of interrupted pg deletion (#10617 Sage Weil)</li><li>=
+osd: fix divergent entry handling on PG split (Samuel Just)</li><li>osd: fi=
+x ghobject_t formatted output to include shard (#10063 Loic Dachary)</li><l=
+i>osd: fix ioprio option (Mykola Golub)</li><li>osd: fix ioprio options (Lo=
+ic Dachary)</li><li>osd: fix journal shutdown race (Sage Weil)</li><li>osd:=
+ fix journal wrapping bug (#10883 David Zafman)</li><li>osd: fix leak in Sn=
+apTrimWQ (#10421 Kefu Chai)</li><li>osd: fix leak on shutdown (Kefu Chai)</=
+li><li>osd: fix memstore free space calculation (Xiaoxi Chen)</li><li>osd: =
+fix mixed-version peering issues (Samuel Just)</li><li>osd: fix object age =
+eviction (Zhiqiang Wang)</li><li>osd: fix object atime calculation (Xinze C=
+hi)</li><li>osd: fix object digest update bug (#10840 Samuel Just)</li><li>=
+osd: fix occasional peering stalls (#10431 Sage Weil)</li><li>osd: fix orde=
+ring issue with new transaction encoding (#10534 Dong Yuan)</li><li>osd: fi=
+x osd peer check on scrub messages (#9555 Sage Weil)</li><li>osd: fix past_=
+interval display bug (#9752 Loic Dachary)</li><li>osd: fix past_interval ge=
+neration (#10427 #10430 David Zafman)</li><li>osd: fix pgls filter ops (#94=
+39 David Zafman)</li><li>osd: fix recording of digest on scrub (Samuel Just=
+)</li><li>osd: fix scrub delay bug (#10693 Samuel Just)</li><li>osd: fix sc=
+rub vs try-flush bug (#8011 Samuel Just)</li><li>osd: fix short read handli=
+ng on push (#8121 David Zafman)</li><li>osd: fix stderr with -f or -d (Dan =
+Mick)</li><li>osd: fix transaction accounting (Jianpeng Ma)</li><li>osd: fi=
+x watch reconnect race (#10441 Sage Weil)</li><li>osd: fix watch timeout ca=
+che state update (#10784 David Zafman)</li><li>osd: fix whiteout handling (=
+Sage Weil)</li><li>osd: flush snapshots from cache tier immediately (Sage W=
+eil)</li><li>osd: force promotion of watch/notify ops (Zhiqiang Wang)</li><=
+li>osd: handle no-op write with snapshot (#10262 Sage Weil)</li><li>osd: im=
+prove idempotency detection across cache promotion/demotion (#8935 Sage Wei=
+l, Samuel Just)</li><li>osd: include activating peers in blocked_by (#10477=
+ Sage Weil)</li><li>osd: jerasure and gf-complete updates from upstream (#1=
+0216 Loic Dachary)</li><li>osd: journal: check fsync/fdatasync result (Jian=
+peng Ma)</li><li>osd: journal: fix alignment checks, avoid useless memmove =
+(Jianpeng Ma)</li><li>osd: journal: fix hang on shutdown (#10474 David Zafm=
+an)</li><li>osd: journal: fix header.committed_up_to (Xinze Chi)</li><li>os=
+d: journal: fix journal zeroing when direct IO is enabled (Xie Rui)</li><li=
+>osd: journal: initialize throttle (Ning Yao)</li><li>osd: journal: misc bu=
+g fixes (#6003 David Zafman, Samuel Just)</li><li>osd: journal: update comm=
+itted_thru after replay (#6756 Samuel Just)</li><li>osd: keyvaluestore: cle=
+anup dead code (Ning Yao)</li><li>osd: keyvaluestore: fix getattr semantics=
+ (Haomai Wang)</li><li>osd: keyvaluestore: fix key ordering (#10119 Haomai =
+Wang)</li><li>osd: keyvaluestore_dev: optimization (Chendi Xue)</li><li>osd=
+: limit in-flight read requests (Jason Dillaman)</li><li>osd: log when scru=
+b or repair starts (Loic Dachary)</li><li>osd: make misdirected op checks r=
+obust for EC pools (#9835 Sage Weil)</li><li>osd: memstore: fix size limit =
+(Xiaoxi Chen)</li><li>osd: misc FIEMAP fixes (Ma Jianpeng)</li><li>osd: mis=
+c cleanup (Xinze Chi, Yongyue Sun)</li><li>osd: misc optimizations (Xinxin =
+Shu, Zhiqiang Wang, Xinze Chi)</li><li>osd: misc scrub fixes (#10017 Loic D=
+achary)</li><li>osd: new =E2=80=98activating=E2=80=99 state between peering=
+ and active (Sage Weil)</li><li>osd: new optimized encoding for ObjectStore=
+::Transaction (Dong Yuan)</li><li>osd: optimize Finisher (Xinze Chi)</li><l=
+i>osd: optimize WBThrottle map with unordered_map (Ning Yao)</li><li>osd: o=
+ptimize filter_snapc (Ning Yao)</li><li>osd: preserve reqids for idempotenc=
+y checks for promote/demote (Sage Weil, Zhiqiang Wang, Samuel Just)</li><li=
+>osd: proxy read support (Zhiqiang Wang)</li><li>osd: proxy reads during ca=
+che promote (Zhiqiang Wang)</li><li>osd: remove dead locking code (Xinxin S=
+hu)</li><li>osd: remove legacy classic scrub code (Sage Weil)</li><li>osd: =
+remove unused fields in MOSDSubOp (Xiaoxi Chen)</li><li>osd: removed some d=
+ead code (Xinze Chi)</li><li>osd: replace MOSDSubOp messages with simpler, =
+optimized MOSDRepOp (Xiaoxi Chen)</li><li>osd: restrict scrub to certain ti=
+mes of day (Xinze Chi)</li><li>osd: rocksdb: fix shutdown (Hoamai Wang)</li=
+><li>osd: store PG metadata in per-collection objects for better concurrenc=
+y (Sage Weil)</li><li>osd: store whole-object checksums on scrub, write_ful=
+l (Sage Weil)</li><li>osd: support for discard for journal trim (Jianpeng M=
+a)</li><li>osd: use FIEMAP_FLAGS_SYNC instead of fsync (Jianpeng Ma)</li><l=
+i>osd: verify kernel is new enough before using XFS extsize ioctl, enable b=
+y default (#9956 Sage Weil)</li><li>pybind: fix memory leak in librados bin=
+dings (Billy Olsen)</li><li>pyrados: add object lock support (#6114 Mehdi A=
+baakouk)</li><li>pyrados: fix misnamed wait_* routings (#10104 Dan Mick)</l=
+i><li>pyrados: misc cleanups (Kefu Chai)</li><li>qa: add large auth ticket =
+tests (Ilya Dryomov)</li><li>qa: fix mds tests (#10539 John Spray)</li><li>=
+qa: fix osd create dup tests (#10083 Loic Dachary)</li><li>qa: ignore dupli=
+cates in rados ls (Josh Durgin)</li><li>qa: improve hadoop tests (Noah Watk=
+ins)</li><li>qa: many =E2=80=98make check=E2=80=99 improvements (Loic Dacha=
+ry)</li><li>qa: misc tests (Loic Dachary, Yan, Zheng)</li><li>qa: paralleli=
+ze make check (Loic Dachary)</li><li>qa: reorg fs quota tests (Greg Farnum)=
+</li><li>qa: tolerate nearly-full disk for make check (Loic Dachary)</li><l=
+i>rados: fix put of /dev/null (Loic Dachary)</li><li>rados: fix usage (Jian=
+peng Ma)</li><li>rados: parse command-line arguments more strictly (#8983 A=
+dam Crume)</li><li>rados: use copy-from operation for copy, cppool (Sage We=
+il)</li><li>radosgw-admin: add replicalog update command (Yehuda Sadeh)</li=
+><li>rbd-fuse: clean up on shutdown (Josh Durgin)</li><li>rbd-fuse: fix mem=
+ory leak (Adam Crume)</li><li>rbd-replay-many (Adam Crume)</li><li>rbd-repl=
+ay: =E2=80=93anonymize flag to rbd-replay-prep (Adam Crume)</li><li>rbd: ad=
+d =E2=80=98merge-diff=E2=80=99 function (MingXin Liu, Yunchuan Wen, Li Wang=
+)</li><li>rbd: allow v2 striping parameters for clones and imports (Jason D=
+illaman)</li><li>rbd: fix =E2=80=98rbd diff=E2=80=99 for non-existent objec=
+ts (Adam Crume)</li><li>rbd: fix buffer handling on image import (#10590 Ja=
+son Dillaman)</li><li>rbd: fix error when striping with format 1 (Sebastien=
+ Han)</li><li>rbd: fix export for image sizes over 2GB (Vicente Cheng)</li>=
+<li>rbd: fix formatted output of image features (Jason Dillaman)</li><li>rb=
+d: leave exclusive lockin goff by default (Jason Dillaman)</li><li>rbd: upd=
+at eman page (Ilya Dryomov)</li><li>rbd: update init-rbdmap to fix dup moun=
+t point (Karel Striegel)</li><li>rbd: use IO hints for import, export, and =
+bench operations (#10462 Jason Dillaman)</li><li>rbd: use rolling average f=
+or rbd bench-write throughput (Jason Dillaman)</li><li>rbd_recover_tool: RB=
+D image recovery tool (Min Chen)</li><li>rgw: S3-style object versioning su=
+pport (Yehuda Sadeh)</li><li>rgw: add location header when object is in ano=
+ther region (VRan Liu)</li><li>rgw: change multipart upload id magic (#1027=
+1 Yehuda Sadeh)</li><li>rgw: check keystone auth for S3 POST requests (#100=
+62 Abhishek Lekshmanan)</li><li>rgw: check timestamp on s3 keystone auth (#=
+10062 Abhishek Lekshmanan)</li><li>rgw: conditional PUT on ETag (#8562 Ray =
+Lv)</li><li>rgw: create subuser if needed when creating user (#10103 Yehuda=
+ Sadeh)</li><li>rgw: decode http query params correction (#10271 Yehuda Sad=
+eh)</li><li>rgw: don=E2=80=99t overwrite bucket/object owner when setting A=
+CLs (#10978 Yehuda Sadeh)</li><li>rgw: enable IPv6 for civetweb (#10965 Yeh=
+uda Sadeh)</li><li>rgw: extend replica log API (purge-all) (Yehuda Sadeh)</=
+li><li>rgw: fail S3 POST if keystone not configured (#10688 Valery Tschopp,=
+ Yehuda Sadeh)</li><li>rgw: fix If-Modified-Since (VRan Liu)</li><li>rgw: f=
+ix XML header on get ACL request (#10106 Yehuda Sadeh)</li><li>rgw: fix buc=
+ket removal with data purge (Yehuda Sadeh)</li><li>rgw: fix content length =
+check (#10701 Axel Dunkel, Yehuda Sadeh)</li><li>rgw: fix content-length up=
+date (#9576 Yehuda Sadeh)</li><li>rgw: fix disabling of max_size quota (#99=
+07 Dong Lei)</li><li>rgw: fix error codes (#10334 #10329 Yehuda Sadeh)</li>=
+<li>rgw: fix incorrect len when len is 0 (#9877 Yehuda Sadeh)</li><li>rgw: =
+fix object copy content type (#9478 Yehuda Sadeh)</li><li>rgw: fix partial =
+GET in swift (#10553 Yehuda Sadeh)</li><li>rgw: fix replica log indexing (#=
+8251 Yehuda Sadeh)</li><li>rgw: fix shutdown (#10472 Yehuda Sadeh)</li><li>=
+rgw: fix swift metadata header name (Dmytro Iurchenko)</li><li>rgw: fix sys=
+vinit script when rgw_socket_path is not defined (#11159 Yehuda Sadeh, Dan =
+Mick)</li><li>rgw: fix user stags in get-user-info API (#9359 Ray Lv)</li><=
+li>rgw: include XML ns on get ACL request (#10106 Yehuda Sadeh)</li><li>rgw=
+: index swift keys appropriately (#10471 Yehuda Sadeh)</li><li>rgw: make sy=
+svinit script set ulimit -n properly (Sage Weil)</li><li>rgw: misc fixes (#=
+10307 Yehuda Sadeh)</li><li>rgw: only track cleanup for objects we write (#=
+10311 Yehuda Sadeh)</li><li>rgw: pass civetweb configurables through (#1090=
+7 Yehuda Sadeh)</li><li>rgw: prevent illegal bucket policy that doesn=E2=80=
+=99t match placement rule (Yehuda Sadeh)</li><li>rgw: remove multipart entr=
+ies from bucket index on abort (#10719 Yehuda Sadeh)</li><li>rgw: remove sw=
+ift user manifest (DLO) hash calculation (#9973 Yehuda Sadeh)</li><li>rgw: =
+respond with 204 to POST on containers (#10667 Yuan Zhou)</li><li>rgw: retu=
+rn timestamp on GET/HEAD (#8911 Yehuda Sadeh)</li><li>rgw: reuse fcgx conne=
+ction struct (#10194 Yehuda Sadeh)</li><li>rgw: run radosgw as apache with =
+systemd (#10125 Loic Dachary)</li><li>rgw: send explicit HTTP status string=
+ (Yehuda Sadeh)</li><li>rgw: set ETag on object copy (#9479 Yehuda Sadeh)</=
+li><li>rgw: set length for keystone token validation request (#7796 Yehuda =
+Sadeh, Mark Kirkwood)</li><li>rgw: support X-Storage-Policy header for Swif=
+t storage policy compat (Yehuda Sadeh)</li><li>rgw: support multiple host n=
+ames (#7467 Yehuda Sadeh)</li><li>rgw: swift: dump container=E2=80=99s cust=
+om metadata (#10665 Ahmad Faheem, Dmytro Iurchenko)</li><li>rgw: swift: sup=
+port Accept header for response format (#10746 Dmytro Iurchenko)</li><li>rg=
+w: swift: support for X-Remove-Container-Meta-{key} (#10475 Dmytro Iurchenk=
+o)</li><li>rgw: tweak error codes (#10329 #10334 Yehuda Sadeh)</li><li>rgw:=
+ update bucket index on attr changes, for multi-site sync (#5595 Yehuda Sad=
+eh)</li><li>rgw: use rn for http headers (#9254 Yehuda Sadeh)</li><li>rgw: =
+use gc for multipart abort (#10445 Aaron Bassett, Yehuda Sadeh)</li><li>rgw=
+: use new watch/notify API (Yehuda Sadeh, Sage Weil)</li><li>rpm: misc fixe=
+s (Key Dreyer)</li><li>rpm: move rgw logrotate to radosgw subpackage (Ken D=
+reyer)</li><li>systemd: better systemd unit files (Owen Synge)</li><li>sysv=
+init: fix race in =E2=80=98stop=E2=80=99 (#10389 Loic Dachary)</li><li>test=
+: fix bufferlist tests (Jianpeng Ma)</li><li>tests: ability to run unit tes=
+ts under docker (Loic Dachary)</li><li>tests: centos-6 dockerfile (#10755 L=
+oic Dachary)</li><li>tests: improve docker-based tests (Loic Dachary)</li><=
+li>tests: unit tests for shared_cache (Dong Yuan)</li><li>udev: fix rules f=
+or CentOS7/RHEL7 (Loic Dachary)</li><li>use clock_gettime instead of gettim=
+eofday (Jianpeng Ma)</li><li><a href=3D"http://vstart.sh/">vstart.sh</a>: s=
+et up environment for s3-tests (Luis Pabon)</li><li><a href=3D"http://vstar=
+t.sh/">vstart.sh</a>: work with cmake (Yehuda Sadeh)</li></ul><h3 id=3D"get=
+ting-ceph">GETTING CEPH <a class=3D"link-anchor" href=3D"https://ceph.com/e=
+n/news/blog/2015/v0-94-hammer-released/#getting-ceph">=C2=B6</a></h3><ul><l=
+i>Git at&nbsp;<a href=3D"http://github.com/ceph/ceph">git://github.com/ceph=
+/ceph.git</a></li><li>Tarball at&nbsp;<a href=3D"http://ceph.com/download/c=
+eph-0.94.tar.gz">http://ceph.com/download/ceph-0.94.tar.gz</a></li><li>For =
+packages, see&nbsp;<a href=3D"http://ceph.com/docs/master/install/get-packa=
+ges">http://ceph.com/docs/master/install/get-packages</a></li><li>For ceph-=
+deploy, see&nbsp;<a href=3D"http://ceph.com/docs/master/install/install-cep=
+h-deploy">http://ceph.com/docs/master/install/install-ceph-deploy</a></li><=
+/ul></div></div><aside><hr class=3D"hr lg:hidden my-16"><div class=3D"grid =
+md-to-lg:grid--cols-2 to-md:grid--gap-14 lg:grid--gap-0"><div><h2 class=3D"=
+h5">Share this article</h2><div class=3D"social-shares"><a class=3D"social-=
+shares__twitter" href=3D"https://twitter.com/share?url=3Dhttps://ceph.io/en=
+/news/blog/2015/v0-94-hammer-released/&amp;text=3Dv0.94%20Hammer%20released=
+&amp;via=3Dceph" rel=3D"noreferrer noopener" target=3D"_blank"><svg xmlns=
+=3D"http://www.w3.org/2000/svg" width=3D"48" height=3D"48" viewBox=3D"0 0 4=
+8 48" aria-hidden=3D"true" focusable=3D"false"><g fill=3D"transparent" fill=
+-rule=3D"evenodd" stroke-width=3D"2"><circle cx=3D"23.925" cy=3D"23.925" r=
+=3D"21.75" stroke=3D"#eb1414" stroke-linecap=3D"square"></circle><path fill=
+=3D"#fff" stroke=3D"#0a0c38" stroke-linejoin=3D"round" d=3D"M36 16.575c-.9.=
+375-1.837.675-2.813.788a4.958 4.958 0 002.175-2.738 9.771 9.771 0 01-3.112 =
+1.2c-.938-.975-2.212-1.575-3.637-1.575a4.905 4.905 0 00-4.913 4.913c0 .375.=
+038.75.113 1.125-4.088-.188-7.726-2.175-10.125-5.138a4.986 4.986 0 00-.676 =
+2.475c0 1.725.863 3.225 2.175 4.087a5.231 5.231 0 01-2.212-.6v.076c0 2.4 1.=
+688 4.387 3.938 4.837a5.043 5.043 0 01-1.313.188c-.3 0-.637-.038-.938-.076a=
+4.935 4.935 0 004.613 3.413 9.962 9.962 0 01-6.112 2.1c-.413 0-.788-.037-1.=
+163-.075 2.175 1.35 4.762 2.175 7.538 2.175 9.075 0 14.024-7.5 14.024-14.02=
+5v-.638A10.355 10.355 0 0036 16.575z"></path></g></svg> <span class=3D"visu=
+ally-hidden">Twitter</span> </a><a class=3D"social-shares__facebook" href=
+=3D"https://www.facebook.com/sharer.php?u=3Dhttps://ceph.io/en/news/blog/20=
+15/v0-94-hammer-released/" rel=3D"noreferrer noopener" target=3D"_blank"><s=
+vg xmlns=3D"http://www.w3.org/2000/svg" width=3D"48" height=3D"48" viewBox=
+=3D"0 0 48 48" aria-hidden=3D"true" focusable=3D"false"><g fill=3D"transpar=
+ent" fill-rule=3D"evenodd" stroke-width=3D"2"><circle cx=3D"23.925" cy=3D"2=
+3.925" r=3D"21.75" stroke=3D"#eb1414" stroke-linecap=3D"square"></circle><p=
+ath fill=3D"#fff" stroke=3D"#0a0c38" stroke-linejoin=3D"round" d=3D"M21.043=
+ 36.75V25.7H17.25v-5.1h3.793v-3.562c0-3.88 2.456-5.788 5.917-5.788 1.658 0 =
+3.082.123 3.498.179v4.054l-2.4.001c-1.883 0-2.308.894-2.308 2.207V20.6h5.1l=
+-1.7 5.1h-3.4v11.05h-4.707z"></path></g></svg> <span class=3D"visually-hidd=
+en">Facebook</span></a></div><hr class=3D"hidden lg:block hr"></div><div><h=
+2 id=3D"tags-desc" class=3D"h5">Read more articles like this</h2><ul class=
+=3D"list-none p-0" aria-describedby=3D"tags-desc"><li class=3D"mb-3"><a cla=
+ss=3D"button button--pill" href=3D"https://ceph.com/en/news/blog/category/r=
+elease/">release</a></li><li><a class=3D"button button--pill" href=3D"https=
+://ceph.com/en/news/blog/category/hammer/">hammer</a></li></ul></div></div>=
+</aside></div></section></div></main><footer class=3D"site-footer"><div cla=
+ss=3D"wrapper"><nav aria-label=3D"site"><ul class=3D"site-footer__site"><li=
+><a href=3D"https://ceph.com/en/discover/">Discover</a><ul><li><a href=3D"h=
+ttps://ceph.com/en/discover/benefits/">Benefits</a></li><li><a href=3D"http=
+s://ceph.com/en/discover/technology/">Technology</a></li><li><a href=3D"htt=
+ps://ceph.com/en/discover/vision/">Vision</a></li><li><a href=3D"https://ce=
+ph.com/en/discover/use-cases/">Use cases</a></li><li><a href=3D"https://cep=
+h.com/en/discover/case-studies/">Case studies</a></li></ul></li><li><a href=
+=3D"https://ceph.com/en/users/">Users</a><ul><li><a href=3D"https://ceph.co=
+m/en/users/getting-started/">Getting started</a></li><li><a href=3D"https:/=
+/ceph.com/en/users/documentation/">Documentation</a></li><li><a href=3D"htt=
+ps://ceph.com/en/users/survey/">Survey</a></li></ul></li><li><a href=3D"htt=
+ps://ceph.com/en/developers/">Developers</a><ul><li><a href=3D"https://ceph=
+.com/en/developers/code/">Code</a></li><li><a href=3D"https://ceph.com/en/d=
+evelopers/contribute/">Contribute</a></li><li><a href=3D"https://ceph.com/e=
+n/developers/roadmap/">Roadmap</a></li><li><a href=3D"https://ceph.com/en/d=
+evelopers/google-summer-of-code/">Google Summer of Code</a></li></ul></li><=
+li><a href=3D"https://ceph.com/en/community/">Community</a><ul><li><a href=
+=3D"https://ceph.com/en/community/events/">Events</a></li><li><a href=3D"ht=
+tps://ceph.com/en/community/tech-talks/">Tech talks</a></li><li><a href=3D"=
+https://ceph.com/en/community/meetups/">Virtual Meetings &amp; Meetups</a><=
+/li><li><a href=3D"https://ceph.com/en/community/connect/">Connect</a></li>=
+<li><a href=3D"https://ceph.com/en/community/team/">Team</a></li><li><a hre=
+f=3D"https://ceph.com/en/community/ambassadors/">Ambassadors</a></li><li><a=
+ href=3D"https://ceph.com/en/community/jobs/">Jobs</a></li></ul></li><li><a=
+ href=3D"https://ceph.com/en/news/">News</a><ul><li><a href=3D"https://ceph=
+.com/en/news/blog/" aria-current=3D"page">Ceph Blog</a></li><li><a href=3D"=
+https://ceph.com/en/news/publications/">Publications</a></li><li><a href=3D=
+"https://ceph.com/en/news/contribute/">Contribute Content</a></li></ul></li=
+><li><a href=3D"https://ceph.com/en/foundation/">Foundation</a><ul><li><a h=
+ref=3D"https://ceph.com/en/foundation/about/">About the foundation</a></li>=
+<li><a href=3D"https://ceph.com/en/foundation/members/">Foundation members<=
+/a></li><li><a href=3D"https://ceph.com/en/foundation/member-benefits/">Mem=
+ber benefits</a></li><li><a href=3D"https://ceph.com/en/foundation/join/">B=
+ecome a member</a></li></ul></li></ul></nav><svg class=3D"site-footer__ceph=
+" xmlns=3D"http://www.w3.org/2000/svg" width=3D"154" height=3D"42" viewBox=
+=3D"0 0 154 42" aria-hidden=3D"true" focusable=3D"false"><g fill=3D"#f0424d=
+"><path d=3D"M35 38c-1.4-.8-2.3-1.7-2.5-2.7s.2-2 1.3-3.3A16.2 16.2 0 0021.6=
+ 5.2h-.1A16.2 16.2 0 009.2 32c1.1 1.3 1.5 2.3 1.4 3.2S9.5 37.2 8 38a22.8 22=
+.8 0 01-5.7-7.2A21.3 21.3 0 010 21.4 21.4 21.4 0 0121.5 0h.1A21.4 21.4 0 01=
+43 21.4a21.6 21.6 0 01-.6 4.9 21 21 0 01-1.6 4.5 22.7 22.7 0 01-5.7 7.2"></=
+path><path d=3D"M27.2 42a8 8 0 01-2-2 8.7 8.7 0 01-1.6-5.3 11.8 11.8 0 01.9=
+-4.2 12 12 0 012.3-3.7l.2-.2a10.3 10.3 0 001-1.4 7 7 0 001-2 7.5 7.5 0 00-6=
+.3-9.2 7.3 7.3 0 00-1.1 0h-.1a7.4 7.4 0 00-4 1 7.5 7.5 0 00-2.2 2 7.5 7.5 0=
+ 00-1.2 6.2 7.2 7.2 0 00.8 2 9.7 9.7 0 001.1 1.4l.2.3a11.9 11.9 0 012.3 3.6=
+ 11.8 11.8 0 011 4.2 8.8 8.8 0 01-1.8 5.4 8 8 0 01-1.9 1.9l-1.2-.4A21.3 21.=
+3 0 0111 40a6 6 0 003.2-5.3 6.4 6.4 0 00-1.7-4.2l-.3-.4-.9-1a12.8 12.8 0 01=
+-.2-15 13 13 0 013.7-3.5 12.8 12.8 0 015-1.8 13.3 13.3 0 011.7-.2h.2a13.4 1=
+3.4 0 011.8.2 12.8 12.8 0 014.9 1.8A13 13 0 0132 14a12.7 12.7 0 01-.2 15l-.=
+9 1-.3.4a6.5 6.5 0 00-1.7 4.3 6 6 0 003.1 5.4 21.4 21.4 0 01-3.6 1.5l-1.2.4=
+"></path><path d=3D"M21.5 25.8a4.2 4.2 0 114.2-4.2 4.2 4.2 0 01-4.2 4.2"></=
+path></g><g fill=3D"#e7e9e8"><path d=3D"M75.6 26.4c0 5.5-.5 7-1.8 8.4-.8.8-=
+2 1.3-4.3 1.3h-8.2c-2.6 0-4.2-.4-5.3-1.5-1.7-1.8-2.2-3.8-2.2-11.8s.5-10 2.2=
+-11.8c1-1 2.7-1.5 5.3-1.5h8c2.5 0 3.6.5 4.4 1.3 1.3 1.3 1.8 3 1.8 8h-5c-.1-=
+3.5-.3-4-.6-4.3s-.6-.5-1.8-.5H62c-1.5 0-2 .1-2.3.5-.5.5-.7 1.5-.7 8.3s.2 7.=
+7.7 8.2c.4.4.8.5 2.3.5h6.2c1.1 0 1.6 0 2-.4s.5-1.4.5-4.7h5M84.3 20.4h12.2c0=
+-4.5-.3-5.5-.8-6-.3-.3-.7-.5-2.3-.5h-6c-1.6 0-2 .2-2.4.6s-.6 1.3-.7 5.9zm0 =
+4c0 5.3.4 6.3.8 6.7s.7.5 2.2.5h7c1 0 1.4-.2 1.7-.5s.4-1 .5-3.3h5c0 4.2-.4 5=
+.6-1.8 7-.8.8-2 1.3-4.3 1.3h-8.7c-2.6 0-4.2-.4-5.3-1.5-1.7-1.7-2.2-3.8-2.2-=
+11.8s.5-10 2.2-11.8c1.1-1 2.7-1.5 5.3-1.5H94c2.6 0 4.3.5 5.3 1.4 1.7 1.8 2.=
+2 3.8 2.2 11.6V24c0 .4-.1.6-.6.6H84.3M121.6 31c-.4.4-1 .6-2.7.6H115a10.1 10=
+.1 0 01-4.8-1.5l-.3-.1V15.5a10.7 10.7 0 015-1.5h4c1.6 0 2.2.2 2.7.6.7.8 1 2=
+.2 1 8.2s-.2 7.4-1 8.1zm-1.5-21.6h-3.6c-2.2 0-3.3.5-6.6 3.3V9.4h-5.2V42h5.2=
+v-9c3.3 2.7 4.4 3.2 6.6 3.2h3.6c2.9 0 4.3-.5 5.5-1.6 1.4-1.5 2-3.5 2-11.8s-=
+.6-10.3-2-11.8c-1.2-1.1-2.6-1.6-5.5-1.6M152.4 11c-1-1-2.3-1.6-4.6-1.6h-4.2c=
+-2.2 0-3.3.5-6.7 3.3V2.5a18.8 18.8 0 00-5-2v35.6h5V15.5l1.1-.5a9.1 9.1 0 01=
+4-1h3.4c1.7 0 2.2.2 2.8.7a3.4 3.4 0 01.6 2.6V36h5.2V17c0-3.7-.6-5-1.6-6"></=
+path></g></svg><p class=3D"color-white p text-xs">=C2=A9 2015 All rights re=
+served.</p><nav aria-label=3D"support"><ul class=3D"site-footer__support"><=
+li><a href=3D"https://ceph.com/en/code-of-conduct/">Code of conduct</a></li=
+><li><a href=3D"https://ceph.com/en/terms/">Terms of use</a></li><li><a hre=
+f=3D"https://ceph.com/en/privacy/">Privacy policy</a></li><li><a href=3D"ht=
+tps://ceph.com/en/trademarks/">Trademarks</a></li><li><a href=3D"https://ce=
+ph.com/en/logos/">Logo Usage</a></li><li><a href=3D"https://ceph.com/en/sec=
+urity/">Security</a></li></ul><ul class=3D"site-footer__social"><li><a clas=
+s=3D"site-footer__twitter" href=3D"https://twitter.com/ceph" rel=3D"norefer=
+rer noopener" target=3D"_blank"><svg xmlns=3D"http://www.w3.org/2000/svg" w=
+idth=3D"24" height=3D"24" viewBox=3D"0 0 24 24" fill=3D"#d3dde7" aria-hidde=
+n=3D"true" focusable=3D"false"><path d=3D"M24.857 4.125c-.964.429-1.982.696=
+-3.053.857 1.071-.643 1.928-1.66 2.303-2.893a11.61 11.61 0 01-3.375 1.286 5=
+.34 5.34 0 00-3.857-1.66 5.259 5.259 0 00-5.25 5.25c0 .428.054.803.16 1.178=
+C7.447 7.929 3.536 5.839.912 2.625.482 3.429.214 4.285.214 5.25c0 1.821.911=
+ 3.429 2.357 4.393A6.199 6.199 0 01.161 9v.054a5.293 5.293 0 004.232 5.196A=
+5.84 5.84 0 013 14.41c-.321 0-.696-.053-1.018-.106.697 2.089 2.625 3.642 4.=
+929 3.642-1.822 1.393-4.072 2.25-6.536 2.25-.429 0-.857 0-1.232-.053a14.907=
+ 14.907 0 008.09 2.357c9.696 0 15-8.036 15-15v-.696a9.62 9.62 0 002.624-2.6=
+79z"></path></svg> <span class=3D"visually-hidden">Twitter</span></a></li><=
+li><a class=3D"site-footer__youtube" href=3D"https://www.youtube.com/channe=
+l/UCno-Fry25FJ7B4RycCxOtfw" rel=3D"noreferrer noopener" target=3D"_blank"><=
+svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"24" height=3D"24" viewBox=
+=3D"0 0 24 24" fill=3D"#d3dde7" aria-hidden=3D"true" focusable=3D"false"><p=
+ath id=3D"a" d=3D"M23.75 7.079s-.25-1.65-.95-2.4c-.9-.95-1.95-.95-2.4-1-3.3=
+5-.25-8.4-.25-8.4-.25s-5.05 0-8.4.25c-.45.05-1.5.05-2.4 1-.7.75-.95 2.4-.95=
+ 2.4S0 9.029 0 10.979v1.8c0 1.95.25 3.9.25 3.9s.25 1.65.95 2.4c.9.95 2.1.95=
+ 2.65 1.05 1.9.2 8.15.25 8.15.25s5.05 0 8.4-.25c.45-.05 1.5-.05 2.4-1 .7-.7=
+5.95-2.4.95-2.4s.25-1.95.25-3.9v-1.8c0-2-.25-3.95-.25-3.95zm-14.25 7.9v-6.7=
+5l6.5 3.4-6.5 3.35z"></path></svg> <span class=3D"visually-hidden">YouTube<=
+/span></a></li><li><a class=3D"site-footer__facebook" href=3D"https://www.f=
+acebook.com/cephstorage" rel=3D"noreferrer noopener" target=3D"_blank"><svg=
+ xmlns=3D"http://www.w3.org/2000/svg" width=3D"24" height=3D"24" viewBox=3D=
+"0 0 24 24" fill=3D"#d3dde7" aria-hidden=3D"true" focusable=3D"false"><path=
+ d=3D"M24 12.072C23.999 5.689 19 .423 12.626.09 6.251-.243.732 4.473.066 10=
+.822-.601 17.17 3.82 22.929 10.125 23.926v-8.385H7.078v-3.469h3.047V9.428c0=
+-3.007 1.792-4.669 4.532-4.669.9.013 1.798.091 2.687.235v2.953H15.83a1.735 =
+1.735 0 00-1.955 1.875v2.25h3.328l-.532 3.469h-2.797v8.385A12 12 0 0024 12.=
+072z"></path></svg> <span class=3D"visually-hidden">Facebook</span></a></li=
+></ul></nav></div></footer><img src=3D"https://t.co/i/adsct?bci=3D3&amp;eci=
+=3D2&amp;event_id=3D8293bdbf-2a73-4278-8e7f-6c60b8c55aed&amp;events=3D%5B%5=
+B%22pageview%22%2C%7B%7D%5D%5D&amp;integration=3Dadvertiser&amp;p_id=3DTwit=
+ter&amp;p_user_id=3D0&amp;pl_id=3D53b55077-24a3-47a2-b5d3-e2d7d9983bbf&amp;=
+tw_document_href=3Dhttps%3A%2F%2Fceph.com%2Fen%2Fnews%2Fblog%2F2015%2Fv0-94=
+-hammer-released%2F&amp;tw_iframe_status=3D0&amp;tw_order_quantity=3D0&amp;=
+tw_sale_amount=3D0&amp;txn_id=3Do6l7s&amp;type=3Djavascript&amp;version=3D2=
+.3.27" height=3D"1" width=3D"1" style=3D"display: none;"><img src=3D"https:=
+//analytics.twitter.com/i/adsct?bci=3D3&amp;eci=3D2&amp;event_id=3D8293bdbf=
+-2a73-4278-8e7f-6c60b8c55aed&amp;events=3D%5B%5B%22pageview%22%2C%7B%7D%5D%=
+5D&amp;integration=3Dadvertiser&amp;p_id=3DTwitter&amp;p_user_id=3D0&amp;pl=
+_id=3D53b55077-24a3-47a2-b5d3-e2d7d9983bbf&amp;tw_document_href=3Dhttps%3A%=
+2F%2Fceph.com%2Fen%2Fnews%2Fblog%2F2015%2Fv0-94-hammer-released%2F&amp;tw_i=
+frame_status=3D0&amp;tw_order_quantity=3D0&amp;tw_sale_amount=3D0&amp;txn_i=
+d=3Do6l7s&amp;type=3Djavascript&amp;version=3D2.3.27" height=3D"1" width=3D=
+"1" style=3D"display: none;"></body></html>
+------MultipartBoundary--teYjochQJ3GXHUZF1M7GMLISn5qJw0QxVC1EPP8X7K----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://ceph.com/css/main.css
+
+@charset "utf-8";
+
+*, ::after, ::before { box-sizing: border-box; }
+
+::after, ::before { text-decoration: inherit; vertical-align: inherit; }
+
+html { cursor: default; line-height: 1.5; tab-size: 4; -webkit-tap-highligh=
+t-color: transparent; text-size-adjust: 100%; word-break: break-word; }
+
+body { margin: 0px; }
+
+h1 { font-size: 2em; margin: 0.67em 0px; }
+
+dl dl, dl ol, dl ul, ol dl, ol ol, ol ul, ul dl, ul ol, ul ul { margin: 0px=
+; }
+
+hr { color: inherit; height: 0px; overflow: visible; }
+
+main { display: block; }
+
+nav ol, nav ul { list-style: none; padding: 0px; }
+
+nav li::before { content: "=E2=80=8B"; }
+
+pre { font-family: monospace, monospace; font-size: 1em; overflow: auto; }
+
+a { background-color: transparent; }
+
+abbr[title] { text-decoration: underline dotted; }
+
+b, strong { font-weight: bolder; }
+
+code { font-family: monospace, monospace; font-size: 1em; }
+
+small { font-size: 80%; }
+
+audio, iframe, img, svg, video { vertical-align: middle; }
+
+audio, video { display: inline-block; }
+
+audio:not([controls]) { display: none; height: 0px; }
+
+iframe, img { border-style: none; }
+
+svg:not([fill]) { fill: currentcolor; }
+
+svg:not(:root) { overflow: hidden; }
+
+table { border-collapse: collapse; border-color: inherit; text-indent: 0px;=
+ }
+
+button, input, select { margin: 0px; }
+
+button { overflow: visible; text-transform: none; }
+
+[type=3D"button"], [type=3D"reset"], [type=3D"submit"], button { appearance=
+: button; }
+
+input { overflow: visible; }
+
+legend { color: inherit; display: table; max-width: 100%; white-space: norm=
+al; }
+
+progress { display: inline-block; vertical-align: baseline; }
+
+select { text-transform: none; }
+
+textarea { margin: 0px; overflow: auto; resize: vertical; }
+
+[type=3D"checkbox"], [type=3D"radio"] { padding: 0px; }
+
+[type=3D"search"] { appearance: textfield; outline-offset: -2px; }
+
+details, dialog { display: block; }
+
+dialog { background-color: rgb(255, 255, 255); border: solid; color: rgb(0,=
+ 0, 0); height: fit-content; left: 0px; margin: auto; padding: 1em; positio=
+n: absolute; right: 0px; width: fit-content; }
+
+dialog:not([open]) { display: none; }
+
+summary { display: list-item; }
+
+template { display: none; }
+
+[tabindex], a, area, button, input, label, select, summary, textarea { }
+
+[hidden] { display: none; }
+
+[aria-disabled=3D"true"], [disabled] { cursor: not-allowed; }
+
+[aria-hidden=3D"false"][hidden] { display: initial; }
+
+[aria-hidden=3D"false"][hidden]:not(:focus) { clip: rect(0px, 0px, 0px, 0px=
+); position: absolute; }
+
+button, input, select, textarea { background-color: transparent; border: 1p=
+x solid windowframe; color: inherit; font: inherit; letter-spacing: inherit=
+; padding: 0.25em 0.375em; }
+
+select { appearance: none; background: 100% center / 1em no-repeat; border-=
+radius: 0px; padding-right: 1em; }
+
+select:not([multiple]):not([size]) { background-image: url("data:image/svg+=
+xml;charset=3Dutf-8,%3Csvg xmlns=3D'http://www.w3.org/2000/svg' width=3D'16=
+' height=3D'4'%3E%3Cpath d=3D'M4 0h6L7 4'/%3E%3C/svg%3E"); }
+
+[type=3D"color"], [type=3D"range"] { border-width: 0px; padding: 0px; }
+
+html { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, C=
+antarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "=
+Segoe UI Symbol", "Noto Color Emoji"; }
+
+code, pre { font-family: Menlo, Consolas, "Roboto Mono", "Ubuntu Monospace"=
+, "Noto Mono", "Oxygen Mono", "Liberation Mono", monospace, "Apple Color Em=
+oji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+:root { --animation-easing:cubic-bezier(0.215,0.61,0.355,1); --animation-du=
+ration-slow:500ms; --animation-duration:250ms; --animation-duration-fast:12=
+5ms; --color-black-h:235; --color-black-s:16%; --color-black-l:16%; --color=
+-black-hsl:var(--color-black-h),var(--color-black-s),var(--color-black-l); =
+--color-black:hsl(var(--color-black-hsl)); --color-white-h:0; --color-white=
+-s:0%; --color-white-l:100%; --color-white-hsl:var(--color-white-h),var(--c=
+olor-white-s),var(--color-white-l); --color-white:hsl(var(--color-white-hsl=
+)); --color-blue-h:214; --color-blue-s:82%; --color-blue-l:51%; --color-blu=
+e-hsl:var(--color-blue-h),var(--color-blue-s),var(--color-blue-l); --color-=
+blue:hsl(var(--color-blue-hsl)); --color-grey-h:210; --color-grey-300-s:40%=
+; --color-grey-300-l:96%; --color-grey-300-hsl:var(--color-grey-h),var(--co=
+lor-grey-300-s),var(--color-grey-300-l); --color-grey-300:hsl(var(--color-g=
+rey-300-hsl)); --color-grey-500-s:29%; --color-grey-500-l:87%; --color-grey=
+-500-hsl:var(--color-grey-h),var(--color-grey-500-s),var(--color-grey-500-l=
+); --color-grey-500:hsl(var(--color-grey-500-hsl)); --color-gunmetal-h:235;=
+ --color-gunmetal-s:16%; --color-gunmetal-l:16%; --color-gunmetal-hsl:var(-=
+-color-gunmetal-h),var(--color-gunmetal-s),var(--color-gunmetal-l); --color=
+-gunmetal:hsl(var(--color-gunmetal-hsl)); --color-navy-h:237; --color-navy-=
+s:74%; --color-navy-l:13%; --color-navy-hsl:var(--color-navy-h),var(--color=
+-navy-s),var(--color-navy-l); --color-navy:hsl(var(--color-navy-hsl)); --co=
+lor-red-h:360; --color-red-s:84%; --color-red-300-l:83%; --color-red-300-hs=
+l:var(--color-red-h),var(--color-red-s),var(--color-red-300-l); --color-red=
+-300:hsl(var(--color-red-300-hsl)); --color-red-400-l:67%; --color-red-400-=
+hsl:var(--color-red-h),var(--color-red-s),var(--color-red-400-l); --color-r=
+ed-400:hsl(var(--color-red-400-hsl)); --color-red-500-l:47%; --color-red-50=
+0-hsl:var(--color-red-h),var(--color-red-s),var(--color-red-500-l); --color=
+-red-500:hsl(var(--color-red-500-hsl)); --color-red-600-l:33%; --color-red-=
+600-hsl:var(--color-red-h),var(--color-red-s),var(--color-red-600-l); --col=
+or-red-600:hsl(var(--color-red-600-hsl)); --color-red-700-l:17%; --color-re=
+d-700-hsl:var(--color-red-h),var(--color-red-s),var(--color-red-700-l); --c=
+olor-red-700:hsl(var(--color-red-700-hsl)); --color-royal-h:237; --color-ro=
+yal-s:74%; --color-royal-l:25%; --color-royal-hsl:var(--color-royal-h),var(=
+--color-royal-s),var(--color-royal-l); --color-royal:hsl(var(--color-royal-=
+hsl)); --color-facebook-blue-h:220; --color-facebook-blue-s:46%; --color-fa=
+cebook-blue-l:48%; --color-facebook-blue-hsl:var(--color-facebook-blue-h),v=
+ar(--color-facebook-blue-s),var(--color-facebook-blue-l); --color-facebook-=
+blue:hsl(var(--color-facebook-blue-hsl)); --color-twitter-blue-h:203; --col=
+or-twitter-blue-s:89%; --color-twitter-blue-l:53%; --color-twitter-blue-hsl=
+:var(--color-twitter-blue-h),var(--color-twitter-blue-s),var(--color-twitte=
+r-blue-l); --color-twitter-blue:hsl(var(--color-twitter-blue-hsl)); --color=
+-youtube-red-h:360; --color-youtube-red-s:100%; --color-youtube-red-l:50%; =
+--color-youtube-red-hsl:var(--color-youtube-red-h),var(--color-youtube-red-=
+s),var(--color-youtube-red-l); --color-youtube-red:hsl(var(--color-youtube-=
+red-hsl)); --color-ceph-grey-h:208; --color-ceph-grey-s:11%; --color-ceph-g=
+rey-l:26%; --color-ceph-grey-hsl:var(--color-ceph-grey-h),var(--color-ceph-=
+grey-s),var(--color-ceph-grey-l); --color-ceph-grey:hsl(var(--color-ceph-gr=
+ey-hsl)); --color-ceph-grey-rev-h:150; --color-ceph-grey-rev-s:4%; --color-=
+ceph-grey-rev-l:91%; --color-ceph-grey-rev-hsl:var(--color-ceph-grey-rev-h)=
+,var(--color-ceph-grey-rev-s),var(--color-ceph-grey-rev-l); --color-ceph-gr=
+ey-rev:hsl(var(--color-ceph-grey-rev-hsl)); --shadow-black:0 0.0625rem 0.12=
+5rem hsla(var(--color-black-hsl),0.05),0 0.125rem 0.25rem hsla(var(--color-=
+black-hsl),0.05),0 0.25rem 0.5rem hsla(var(--color-black-hsl),0.05),0 0.5re=
+m 1rem hsla(var(--color-black-hsl),0.05); --size-none:none; --size-auto:aut=
+o; --size-0:0; --size-px:1px; --size-0_5:2px; --size-1:0.25rem; --size-1_5:=
+0.375rem; --size-2:0.5rem; --size-3:0.75rem; --size-4:1rem; --size-5:1.25re=
+m; --size-6:1.5rem; --size-7:1.75rem; --size-8:2rem; --size-9:2.25rem; --si=
+ze-10:2.5rem; --size-11:2.75rem; --size-12:3rem; --size-14:3.5rem; --size-1=
+6:4rem; --size-18:4.5rem; --size-20:5rem; --size-24:6rem; --size-28:7rem; -=
+-size-32:8rem; --size-36:9rem; --size-40:10rem; --size-48:12rem; --size-56:=
+14rem; --size-64:16rem; --size-72:18rem; --size-80:20rem; --size-96:24rem; =
+--size-112:28rem; --size-128:32rem; --size-144:36rem; --size-160:40rem; --s=
+ize-192:48rem; --size-224:56rem; --size-256:64rem; --size-288:72rem; --size=
+-360:90rem; --size-1-12:8.333%; --size-1-6:16.666%; --size-1-5:20%; --size-=
+1-4:25%; --size-1-3:33.3333%; --size-5-12:41.666%; --size-1-2:50%; --size-7=
+-12:58.333%; --size-2-3:66.6667%; --size-3-4:75%; --size-5-6:83.3333%; --si=
+ze-11-12:91.6667%; --size-full:100%; --size-h-screen:100vh; --size-w-screen=
+:100vw; --size-header-height:5.25rem; --size-scroll-offset:calc(var(--size-=
+header-height) + var(--size-4)); --font-family-fallback:"HelveticaNeue","He=
+lvetica Neue",Helvetica,Arial,sans-serif; --font-family-brand:"Inter",var(-=
+-font-family-fallback); --font-leading-none:1; --font-leading-tighter:1.25;=
+ --font-leading-tight:1.375; --font-leading-normal:1.5; --font-size-xs:0.75=
+rem; --font-size-sm:0.875rem; --font-size-md:1rem; --font-size-lg:1.125rem;=
+ --font-size-xl:1.25rem; --font-size-2xl:1.5rem; --font-size-3xl:1.75rem; -=
+-font-size-4xl:2rem; --font-size-5xl:2.25rem; --font-size-6xl:2.625rem; --f=
+ont-size-7xl:3rem; --font-size-8xl:3.375rem; --font-size-9xl:3.75rem; --fon=
+t-size-10xl:4.25rem; --font-size-11xl:4.75rem; --font-size-12xl:5.25rem; --=
+font-size-13xl:5.75rem; --font-tracking-tighter:-0.05em; --font-tracking-ti=
+ght:-0.025em; --font-tracking-normal:0; --font-tracking-wide:0.025em; --fon=
+t-tracking-wider:0.05em; --font-tracking-widest:0.1em; --font-weight-normal=
+:400; --font-weight-semibold:600; }
+
+.richtext blockquote { border-left: var(--size-0_5) solid var(--color-grey-=
+500); font-size: var(--font-size-md); font-weight: var(--font-weight-semibo=
+ld); line-height: var(--size-6); margin: var(--size-6) 0; padding: var(--si=
+ze-4) var(--size-6); }
+
+.richtext code { border: var(--size-px) solid var(--color-grey-500); border=
+-radius: var(--size-1); font-size: inherit; line-height: inherit; padding: =
+var(--size-0_5); }
+
+.richtext code, .richtext pre { background-color: var(--color-grey-300); }
+
+.richtext pre { font-size: var(--font-size-md); line-height: var(--size-6);=
+ margin: var(--size-6) 0; overflow-x: auto; padding: var(--size-6); }
+
+.richtext pre code { background: none; border: 0px; padding: 0px; }
+
+html { line-height: var(--font-leading-none); -webkit-font-smoothing: antia=
+liased; scroll-behavior: smooth; text-rendering: optimizelegibility; }
+
+html.no-scroll { overflow: hidden; }
+
+body { background-color: var(--color-white); color: var(--color-gunmetal); =
+display: grid; font-family: var(--font-family-brand); grid-template-columns=
+: minmax(0px, 1fr); grid-template-rows: auto 1fr auto; min-height: var(--si=
+ze-h-screen); line-height: var(--font-leading-none); overflow-x: hidden; }
+
+a, button, input, select, textarea { font-family: inherit; }
+
+nav li::before { position: absolute; }
+
+img { max-width: 100%; }
+
+.js-focus-visible :focus:not(.focus-visible) { outline: none; }
+
+.js-focus-visible .focus-visible { outline: var(--size-0_5) solid var(--col=
+or-blue); outline-offset: var(--size-1); }
+
+.js-focus-visible .button.focus-visible, .js-focus-visible .input.focus-vis=
+ible, .js-focus-visible .link-cover--shadow.focus-visible::before, .js-focu=
+s-visible .select.focus-visible { outline-offset: var(--size-0); }
+
+.js-focus-visible .matrix .link-cover.focus-visible::before, .js-focus-visi=
+ble .nav-secondary .focus-visible, .js-focus-visible .sub-menu .focus-visib=
+le { outline-offset: calc(-1*var(--size-0_5)); }
+
+.js-focus-visible .link-cover.focus-visible { outline: none; }
+
+.js-focus-visible .link-cover.focus-visible::before { outline: var(--size-0=
+_5) solid var(--color-blue); outline-offset: var(--size-1); }
+
+.js-focus-visible .link-anchor.focus-visible { opacity: 1; }
+
+.input[type=3D"search"] { border: var(--size-px) solid var(--color-gunmetal=
+); border-radius: var(--size-1); font-size: var(--font-size-md); line-heigh=
+t: var(--size-6); padding: var(--size-2) var(--size-24) var(--size-2) var(-=
+-size-3); transition: background-color var(--animation-duration) var(--anim=
+ation-easing); }
+
+.input[type=3D"search"]:hover { background: var(--color-grey-300); }
+
+.input[type=3D"search"]::-webkit-search-cancel-button { display: none; }
+
+.input[type=3D"reset"] { border: 0px; cursor: pointer; line-height: var(--s=
+ize-6); padding: var(--size-2); position: absolute; right: var(--size-14); =
+top: 0px; }
+
+.input[type=3D"reset"] svg g { transition: stroke var(--animation-duration)=
+ var(--animation-easing); }
+
+.input[type=3D"reset"]:hover svg g { stroke: var(--color-red-500); }
+
+.input[type=3D"search"]:not(:valid) ~ .input[type=3D"reset"] { display: non=
+e; }
+
+.input[type=3D"submit"] { border: 0px; cursor: pointer; line-height: var(--=
+size-6); padding: var(--size-2) var(--size-4); position: absolute; right: 0=
+px; top: 0px; }
+
+.input[type=3D"submit"] svg { transition: fill var(--animation-duration) va=
+r(--animation-easing); }
+
+.input[type=3D"submit"]:hover svg { fill: var(--color-red-500); }
+
+.input[type=3D"submit"]::before { background: var(--color-grey-500); conten=
+t: ""; height: 60%; left: 0px; position: absolute; top: 50%; transform: tra=
+nslateY(-50%); width: var(--size-px); }
+
+.select:not([multiple]):not([size]) { background: transparent url("data:ima=
+ge/svg+xml;charset=3DUS-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/=
+svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%202=
+4%22%20aria-hidden%3D%22true%22%20focusable%3D%22false%22%3E%0A%20%20%3Ctit=
+le%3EChevron%20down%3C/title%3E%0A%20%20%3Cpath%20fill%3D%22none%22%20fill-=
+rule%3D%22evenodd%22%20stroke%3D%22%230A0C38%22%20stroke-width%3D%222%22%20=
+d%3D%22M7%2010l5%205%205-5%22/%3E%0A%3C/svg%3E") no-repeat calc(100% - var(=
+--size-2)) 50%; border: var(--size-px) solid var(--color-gunmetal); border-=
+radius: var(--size-1); cursor: pointer; font-size: var(--font-size-md); lin=
+e-height: var(--size-6); padding: var(--size-2) var(--size-10) var(--size-2=
+) var(--size-3); transition: background-color var(--animation-duration) var=
+(--animation-easing); }
+
+.select:not([multiple]):not([size]):hover { background-color: var(--color-g=
+rey-300); }
+
+.richtext img { --richtext-img-gutters-y:var(--size-6); display: block; mar=
+gin: var(--richtext-img-gutters-y) auto; }
+
+@media (min-width: 64em) {
+  .richtext img { --richtext-img-gutters-y:var(--size-10); }
+}
+
+@media (min-width: 90em) {
+  .richtext img { --richtext-img-gutters-y:var(--size-14); }
+}
+
+.richtext img:not([height]) { height: auto; }
+
+.richtext img:not([width]) { width: auto; }
+
+.table { font-size: var(--font-size-md); line-height: var(--size-6); width:=
+ var(--size-full); }
+
+.table td { border-bottom: var(--size-px) solid var(--color-grey-500); padd=
+ing: var(--size-4) 0; vertical-align: top; }
+
+.richtext table { font-size: var(--font-size-md); line-height: var(--size-6=
+); margin: var(--size-6) 0; width: var(--size-full); }
+
+.richtext table th { border-bottom: var(--size-0_5) solid var(--color-grey-=
+500); font-weight: var(--font-weight-semibold); padding: 0 0 var(--size-4);=
+ text-align: left; vertical-align: top; }
+
+.richtext table td { border-bottom: var(--size-px) solid var(--color-grey-5=
+00); padding: var(--size-4) 0; vertical-align: top; }
+
+.h1, .h2, .h3, .h4, .h5, .h6, .richtext h1, .richtext h2, .richtext h3, .ri=
+chtext h4, .richtext h5, .richtext h6 { font-weight: var(--font-weight-semi=
+bold); }
+
+.h1[id], .h2[id], .h3[id], .h4[id], .h5[id], .h6[id], .richtext h1[id], .ri=
+chtext h2[id], .richtext h3[id], .richtext h4[id], .richtext h5[id], .richt=
+ext h6[id] { scroll-margin-top: var(--size-scroll-offset); }
+
+.h1, .richtext h1 { font-size: var(--font-size-4xl); line-height: var(--siz=
+e-10); margin: 0 0 var(--size-4); }
+
+@media (min-width: 64em) {
+  .h1, .richtext h1 { font-size: var(--font-size-6xl); line-height: var(--s=
+ize-14); margin-bottom: var(--size-6); }
+}
+
+@media (min-width: 90em) {
+  .h1, .richtext h1 { font-size: var(--font-size-8xl); line-height: var(--s=
+ize-16); margin-bottom: var(--size-8); }
+}
+
+.h2, .richtext h2 { font-size: var(--font-size-2xl); line-height: var(--siz=
+e-8); margin: 0 0 var(--size-4); }
+
+@media (min-width: 64em) {
+  .h2, .richtext h2 { font-size: var(--font-size-4xl); line-height: var(--s=
+ize-10); margin-bottom: var(--size-5); }
+}
+
+@media (min-width: 90em) {
+  .h2, .richtext h2 { font-size: var(--font-size-5xl); line-height: var(--s=
+ize-11); margin-bottom: var(--size-6); }
+}
+
+.richtext ol + h2, .richtext p + h2, .richtext ul + h2 { margin-top: var(--=
+size-6); }
+
+@media (min-width: 64em) {
+  .richtext ol + h2, .richtext p + h2, .richtext ul + h2 { margin-top: var(=
+--size-8); }
+}
+
+@media (min-width: 90em) {
+  .richtext ol + h2, .richtext p + h2, .richtext ul + h2 { margin-top: var(=
+--size-10); }
+}
+
+.h3, .richtext h3 { font-size: var(--font-size-xl); line-height: var(--size=
+-6); margin: 0 0 var(--size-4); }
+
+@media (min-width: 90em) {
+  .h3, .richtext h3 { font-size: var(--font-size-2xl); line-height: var(--s=
+ize-8); }
+}
+
+.h4, .richtext h4 { font-size: var(--font-size-lg); line-height: var(--size=
+-5); margin: 0 0 var(--size-4); }
+
+@media (min-width: 64em) {
+  .h4, .richtext h4 { font-size: var(--font-size-xl); line-height: var(--si=
+ze-6); }
+}
+
+.h5, .richtext h5 { font-size: var(--font-size-md); line-height: var(--size=
+-5); margin: 0 0 var(--size-4); }
+
+@media (min-width: 90em) {
+  .h5, .richtext h5 { font-size: var(--font-size-lg); line-height: var(--si=
+ze-6); }
+}
+
+.h6, .richtext h6 { font-size: var(--font-size-md); line-height: var(--size=
+-5); margin: 0 0 var(--size-4); }
+
+.richtext ol + h3, .richtext ol + h4, .richtext ol + h5, .richtext ol + h6,=
+ .richtext p + h3, .richtext p + h4, .richtext p + h5, .richtext p + h6, .r=
+ichtext ul + h3, .richtext ul + h4, .richtext ul + h5, .richtext ul + h6 { =
+margin-top: var(--size-6); }
+
+.p, .richtext p { font-size: var(--font-size-md); line-height: var(--size-6=
+); margin: 0 0 var(--size-4); }
+
+.richtext li p, .richtext p:last-child { margin-bottom: 0px; }
+
+.p-sm { font-size: var(--font-size-sm); line-height: var(--size-5); margin:=
+ 0 0 var(--size-4); }
+
+.a, .richtext a { color: var(--color-red-500); font-size: var(--font-size-m=
+d); font-weight: var(--font-weight-semibold); line-height: var(--size-6); t=
+ext-decoration: none; transition: color var(--animation-duration) var(--ani=
+mation-easing); }
+
+.a:hover, .richtext a:hover { color: var(--color-red-500); text-decoration:=
+ underline; }
+
+.a:active, .richtext a:active { color: var(--color-red-600); text-decoratio=
+n: underline; }
+
+.richtext .link-anchor { display: none; font: inherit; opacity: 0; transiti=
+on: opacity var(--animation-duration) var(--animation-easing); }
+
+.richtext :focus > .link-anchor, .richtext :hover > .link-anchor { opacity:=
+ 1; }
+
+.blog-post .richtext .link-anchor { display: inline-block; }
+
+.ol, .richtext ol, .richtext ul, .ul { font-size: var(--font-size-md); line=
+-height: var(--size-6); margin: 0 0 var(--size-4); }
+
+.ol li, .richtext ol li, .richtext ul li, .ul li { margin: 0 0 var(--size-1=
+); }
+
+.ol li::marker, .richtext ol li::marker, .richtext ul li::marker, .ul li::m=
+arker { color: var(--color-navy); }
+
+.ol li::marker, .richtext ol li::marker { font-weight: var(--font-weight-se=
+mibold); }
+
+.ol li > .ol, .ol li > .ul, .richtext ol li > ol, .richtext ol li > ul, .ri=
+chtext ul li > ol, .richtext ul li > ul, .ul li > .ol, .ul li > .ul { margi=
+n: var(--size-1) 0 0; }
+
+.ol li > .ol, .richtext ol li > ol { list-style-type: lower-alpha; }
+
+.ol li > .ol li > .ol, .richtext ol li > ol li > ol { list-style-type: lowe=
+r-roman; }
+
+.excerpt, .standout { font-size: var(--font-size-lg); line-height: var(--si=
+ze-6); margin: 0 0 var(--size-6); }
+
+@media (min-width: 90em) {
+  .standout { font-size: var(--font-size-xl); line-height: var(--size-7); }
+}
+
+.intro-para > p:first-child { font-size: var(--font-size-lg); line-height: =
+var(--size-6); margin: 0 0 var(--size-6); }
+
+@media (min-width: 64em) {
+  .intro-para > p:first-child { margin: 0 0 var(--size-8); }
+}
+
+.aspect-ratio { height: 0px; position: relative; }
+
+.aspect-ratio--16x9 { padding-top: 56.25%; }
+
+.aspect-ratio--1x1 { padding-top: 100%; }
+
+.richtext .aspect-ratio { --richtext-img-gutters-y:var(--size-6); margin: v=
+ar(--richtext-img-gutters-y) 0; }
+
+@media (min-width: 64em) {
+  .richtext .aspect-ratio { --richtext-img-gutters-y:var(--size-10); }
+}
+
+@media (min-width: 90em) {
+  .richtext .aspect-ratio { --richtext-img-gutters-y:var(--size-14); }
+}
+
+.aspect-ratio iframe { display: block; height: 100%; left: 0px; position: a=
+bsolute; top: 0px; width: 100%; }
+
+.aspect-ratio--cover img { object-fit: cover; }
+
+.flex { display: flex; }
+
+.flex--align-center { -webkit-box-align: center; align-items: center; }
+
+.flex--justify-center { -webkit-box-pack: center; justify-content: center; =
+}
+
+.flex--justify-between { -webkit-box-pack: justify; justify-content: space-=
+between; }
+
+.flex--gap-4 { --flex-gap:var(--size-4); margin-left: calc(-1*var(--flex-ga=
+p)); margin-top: calc(-1*var(--flex-gap)); }
+
+.flex--gap-4 > * { margin-left: var(--flex-gap); margin-top: var(--flex-gap=
+); }
+
+.flex--gap-6 { --flex-gap:var(--size-6); margin-left: calc(-1*var(--flex-ga=
+p)); margin-top: calc(-1*var(--flex-gap)); }
+
+.flex--gap-6 > * { margin-left: var(--flex-gap); margin-top: var(--flex-gap=
+); }
+
+.flex--gap-8 { --flex-gap:var(--size-8); margin-left: calc(-1*var(--flex-ga=
+p)); margin-top: calc(-1*var(--flex-gap)); }
+
+.flex--gap-8 > * { margin-left: var(--flex-gap); margin-top: var(--flex-gap=
+); }
+
+.flex--wrap { flex-wrap: wrap; }
+
+.flex--pipe > * { position: relative; }
+
+.flex--pipe > :not(:last-child)::before { background: var(--color-grey-500)=
+; content: ""; height: var(--size-full); position: absolute; right: calc(-1=
+*var(--flex-gap)/2); top: 0px; width: var(--size-px); }
+
+@media (min-width: 64em) {
+  .lg\:flex--gap-6 { --flex-gap:var(--size-6); margin-left: calc(-1*var(--f=
+lex-gap)); margin-top: calc(-1*var(--flex-gap)); }
+  .lg\:flex--gap-6 > * { margin-left: var(--flex-gap); margin-top: var(--fl=
+ex-gap); }
+}
+
+.grid { --grid-gap:var(--size-4); display: grid; gap: var(--grid-gap); grid=
+-template-columns: minmax(0px, 1fr); }
+
+@media (min-width: 23.375em) {
+  .grid { --grid-gap:var(--size-7); }
+}
+
+@media (min-width: 90em) {
+  .grid { --grid-gap:var(--size-14); }
+}
+
+.grid--align-center { -webkit-box-align: center; align-items: center; }
+
+.grid--gap-0 { --grid-gap:var(--size-0); }
+
+.grid--gap-7 { --grid-gap:var(--size-7); }
+
+.grid--gap-8 { --grid-gap:var(--size-8); }
+
+.grid--gap-14 { --grid-gap:var(--size-14); }
+
+.grid--cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+
+@media (min-width: 23.375em) {
+  .sm\:grid--cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
+}
+
+@media (max-width: 43.749em) {
+  .to-md\:grid--gap-14 { --grid-gap:var(--size-14); }
+}
+
+@media (min-width: 43.75em) {
+  .md\:grid--cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+  .md\:grid--cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
+  .md\:grid--cols-56-auto { grid-template-columns: var(--size-56) minmax(0,=
+1fr); }
+}
+
+@media (min-width: 43.75em) and (max-width: 63.999em) {
+  .md-to-lg\:grid--gap-7 { --grid-gap:var(--size-7); }
+  .md-to-lg\:grid--cols-2 { grid-template-columns: repeat(2, minmax(0px, 1f=
+r)); }
+}
+
+@media (max-width: 63.999em) {
+  .to-lg\:grid--gap-0 { --grid-gap:var(--size-0); }
+}
+
+@media (min-width: 64em) {
+  .lg\:grid--gap-0 { --grid-gap:var(--size-0); }
+  .lg\:grid--gap-16 { --grid-gap:var(--size-16); }
+  .lg\:grid--gap-28 { --grid-gap:var(--size-28); }
+  .lg\:grid--cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+  .lg\:grid--cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
+  .lg\:grid--cols-4 { grid-template-columns: repeat(4, minmax(0px, 1fr)); }
+  .lg\:grid--cols-6 { grid-template-columns: repeat(6, minmax(0px, 1fr)); }
+  .lg\:grid--cols-72-auto { grid-template-columns: var(--size-72) minmax(0,=
+1fr); }
+  .lg\:grid--cols-auto-72 { grid-template-columns: minmax(0,1fr) var(--size=
+-72); }
+  .lg\:grid--cols-auto-160 { grid-template-columns: minmax(0,1fr) var(--siz=
+e-160); }
+}
+
+@media (min-width: 90em) {
+  .xl\:grid--gap-20 { --grid-gap:var(--size-20); }
+  .xl\:grid--cols-4 { grid-template-columns: repeat(4, minmax(0px, 1fr)); }
+}
+
+.section { --section-gutters-y:var(--size-10); padding-bottom: var(--sectio=
+n-gutters-y); padding-top: var(--section-gutters-y); }
+
+@media (min-width: 23.375em) {
+  .section { --section-gutters-y:var(--size-14); }
+}
+
+@media (min-width: 43.75em) {
+  .section { --section-gutters-y:var(--size-16); }
+}
+
+@media (min-width: 64em) {
+  .section { --section-gutters-y:var(--size-20); }
+}
+
+@media (min-width: 90em) {
+  .section { --section-gutters-y:var(--size-32); }
+}
+
+.section--full { left: 50%; margin-left: -50vw; margin-right: -50vw; positi=
+on: relative; right: 50%; width: var(--size-w-screen); z-index: 0; }
+
+.wrapper { --wrapper-gutters:var(--size-3); margin-left: auto; margin-right=
+: auto; max-width: var(--size-360); padding-left: var(--wrapper-gutters); p=
+adding-right: var(--wrapper-gutters); width: var(--size-full); }
+
+@media (min-width: 23.375em) {
+  .wrapper { --wrapper-gutters:var(--size-5); }
+}
+
+@media (min-width: 43.75em) {
+  .wrapper { --wrapper-gutters:var(--size-7); }
+}
+
+@media (min-width: 64em) {
+  .wrapper { --wrapper-gutters:var(--size-9); }
+}
+
+.agenda { font-size: var(--font-size-sm); line-height: var(--size-5); width=
+: var(--size-full); }
+
+.agenda__intermission { color: hsla(var(--color-gunmetal-hsl),0.4); }
+
+.agenda td { border-bottom: var(--size-px) solid var(--color-grey-500); pad=
+ding: var(--size-4) 0; }
+
+.agenda td:first-child { width: var(--size-20); }
+
+.button, .richtext .button { background: var(--color-red-500); border-radiu=
+s: var(--size-1); color: var(--color-white); display: inline-block; font-si=
+ze: var(--font-size-md); font-weight: var(--font-weight-semibold); line-hei=
+ght: var(--size-6); padding: var(--size-4) var(--size-8); text-align: cente=
+r; text-decoration: none; transition: background-color var(--animation-dura=
+tion) var(--animation-easing); }
+
+.button--pill, .richtext .button--pill { padding: var(--size-2) var(--size-=
+4); }
+
+.button:not([disabled]):hover { background: var(--color-red-600); }
+
+.button:not([disabled]):active { background: var(--color-red-700); outline:=
+ none; }
+
+.richtext .button:not([disabled]):active, .richtext .button:not([disabled])=
+:hover { color: var(--color-white); text-decoration: none; }
+
+.button[aria-disabled], .button[disabled] { cursor: not-allowed; opacity: 0=
+.25; pointer-events: none; }
+
+.details, .richtext details { font-size: var(--font-size-md); line-height: =
+var(--size-6); margin: 0 0 var(--size-4); padding-left: var(--size-6); }
+
+.details > summary, .richtext details > summary { cursor: pointer; font-wei=
+ght: var(--font-weight-semibold); list-style: none; margin: 0 0 var(--size-=
+4) calc(-1*var(--size-6)); padding-left: var(--size-6); position: relative;=
+ transition: color var(--animation-duration) var(--animation-easing); }
+
+.details > summary:hover, .richtext details > summary:hover { color: var(--=
+color-red-500); text-decoration: underline; }
+
+.details > summary:hover::before, .richtext details > summary:hover::before=
+ { background-image: url("data:image/svg+xml;charset=3Dutf-8,%3Csvg xmlns=
+=3D'http://www.w3.org/2000/svg' width=3D'24' height=3D'24' aria-hidden=3D't=
+rue'%3E%3Cpath fill=3D'none' stroke=3D'%23eb1414' stroke-width=3D'2' d=3D'M=
+7 10l5 5 5-5'/%3E%3C/svg%3E"); }
+
+.details > summary:active, .richtext details > summary:active { color: var(=
+--color-red-600); text-decoration: underline; }
+
+.details > summary:active::before, .richtext details > summary:active::befo=
+re { background-image: url("data:image/svg+xml;charset=3Dutf-8,%3Csvg xmlns=
+=3D'http://www.w3.org/2000/svg' width=3D'24' height=3D'24' aria-hidden=3D't=
+rue'%3E%3Cpath fill=3D'none' stroke=3D'%239b0d0d' stroke-width=3D'2' d=3D'M=
+7 10l5 5 5-5'/%3E%3C/svg%3E"); }
+
+.details > summary::-webkit-details-marker, .richtext details > summary::-w=
+ebkit-details-marker { display: none; }
+
+.details > summary::before, .richtext details > summary::before { backgroun=
+d: url("data:image/svg+xml;charset=3Dutf-8,%3Csvg xmlns=3D'http://www.w3.or=
+g/2000/svg' width=3D'24' height=3D'24' aria-hidden=3D'true'%3E%3Cpath fill=
+=3D'none' stroke=3D'%230A0C38' stroke-width=3D'2' d=3D'M7 10l5 5 5-5'/%3E%3=
+C/svg%3E") 50% center / contain no-repeat; content: ""; height: var(--size-=
+6); left: calc(-1*var(--size-1)); position: absolute; top: 0px; width: var(=
+--size-6); }
+
+.details[open] > summary::before, .richtext details[open] > summary::before=
+ { transform: rotate(180deg); }
+
+.hr, .richtext hr { background: var(--color-grey-500); border: 0px; height:=
+ var(--size-px); margin: var(--size-8) 0; }
+
+.link-cover { text-decoration: none; transition: color var(--animation-dura=
+tion) var(--animation-easing); }
+
+.link-cover:hover { color: var(--color-red-500); text-decoration: underline=
+; }
+
+.link-cover:active { color: var(--color-red-600); text-decoration: underlin=
+e; }
+
+.link-cover::before { inset: 0px; content: ""; position: absolute; z-index:=
+ 1; }
+
+.link-cover--shadow:hover::before { box-shadow: var(--shadow-black); }
+
+.link-cover--shadow::before { border-radius: var(--size-2); transition: box=
+-shadow var(--animation-duration) var(--animation-easing),-webkit-box-shado=
+w var(--animation-duration) var(--animation-easing); }
+
+.language-selector { --language-selector-gap-x:var(--size-6); --language-se=
+lector-gutters-x:var(--size-3); font-size: var(--font-size-md); line-height=
+: var(--size-6); }
+
+@media (min-width: 23.375em) {
+  .language-selector { --language-selector-gutters-x:var(--size-5); }
+}
+
+@media (min-width: 43.75em) {
+  .language-selector { --language-selector-gutters-x:var(--size-7); }
+}
+
+@media (min-width: 90em) {
+  .language-selector { --language-selector-gap-x:var(--size-8); }
+}
+
+.language-selector__toggle { color: var(--color-gunmetal); cursor: pointer;=
+ display: inline-block; font-weight: var(--font-weight-semibold); list-styl=
+e: none; transition: color var(--animation-duration) var(--animation-easing=
+); }
+
+.language-selector__toggle::-webkit-details-marker { display: none; }
+
+.language-selector__toggle:hover { text-decoration: underline; }
+
+.language-selector[open] .language-selector__toggle { color: var(--color-re=
+d-500); }
+
+.language-selector__icon-globe { height: var(--size-4); margin-right: var(-=
+-size-1); position: relative; top: calc(-1*var(--size-0_5)); width: var(--s=
+ize-4); }
+
+.language-selector__icon-globe path { transition: fill var(--animation-dura=
+tion) var(--animation-easing); }
+
+.language-selector[open] .language-selector__icon-globe path { fill: var(--=
+color-red-500); }
+
+.language-selector__icon-chevron { height: var(--size-6); margin-left: var(=
+--size-2); position: relative; top: calc(-1*var(--size-px)); width: var(--s=
+ize-6); }
+
+.language-selector__icon-chevron path { transition: stroke var(--animation-=
+duration) var(--animation-easing); }
+
+.language-selector[open] .language-selector__icon-chevron { transform: rota=
+te(180deg); }
+
+.language-selector[open] .language-selector__icon-chevron path { stroke: va=
+r(--color-red-500); }
+
+.language-selector__content, .language-selector__content > li:last-child { =
+margin-bottom: 0px; }
+
+.language-selector__content > li { margin-bottom: var(--size-4); }
+
+.language-selector__content a { color: var(--color-gunmetal); display: inli=
+ne-block; text-decoration: none; transition: color var(--animation-duration=
+) var(--animation-easing); }
+
+.language-selector__content a:hover { color: var(--color-red-500); text-dec=
+oration: underline; }
+
+.language-selector__content a:active { color: var(--color-red-600); text-de=
+coration: underline; }
+
+.language-selector__content [aria-current] { color: var(--color-red-500); }
+
+@media (max-width: 63.999em) {
+  .language-selector { border-top: var(--size-px) solid var(--color-grey-50=
+0); padding: var(--size-4) var(--language-selector-gutters-x); transition: =
+background-color var(--animation-duration-fast) var(--animation-easing); }
+  .language-selector[open] { background: var(--color-grey-300); }
+  .language-selector__content { margin-top: var(--size-4); }
+}
+
+@media (min-width: 64em) {
+  .language-selector { margin-left: var(--language-selector-gap-x); positio=
+n: relative; }
+  .home .language-selector__toggle { color: var(--color-grey-500); }
+  .home .site-header--stuck .language-selector__toggle { color: var(--color=
+-gunmetal); }
+  .home .language-selector[open] .language-selector__toggle { color: var(--=
+color-red-500); }
+  .home .language-selector__icon-globe path { fill: var(--color-grey-500); =
+}
+  .home .site-header--stuck .language-selector__icon-globe path { fill: var=
+(--color-gunmetal); }
+  .home .language-selector[open] .language-selector__icon-globe path { fill=
+: var(--color-red-500); }
+  .home .language-selector__icon-chevron path { stroke: var(--color-grey-50=
+0); }
+  .home .site-header--stuck .language-selector__icon-chevron path { stroke:=
+ var(--color-gunmetal); }
+  .home .language-selector[open] .language-selector__icon-chevron path { st=
+roke: var(--color-red-500); }
+  .language-selector__content { background: var(--color-grey-300); border: =
+var(--size-px) solid var(--color-grey-500); border-radius: var(--size-1); b=
+ox-shadow: var(--shadow-black); margin-top: 0px; min-width: var(--size-48);=
+ padding: var(--size-4); position: absolute; right: 0px; top: var(--size-10=
+); }
+}
+
+.nav-primary { --nav-primary-gutters-x:var(--size-3); font-size: var(--font=
+-size-md); line-height: var(--size-6); }
+
+@media (min-width: 23.375em) {
+  .nav-primary { --nav-primary-gutters-x:var(--size-5); }
+}
+
+@media (min-width: 43.75em) {
+  .nav-primary { --nav-primary-gutters-x:var(--size-7); }
+}
+
+@media (min-width: 64em) {
+  .nav-primary { --nav-primary-gap-x:var(--size-6); }
+}
+
+@media (min-width: 90em) {
+  .nav-primary { --nav-primary-gap-x:var(--size-8); }
+}
+
+.nav-primary a { color: var(--color-gunmetal); display: inline-block; text-=
+decoration: none; transition: color var(--animation-duration) var(--animati=
+on-easing); }
+
+.nav-primary a:hover { color: var(--color-red-500); text-decoration: underl=
+ine; }
+
+.nav-primary a:active { color: var(--color-red-600); text-decoration: under=
+line; }
+
+.nav-primary [aria-current=3D"page"] { color: var(--color-red-500); }
+
+@media (max-width: 63.999em) {
+  .nav-primary { margin: 0 0 var(--size-4); padding: 0 var(--nav-primary-gu=
+tters-x); }
+  .nav-primary > li { margin-bottom: var(--size-4); }
+}
+
+@media (min-width: 64em) {
+  .nav-primary { display: flex; flex-wrap: nowrap; margin-top: 0px; margin-=
+right: 0px; margin-bottom: 0px; margin-left: calc(-1*var(--nav-primary-gap-=
+x)); }
+  .nav-primary > li { margin-left: var(--nav-primary-gap-x); }
+  .home .nav-primary a { color: var(--color-grey-500); }
+  .home .nav-primary a:active, .home .nav-primary a:hover { color: var(--co=
+lor-white); }
+  .home .site-header--stuck .nav-primary a { color: var(--color-gunmetal); =
+}
+  .home .site-header--stuck .nav-primary a:hover { color: var(--color-red-5=
+00); }
+  .home .site-header--stuck .nav-primary a:active { color: var(--color-red-=
+600); }
+}
+
+.nav-secondary { --nav-secondary-sub-gap-x:var(--size-4); --nav-secondary-l=
+ink-color:var(--color-gunmetal); --nav-secondary-link-hover-color:var(--col=
+or-red-500); --nav-secondary-link-active-color:var(--color-red-600); font-s=
+ize: var(--font-size-sm); line-height: var(--size-5); margin: var(--size-6)=
+ 0 0; }
+
+@media (min-width: 90em) {
+  .nav-secondary { --nav-secondary-sub-gap-x:var(--size-6); }
+}
+
+.nav-secondary a { color: var(--nav-secondary-link-color); display: inline-=
+block; text-decoration: none; transition: color var(--animation-easing) var=
+(--animation-duration); }
+
+.nav-secondary a:hover { color: var(--nav-secondary-link-hover-color); text=
+-decoration: underline; }
+
+.nav-secondary a:active { color: var(--nav-secondary-link-active-color); te=
+xt-decoration: underline; }
+
+.nav-secondary [aria-current=3D"page"] { color: var(--nav-secondary-link-ho=
+ver-color); }
+
+.nav-secondary__top { font-weight: var(--font-weight-semibold); }
+
+.nav-secondary__sub { margin: var(--size-1) 0 0; }
+
+.nav-secondary__sub > li { margin-bottom: var(--size-1); }
+
+.js .nav-secondary { --nav-secondary-gutters-x:var(--size-3); }
+
+@media (--mq-to-sm) {
+  .js .nav-secondary { --nav-secondary-gutters-x:var(--size-5); }
+}
+
+@media (max-width: 63.999em) {
+  .js .nav-secondary { --nav-secondary-gutters-x:var(--size-7); --nav-secon=
+dary-link-color:var(--color-grey-500); --nav-secondary-link-hover-color:var=
+(--color-white); --nav-secondary-link-active-color:var(--color-white); marg=
+in: 0 calc(-1*var(--nav-secondary-gutters-x)); }
+}
+
+@media (max-width: 63.999em) {
+  .js .nav-secondary--overlay { margin-bottom: 0px; }
+  .js .nav-secondary__wrapper { position: relative; z-index: 5; }
+  .js .nav-secondary__top { background: var(--color-gunmetal); padding: var=
+(--size-3) var(--nav-secondary-gutters-x); position: relative; width: var(-=
+-size-full); }
+  .js .nav-secondary__top:active, .js .nav-secondary__top:hover { color: va=
+r(--nav-secondary-link-color); text-decoration: none; }
+  .js .nav-secondary__top::before { background: url("data:image/svg+xml;cha=
+rset=3DUS-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width=
+%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20aria-hi=
+dden%3D%22true%22%20focusable%3D%22false%22%3E%0A%20%20%3Ctitle%3EChevron%2=
+0Down%3C/title%3E%0A%20%20%3Cpath%20fill%3D%22none%22%20fill-rule%3D%22even=
+odd%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20d%3D%22M7%2010l5%=
+205%205-5%22/%3E%0A%3C/svg%3E") 50% center / contain no-repeat; content: ""=
+; height: var(--size-6); right: calc(var(--nav-secondary-gutters-x) - var(-=
+-size-1)); position: absolute; top: calc(50% - var(--size-3)); width: var(-=
+-size-6); }
+  .js .nav-secondary__top[aria-expanded=3D"true"]::before { transform: rota=
+te(180deg); }
+  .js .nav-secondary__sub { background: var(--color-gunmetal); box-shadow: =
+var(--shadow-black); display: none; left: 0px; margin-top: 0px; position: a=
+bsolute; top: var(--size-11); width: var(--size-full); }
+  .js .nav-secondary__top[aria-expanded=3D"true"] + .nav-secondary__sub { d=
+isplay: block; }
+  .js .nav-secondary__sub > li { margin-bottom: 0px; }
+  .js .nav-secondary__sub a { padding: var(--size-3) var(--nav-secondary-gu=
+tters-x); width: var(--size-full); }
+}
+
+@media (min-width: 64em) {
+  .nav-secondary--overlay { --nav-secondary-link-color:var(--color-grey-500=
+); --nav-secondary-link-hover-color:var(--color-white); --nav-secondary-lin=
+k-active-color:var(--color-white); position: absolute; z-index: 1; }
+  .nav-secondary__wrapper { display: flex; flex-wrap: nowrap; margin-left: =
+calc(-1*var(--nav-secondary-sub-gap-x)); }
+  .nav-secondary__wrapper > * { margin-left: var(--nav-secondary-sub-gap-x)=
+; }
+  .nav-secondary__sub { display: flex; flex-wrap: nowrap; margin-top: 0px; =
+position: relative; }
+  .nav-secondary__sub::before { background: var(--nav-secondary-link-color)=
+; content: ""; height: var(--size-5); left: 0px; position: absolute; top: 0=
+px; transform: rotate(20deg); width: var(--size-px); }
+  .nav-secondary__sub > li { margin: 0 0 0 var(--nav-secondary-sub-gap-x); =
+}
+}
+
+.pagination { display: flex; -webkit-box-pack: justify; justify-content: sp=
+ace-between; }
+
+.pagination__button { padding: var(--size-2); }
+
+.pagination__button img { width: var(--size-6); }
+
+.pagination__button span { display: none; }
+
+.pagination__select { text-transform: lowercase; }
+
+@media (min-width: 43.75em) {
+  .pagination { -webkit-box-pack: center; justify-content: center; margin-l=
+eft: calc(-1*var(--size-7)); }
+  .pagination > * { margin-left: var(--size-7); }
+  .pagination__button { min-width: var(--size-36); padding: var(--size-2) v=
+ar(--size-4); }
+  .pagination__button span { display: inline-block; position: relative; top=
+: var(--size-0_5); }
+  .pagination__button--prev { padding-right: var(--size-8); }
+  .pagination__button--next { padding-left: var(--size-8); }
+}
+
+@media (min-width: 90em) {
+  .pagination { margin-left: calc(-1*var(--size-14)); }
+  .pagination > * { margin-left: var(--size-14); }
+}
+
+.site-footer { --site-footer-gutters-y:var(--size-8); --site-footer-support=
+-gap-x:var(--size-6); --site-footer-support-gap-y:var(--size-2); --site-foo=
+ter-social-gap-x:var(--size-4); background: var(--color-navy); padding-bott=
+om: var(--site-footer-gutters-y); padding-top: var(--site-footer-gutters-y)=
+; }
+
+@media (min-width: 43.75em) {
+  .site-footer { --site-footer-gutters-y:var(--size-12); }
+}
+
+@media (min-width: 64em) {
+  .site-footer { --site-footer-gutters-y:var(--size-16); }
+}
+
+.site-footer__site { display: none; font-size: var(--font-size-sm); line-he=
+ight: var(--size-5); margin: 0 0 var(--size-4); }
+
+.site-footer__support { font-size: var(--font-size-xs); line-height: var(--=
+size-4); margin: 0 0 var(--size-4); }
+
+.site-footer__site a, .site-footer__support a { color: var(--color-white); =
+display: inline-block; text-decoration: none; }
+
+.site-footer [aria-current=3D"page"], .site-footer__site a:hover, .site-foo=
+ter__support a:hover { text-decoration: underline; }
+
+.site-footer__site > li > a { font-size: var(--font-size-md); font-weight: =
+var(--font-weight-semibold); line-height: var(--size-6); margin-bottom: var=
+(--size-4); }
+
+.site-footer__site > li, .site-footer__site > li li { margin-bottom: var(--=
+size-3); }
+
+.site-footer__support > li { margin-bottom: var(--size-2); }
+
+.site-footer__site > li li:last-child { margin-bottom: 0px; }
+
+.site-footer__ceph { margin-bottom: var(--size-4); width: var(--size-18); }
+
+.site-footer__social { display: flex; flex-wrap: nowrap; margin: 0 0 0 calc=
+(-1*var(--site-footer-social-gap-x)); }
+
+.site-footer__social > li { margin-left: var(--site-footer-social-gap-x); }
+
+.site-footer__social svg { transition: fill var(--animation-duration) var(-=
+-animation-easing); }
+
+.site-footer__facebook:hover svg { fill: var(--color-facebook-blue); }
+
+.site-footer__twitter:hover svg { fill: var(--color-twitter-blue); }
+
+.site-footer__youtube:hover svg { fill: var(--color-youtube-red); }
+
+@media (min-width: 23.375em) {
+  .site-footer__support { display: flex; flex-wrap: wrap; margin-left: calc=
+(-1*var(--site-footer-support-gap-x)); margin-top: calc(-1*var(--site-foote=
+r-support-gap-y)); }
+  .site-footer__support > li { margin-bottom: 0px; margin-left: var(--site-=
+footer-support-gap-x); margin-top: var(--site-footer-support-gap-y); }
+}
+
+@media (min-width: 43.75em) {
+  .site-footer [aria-label=3D"support"] { -webkit-box-align: center; align-=
+items: center; display: flex; -webkit-box-pack: justify; justify-content: s=
+pace-between; }
+  .site-footer__site { display: grid; gap: var(--size-8); grid-template-col=
+umns: repeat(3, minmax(0px, 1fr)); }
+  .site-footer__support { margin-bottom: 0px; }
+  .site-footer__ceph { width: var(--size-28); }
+}
+
+@media (min-width: 64em) {
+  .site-footer__site { grid-template-columns: repeat(6, minmax(0px, 1fr)); =
+}
+}
+
+.scroll-offset { height: var(--size-header-height); position: relative; top=
+: 0px; width: var(--size-px); }
+
+.site-header { --site-header-gutters-y:var(--size-6); --site-header-menu-gu=
+tters-x:var(--size-3); background: var(--color-white); border-bottom: var(-=
+-size-px) solid var(--color-grey-500); box-shadow: var(--shadow-black); pad=
+ding-bottom: var(--site-header-gutters-y); padding-top: var(--site-header-g=
+utters-y); position: fixed; top: 0px; transition: background-color var(--an=
+imation-duration-fast) var(--animation-easing),border var(--animation-durat=
+ion-fast) var(--animation-easing),box-shadow var(--animation-duration-fast)=
+ var(--animation-easing),-webkit-box-shadow var(--animation-duration-fast) =
+var(--animation-easing); width: var(--size-full); z-index: 10; }
+
+@media (min-width: 23.375em) {
+  .site-header { --site-header-menu-gutters-x:var(--size-5); }
+}
+
+@media (min-width: 43.75em) {
+  .site-header { --site-header-menu-gutters-x:var(--size-7); }
+}
+
+.site-header__logo { position: relative; width: var(--size-32); z-index: 12=
+; }
+
+.site-header__logo svg { height: auto; max-width: 100%; width: 100%; }
+
+.home .scroll-offset { position: absolute; }
+
+.home .site-header { background: transparent; border: 0px; box-shadow: none=
+; }
+
+.home .site-header--stuck { background: var(--color-white); border-bottom: =
+var(--size-px) solid var(--color-grey-500); box-shadow: var(--shadow-black)=
+; }
+
+.home .site-header__logo .logo-ceph__text path { fill: var(--color-ceph-gre=
+y-rev); transition: fill var(--animation-duration) var(--animation-easing);=
+ }
+
+.home .site-header__menu-open svg g { stroke: var(--color-white); transitio=
+n: stroke var(--animation-duration) var(--animation-easing); }
+
+.home .site-header--opened .site-header__logo .logo-ceph__text path, .home =
+.site-header--stuck .site-header__logo .logo-ceph__text path { fill: var(--=
+color-ceph-grey); }
+
+.home .site-header--opened .site-header__menu-open svg g, .home .site-heade=
+r--stuck .site-header__menu-open svg g { stroke: var(--color-black); }
+
+@media (max-width: 63.999em) {
+  .site-header__menu { background: var(--color-white); display: flex; -webk=
+it-box-orient: vertical; -webkit-box-direction: normal; flex-direction: col=
+umn; height: 100vh; left: 0px; position: fixed; top: 0px; transform: transl=
+ateY(100%); transition: transform var(--animation-duration) var(--animation=
+-easing),-webkit-transform var(--animation-duration) var(--animation-easing=
+); visibility: hidden; width: 100vw; }
+  .site-header--opened .site-header__menu, .site-header__menu:target { tran=
+sform: translateY(0px); visibility: visible; }
+  .site-header__menu-close { display: block; margin: var(--size-7) var(--si=
+te-header-menu-gutters-x) var(--size-16) auto; width: var(--size-6); }
+  .site-header__overflow { -webkit-box-flex: 1; flex: 1 1 0%; overflow-y: a=
+uto; }
+}
+
+@media (min-width: 64em) {
+  .site-header__menu { display: flex; flex-wrap: nowrap; }
+  .site-header__menu-close, .site-header__menu-open { display: none; }
+  .site-header__overflow { display: flex; }
+}
+
+.social-shares { --social-shares-gap:var(--size-2); display: flex; flex-wra=
+p: wrap; margin-left: calc(-1*var(--social-shares-gap)); margin-top: calc(-=
+1*var(--social-shares-gap)); }
+
+.social-shares > a { margin-left: var(--social-shares-gap); margin-top: var=
+(--social-shares-gap); }
+
+.social-shares svg g { transition: fill var(--animation-duration) var(--ani=
+mation-easing); }
+
+.social-shares svg circle { transition: stroke var(--animation-duration) va=
+r(--animation-easing); }
+
+.social-shares__facebook:hover svg g { fill: var(--color-facebook-blue); }
+
+.social-shares__facebook:hover svg circle { stroke: var(--color-facebook-bl=
+ue); }
+
+.social-shares__twitter:hover svg g { fill: var(--color-twitter-blue); }
+
+.social-shares__twitter:hover svg circle { stroke: var(--color-twitter-blue=
+); }
+
+.sub-menu { display: none; }
+
+@media (min-width: 64em) {
+  .sub-menu { background-attachment: local, local, scroll, scroll; backgrou=
+nd-color: var(--color-white); background-image: linear-gradient(90deg,var(-=
+-color-white),var(--color-white)),linear-gradient(90deg,var(--color-white),=
+var(--color-white)),linear-gradient(90deg,rgba(0,0,0,0.1),transparent),line=
+ar-gradient(270deg,rgba(0,0,0,0.1),transparent); background-position: 0px c=
+enter, 100% center, 0px center, 100% center; background-repeat: no-repeat; =
+background-size: 1em 100%, 1em 100%, 0.5em 100%, 0.5em 100%; box-shadow: va=
+r(--shadow-black); display: flex; font-size: var(--font-size-md); font-weig=
+ht: var(--font-weight-semibold); line-height: var(--size-6); list-style: no=
+ne; margin-top: calc(-1*var(--size-10)); overflow-x: auto; padding: var(--s=
+ize-0); }
+  .sub-menu, .sub-menu > li { position: relative; }
+  .sub-menu > li:nth-last-child(2):first-child, .sub-menu > li:nth-last-chi=
+ld(2):first-child ~ li { -webkit-box-flex: 1; flex: 1 0 var(--size-1-2); }
+  .sub-menu > li:nth-last-child(3):first-child, .sub-menu > li:nth-last-chi=
+ld(3):first-child ~ li { -webkit-box-flex: 1; flex: 1 0 var(--size-1-3); }
+  .sub-menu > li:nth-last-child(4):first-child, .sub-menu > li:nth-last-chi=
+ld(4):first-child ~ li { -webkit-box-flex: 1; flex: 1 0 var(--size-1-4); }
+  .sub-menu > li:nth-last-child(5):first-child, .sub-menu > li:nth-last-chi=
+ld(5):first-child ~ li { -webkit-box-flex: 1; flex: 1 0 var(--size-1-5); }
+  .sub-menu > li:not(:first-child) { padding-left: var(--size-px); }
+  .sub-menu > li:not(:first-child)::before { background: var(--color-grey-5=
+00); content: ""; height: var(--size-2-3); left: 0px; position: absolute; t=
+op: var(--size-1-6); width: var(--size-px); }
+  .sub-menu a { display: block; color: var(--color-red-500); height: var(--=
+size-full); padding: var(--size-4); text-align: center; text-decoration: no=
+ne; transition: background-color var(--animation-duration) var(--animation-=
+easing),color var(--animation-duration) var(--animation-easing); white-spac=
+e: nowrap; }
+  .sub-menu a:active, .sub-menu a:hover { background: var(--color-grey-300)=
+; }
+  .sub-menu a:active { color: var(--color-red-600); }
+  .sub-menu img { display: block; margin: 0 auto var(--size-4); width: var(=
+--size-12); }
+}
+
+.tint { position: relative; }
+
+.tint::after { inset: 0px; content: ""; position: absolute; }
+
+.tint--multiply::after { mix-blend-mode: multiply; }
+
+.tint--black-2::after { background: hsla(var(--color-black-hsl),0.2); }
+
+.tint--red-500-4::after { background: hsla(var(--color-red-500-hsl),0.4); }
+
+.tint--royal-4::after { background: hsla(var(--color-royal-hsl),0.4); }
+
+.tint--royal-8::after { background: hsla(var(--color-royal-hsl),0.8); }
+
+.tooltip { position: relative; }
+
+.tooltip__toggle { cursor: pointer; list-style: none; }
+
+.tooltip__toggle::-webkit-details-marker { display: none; }
+
+.tooltip[open] .tooltip__toggle::before { content: ""; height: var(--size-f=
+ull); left: 0px; position: fixed; top: 0px; width: var(--size-full); }
+
+.tooltip__content { border-radius: var(--size-1); box-shadow: var(--shadow-=
+black); padding: var(--size-4); }
+
+.tooltip__content, .tooltip__content::before { background: var(--color-grey=
+-300); position: absolute; }
+
+.tooltip__content::before { content: ""; height: var(--size-6); transform: =
+rotate(45deg); width: var(--size-6); }
+
+@media (min-width: 23.375em) {
+  .tooltip__content { left: 0px; top: var(--size-10); }
+}
+
+@media (max-width: 63.999em) {
+  .tooltip__content::before { left: var(--size-10); top: calc(-1*var(--size=
+-3)); }
+}
+
+@media (min-width: 64em) {
+  .tooltip__content { left: 0px; min-width: var(--size-112); top: 50%; tran=
+sform: translate(calc(-100% - var(--size-6)),-50%); }
+  .tooltip__content::before { right: calc(-1*var(--size-3)); top: calc(50% =
+- var(--size-3)); }
+}
+
+.border-px { border-width: var(--size-px); }
+
+.border-solid { border-style: solid; }
+
+.rounded-2 { border-radius: var(--size-2); }
+
+.rounded-t-2 { border-top-left-radius: var(--size-2); border-top-right-radi=
+us: var(--size-2); }
+
+.rounded-full { border-radius: 100%; }
+
+.bg-white { background-color: var(--color-white); }
+
+.color-white { color: var(--color-white); }
+
+.bg-navy { background-color: var(--color-navy); }
+
+.color-navy { color: var(--color-navy); }
+
+.bg-grey-300 { background-color: var(--color-grey-300); }
+
+.border-grey-500 { border-color: var(--color-grey-500); }
+
+.bg-red-500 { background-color: var(--color-red-500); }
+
+.color-red-500 { color: var(--color-red-500); }
+
+.visually-hidden { clip: rect(1px, 1px, 1px, 1px); height: 0px; overflow: h=
+idden; position: absolute; top: auto; white-space: nowrap; width: 0px; }
+
+.block { display: block; }
+
+.hidden { display: none; }
+
+.inline-block { display: inline-block; }
+
+.inline { display: inline; }
+
+.overflow-hidden { overflow: hidden; }
+
+@media (min-width: 64em) {
+  .lg\:block { display: block; }
+  .lg\:hidden { display: none; }
+}
+
+.js .hide-js, .no-js .hide-no-js { display: none; }
+
+.absolute { position: absolute; }
+
+.relative { position: relative; }
+
+.bottom-0 { bottom: 0px; }
+
+.left-0 { left: 0px; }
+
+.right-0 { right: 0px; }
+
+.top-0 { top: 0px; }
+
+.center { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.z-1 { z-index: 1; }
+
+@media (min-width: 64em) {
+  .lg\:order-2 { -webkit-box-ordinal-group: 3; order: 2; }
+}
+
+.list-none { list-style-type: none; }
+
+.h-full { height: var(--size-full); }
+
+.min-h-80 { min-height: var(--size-80); }
+
+.w-12 { width: var(--size-12); }
+
+.w-20 { width: var(--size-20); }
+
+.w-36 { width: var(--size-36); }
+
+.w-3-4 { width: var(--size-3-4); }
+
+.w-full { width: var(--size-full); }
+
+.max-w-192 { max-width: var(--size-192); }
+
+.max-w-224 { max-width: var(--size-224); }
+
+.max-w-256 { max-width: var(--size-256); }
+
+@media (max-width: 43.749em) {
+  .to-md\:max-w-56 { max-width: var(--size-56); }
+}
+
+@media (min-width: 43.75em) {
+  .md\:w-3-4 { width: var(--size-3-4); }
+}
+
+@media (min-width: 43.75em) and (max-width: 63.999em) {
+  .md-to-lg\:h-full { height: var(--size-full); }
+}
+
+@media (max-width: 63.999em) {
+  .to-lg\:max-w-160 { max-width: var(--size-160); }
+  .to-lg\:w-full-breakout { left: 50%; margin-left: -50vw; margin-right: -5=
+0vw; max-width: 100vw; position: relative; right: 50%; width: 100vw; }
+}
+
+@media (min-width: 64em) {
+  .lg\:w-1-2 { width: var(--size-1-2); }
+}
+
+.m-0 { margin: var(--size-0); }
+
+.m-4 { margin: var(--size-4); }
+
+.mx-auto { margin-left: var(--size-auto); margin-right: var(--size-auto); }
+
+.my-0 { margin-top: var(--size-0); margin-bottom: var(--size-0); }
+
+.my-16 { margin-top: var(--size-16); margin-bottom: var(--size-16); }
+
+.my-18 { margin-top: var(--size-18); margin-bottom: var(--size-18); }
+
+.mt-0 { margin-top: var(--size-0); }
+
+.mt-16 { margin-top: var(--size-16); }
+
+.mb-0 { margin-bottom: var(--size-0); }
+
+.mb-1 { margin-bottom: var(--size-1); }
+
+.mb-2 { margin-bottom: var(--size-2); }
+
+.mb-3 { margin-bottom: var(--size-3); }
+
+.mb-4 { margin-bottom: var(--size-4); }
+
+.mb-7 { margin-bottom: var(--size-7); }
+
+.mb-8 { margin-bottom: var(--size-8); }
+
+.mb-10 { margin-bottom: var(--size-10); }
+
+.mb-12 { margin-bottom: var(--size-12); }
+
+.mb-16 { margin-bottom: var(--size-16); }
+
+.ml-6 { margin-left: var(--size-6); }
+
+.p-0 { padding: var(--size-0); }
+
+.p-5 { padding: var(--size-5); }
+
+.p-6 { padding: var(--size-6); }
+
+.px-3 { padding-left: var(--size-3); padding-right: var(--size-3); }
+
+.py-0 { padding-top: var(--size-0); padding-bottom: var(--size-0); }
+
+.py-2 { padding-top: var(--size-2); padding-bottom: var(--size-2); }
+
+.py-3 { padding-top: var(--size-3); padding-bottom: var(--size-3); }
+
+.py-16 { padding-top: var(--size-16); padding-bottom: var(--size-16); }
+
+.py-32 { padding-top: var(--size-32); padding-bottom: var(--size-32); }
+
+.pt-0 { padding-top: var(--size-0); }
+
+.pb-0 { padding-bottom: var(--size-0); }
+
+@media (min-width: 23.375em) {
+  .sm\:my-20 { margin-top: var(--size-20); margin-bottom: var(--size-20); }
+}
+
+@media (min-width: 43.75em) {
+  .md\:my-24 { margin-top: var(--size-24); margin-bottom: var(--size-24); }
+}
+
+@media (max-width: 63.999em) {
+  .to-lg\:mb-14 { margin-bottom: var(--size-14); }
+}
+
+@media (min-width: 64em) {
+  .lg\:my-28 { margin-top: var(--size-28); margin-bottom: var(--size-28); }
+  .lg\:mt-24 { margin-top: var(--size-24); }
+  .lg\:mb-9 { margin-bottom: var(--size-9); }
+  .lg\:mb-10 { margin-bottom: var(--size-10); }
+  .lg\:mb-12 { margin-bottom: var(--size-12); }
+  .lg\:mb-16 { margin-bottom: var(--size-16); }
+  .lg\:py-56 { padding-top: var(--size-56); padding-bottom: var(--size-56);=
+ }
+}
+
+@media (min-width: 90em) {
+  .xl\:my-40 { margin-top: var(--size-40); margin-bottom: var(--size-40); }
+  .xl\:mb-10 { margin-bottom: var(--size-10); }
+  .xl\:mb-12 { margin-bottom: var(--size-12); }
+  .xl\:mb-24 { margin-bottom: var(--size-24); }
+}
+
+.text-center { text-align: center; }
+
+.text-right { text-align: right; }
+
+.text-capitalise { text-transform: capitalize; }
+
+.text-lower { text-transform: lowercase; }
+
+.text-upper { text-transform: uppercase; }
+
+.text-xs { font-size: var(--font-size-xs); }
+
+.text-normal { font-weight: var(--font-weight-normal); }
+
+.text-semibold { font-weight: var(--font-weight-semibold); }
+------MultipartBoundary--teYjochQJ3GXHUZF1M7GMLISn5qJw0QxVC1EPP8X7K----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap
+
+@charset "utf-8";
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2") format("woff2"); unicode-range: U+460-=
+52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2") format("woff2"); unicode-range: U+301,=
+ U+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2") format("woff2"); unicode-range: U+1F00=
+-1FFF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2") format("woff2"); unicode-range: U+370-=
+3FF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2") format("woff2"); unicode-range: U+102-=
+103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+1EA0-1EF9, U+=
+20AB; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa25L7SUc.woff2") format("woff2"); unicode-range: U+100-=
+24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2=
+C7F, U+A720-A7FF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa1ZL7.woff2") format("woff2"); unicode-range: U+0-FF, U=
++131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20A=
+C, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2JL7SUc.woff2") format("woff2"); unicode-range: U+460-=
+52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa0ZL7SUc.woff2") format("woff2"); unicode-range: U+301,=
+ U+400-45F, U+490-491, U+4B0-4B1, U+2116; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2ZL7SUc.woff2") format("woff2"); unicode-range: U+1F00=
+-1FFF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa1pL7SUc.woff2") format("woff2"); unicode-range: U+370-=
+3FF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa2pL7SUc.woff2") format("woff2"); unicode-range: U+102-=
+103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+1EA0-1EF9, U+=
+20AB; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa25L7SUc.woff2") format("woff2"); unicode-range: U+100-=
+24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2=
+C7F, U+A720-A7FF; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font=
+-display: swap; src: url("https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3i=
+LTeHuS_fvQtMwCp50KnMa1ZL7.woff2") format("woff2"); unicode-range: U+0-FF, U=
++131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20A=
+C, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+------MultipartBoundary--teYjochQJ3GXHUZF1M7GMLISn5qJw0QxVC1EPP8X7K------
