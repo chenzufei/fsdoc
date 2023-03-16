@@ -2007,5 +2007,63 @@ value (550 bytes) :
 
 
 
+https://www.bookstack.cn/read/ceph-10-zh/8a5dc6d87f084b2a.md
+cephfs-journal-tool journal <inspect|import|export|reset>
+cephfs-journal-tool header <get|set>
+cephfs-journal-tool event <get|splice|apply> [filter] <list|json|summary>
+
+
+# cephfs-journal-tool header get
+{ "magic": "ceph fs volume v011",
+  "write_pos": 4274947,
+  "expire_pos": 4194304,
+  "trimmed_pos": 4194303,
+  "layout": { "stripe_unit": 4194304,
+      "stripe_count": 4194304,
+      "object_size": 4194304,
+      "cas_hash": 4194304,
+      "object_stripe_unit": 4194304,
+      "pg_pool": 4194304}}
+	  
+	  
+
+root@ceph100:/var/lib/ceph# rados -p cephfs_metadata ls
+601.00000000
+602.00000000
+10000000000.00000000
+600.00000000
+603.00000000
+1.00000000.inode               //根目录inode
+200.00000000                   //日志
+200.00000001
+606.00000000
+607.00000000
+mds0_openfiles.0               //open file table
+608.00000000
+604.00000000
+500.00000000                   //PurgeQueue
+mds_snaptable                  //快照相关？
+605.00000000
+mds0_inotable                 // inode id分配
+100.00000000                  // stray  回收站
+mds0_sessionmap               // 客户端信息？
+609.00000000
+10000000001.00000000
+400.00000000                   //JournalPointers  journal_pointer_object   为什么需要这个？
+100.00000000.inode
+1.00000000                     //根目录
+
+
+300.00000000                   // log backup
+
+rados --pool=metadata get 400.00000000 - | ceph-dencoder type JournalPointer import - decode dump_json
+
+rados --pool=metadata get 300.00000000 - | ceph-dencoder type Journaler::Header import - decode dump_json
+
+
+
+
+
+
 
 
