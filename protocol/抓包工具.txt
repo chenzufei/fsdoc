@@ -1,0 +1,31 @@
+tcpdump 和 Wireshark 就是最常用的网络抓包和分析工具，更是分析网络性能必不可少的利器。
+
+一、tcpdump
+1、tcpdump 仅支持命令行格式使用，常用在 Linux 服务器中抓取和分析网络包。
+2、命令参数：
+-i  制定网络接口
+-nn 不解析IP地址和端口号
+-c  限制要抓取的网络包个数
+-w  保持到文件中
+host、src host、dst host      主机过滤
+port、src port、dst port      端口过滤
+ip、ip6、arp、tcp、udp、icmp  协议过滤
+and、or、not                  逻辑表达式
+
+2、命令示例：
+tcpdump -i eth1 host 183.232.231.166 -nn -w file.pcap
+
+二、wireshark
+1、Wireshark（前称Ethereal）是一个网络封包分析软件。Wireshark 除了可以抓包外，还提供了可视化分析网络包的图形页面。
+2、官网：http://www.wireshark.org
+3、网络分层：
+frame:物理层
+ethernet II:数据链路层
+internet protocol： 网络层
+transmission control protocol：传输层
+hypertext transfer protocol：应用层
+
+
+
+
+
