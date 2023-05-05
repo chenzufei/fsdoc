@@ -1,0 +1,46 @@
+
+Ceph周边有很多图形监控工具，比如：calamari、inkscope（angular-js）
+
+
+1、Calamari（非官方）
+alamari项目开始于2013年夏天，创立它的初衷是开发一个Ceph管理平台, Calamari对外提供了十分漂亮的web管理和监控界面，以及一套改进的REST API接口
+​https://github.com/ceph/calamari​
+
+
+2、VSM
+Virtual Storage Manager(VSM)是Inter公司研发并且开源的一款ceph集群管理和监控软件
+​https://github.com/intel/virtual-storage-manager​
+
+
+3、Inkscope
+Inksope是一个ceph的管理和监控系统
+https://github.com/inkscope/inkscope​
+
+4、ceph-dash
+ceph-dash是用python开发的一个ceph的监控面板，用来监控ceph的运行状态。
+
+5、Dashboard
+Ceph Dashboard 是一个基于 Web 的管理和监控应用程序
+
+
+其他
+1、deploy
+部署功能
+
+2、prometheus
+开源的系统监控和报警的工具包
+
+3、Grafana
+一个可视化面板（Dashboard）
+
+
+
+Ceph监控需求：
+Cluster、Mon节点、OSD节点和Pools的状态检查
+pg状态和object数量
+存储总容量、使用量、iops和吞吐量
+Ceph存储网卡流量，CPU内存利用率等
+查看数据的延迟
+监控多套Ceph集群
+
+
