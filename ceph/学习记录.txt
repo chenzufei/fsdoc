@@ -85,3 +85,4 @@ Server::_committed_peer
 hardlink:
 struct inode_backtrace_t
 
+Jerasure2.0: ceph中默认的EC编码就是这个。
