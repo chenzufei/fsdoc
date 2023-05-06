@@ -44,4 +44,15 @@ Ceph存储网卡流量，CPU内存利用率等
 监控多套Ceph集群
 
 
-ceph-ansible
+部署工具
+长时间以来，为了使Ceph易于安装和管理，社区出现了各种各样的Ceph部署工具
+ceph-ansible：ceph-ansible基于ansible，可以实现根据配置文件的ceph自动化部署；
+ceph-deploy  不再积极维护ceph-deploy。
+DeepSea： SUSE提供的
+cephadm： 最新的部署工具
+
+
+由于bluestore中已经看不到filestore那样的目录结构了，所以文件系统的attr也不可见了，只能通过objectstore-tool把attr属性从db中导出来，然后再通过dencoder解码，才能看到.
+
+
+ceph的工具总结：
