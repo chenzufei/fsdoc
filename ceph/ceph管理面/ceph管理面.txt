@@ -44,3 +44,4 @@ Ceph存储网卡流量，CPU内存利用率等
 监控多套Ceph集群
 
 
+ceph-ansible
