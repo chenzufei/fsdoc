@@ -1814,8 +1814,8 @@ root@ceph100:/mnt/kernel-cephfs/dir1# ceph-dencoder import /home/file1_layout ty
 rados -p cephfs_data getxattr 10000004eba.00000000 parent > /home/file1_parent
 root@ceph100:~# ceph-dencoder import /home/file1_parent type inode_backtrace_t decode dump_json
 {
-    "ino": 1099511647930,
-    "ancestors": [
+    "ino": 1099511647930,   //10000004eba
+    "ancestors": [          // /dir1/file1
         {
             "dirino": 1099511647929,
             "dname": "file1",
@@ -1868,7 +1868,7 @@ parent
 rados -p cephfs_data getxattr 100000050af.00000000 parent > /home/file2_parent
 root@ceph100:/mnt/kernel-cephfs/dir1# ceph-dencoder import /home/file2_parent type inode_backtrace_t decode dump_json
 {
-    "ino": 1099511648431,
+    "ino": 1099511648431,   //100000050af
     "ancestors": [
         {
             "dirino": 1099511647929,

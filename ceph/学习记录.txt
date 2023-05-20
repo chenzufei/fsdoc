@@ -88,3 +88,19 @@ hardlink:
 struct inode_backtrace_t
 
 Jerasure2.0: ceph中默认的EC编码就是这个。
+
+
+
+王豪迈 (Ceph)
+王豪迈,就职于,现任Ceph一职。
+
+豪迈是 XSKY 的 CTO，XSKY 总部在北京。他从 2013 到现在一直在做 Ceph 的全职工作。豪迈在 Kraken 版本的大部分工作是在 AsyncMessenger 上，并将其扩展到多个后端，包括 DPDK 和 InfiniBand 支持。
+Ceph中国社区联合创始人耿航
+
+ 1 位技术委员会成员(谢型果)、3 位核心贡献者(谢型果、任焕文、严军)
+ 
+ 
+
+Ceph的创始人Sage Weil
+圆桌会议（Panel Discussion）
+峰会(Summit)
