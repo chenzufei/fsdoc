@@ -113,3 +113,8 @@ Ceph的创始人Sage Weil
 把inode的内容分为三个组，安全（owner，mode），文件（size，mtime），不可变的（inode number，ctime，layout），不可变的字段是只读的，安全和文件这两组都拥有自己的锁和状态机。
 
 
+在CEPH系统的MDS服务中，文件系统的元数据以日志形式存放于segment中，每个sgement存放1024个操作记录。当文件系统的数据使用完毕，CEPH系统则会以一定的速度Trim (消除) 元数据信息，此时会将MDS服务器中的数据回写到CEPH的磁盘OSD中，以降低MDS服务器上运行的mds服务的内存消耗。
+ceph health detail
+ceph config set mds mds_log_max_segments 1024
+ceph config set mds mds_cache_trim_threshold 25600000
+ceph config set mds mds_cache_trim_decay_rate 0.01
