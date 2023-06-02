@@ -118,3 +118,29 @@ ceph health detail
 ceph config set mds mds_log_max_segments 1024
 ceph config set mds mds_cache_trim_threshold 25600000
 ceph config set mds mds_cache_trim_decay_rate 0.01
+
+
+ceph config dump
+WHO         MASK  LEVEL     OPTION                                 VALUE                                                                                      RO
+global            advanced  cluster_network                        192.168.209.0/24                                                                           *
+global            basic     container_image                        quay.io/ceph/ceph@sha256:0560b16bec6e84345f29fb6693cd2430884e6efff16a95d5bdd0bb06d7661c45  *
+mon               advanced  auth_allow_insecure_global_id_reclaim  false
+mon               advanced  public_network                         192.168.209.0/24                                                                           *
+mgr               advanced  mgr/cephadm/container_init             True                                                                                       *
+mgr               advanced  mgr/cephadm/migration_current          5                                                                                          *
+mgr               advanced  mgr/dashboard/ALERTMANAGER_API_HOST    http://ceph100:9093                                                                        *
+mgr               advanced  mgr/dashboard/GRAFANA_API_SSL_VERIFY   false                                                                                      *
+mgr               advanced  mgr/dashboard/GRAFANA_API_URL          https://ceph100:3000                                                                       *
+mgr               advanced  mgr/dashboard/PROMETHEUS_API_HOST      http://ceph100:9095                                                                        *
+mgr               advanced  mgr/dashboard/ssl_server_port          8443                                                                                       *
+mgr               advanced  mgr/orchestrator/orchestrator          cephadm
+osd               advanced  osd_memory_target_autotune             true
+osd.0             basic     osd_mclock_max_capacity_iops_hdd       9818.879412
+osd.1             basic     osd_mclock_max_capacity_iops_hdd       16562.075595
+osd.2             basic     osd_mclock_max_capacity_iops_hdd       10540.843957
+mds.cephfs        basic     mds_join_fs                            cephfs
+
+
+cephfs-journal-tool journal <inspect|import|export|reset>
+cephfs-journal-tool header <get|set>
+cephfs-journal-tool event <get|splice|apply> [filter] <list|json|summary>

@@ -50,6 +50,9 @@ cephadm bootstrap --mon-ip 192.168.209.100 --cluster-network 192.168.209.0/24 --
 （2）配置初始化完成后，可以使用浏览器访问https://192.168.209.100:8443访问dashboard。对应登录用户名密码会在初始化完成后打印到屏幕，如果忘记了可以使用下方命令重置。
      ceph dashboard set-login-credentials admin -i ./test.txt   # 密码预先放在test.txt文件中
 
+用户名           密码
+admin            ceph123456
+
 7、添加节点，实现高可用（主机ceph100上执行）
 ssh-copy-id -f -i /etc/ceph/ceph.pub ceph101
 ssh-copy-id -f -i /etc/ceph/ceph.pub ceph102
