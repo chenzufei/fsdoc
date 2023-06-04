@@ -1479,7 +1479,7 @@ root@ceph100:/mnt/kernel-cephfs/dir3# rados -p cephfs_metadata ls
 603.00000000
 10000000004.03e00000
 1.00000000.inode         // 根目录inode 可以通过rados -p cephfs_metadata get 1.00000000.inode /home/root_inode.txt 查询内容
-200.00000000             // 200开头的是存放日志的对象，这里面存放了日志的header
+200.00000000             // 200开头的是存放日志的对象，这里面存放了日志的header  (class Header)
 200.00000001
 606.00000000
 607.00000000
