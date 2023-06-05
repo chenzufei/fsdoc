@@ -525,3 +525,48 @@ trim_mdlog，遍历MDLog中所有segments进行try_expire（脏数据刷入目�
 日志如何及什么时候从日志对象中删除？
 
 
+
+journal.cc
+journaler.cc
+
+
+Server::handle_client_setattr
+    EUpdate *le = new EUpdate(mdlog, "setattr");
+	mdlog->start_entry(le)
+	le->metablob.add_client_req
+	mdcache->predirty_journal_parents
+	mdcache->journal_dirty_inode
+    journal_and_reply
+        submit_mdlog_entry
+            mdlog->submit_entry   //submit_entry
+                MDLog::_submit_entry
+
+
+
+SubmitThread
+log->_submit_thread    //MDLog::_submit_thread
+   le->encode_with_header
+   journaler->append_entry   // Journaler::append_entry
+       journal_stream.write   //写到write_buf中
+
+
+
+MDSDaemon::tick
+mds_rank->tick    //MDSRankDispatcher::tick
+   mdlog->flush   //MDLog::flush
+       journaler->flush   //Journaler::flush
+	        Journaler::_flush
+			    Journaler::_do_flush
+				    filer.write       //将write_buf中的数据写到rados中
+   mdlog->trim    //MDLog::trim
+       MDLog::try_expire
+           ls->try_to_expire   // LogSegment::try_to_expire     journal.cc
+               dir->commit        //CDir::commit
+
+
+
+CDir::fetch
+
+EMetaBlob::replay
+
+
