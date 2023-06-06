@@ -457,3 +457,14 @@ flush journal做的事很简单：1，将logsegment对应的脏元数据落盘�
 Journaler::trim
 
 
+
+为什么要有rank这个概念？
+
+mds(metadata service)
+ceph mds stat   查看mds服务器的状态
+ceph fs status
+ceph fs set cephfs max_mds 2
+ceph fs get cephfs
+
+
+

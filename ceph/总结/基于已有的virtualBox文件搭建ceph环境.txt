@@ -1,0 +1,27 @@
+
+
+1、已经安装好各个ceph组件的virtualBox文件地址：
+
+2、将ceph.7z解压，virtualBox（版本6.1.36，安装文件位置与virtualbox文件一致）导入。
+（1）控制->注册
+（2）选择对应的虚拟机文件
+
+3、依次启动三个虚拟机ceph1/ceph2/ceph3
+用户名           密码
+ceph              123456
+root               123456
+
+备注：
+(1)问题：虚拟机启动后，enp0s3未自动分配ip
+      方案：建议开手机热点，电脑连接手机热点后启动三个虚拟机。
+(2)问题：三个虚拟机enp0s3的ip相同
+     方案：手工修改ceph2和ceph3的ip（命令参考：ifconfig enp0s3 192.168.43.92 netmask 255.255.255.0）
+
+
+4、登录ceph管理网页（ip地址根据实际调整，可能需要依次尝试ceph1/ceph2/ceph3上的enp0s3的ip）
+https://192.168.43.91:8443/
+用户名           密码
+admin            ceph123456
+
+
+5、可参考 ubuntu 22.04部署quincy版ceph wiki，操作ceph（比如挂载客户端，查看rados对象等）

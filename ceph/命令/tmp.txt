@@ -1,0 +1,67 @@
+
+root@ceph100:~# ceph mds stat
+cephfs:1 {0=cephfs.ceph100.sxvbgs=up:active} 2 up:standby
+root@ceph100:~# ceph fs status
+cephfs - 4 clients
+======
+RANK  STATE            MDS              ACTIVITY     DNS    INOS   DIRS   CAPS
+ 0    active  cephfs.ceph100.sxvbgs  Reqs:    0 /s    23     16     14      4
+      POOL         TYPE     USED  AVAIL
+cephfs_metadata  metadata  15.4M  9678M
+  cephfs_data      data    24.0k  9678M
+     STANDBY MDS
+cephfs.ceph101.vcpahi
+cephfs.ceph102.ttmfej
+MDS version: ceph version 17.2.5 (98318ae89f1a893a6ded3a640405cdbb33e08757) quincy (stable)
+root@ceph100:~# ceph fs set cephfs max_mds 2
+root@ceph100:~# ceph fs get cephfs
+Filesystem 'cephfs' (1)
+fs_name cephfs
+epoch   501
+flags   12 joinable allow_snaps allow_multimds_snaps
+created 2023-01-25T08:58:09.452530+0000
+modified        2023-06-06T01:24:47.866584+0000
+tableserver     0
+root    0
+session_timeout 60
+session_autoclose       300
+max_file_size   1099511627776
+required_client_features        {}
+last_failure    0
+last_failure_osd_epoch  389
+compat  compat={},rocompat={},incompat={1=base v0.20,2=client writeable ranges,3=default file layouts on dirs,4=dir inode in separate object,5=mds uses versioned encoding,6=dirfrag is stored in omap,7=mds uses inline data,8=no anchor table,9=file layout v2,10=snaprealm v2}
+max_mds 2
+in      0,1
+up      {0=264108,1=264121}
+failed
+damaged
+stopped
+data_pools      [2]
+metadata_pool   3
+inline_data     disabled
+balancer
+standby_count_wanted    1
+[mds.cephfs.ceph100.sxvbgs{0:264108} state up:active seq 32 join_fscid=1 addr [v2:192.168.209.100:6808/999739450,v1:192.168.209.100:6809/999739450] compat {c=[1],r=[1],i=[7ff]}]
+[mds.cephfs.ceph101.vcpahi{1:264121} state up:active seq 72 join_fscid=1 addr [v2:192.168.209.101:6808/1156077426,v1:192.168.209.101:6809/1156077426] compat {c=[1],r=[1],i=[7ff]}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
