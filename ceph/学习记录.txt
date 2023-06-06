@@ -451,4 +451,9 @@ mds0_sessionmap
 1.00000000                 // 根目录
 
 
-	 
+flush journal做的事很简单：1，将logsegment对应的脏元数据落盘；2，修剪日志，将已落盘的日志修剪掉
+
+
+Journaler::trim
+
+
