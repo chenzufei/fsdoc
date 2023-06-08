@@ -77,8 +77,43 @@ standby_count_wanted    1
 [mds.cephfs.ceph101.vcpahi{1:264121} state up:active seq 72 join_fscid=1 addr [v2:192.168.209.101:6808/1156077426,v1:192.168.209.101:6809/1156077426] compat {c=[1],r=[1],i=[7ff]}]
 
 
-
+ceph fs set <fs name> max_file_size <size in bytes>
 CephFS具有可配置的最大文件大小，默认情况下为1TB，如果希望在CephFS中存储大文件，则可以将此限制设置得更高，它是一个64位字段。
+
+ceph time-sync-status
+
+
+root@ceph100:~# ceph time-sync-status
+{
+    "time_skew_status": {
+        "ceph100": {
+            "skew": 0,
+            "latency": 0,
+            "health": "HEALTH_OK"
+        },
+        "ceph101": {
+            "skew": -2.3036425849597166,
+            "latency": 0.0012196032557977602,
+            "health": "HEALTH_WARN",
+            "details": "clock skew 2.30364s > max 0.05s"
+        },
+        "ceph102": {
+            "skew": -2.7930306376280516,
+            "latency": 0.0034098787885542404,
+            "health": "HEALTH_WARN",
+            "details": "clock skew 2.79303s > max 0.05s"
+        }
+    },
+    "timechecks": {
+        "epoch": 1076,
+        "round": 18,
+        "round_status": "finished"
+    }
+}
+
+
+
+
 
 
 
