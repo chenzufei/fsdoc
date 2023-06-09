@@ -114,7 +114,7 @@ root@ceph100:~# ceph time-sync-status
 
 
 
-
+ceph fs rm cephfs --yes-i-really-mean-it
 
 
 
