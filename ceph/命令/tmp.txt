@@ -116,6 +116,14 @@ root@ceph100:~# ceph time-sync-status
 
 ceph fs rm cephfs --yes-i-really-mean-it
 
+setfattr -n ceph.dir.pin -v 0 /mnt/kernel-cephfs/dir1/
+
+
+
+getfattr -n ceph.dir.pin /mnt/kernel-cephfs/dir2/
+getfattr: Removing leading '/' from absolute path names
+# file: mnt/kernel-cephfs/dir2/
+ceph.dir.pin="1"
 
 
 
