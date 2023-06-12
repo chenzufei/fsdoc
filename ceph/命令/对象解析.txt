@@ -1,11 +1,14 @@
 
 
+MAX_MDS    0x100      256，ceph最大支持的mds个数为256个。
+
+
 root@ceph100:/mnt/kernel-cephfs/dir3# rados -p cephfs_metadata ls
-601.00000000
+601.00000000              //MDS_INO_SYSTEM_BASE
 10000000004.03c00000
 602.00000000
 10000000004.03600000
-600.00000000
+600.00000000              //MDS_INO_STRAY_OFFSET   孤立的
 603.00000000
 10000000004.03e00000
 1.00000000.inode         // 根目录inode 可以通过rados -p cephfs_metadata get 1.00000000.inode /home/root_inode.txt 查询内容
@@ -22,23 +25,39 @@ mds0_openfiles.0           // open文件记录 ？
 10000000004.03a00000
 10000000004.00000000
 604.00000000
-500.00000000
+500.00000000               //MDS_INO_PURGE_QUEUE
 10000000004.03800000
 mds_snaptable
 605.00000000
 10000000004.03400000
 mds0_inotable
-100.00000000
+100.00000000                //MDS_INO_MDSDIR_OFFSET
 mds0_sessionmap
 200.00000003
 200.00000002
 609.00000000
-400.00000000
+400.00000000                // MDS_INO_LOG_POINTER_OFFSET，见JournalPointer   The currently active journal
 10000000004.03200000
 200.00000004
 100.00000000.inode
 1.00000000                 // 根目录
 
+
+
+根目录     1                   // CEPH_INO_ROOT
+snaprealm: 3                   // CEPH_INO_GLOBAL_SNAPREALM
+lost_and_found: 4              // CEPH_INO_LOST_AND_FOUND
+mdsdir id：[0x100, 0x200)
+log       : 0x200
+log backup:  0x300
+log pointer: 0x400
+purge_queue  :  0x500
+stray id : [0x600, 0x1600)
+
+0x1600以内的都是system
+
+
+从journal中读取inode table、session map、purge queue、openfile table、snap table
 
 
 
