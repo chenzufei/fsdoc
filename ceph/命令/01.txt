@@ -1,0 +1,710 @@
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x400000_SUBTREEMAP.bin type ESubtreeMap decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x101"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 1,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "0.000000",
+                            "num_files": 0,
+                            "num_subdirs": 10,
+                            "change_attr": 0
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "0.000000",
+                            "num_files": 0,
+                            "num_subdirs": 10,
+                            "change_attr": 0
+                        },
+                        "rstat": {
+                            "version": 0,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 10,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-06T09:24:47.304287+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 0,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 10,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-06T09:24:47.304287+0800"
+                        }
+                    },
+                    "state": "",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "subtrees": [
+        {
+            "root dirfrag": "0x101"
+        }
+    ],
+    "ambiguous subtrees": [],
+    "expire position": 4194304
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x40021c_SESSION.bin type ESession decode dump_json
+{
+    "client instance": "client.264327 v1:192.168.209.100:0/2780989508",
+    "open": "true",
+    "client map version": 1,
+    "inos_to_free": "[]",
+    "inotable version": 0,
+    "client_metadata": {
+        "inos_to_purge": "[]",
+        "client_features": {
+            "feature_bits": "0x0000000000007bff"
+        },
+        "metric_spec": {
+            "metric_flags": {
+                "feature_bits": "0x00000000000003ff"
+            }
+        },
+        "entity_id": "admin",
+        "hostname": "ceph100",
+        "kernel_version": "5.15.0-60-generic",
+        "root": "/"
+    }
+}
+
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x403799_IMPORTSTART.bin type EImportStart decode dump_json
+{
+    "base dirfrag": "0x10000004ebb",
+    "boundary dirfrags": []
+}
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x403feb_IMPORTFINISH.bin type EImportFinish decode dump_json
+{
+    "base dirfrag": "0x10000004ebb",
+    "success": "true"
+}
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404028_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 20,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-13T20:43:55.506352+0800",
+                            "num_files": 1,
+                            "num_subdirs": 0,
+                            "change_attr": 1
+                        },
+                        "rstat": {
+                            "version": 0,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:46:44.443401+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 0,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:43:55.506352+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 0,
+                    "nremote": 1,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [
+                        {
+                            "dentry": "file1_ln",
+                            "snapid.first": 2,
+                            "snapid.last": -2,
+                            "dentry version": 19,
+                            "inodeno": 1099511647930,
+                            "d_type": "file",
+                            "dirty": "true",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": [
+            {
+                "request ID": "client.324252:15",
+                "oldest request on client": 15
+            }
+        ]
+    },
+    "type": "link_remote",
+    "client map length": 0,
+    "client map version": 0,
+    "reqid": "client.324252:15",
+    "had peers": "true"
+}
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404c87_COMMITTED.bin type ECommitted decode dump_json
+{
+    "stamp": "2023-06-13T20:55:16.269866+0800",
+    "reqid": "client.324252:21"
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x4042db_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 21,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "accounted_fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "rstat": {
+                            "version": 0,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:46:44.443401+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 0,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:43:55.506352+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "type": "lock ifile accounted scatter stat update",
+    "client map length": 0,
+    "client map version": 0,
+    "reqid": "unknown.0:0",
+    "had peers": "false"
+}
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404519_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 22,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "accounted_fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "rstat": {
+                            "version": 1,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:46:44.443401+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 1,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:46:44.443401+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "type": "lock inest accounted scatter stat update",
+    "client map length": 0,
+    "client map version": 0,
+    "reqid": "unknown.0:0",
+    "had peers": "false"
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404757_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 55,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "accounted_fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "rstat": {
+                            "version": 1,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 1,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:46:44.443401+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 1,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [
+                        {
+                            "dentry": "file1",
+                            "snapid.first": "2",
+                            "snapid.last": "head",
+                            "dentry version": 54,
+                            "inode": {
+                                "ino": 1099511647930,
+                                "rdev": 0,
+                                "ctime": "2023-06-13T20:55:16.234598+0800",
+                                "btime": "2023-02-28T14:30:17.642360+0800",
+                                "mode": 33188,
+                                "uid": 0,
+                                "gid": 0,
+                                "nlink": 2,
+                                "dir_layout": {
+                                    "dir_hash": 0,
+                                    "unused1": 0,
+                                    "unused2": 0,
+                                    "unused3": 0
+                                },
+                                "layout": {
+                                    "stripe_unit": 4194304,
+                                    "stripe_count": 1,
+                                    "object_size": 4194304,
+                                    "pool_id": 2,
+                                    "pool_ns": ""
+                                },
+                                "old_pools": [],
+                                "size": 11,
+                                "truncate_seq": 1,
+                                "truncate_size": 18446744073709551615,
+                                "truncate_from": 0,
+                                "truncate_pending": 0,
+                                "mtime": "2023-02-28T14:30:17.650360+0800",
+                                "atime": "2023-02-28T14:30:17.642360+0800",
+                                "time_warp_seq": 0,
+                                "change_attr": 2,
+                                "export_pin": -1,
+                                "export_ephemeral_random_pin": 0,
+                                "export_ephemeral_distributed_pin": false,
+                                "client_ranges": [],
+                                "dirstat": {
+                                    "version": 0,
+                                    "mtime": "0.000000",
+                                    "num_files": 0,
+                                    "num_subdirs": 0,
+                                    "change_attr": 0
+                                },
+                                "rstat": {
+                                    "version": 0,
+                                    "rbytes": 11,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "accounted_rstat": {
+                                    "version": 0,
+                                    "rbytes": 11,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "version": 54,
+                                "file_data_version": 0,
+                                "xattr_version": 1,
+                                "backtrace_version": 54,
+                                "stray_prior_path": "",
+                                "max_size_ever": 0,
+                                "quota": {
+                                    "max_bytes": 0,
+                                    "max_files": 0
+                                },
+                                "last_scrub_stamp": "0.000000",
+                                "last_scrub_version": 0
+                            },
+                            "xattrs": {},
+                            "state": "dirty+dirty_parent",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": [
+            {
+                "request ID": "client.324252:21",
+                "oldest request on client": 21
+            }
+        ]
+    },
+    "type": "rename",
+    "client map length": 205,
+    "client map version": 58,
+    "reqid": "client.324252:21",
+    "had peers": "true"
+}
+
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404c87_COMMITTED.bin type ECommitted decode dump_json
+{
+    "stamp": "2023-06-13T20:55:16.269866+0800",
+    "reqid": "client.324252:21"
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404cc8_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 56,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "accounted_fragstat": {
+                            "version": 1,
+                            "mtime": "2023-06-13T20:46:44.443401+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 2
+                        },
+                        "rstat": {
+                            "version": 2,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 2,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "type": "lock inest accounted scatter stat update",
+    "client map length": 0,
+    "client map version": 0,
+    "reqid": "unknown.0:0",
+    "had peers": "false"
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404f06_UPDATE.bin type EUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 57,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 2,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "accounted_fragstat": {
+                            "version": 2,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "rstat": {
+                            "version": 2,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 2,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "type": "lock ifile accounted scatter stat update",
+    "client map length": 0,
+    "client map version": 0,
+    "reqid": "unknown.0:0",
+    "had peers": "false"
+}
+
+

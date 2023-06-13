@@ -128,6 +128,1338 @@ ceph.dir.pin="1"
 
 
 
+root@ceph100:/home/cephfs# ceph-dencoder list_types
+ACLGrant
+ACLGranteeType
+ACLOwner
+ACLPermission
+AuthMonitor::Incremental
+BitVector<2>
+BloomHitSet
+Capability
+CompatSet
+ConnectionReport
+ConnectionTracker
+CrushWrapper
+DBObjectMap::State
+DBObjectMap::_Header
+DecayCounter
+ECSubRead
+ECSubReadReply
+ECSubWrite
+ECSubWriteReply
+ECUtil::HashInfo
+ECommitted
+EExport
+EFragment
+EImportFinish
+EImportStart
+EMetaBlob
+EMetaBlob::dirlump
+EMetaBlob::fullbit
+EMetaBlob::nullbit
+EMetaBlob::remotebit
+EOpen
+EPeerUpdate
+EResetJournal
+ESession
+ESessions
+ESubtreeMap
+ETableClient
+ETableServer
+EUpdate
+ExplicitHashHitSet
+ExplicitObjectHitSet
+FSMap
+FSSuperblock
+HitSet
+HitSet::Params
+InoTable
+InodeStore
+InodeStoreBare
+JournalPointer
+Journaler::Header
+LevelDBStoreStats
+LogEntry
+LogSummary
+MAuth
+MAuthReply
+MCacheExpire
+MClientCapRelease
+MClientCaps
+MClientLease
+MClientQuota
+MClientReconnect
+MClientReply
+MClientRequest
+MClientRequestForward
+MClientSession
+MClientSnap
+MCommand
+MCommandReply
+MConfig
+MDSCacheObjectInfo
+MDSMap
+MDSMap::mds_info_t
+MDentryLink
+MDentryUnlink
+MDirUpdate
+MDiscover
+MDiscoverReply
+MExportCaps
+MExportCapsAck
+MExportDir
+MExportDirAck
+MExportDirCancel
+MExportDirDiscover
+MExportDirDiscoverAck
+MExportDirFinish
+MExportDirNotify
+MExportDirNotifyAck
+MExportDirPrep
+MExportDirPrepAck
+MFSMap
+MFSMapUser
+MForward
+MGatherCaps
+MGenericMessage
+MGetConfig
+MGetPoolStats
+MGetPoolStatsReply
+MHeartbeat
+MInodeFileCaps
+MLock
+MLog
+MLogAck
+MMDSBeacon
+MMDSCacheRejoin
+MMDSFindIno
+MMDSFindInoReply
+MMDSFragmentNotify
+MMDSLoadTargets
+MMDSMap
+MMDSOpenIno
+MMDSOpenInoReply
+MMDSPeerRequest
+MMDSResolve
+MMDSResolveAck
+MMDSSnapUpdate
+MMDSTableRequest
+MMgrClose
+MMgrConfigure
+MMgrDigest
+MMgrMap
+MMgrOpen
+MMgrReport
+MMgrUpdate
+MMonCommand
+MMonCommandAck
+MMonElection
+MMonGetMap
+MMonGetVersion
+MMonGetVersionReply
+MMonGlobalID
+MMonJoin
+MMonMap
+MMonPaxos
+MMonProbe
+MMonScrub
+MMonSubscribe
+MMonSubscribeAck
+MMonSync
+MOSDAlive
+MOSDBoot
+MOSDFailure
+MOSDForceRecovery
+MOSDMap
+MOSDOp
+MOSDOpReply
+MOSDPGBackfill
+MOSDPGCreate
+MOSDPGCreate2
+MOSDPGInfo
+MOSDPGLog
+MOSDPGNotify
+MOSDPGQuery
+MOSDPGRecoveryDelete
+MOSDPGRecoveryDeleteReply
+MOSDPGRemove
+MOSDPGScan
+MOSDPGTemp
+MOSDPGTrim
+MOSDPing
+MOSDRepScrub
+MOSDScrub
+MOSDScrub2
+MPGStats
+MPGStatsAck
+MPing
+MPoolOp
+MPoolOpReply
+MRemoveSnaps
+MRoute
+MServiceMap
+MStatfs
+MStatfsReply
+MTimeCheck
+MTimeCheck2
+MWatchNotify
+MgrMap
+MonCap
+MonMap
+MonitorDBStore::Op
+MonitorDBStore::Transaction
+OSDMap
+OSDMap::Incremental
+OSDSuperblock
+ObjectCacheInfo
+ObjectMetaInfo
+ObjectModDesc
+ObjectRecoveryInfo
+ObjectRecoveryProgress
+ObjectStore::Transaction
+PGMap
+PGMapDigest
+PastIntervals
+PullOp
+PushOp
+PushReplyOp
+RGWAccessControlList
+RGWAccessControlPolicy
+RGWAccessKey
+RGWBucketEncryptionConfig
+RGWBucketEnt
+RGWBucketInfo
+RGWCacheNotifyInfo
+RGWLifecycleConfiguration
+RGWOLHInfo
+RGWObjManifest
+RGWObjManifestPart
+RGWPeriod
+RGWPeriodLatestEpochInfo
+RGWRealm
+RGWSubUser
+RGWUploadPartInfo
+RGWUserInfo
+RGWZone
+RGWZoneGroup
+RGWZoneParams
+ScrubMap
+ScrubMap::object
+ScrubResult
+SequencerPosition
+ServiceMap
+ServiceMap::Daemon
+ServiceMap::Service
+SloppyCRCMap
+SnapContext
+SnapInfo
+SnapRealmInfo
+SnapServer
+SnapSet
+bloom_filter
+bluefs_extent_t
+bluefs_fnode_t
+bluefs_super_t
+bluefs_transaction_t
+bluestore_bdev_label_t
+bluestore_blob_use_tracker_t
+bluestore_cnode_t
+bluestore_compression_header_t
+bluestore_deferred_op_t
+bluestore_deferred_transaction_t
+bluestore_extent_ref_map_t
+bluestore_onode_t
+bluestore_pextent_t
+cap_reconnect_t
+ceph_data_stats
+chunk_refs_t
+client_writeable_range_t
+clone_info
+cls::journal::Client
+cls::journal::ObjectPosition
+cls::journal::ObjectSetPosition
+cls::journal::Tag
+cls::rbd::ChildImageSpec
+cls::rbd::GroupImageSpec
+cls::rbd::GroupImageStatus
+cls::rbd::GroupSnapshot
+cls::rbd::GroupSpec
+cls::rbd::ImageSnapshotSpec
+cls::rbd::MigrationSpec
+cls::rbd::MirrorImage
+cls::rbd::MirrorImageMap
+cls::rbd::MirrorImageSiteStatus
+cls::rbd::MirrorImageSiteStatusOnDisk
+cls::rbd::MirrorImageStatus
+cls::rbd::MirrorPeer
+cls::rbd::ParentImageSpec
+cls::rbd::SnapshotInfo
+cls::rbd::SnapshotNamespace
+cls_cas_chunk_create_or_get_ref_op
+cls_cas_chunk_get_ref_op
+cls_cas_chunk_put_ref_op
+cls_lock_assert_op
+cls_lock_break_op
+cls_lock_get_info_op
+cls_lock_get_info_reply
+cls_lock_list_locks_reply
+cls_lock_lock_op
+cls_lock_set_cookie_op
+cls_lock_unlock_op
+cls_rbd_parent
+cls_rbd_snap
+cls_refcount_get_op
+cls_refcount_put_op
+cls_refcount_read_op
+cls_refcount_read_ret
+cls_refcount_set_op
+cls_rgw_bi_log_list_op
+cls_rgw_bi_log_list_ret
+cls_rgw_bi_log_trim_op
+cls_rgw_bucket_instance_entry
+cls_rgw_clear_bucket_resharding_op
+cls_rgw_gc_defer_entry_op
+cls_rgw_gc_list_op
+cls_rgw_gc_list_ret
+cls_rgw_gc_obj_info
+cls_rgw_gc_remove_op
+cls_rgw_gc_set_entry_op
+cls_rgw_lc_obj_head
+cls_rgw_obj
+cls_rgw_obj_chain
+cls_rgw_obj_key
+cls_rgw_reshard_add_op
+cls_rgw_reshard_entry
+cls_rgw_reshard_get_op
+cls_rgw_reshard_get_ret
+cls_rgw_reshard_list_op
+cls_rgw_reshard_list_ret
+cls_rgw_reshard_remove_op
+cls_rgw_set_bucket_resharding_op
+cls_timeindex_entry
+cls_user_bucket
+cls_user_bucket_entry
+cls_user_complete_stats_sync_op
+cls_user_get_header_op
+cls_user_get_header_ret
+cls_user_header
+cls_user_list_buckets_op
+cls_user_list_buckets_ret
+cls_user_remove_bucket_op
+cls_user_set_buckets_op
+cls_user_stats
+coarse_real_time_wrapper
+coll_t
+compressible_bloom_filter
+creating_pgs_t
+dirfrag_load_vec_t
+entity_addr_t
+entity_addrvec_t
+entity_inst_t
+entity_name_t
+file_layout_t
+filepath
+fnode_t
+frag_info_t
+ghobject_t
+hobject_t
+inode_backpointer_t
+inode_backtrace_t
+inode_load_vec_t
+inode_t<std::allocator>
+journal::Entry
+kstore_cnode_t
+kstore_onode_t
+librbd::cache::pwl::WriteLogCacheEntry
+librbd::cache::pwl::WriteLogPoolRoot
+librbd::cache::pwl::ssd::SuperBlock
+librbd::journal::ClientData
+librbd::journal::EventEntry
+librbd::journal::TagData
+librbd::mirroring_watcher::NotifyMessage
+librbd::watch_notify::NotifyMessage
+librbd::watch_notify::ResponseMessage
+link_rollback
+mds_load_t
+mds_table_pending_t
+nest_info_t
+obj_list_snap_response_t
+obj_list_watch_response_t
+obj_refcount
+object_copy_cursor_t
+object_copy_data_t
+object_info_t
+object_locator_t
+object_manifest_t
+object_stat_collection_t
+object_stat_sum_t
+objectstore_perf_stat_t
+objexp_hint_entry
+old_inode_t<std::allocator>
+old_rstat_t
+osd_info_t
+osd_reqid_t
+osd_stat_t
+osd_xinfo_t
+pg_create_t
+pg_history_t
+pg_hit_set_history_t
+pg_hit_set_info_t
+pg_info_t
+pg_log_dup_t
+pg_log_entry_t
+pg_log_t
+pg_ls_response_t
+pg_missing_item
+pg_missing_t
+pg_nls_response_t
+pg_pool_t
+pg_query_t
+pg_stat_t
+pg_t
+pool_pg_num_history_t
+pool_snap_info_t
+pool_stat_t
+pow2_hist_t
+quota_info_t
+rados::cls::lock::lock_info_t
+rados::cls::lock::locker_id_t
+rados::cls::lock::locker_info_t
+rbd::mirror::image_map::PolicyData
+rbd_replay::action::ActionEntry
+rbd_replay::action::Dependency
+real_time_wrapper
+rename_rollback
+rename_rollback::drec
+request_redirect_t
+rgw_bi_log_entry
+rgw_bucket
+rgw_bucket_category_stats
+rgw_bucket_dir
+rgw_bucket_dir_entry
+rgw_bucket_dir_entry_meta
+rgw_bucket_dir_header
+rgw_bucket_entry_ver
+rgw_bucket_olh_log_entry
+rgw_bucket_pending_info
+rgw_cls_bucket_clear_olh_op
+rgw_cls_check_index_ret
+rgw_cls_link_olh_op
+rgw_cls_list_op
+rgw_cls_list_ret
+rgw_cls_obj_complete_op
+rgw_cls_obj_prepare_op
+rgw_cls_read_olh_log_op
+rgw_cls_read_olh_log_ret
+rgw_cls_tag_timeout_op
+rgw_cls_trim_olh_log_op
+rgw_cls_unlink_instance_op
+rgw_data_sync_info
+rgw_data_sync_marker
+rgw_data_sync_status
+rgw_log_entry
+rgw_meta_sync_info
+rgw_meta_sync_marker
+rgw_meta_sync_status
+rgw_obj
+rgw_usage_log_entry
+rmdir_rollback
+session_info_t
+snaplink_t
+sr_t
+sstring_wrapper
+string_snap_t
+string_wrapper
+timespan_wrapper
+utime_t
+uuid_d
+watch_info_t
+watch_item_t
+
+
+
+
+root@ceph100:/home/cephfs# cephfs-journal-tool --rank=cephfs:0 event get list
+2023-02-28T21:12:23.864926+0800 0x9714ca6 SUBTREEMAP:  ()
+2023-02-28T21:14:20.261800+0800 0x9715022 OPEN:  ()
+  dir1/file2
+2023-02-28T21:14:20.262885+0800 0x9715797 UPDATE:  (openc)
+  dir1/.file2.swp
+2023-02-28T21:14:20.264225+0800 0x9716156 UPDATE:  (openc)
+  dir1/.file2.swpx
+2023-02-28T21:14:20.266156+0800 0x97168e9 UPDATE:  (unlink_local)
+  stray4/100000050b2
+  dir1/.file2.swpx
+2023-02-28T21:14:20.266742+0800 0x9717784 UPDATE:  (unlink_local)
+  stray4/100000050b1
+  dir1/.file2.swp
+2023-02-28T21:14:20.267045+0800 0x97183f0 UPDATE:  (openc)
+  dir1/.file2.swp
+2023-02-28T21:14:22.496578+0800 0x9718b82 UPDATE:  (unlink_local)
+  stray4/100000050b3
+  dir1/.file2.swp
+2023-02-28T21:14:22.843395+0800 0x9719c48 UPDATE:  (cap update)
+  stray4/100000050b3
+2023-02-28T21:14:23.344195+0800 0x971a3f2 UPDATE:  (purge_stray)
+  100000050b2
+2023-02-28T21:14:23.348253+0800 0x971a649 UPDATE:  (purge_stray)
+  100000050b1
+2023-02-28T21:14:25.415154+0800 0x971a8a0 UPDATE:  (cap update)
+  stray4/100000050b3
+2023-02-28T21:14:25.478759+0800 0x971b238 UPDATE:  (scatter_writebehind)
+2023-02-28T21:14:25.487739+0800 0x971b68e UPDATE:  (scatter_writebehind)
+2023-02-28T21:14:26.335569+0800 0x971bae4 UPDATE:  (purge_stray)
+  100000050b3
+2023-02-28T21:14:28.281248+0800 0x971bd3b UPDATE:  (openc)
+  dir1/dir2/.file2_ln.swp
+2023-02-28T21:14:28.283667+0800 0x971ca40 UPDATE:  (openc)
+  dir2/.file2_ln.swpx
+2023-02-28T21:14:28.285042+0800 0x971d1d6 UPDATE:  (unlink_local)
+  stray4/100000050b5
+  dir2/.file2_ln.swpx
+2023-02-28T21:14:28.285897+0800 0x971e07c UPDATE:  (unlink_local)
+  stray4/100000050b4
+  dir2/.file2_ln.swp
+2023-02-28T21:14:28.286978+0800 0x971ecf3 UPDATE:  (openc)
+  dir2/.file2_ln.swp
+2023-02-28T21:14:29.620421+0800 0x971f488 UPDATE:  (unlink_local)
+  stray4/100000050b6
+  dir1/dir2/.file2_ln.swp
+2023-02-28T21:14:33.348150+0800 0x972089c UPDATE:  (cap update)
+  stray4/100000050b6
+2023-02-28T21:14:34.339618+0800 0x9721255 UPDATE:  (purge_stray)
+  100000050b5
+2023-02-28T21:14:34.343727+0800 0x97214ac UPDATE:  (purge_stray)
+  100000050b4
+2023-02-28T21:14:34.343735+0800 0x9721703 UPDATE:  (purge_stray)
+  100000050b6
+2023-02-28T21:14:35.480504+0800 0x972195a UPDATE:  (scatter_writebehind)
+2023-02-28T21:14:35.480617+0800 0x9721db0 UPDATE:  (scatter_writebehind)
+  dir1
+2023-03-06T09:32:12.049187+0800 0x9722549 SESSION:  ()
+2023-03-06T09:32:12.050763+0800 0x97226d0 SESSION:  ()
+2023-04-06T11:02:32.213346+0800 0x9722857 SESSION:  ()
+2023-04-06T11:02:32.213353+0800 0x97228e4 SESSION:  ()
+2023-04-06T11:03:20.561414+0800 0x9722971 SESSION:  ()
+2023-04-06T11:03:22.632763+0800 0x9722a1e SESSION:  ()
+2023-04-06T11:03:22.641088+0800 0x9722acd SESSION:  ()
+0.000000 0x9722b7c PURGED:  ()
+2023-04-06T11:03:23.652879+0800 0x9722bd8 SESSION:  ()
+2023-04-06T11:03:23.652964+0800 0x9722c65 SESSION:  ()
+2023-04-06T11:03:24.695733+0800 0x9722cf2 SESSION:  ()
+2023-04-06T11:03:24.695748+0800 0x9722d7f SESSION:  ()
+2023-04-06T11:03:24.701290+0800 0x9722e0c SESSION:  ()
+2023-04-06T11:03:24.706786+0800 0x9722f93 SESSION:  ()
+2023-04-06T11:03:24.723656+0800 0x972311a UPDATE:  (scatter_writebehind)
+2023-04-06T11:03:24.723666+0800 0x9723570 UPDATE:  (scatter_writebehind)
+2023-04-06T11:03:24.723674+0800 0x97239c6 UPDATE:  (scatter_writebehind)
+  stray4
+2023-04-06T11:03:24.723678+0800 0x9723f34 UPDATE:  (scatter_writebehind)
+  stray4
+2023-04-06T11:03:24.723684+0800 0x97244a2 UPDATE:  (scatter_writebehind)
+  dir1
+2023-04-06T11:03:24.739646+0800 0x9724a0e UPDATE:  (scatter_writebehind)
+  dir1
+2023-04-06T11:03:24.741105+0800 0x9725057 UPDATE:  (scatter_writebehind)
+  stray4
+2023-04-06T11:03:24.758517+0800 0x97256a2 SESSION:  ()
+2023-04-06T11:03:24.759742+0800 0x9725858 SESSION:  ()
+2023-04-06T11:04:24.731813+0800 0x9725a0e SESSION:  ()
+2023-04-06T11:04:24.736964+0800 0x9725a9b SESSION:  ()
+2023-04-06T11:05:42.844052+0800 0x9725b28 SESSION:  ()
+2023-04-06T11:06:16.291018+0800 0x9725c26 UPDATE:  (setattr)
+  /
+2023-06-02T17:08:49.223493+0800 0x9725f39 SESSION:  ()
+2023-06-02T17:08:51.476465+0800 0x9725fc6 SESSION:  ()
+2023-06-02T17:08:52.701567+0800 0x9726075 SESSION:  ()
+2023-06-02T17:08:53.030246+0800 0x9726102 UPDATE:  (scatter_writebehind)
+2023-06-02T17:08:53.030409+0800 0x9726558 UPDATE:  (scatter_writebehind)
+2023-06-02T17:08:53.030461+0800 0x97269ae UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-02T17:08:53.030500+0800 0x9726f1c UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-02T17:08:53.030538+0800 0x972748a UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-02T17:08:53.057274+0800 0x97279f6 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-02T17:08:53.057709+0800 0x972803f UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-02T17:13:04.068837+0800 0x972868a SESSION:  ()
+2023-06-02T17:13:05.070762+0800 0x9728717 SESSION:  ()
+2023-06-02T17:13:05.092617+0800 0x97287a4 SESSION:  ()
+2023-06-02T17:13:05.093024+0800 0x972892b SESSION:  ()
+2023-06-02T17:13:05.224600+0800 0x9728ab2 SESSION:  ()
+2023-06-02T17:13:05.230146+0800 0x9728b61 SESSION:  ()
+2023-06-02T17:13:05.236619+0800 0x9728bee SESSION:  ()
+2023-06-02T17:14:05.121836+0800 0x9728da4 SESSION:  ()
+2023-06-02T17:14:05.122389+0800 0x9728e31 SESSION:  ()
+2023-06-02T17:29:22.093904+0800 0x9728ebe SESSION:  ()
+2023-06-02T17:29:22.093919+0800 0x9729045 SESSION:  ()
+2023-06-02T17:30:38.321975+0800 0x97291cc SESSION:  ()
+2023-06-02T17:30:39.056983+0800 0x972927b SESSION:  ()
+2023-06-02T17:30:39.068972+0800 0x9729308 SESSION:  ()
+2023-06-02T17:30:39.077194+0800 0x9729395 SESSION:  ()
+2023-06-02T17:30:51.967381+0800 0x972954b SESSION:  ()
+2023-06-02T17:30:52.002334+0800 0x97295d8 SESSION:  ()
+2023-06-06T09:21:57.581361+0800 0x9729665 SESSION:  ()
+2023-06-06T09:21:57.581381+0800 0x9729714 SESSION:  ()
+2023-06-06T09:21:58.586110+0800 0x97297c3 SESSION:  ()
+2023-06-06T09:21:59.594719+0800 0x9729850 SESSION:  ()
+2023-06-06T09:21:59.594733+0800 0x97298dd SESSION:  ()
+2023-06-06T09:21:59.602250+0800 0x972996a SESSION:  ()
+2023-06-06T09:21:59.602884+0800 0x9729af1 SESSION:  ()
+2023-06-06T09:21:59.605272+0800 0x9729c78 SESSION:  ()
+2023-06-06T09:21:59.615724+0800 0x9729e2e SESSION:  ()
+2023-06-06T09:22:00.771465+0800 0x9729fe4 UPDATE:  (scatter_writebehind)
+2023-06-06T09:22:00.771492+0800 0x972a43a UPDATE:  (scatter_writebehind)
+2023-06-06T09:22:00.771521+0800 0x972a890 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-06T09:22:00.771529+0800 0x972adfe UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-06T09:22:00.771539+0800 0x972b36c UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-06T09:22:00.779405+0800 0x972b8d8 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-06T09:22:00.779522+0800 0x972bf21 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-06T09:22:59.620513+0800 0x972c56c SESSION:  ()
+2023-06-06T09:22:59.625895+0800 0x972c5f9 SESSION:  ()
+2023-06-07T14:50:47.310942+0800 0x972c686 SESSION:  ()
+2023-06-07T14:50:47.311049+0800 0x972c784 SESSION:  ()
+2023-06-07T14:51:48.723645+0800 0x972c882 SESSION:  ()
+2023-06-07T14:51:48.723925+0800 0x972c90f SESSION:  ()
+2023-06-07T14:59:39.111881+0800 0x972c99c SESSION:  ()
+2023-06-07T14:59:49.194477+0800 0x972cb23 SESSION:  ()
+2023-06-07T14:59:50.273740+0800 0x972cbd2 SESSION:  ()
+2023-06-07T14:59:50.298775+0800 0x972cc5f SESSION:  ()
+2023-06-07T15:06:32.890596+0800 0x972ccec SESSION:  ()
+2023-06-07T15:07:23.841812+0800 0x972cd79 SESSION:  ()
+2023-06-07T15:07:24.837343+0800 0x972ce28 SESSION:  ()
+2023-06-07T15:07:25.864246+0800 0x972ceb5 SESSION:  ()
+2023-06-07T15:07:25.864427+0800 0x972cf42 SESSION:  ()
+2023-06-07T15:07:25.864445+0800 0x972d0c9 SESSION:  ()
+2023-06-07T15:07:25.893597+0800 0x972d250 SESSION:  ()
+2023-06-07T15:07:27.628672+0800 0x972d406 UPDATE:  (scatter_writebehind)
+2023-06-07T15:07:27.628686+0800 0x972d85c UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T15:07:27.628689+0800 0x972ddca UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T15:07:27.628697+0800 0x972e338 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-07T15:07:27.630283+0800 0x972e8a4 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-07T15:07:27.639108+0800 0x972eeed UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T15:08:25.879847+0800 0x972f538 SESSION:  ()
+2023-06-07T15:08:25.885239+0800 0x972f5c5 SESSION:  ()
+2023-06-07T15:11:39.036344+0800 0x972f652 SESSION:  ()
+2023-06-07T15:11:39.049315+0800 0x972f701 SESSION:  ()
+2023-06-07T15:11:39.063618+0800 0x972f78e SESSION:  ()
+2023-06-07T15:18:05.493273+0800 0x972f944 SESSION:  ()
+2023-06-07T16:35:23.599139+0800 0x972fa42 SESSION:  ()
+2023-06-07T16:35:25.606210+0800 0x972facf SESSION:  ()
+2023-06-07T16:35:26.619852+0800 0x972fb7e SESSION:  ()
+2023-06-07T16:35:28.007527+0800 0x972fc0b UPDATE:  (scatter_writebehind)
+2023-06-07T16:35:28.007540+0800 0x9730061 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T16:35:28.007543+0800 0x97305cf UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T16:35:28.007547+0800 0x9730b3d UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-07T16:35:28.008459+0800 0x97310a9 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-07T16:35:28.013555+0800 0x97316f2 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-07T16:39:38.824167+0800 0x9731d3d SESSION:  ()
+2023-06-07T16:39:39.848887+0800 0x9731dca SESSION:  ()
+2023-06-07T16:39:39.855795+0800 0x9731e57 SESSION:  ()
+2023-06-07T16:39:39.859517+0800 0x9731fde SESSION:  ()
+2023-06-07T16:39:39.957053+0800 0x9732165 SESSION:  ()
+2023-06-07T16:39:39.966207+0800 0x9732214 SESSION:  ()
+2023-06-07T16:39:39.974749+0800 0x97322a1 SESSION:  ()
+2023-06-07T16:41:09.269627+0800 0x9732457 SESSION:  ()
+2023-06-07T16:41:09.273545+0800 0x97324e4 SESSION:  ()
+2023-06-08T03:25:12.175910+0800 0x9732571 SESSION:  ()
+2023-06-08T03:25:22.373943+0800 0x9732620 SESSION:  ()
+2023-06-08T03:25:23.919814+0800 0x97326ad SESSION:  ()
+2023-06-08T15:13:48.967828+0800 0x9732863 SESSION:  ()
+2023-06-08T15:13:48.967845+0800 0x9732912 SESSION:  ()
+2023-06-08T15:13:50.017933+0800 0x97329c1 SESSION:  ()
+2023-06-08T15:13:50.017957+0800 0x9732a4e SESSION:  ()
+2023-06-08T15:13:51.084654+0800 0x9732adb SESSION:  ()
+2023-06-08T15:13:51.084671+0800 0x9732b68 SESSION:  ()
+2023-06-08T15:13:51.084722+0800 0x9732bf5 SESSION:  ()
+2023-06-08T15:13:51.090061+0800 0x9732d7c SESSION:  ()
+2023-06-08T15:13:51.107729+0800 0x9732f03 SESSION:  ()
+2023-06-08T15:13:51.122435+0800 0x97330b9 UPDATE:  (scatter_writebehind)
+2023-06-08T15:13:51.122451+0800 0x973350f UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T15:13:51.122454+0800 0x9733a7d UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T15:13:51.122459+0800 0x9733feb UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-08T15:13:51.129539+0800 0x9734557 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-08T15:13:51.138899+0800 0x9734ba0 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T15:14:51.117581+0800 0x97351eb SESSION:  ()
+2023-06-08T15:14:51.133716+0800 0x9735278 SESSION:  ()
+2023-06-08T18:39:59.087491+0800 0x9735305 SESSION:  ()
+2023-06-08T18:39:59.087508+0800 0x97353b4 SESSION:  ()
+2023-06-08T18:40:00.098937+0800 0x9735463 SESSION:  ()
+2023-06-08T18:40:01.132209+0800 0x97354f0 SESSION:  ()
+2023-06-08T18:40:01.133703+0800 0x9735677 SESSION:  ()
+2023-06-08T18:40:01.133718+0800 0x9735704 SESSION:  ()
+2023-06-08T18:40:01.141955+0800 0x9735791 SESSION:  ()
+2023-06-08T18:40:01.151822+0800 0x9735918 SESSION:  ()
+2023-06-08T18:40:01.156724+0800 0x9735ace SESSION:  ()
+2023-06-08T18:40:01.575941+0800 0x9735c84 UPDATE:  (scatter_writebehind)
+2023-06-08T18:40:01.575958+0800 0x97360da UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T18:40:01.575961+0800 0x9736648 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T18:40:01.575966+0800 0x9736bb6 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-08T18:40:01.586825+0800 0x9737122 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-08T18:40:01.591711+0800 0x973776b UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-08T18:41:01.163431+0800 0x9737db6 SESSION:  ()
+2023-06-08T18:41:01.168865+0800 0x9737e43 SESSION:  ()
+2023-06-08T20:16:00.146060+0800 0x9737ed0 SESSION:  ()
+2023-06-08T20:17:42.770555+0800 0x9737fce SESSION:  ()
+2023-06-08T20:17:42.770572+0800 0x973805b SESSION:  ()
+2023-06-08T20:17:42.770573+0800 0x97380e8 SESSION:  ()
+2023-06-08T20:18:43.556710+0800 0x9738175 SESSION:  ()
+2023-06-08T20:18:44.555370+0800 0x97382fc SESSION:  ()
+2023-06-08T20:18:56.197144+0800 0x9738389 SESSION:  ()
+2023-06-09T16:08:38.855243+0800 0x9738487 UPDATE:  (mkdir)
+  dir2
+2023-06-09T16:09:06.256348+0800 0x9738c4b OPEN:  ()
+  dir1
+2023-06-09T16:09:06.257214+0800 0x9739042 UPDATE:  (set vxattr layout)
+  dir1
+2023-06-09T16:09:20.758794+0800 0x97396a2 OPEN:  ()
+  dir2
+2023-06-09T16:09:20.758986+0800 0x9739a99 UPDATE:  (set vxattr layout)
+  dir2
+2023-06-09T16:53:39.001752+0800 0x973a0f9 OPEN:  ()
+  dir2
+2023-06-13T11:48:33.666714+0800 0x973a4f0 SESSION:  ()
+2023-06-13T11:48:35.729731+0800 0x973a59d SESSION:  ()
+2023-06-13T11:48:35.729856+0800 0x973a64c SESSION:  ()
+0.000000 0x973a6fb PURGED:  ()
+2023-06-13T11:48:35.855579+0800 0x973a757 SESSION:  ()
+2023-06-13T11:48:35.863685+0800 0x973a7e4 SESSION:  ()
+2023-06-13T11:48:35.864784+0800 0x973a871 SESSION:  ()
+2023-06-13T11:48:35.873826+0800 0x973aa27 SESSION:  ()
+2023-06-13T11:48:35.920739+0800 0x973abdd SESSION:  ()
+2023-06-13T11:48:37.838967+0800 0x973ad64 UPDATE:  (scatter_writebehind)
+2023-06-13T11:48:37.839001+0800 0x973b1ba UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-13T11:48:37.839006+0800 0x973b728 UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-13T11:48:37.839015+0800 0x973bc96 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-13T11:48:37.842596+0800 0x973c202 UPDATE:  (scatter_writebehind)
+  dir1
+2023-06-13T11:48:37.850225+0800 0x973c84b UPDATE:  (scatter_writebehind)
+  stray4
+2023-06-13T11:49:35.922106+0800 0x973ce96 SESSION:  ()
+2023-06-13T14:01:42.722430+0800 0x973cf23 SESSION:  ()
+root@ceph100:/home/cephfs#
+
+
+
+root@ceph100:/home/cephfs# cephfs-journal-tool --rank=cephfs:1 event get list
+2023-06-06T09:24:47.304422+0800 0x400000 SUBTREEMAP:  ()
+2023-06-07T14:47:44.340460+0800 0x40021c SESSION:  ()
+2023-06-07T14:48:44.817292+0800 0x40031a SESSION:  ()
+2023-06-07T14:53:41.304518+0800 0x4003a7 SESSION:  ()
+2023-06-07T14:53:41.335664+0800 0x40052e SESSION:  ()
+2023-06-07T14:58:41.463914+0800 0x4006b5 SESSION:  ()
+2023-06-07T14:58:41.464092+0800 0x400742 SESSION:  ()
+2023-06-07T14:59:11.512106+0800 0x4007cf SESSION:  ()
+2023-06-07T14:59:39.589031+0800 0x400956 SESSION:  ()
+2023-06-07T14:59:50.722445+0800 0x400add SESSION:  ()
+2023-06-07T14:59:50.731498+0800 0x400b8c SESSION:  ()
+2023-06-07T14:59:50.744565+0800 0x400c19 SESSION:  ()
+2023-06-07T15:06:29.071715+0800 0x400dcf SESSION:  ()
+2023-06-07T15:06:29.071722+0800 0x400e5c SESSION:  ()
+2023-06-07T15:11:37.339793+0800 0x400ee9 SESSION:  ()
+2023-06-07T15:11:38.349868+0800 0x400f76 SESSION:  ()
+2023-06-07T15:11:38.469144+0800 0x40112c SESSION:  ()
+2023-06-07T15:11:38.473876+0800 0x4011db SESSION:  ()
+2023-06-07T15:11:38.482751+0800 0x401268 SESSION:  ()
+2023-06-07T16:35:29.360449+0800 0x40141e SESSION:  ()
+2023-06-07T16:39:41.567010+0800 0x4014ab SESSION:  ()
+2023-06-07T16:39:42.596511+0800 0x401538 SESSION:  ()
+2023-06-07T16:39:42.703683+0800 0x4016ee SESSION:  ()
+2023-06-07T16:39:42.708179+0800 0x40179d SESSION:  ()
+2023-06-08T03:25:13.319530+0800 0x40182a SESSION:  ()
+2023-06-08T03:25:20.911425+0800 0x4018d9 SESSION:  ()
+2023-06-08T03:25:22.376504+0800 0x401966 SESSION:  ()
+2023-06-08T03:25:23.884344+0800 0x4019f3 SESSION:  ()
+2023-06-08T15:13:47.713798+0800 0x401ba9 SESSION:  ()
+2023-06-08T15:13:48.795340+0800 0x401c36 SESSION:  ()
+2023-06-08T15:13:48.795793+0800 0x401dbd SESSION:  ()
+2023-06-08T15:13:48.802241+0800 0x401f44 SESSION:  ()
+2023-06-08T15:14:48.814234+0800 0x4020fa SESSION:  ()
+2023-06-08T15:14:48.830694+0800 0x402187 SESSION:  ()
+2023-06-08T18:39:59.193432+0800 0x402214 SESSION:  ()
+2023-06-08T18:40:00.176159+0800 0x4022c3 SESSION:  ()
+2023-06-08T18:40:01.208406+0800 0x402350 SESSION:  ()
+2023-06-08T18:40:01.234139+0800 0x4023dd SESSION:  ()
+2023-06-08T18:40:01.236212+0800 0x402564 SESSION:  ()
+2023-06-08T18:40:01.243894+0800 0x40271a SESSION:  ()
+2023-06-08T18:41:01.247336+0800 0x4028d0 SESSION:  ()
+2023-06-08T20:15:55.669468+0800 0x40295d SESSION:  ()
+2023-06-08T20:17:42.768977+0800 0x402a5b SESSION:  ()
+2023-06-08T20:17:42.768986+0800 0x402ae8 SESSION:  ()
+2023-06-08T20:17:42.769008+0800 0x402b75 SESSION:  ()
+2023-06-08T20:18:16.005842+0800 0x402c02 SESSION:  ()
+2023-06-13T11:48:31.427607+0800 0x402d00 SESSION:  ()
+2023-06-13T11:48:33.610520+0800 0x402d8d SESSION:  ()
+2023-06-13T11:48:33.615309+0800 0x402e3c SESSION:  ()
+2023-06-13T11:48:33.618127+0800 0x402ec9 SESSION:  ()
+2023-06-13T11:48:33.623539+0800 0x402f78 SESSION:  ()
+2023-06-13T11:48:33.632616+0800 0x403005 SESSION:  ()
+2023-06-13T11:48:33.649744+0800 0x4031bb SESSION:  ()
+2023-06-13T11:48:33.674072+0800 0x403371 SESSION:  ()
+2023-06-13T11:48:33.689713+0800 0x4034f8 SESSION:  ()
+2023-06-13T11:49:35.921978+0800 0x40367f SESSION:  ()
+2023-06-13T11:49:35.940802+0800 0x40370c SESSION:  ()
+
+
+
+root@ceph100:/home/cephfs# cephfs-journal-tool --rank=cephfs:all event get summary
+Events by type:
+  OPEN: 4
+  PURGED: 2
+  SESSION: 124
+  SUBTREEMAP: 1
+  UPDATE: 80
+Errors: 0
+Events by type:
+  SESSION: 56
+  SUBTREEMAP: 1
+Errors: 0
+
+做了rename后
+
+root@ceph100:/mnt/kernel-cephfs/dir1# cephfs-journal-tool --rank=cephfs:all event get summary
+Events by type:
+  EXPORT: 1
+  OPEN: 5
+  PURGED: 2
+  SESSION: 124
+  SUBTREEMAP: 1
+  UPDATE: 82
+Errors: 0
+Events by type:
+  IMPORTFINISH: 1
+  IMPORTSTART: 1
+  SESSION: 56
+  SUBTREEMAP: 1
+Errors: 0
+
+
+创建硬连接后：
+root@ceph100:/mnt/kernel-cephfs/dir2# cephfs-journal-tool --rank=cephfs:all event get summary
+Events by type:
+  EXPORT: 1
+  OPEN: 5
+  PEERUPDATE: 2
+  PURGED: 2
+  SESSION: 124
+  SUBTREEMAP: 1
+  UPDATE: 84
+Errors: 0
+Events by type:
+  COMMITTED: 1
+  IMPORTFINISH: 1
+  IMPORTSTART: 1
+  SESSION: 56
+  SUBTREEMAP: 1
+  UPDATE: 3
+Errors: 0
+
+
+
+
+cephfs-journal-tool --rank=cephfs:0 event get list           新增
+2023-06-13T20:43:55.517327+0800 0x973d021 OPEN:  ()
+  dir2
+2023-06-13T20:43:55.529240+0800 0x973d418 UPDATE:  (rename)
+  dir1/file2
+  dir2/file2
+2023-06-13T20:43:59.921371+0800 0x973e156 EXPORT:  ()
+  dir2
+2023-06-13T20:44:04.755511+0800 0x973e6a1 UPDATE:  (scatter_writebehind)
+2023-06-13T20:46:44.454382+0800 0x973eaf7 PEERUPDATE:  ()
+  dir1/file1
+2023-06-13T20:46:44.471400+0800 0x973f4f3 PEERUPDATE:  ()
+2023-06-13T20:46:46.027157+0800 0x973f5c6 UPDATE:  (scatter_writebehind)
+  dir2
+2023-06-13T20:46:50.262936+0800 0x973fc0f UPDATE:  (scatter_writebehind)
+  dir2
+
+
+cephfs-journal-tool --rank=cephfs:1 event get list           新增
+2023-06-13T20:43:59.903313+0800 0x403799 IMPORTSTART:  ()
+  dir2/file2
+2023-06-13T20:43:59.927072+0800 0x403feb IMPORTFINISH:  ()
+2023-06-13T20:46:44.461282+0800 0x404028 UPDATE:  (link_remote)
+  file1_ln
+2023-06-13T20:46:44.476146+0800 0x40429a COMMITTED:  ()
+2023-06-13T20:46:46.032641+0800 0x4042db UPDATE:  (lock ifile accounted scatter stat update)
+2023-06-13T20:46:50.268142+0800 0x404519 UPDATE:  (lock inest accounted scatter stat update)
+
+
+
+
+再做rename
+
+root@ceph100:/mnt/kernel-cephfs/dir1# cephfs-journal-tool --rank=cephfs:all event get summary
+Events by type:
+  EXPORT: 1
+  OPEN: 5
+  PEERUPDATE: 4
+  PURGED: 2
+  SESSION: 124
+  SUBTREEMAP: 1
+  UPDATE: 84
+Errors: 0
+Events by type:
+  COMMITTED: 2
+  IMPORTFINISH: 1
+  IMPORTSTART: 1
+  SESSION: 56
+  SUBTREEMAP: 1
+  UPDATE: 4
+Errors: 0
+
+
+
+2023-06-13T20:55:16.246609+0800 0x9740258 PEERUPDATE:  ()
+  dir1/file1
+  dir1/file1
+2023-06-13T20:55:16.262808+0800 0x9740d6e PEERUPDATE:  ()
+2023-06-13T20:55:25.284644+0800 0x9740e43 UPDATE:  (scatter_writebehind)
+  dir2
+2023-06-13T20:55:25.284660+0800 0x974148c UPDATE:  (scatter_writebehind)
+  dir2
+
+
+2023-06-13T20:55:16.253950+0800 0x404757 UPDATE:  (rename)
+  file1
+2023-06-13T20:55:16.269866+0800 0x404c87 COMMITTED:  ()
+2023-06-13T20:55:25.291482+0800 0x404cc8 UPDATE:  (lock inest accounted scatter stat update)
+2023-06-13T20:55:25.291533+0800 0x404f06 UPDATE:  (lock ifile accounted scatter stat update)
+
+
+
+
+root@ceph100:/home/cephfs/0613/.0# ceph-dencoder import 0x9740258_PEERUPDATE.bin type EPeerUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x1"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 80877,
+                        "snap_purged_thru": 1,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-09T16:08:38.813340+0800",
+                            "num_files": 0,
+                            "num_subdirs": 2,
+                            "change_attr": 20212
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-09T16:08:38.813340+0800",
+                            "num_files": 0,
+                            "num_subdirs": 2,
+                            "change_attr": 20212
+                        },
+                        "rstat": {
+                            "version": 46,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 3,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 46,
+                            "rbytes": 7,
+                            "rfiles": 1,
+                            "rsubdirs": 3,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 1,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [
+                        {
+                            "dentry": "dir1",
+                            "snapid.first": "2",
+                            "snapid.last": "head",
+                            "dentry version": 80876,
+                            "inode": {
+                                "ino": 1099511647929,
+                                "rdev": 0,
+                                "ctime": "2023-06-13T20:55:16.234598+0800",
+                                "btime": "2023-02-28T14:02:42.783717+0800",
+                                "mode": 16877,
+                                "uid": 0,
+                                "gid": 0,
+                                "nlink": 1,
+                                "dir_layout": {
+                                    "dir_hash": 2,
+                                    "unused1": 0,
+                                    "unused2": 0,
+                                    "unused3": 0
+                                },
+                                "layout": {
+                                    "stripe_unit": 0,
+                                    "stripe_count": 0,
+                                    "object_size": 0,
+                                    "pool_id": -1,
+                                    "pool_ns": ""
+                                },
+                                "old_pools": [],
+                                "size": 0,
+                                "truncate_seq": 1,
+                                "truncate_size": 18446744073709551615,
+                                "truncate_from": 0,
+                                "truncate_pending": 0,
+                                "mtime": "2023-06-13T20:55:16.234598+0800",
+                                "atime": "2023-02-28T14:02:42.783717+0800",
+                                "time_warp_seq": 0,
+                                "change_attr": 11,
+                                "export_pin": 0,
+                                "export_ephemeral_random_pin": 0,
+                                "export_ephemeral_distributed_pin": false,
+                                "client_ranges": [],
+                                "dirstat": {
+                                    "version": 0,
+                                    "mtime": "2023-06-13T20:55:16.234598+0800",
+                                    "num_files": 0,
+                                    "num_subdirs": 1,
+                                    "change_attr": 11
+                                },
+                                "rstat": {
+                                    "version": 9,
+                                    "rbytes": 0,
+                                    "rfiles": 0,
+                                    "rsubdirs": 2,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "accounted_rstat": {
+                                    "version": 9,
+                                    "rbytes": 0,
+                                    "rfiles": 0,
+                                    "rsubdirs": 2,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "version": 80876,
+                                "file_data_version": 0,
+                                "xattr_version": 1,
+                                "backtrace_version": 80786,
+                                "stray_prior_path": "",
+                                "max_size_ever": 0,
+                                "quota": {
+                                    "max_bytes": 0,
+                                    "max_files": 0
+                                },
+                                "last_scrub_stamp": "0.000000",
+                                "last_scrub_version": 0
+                            },
+                            "xattrs": {},
+                            "frag tree": "fragtree_t()",
+                            "has_snapbl": "false",
+                            "state": "dirty",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            },
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004eb9"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 56,
+                        "snap_purged_thru": 1,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 0,
+                            "num_subdirs": 1,
+                            "change_attr": 11
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 0,
+                            "num_subdirs": 1,
+                            "change_attr": 11
+                        },
+                        "rstat": {
+                            "version": 9,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 1,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 9,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 1,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "",
+                    "nfull": 1,
+                    "nremote": 0,
+                    "nnull": 1,
+                    "full bits": [
+                        {
+                            "dentry": "file1",
+                            "snapid.first": "2",
+                            "snapid.last": "head",
+                            "dentry version": 55,
+                            "inode": {
+                                "ino": 1099511647930,
+                                "rdev": 0,
+                                "ctime": "2023-06-13T20:46:44.443401+0800",
+                                "btime": "2023-02-28T14:30:17.642360+0800",
+                                "mode": 33188,
+                                "uid": 0,
+                                "gid": 0,
+                                "nlink": 2,
+                                "dir_layout": {
+                                    "dir_hash": 0,
+                                    "unused1": 0,
+                                    "unused2": 0,
+                                    "unused3": 0
+                                },
+                                "layout": {
+                                    "stripe_unit": 4194304,
+                                    "stripe_count": 1,
+                                    "object_size": 4194304,
+                                    "pool_id": 2,
+                                    "pool_ns": ""
+                                },
+                                "old_pools": [],
+                                "size": 11,
+                                "truncate_seq": 1,
+                                "truncate_size": 18446744073709551615,
+                                "truncate_from": 0,
+                                "truncate_pending": 0,
+                                "mtime": "2023-02-28T14:30:17.650360+0800",
+                                "atime": "2023-02-28T14:30:17.642360+0800",
+                                "time_warp_seq": 0,
+                                "change_attr": 1,
+                                "export_pin": -1,
+                                "export_ephemeral_random_pin": 0,
+                                "export_ephemeral_distributed_pin": false,
+                                "client_ranges": [],
+                                "dirstat": {
+                                    "version": 0,
+                                    "mtime": "0.000000",
+                                    "num_files": 0,
+                                    "num_subdirs": 0,
+                                    "change_attr": 0
+                                },
+                                "rstat": {
+                                    "version": 0,
+                                    "rbytes": 11,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-02-28T14:30:17.650360+0800"
+                                },
+                                "accounted_rstat": {
+                                    "version": 0,
+                                    "rbytes": 11,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-02-28T14:30:17.650360+0800"
+                                },
+                                "version": 53,
+                                "file_data_version": 0,
+                                "xattr_version": 1,
+                                "backtrace_version": 2,
+                                "stray_prior_path": "",
+                                "max_size_ever": 0,
+                                "quota": {
+                                    "max_bytes": 0,
+                                    "max_files": 0
+                                },
+                                "last_scrub_stamp": "0.000000",
+                                "last_scrub_version": 0
+                            },
+                            "xattrs": {},
+                            "state": "dirty",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "remote bits": [],
+                    "null bits": [
+                        {
+                            "dentry": "file1",
+                            "snapid.first": 2,
+                            "snapid.last": -2,
+                            "dentry version": 55,
+                            "dirty": "true"
+                        }
+                    ]
+                }
+            }
+        ],
+        "roots": [
+            {
+                "dentry": "",
+                "snapid.first": "2",
+                "snapid.last": "head",
+                "dentry version": 0,
+                "inode": {
+                    "ino": 1,
+                    "rdev": 0,
+                    "ctime": "2023-06-09T16:08:38.813340+0800",
+                    "btime": "2023-01-25T16:59:26.763103+0800",
+                    "mode": 16895,
+                    "uid": 0,
+                    "gid": 0,
+                    "nlink": 1,
+                    "dir_layout": {
+                        "dir_hash": 2,
+                        "unused1": 0,
+                        "unused2": 0,
+                        "unused3": 0
+                    },
+                    "layout": {
+                        "stripe_unit": 4194304,
+                        "stripe_count": 1,
+                        "object_size": 4194304,
+                        "pool_id": 2,
+                        "pool_ns": ""
+                    },
+                    "old_pools": [],
+                    "size": 0,
+                    "truncate_seq": 0,
+                    "truncate_size": 18446744073709551615,
+                    "truncate_from": 0,
+                    "truncate_pending": 0,
+                    "mtime": "2023-06-09T16:08:38.813340+0800",
+                    "atime": "0.000000",
+                    "time_warp_seq": 0,
+                    "change_attr": 20212,
+                    "export_pin": -1,
+                    "export_ephemeral_random_pin": 0,
+                    "export_ephemeral_distributed_pin": false,
+                    "client_ranges": [],
+                    "dirstat": {
+                        "version": 0,
+                        "mtime": "2023-06-09T16:08:38.813340+0800",
+                        "num_files": 0,
+                        "num_subdirs": 2,
+                        "change_attr": 20212
+                    },
+                    "rstat": {
+                        "version": 46,
+                        "rbytes": 7,
+                        "rfiles": 1,
+                        "rsubdirs": 4,
+                        "rsnaps": 0,
+                        "rctime": "2023-06-13T20:55:16.234598+0800"
+                    },
+                    "accounted_rstat": {
+                        "version": 0,
+                        "rbytes": 0,
+                        "rfiles": 0,
+                        "rsubdirs": 1,
+                        "rsnaps": 0,
+                        "rctime": "2023-01-25T16:59:26.763103+0800"
+                    },
+                    "version": 20364,
+                    "file_data_version": 0,
+                    "xattr_version": 1,
+                    "backtrace_version": 2,
+                    "stray_prior_path": "",
+                    "max_size_ever": 0,
+                    "quota": {
+                        "max_bytes": 0,
+                        "max_files": 0
+                    },
+                    "last_scrub_stamp": "0.000000",
+                    "last_scrub_version": 0
+                },
+                "xattrs": {},
+                "frag tree": "fragtree_t()",
+                "has_snapbl": "true",
+                "file layout policy": {
+                    "layout": "the layout exists"
+                },
+                "state": "dirty",
+                "alternate_name": ""
+            }
+        ],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "rollback length": 301,
+    "type": "peer_rename_prep",
+    "metareqid": "client.324252:21",
+    "leader": 1,
+    "op": 1,
+    "original op": 2
+}
+
+
+root@ceph100:/home/cephfs/0613/.1# ceph-dencoder import 0x404c87_COMMITTED.bin type ECommitted decode dump_json
+{
+    "stamp": "2023-06-13T20:55:16.269866+0800",
+    "reqid": "client.324252:21"
+}
+
+
+
+
+
 
 
 

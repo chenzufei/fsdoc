@@ -51,16 +51,23 @@ mdsdir id：[0x100, 0x200)
 log       : 0x200
 log backup:  0x300
 log pointer: 0x400
-purge_queue  :  0x500         这个是用来做什么的？  PurgeQueue  清除队列
+purge_queue  :  0x500         这个是用来做什么的？  PurgeQueue  清除队列  MDS_INO_PURGE_QUEUE           PurgeItem::encode   PurgeItem::decode
 stray id : [0x600, 0x1600)
 
 0x1600以内的都是system
 
 
+601： ceph-dencoder type MDSMap::mds_info_t
+
+
 从journal中读取inode table、session map、purge queue、openfile table、snap table
+#define CEPH_FS_ONDISK_MAGIC "ceph fs volume v011"
 
+mds0_inotable     这个作用是什么？
+mds1_inotable
 
-
+ MDS 表（ InoTable 、 SessionMap 、 SnapServer ）
+ 
 
 root@ceph100:/home# rados -p cephfs_metadata ls
 601.00000000
@@ -88,6 +95,7 @@ mds0_sessionmap
 400.00000000
 100.00000000.inode
 1.00000000
+
 
 
 
@@ -587,5 +595,102 @@ mds_rank->tick    //MDSRankDispatcher::tick
 CDir::fetch
 
 EMetaBlob::replay
+
+
+
+
+
+root@ceph100:/home/cephfs# rados -p cephfs_metadata ls
+200.00000025
+601.00000000
+602.00000000
+600.00000000
+603.00000000
+60a.00000000
+613.00000000
+1.00000000.inode
+200.00000000
+610.00000000
+606.00000000
+607.00000000
+60e.00000000
+mds1_openfiles.0
+mds0_openfiles.0
+60f.00000000
+608.00000000
+500.00000001
+501.00000000
+612.00000000
+401.00000000
+604.00000000
+101.00000000.inode
+500.00000000
+mds_snaptable
+605.00000000
+100000050b0.00000000
+10000004eb9.00000000
+101.00000000
+mds1_sessionmap
+mds0_inotable
+611.00000000
+100.00000000
+mds0_sessionmap
+60c.00000000
+201.00000001
+mds1_inotable
+609.00000000
+60b.00000000
+60d.00000000
+201.00000000
+400.00000000
+100.00000000.inode
+1.00000000
+
+
+
+
+
+文件没有下级目录，所以没必要单独弄一个对象来保存元数据，只需要保存在上级目录的元数据里面
+
+
+
+
+root@ceph100:/home/cephfs# cephfs-journal-tool --rank=cephfs:all header  get
+{
+    "magic": "ceph fs volume v011",
+    "write_pos": 158584611,
+    "expire_pos": 158420134,
+    "trimmed_pos": 155189248,
+    "stream_format": 1,
+    "layout": {
+        "stripe_unit": 4194304,
+        "stripe_count": 1,
+        "object_size": 4194304,
+        "pool_id": 3,
+        "pool_ns": ""
+    }
+}
+
+{
+    "magic": "ceph fs volume v011",
+    "write_pos": 4208255,
+    "expire_pos": 4194304,
+    "trimmed_pos": 4194304,
+    "stream_format": 1,
+    "layout": {
+        "stripe_unit": 4194304,
+        "stripe_count": 1,
+        "object_size": 4194304,
+        "pool_id": 3,
+        "pool_ns": ""
+    }
+}
+
+
+root@ceph100:/home/cephfs# cephfs-journal-tool --rank=cephfs:all journal inspect
+Overall journal integrity: OK
+Overall journal integrity: OK
+
+
 
 
