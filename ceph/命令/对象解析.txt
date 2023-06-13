@@ -51,7 +51,7 @@ mdsdir id：[0x100, 0x200)
 log       : 0x200
 log backup:  0x300
 log pointer: 0x400
-purge_queue  :  0x500
+purge_queue  :  0x500         这个是用来做什么的？  PurgeQueue  清除队列
 stray id : [0x600, 0x1600)
 
 0x1600以内的都是system
