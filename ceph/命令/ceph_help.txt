@@ -2061,6 +2061,18 @@ rados --pool=metadata get 400.00000000 - | ceph-dencoder type JournalPointer imp
 rados --pool=metadata get 300.00000000 - | ceph-dencoder type Journaler::Header import - decode dump_json
 
 
+root@ceph100:/home/cephfs/0614# ceph --admin-daemon /var/run/ceph/63f4b6e8-9c8b-11ed-b51b-291c7c855967/ceph-mds.cephfs.ceph100.sxvbgs.asok status
+{
+    "cluster_fsid": "63f4b6e8-9c8b-11ed-b51b-291c7c855967",
+    "whoami": -1,
+    "id": 334258,
+    "want_state": "up:standby",
+    "state": "up:standby",
+    "mdsmap_epoch": 744,
+    "osdmap_epoch": 0,
+    "osdmap_epoch_barrier": 0,
+    "uptime": 2413.4782094450002
+}
 
 
 

@@ -1,0 +1,469 @@
+
+操作：root@ceph100:/mnt/kernel-cephfs/dir2# mv file2  ../dir1
+
+root@ceph100:/home/cephfs/0614/.1# ceph-dencoder import 0x4079c9_PEERUPDATE.bin type EPeerUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 61,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 3,
+                            "mtime": "2023-06-14T15:30:59.491078+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 4
+                        },
+                        "accounted_fragstat": {
+                            "version": 3,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "rstat": {
+                            "version": 3,
+                            "rbytes": 11,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-14T15:30:59.491078+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 3,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "dirty",
+                    "nfull": 1,
+                    "nremote": 0,
+                    "nnull": 1,
+                    "full bits": [
+                        {
+                            "dentry": "file2",
+                            "snapid.first": "2",
+                            "snapid.last": "head",
+                            "dentry version": 60,
+                            "inode": {
+                                "ino": 1099511648431,
+                                "rdev": 0,
+                                "ctime": "2023-06-13T20:43:55.506352+0800",
+                                "btime": "2023-02-28T21:09:35.540933+0800",
+                                "mode": 33188,
+                                "uid": 0,
+                                "gid": 0,
+                                "nlink": 2,
+                                "dir_layout": {
+                                    "dir_hash": 0,
+                                    "unused1": 0,
+                                    "unused2": 0,
+                                    "unused3": 0
+                                },
+                                "layout": {
+                                    "stripe_unit": 4194304,
+                                    "stripe_count": 1,
+                                    "object_size": 4194304,
+                                    "pool_id": 2,
+                                    "pool_ns": ""
+                                },
+                                "old_pools": [],
+                                "size": 7,
+                                "truncate_seq": 1,
+                                "truncate_size": 18446744073709551615,
+                                "truncate_from": 0,
+                                "truncate_pending": 0,
+                                "mtime": "2023-02-28T21:09:35.544933+0800",
+                                "atime": "2023-02-28T21:09:35.540933+0800",
+                                "time_warp_seq": 0,
+                                "change_attr": 3,
+                                "export_pin": -1,
+                                "export_ephemeral_random_pin": 0,
+                                "export_ephemeral_distributed_pin": false,
+                                "client_ranges": [],
+                                "dirstat": {
+                                    "version": 0,
+                                    "mtime": "0.000000",
+                                    "num_files": 0,
+                                    "num_subdirs": 0,
+                                    "change_attr": 0
+                                },
+                                "rstat": {
+                                    "version": 0,
+                                    "rbytes": 7,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:43:55.506352+0800"
+                                },
+                                "accounted_rstat": {
+                                    "version": 0,
+                                    "rbytes": 7,
+                                    "rfiles": 1,
+                                    "rsubdirs": 0,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:43:55.506352+0800"
+                                },
+                                "version": 17,
+                                "file_data_version": 0,
+                                "xattr_version": 1,
+                                "backtrace_version": 17,
+                                "stray_prior_path": "",
+                                "max_size_ever": 0,
+                                "quota": {
+                                    "max_bytes": 0,
+                                    "max_files": 0
+                                },
+                                "last_scrub_stamp": "0.000000",
+                                "last_scrub_version": 0
+                            },
+                            "xattrs": {},
+                            "state": "dirty+dirty_parent",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "remote bits": [],
+                    "null bits": [
+                        {
+                            "dentry": "file2",
+                            "snapid.first": 2,
+                            "snapid.last": -2,
+                            "dentry version": 60,
+                            "dirty": "true"
+                        }
+                    ]
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "rollback length": 301,
+    "type": "peer_rename_prep",
+    "metareqid": "client.344346:9",
+    "leader": 0,
+    "op": 1,
+    "original op": 2
+}
+
+root@ceph100:/home/cephfs/0614/.1# ceph-dencoder import 0x407f6f_PEERUPDATE.bin type EPeerUpdate decode dump_json
+{
+    "metablob": {
+        "lumps": [],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "rollback length": 0,
+    "type": "peer_rename_commit",
+    "metareqid": "client.344346:9",
+    "leader": 0,
+    "op": 2,
+    "original op": 2
+}
+
+root@ceph100:/home/cephfs/0614/.1# ceph-dencoder import 0x408044_SUBTREEMAP.bin type ESubtreeMap decode dump_json
+{
+    "metablob": {
+        "lumps": [
+            {
+                "dirfrag": {
+                    "dirfrag": "0x101"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 2,
+                        "snap_purged_thru": 1,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "0.000000",
+                            "num_files": 0,
+                            "num_subdirs": 10,
+                            "change_attr": 0
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "0.000000",
+                            "num_files": 0,
+                            "num_subdirs": 10,
+                            "change_attr": 0
+                        },
+                        "rstat": {
+                            "version": 0,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 10,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-06T09:24:47.304287+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 0,
+                            "rbytes": 0,
+                            "rfiles": 0,
+                            "rsubdirs": 10,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-06T09:24:47.304287+0800"
+                        }
+                    },
+                    "state": "",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            },
+            {
+                "dirfrag": {
+                    "dirfrag": "0x1"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 80881,
+                        "snap_purged_thru": 1,
+                        "fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-09T16:08:38.813340+0800",
+                            "num_files": 0,
+                            "num_subdirs": 2,
+                            "change_attr": 20212
+                        },
+                        "accounted_fragstat": {
+                            "version": 0,
+                            "mtime": "2023-06-09T16:08:38.813340+0800",
+                            "num_files": 0,
+                            "num_subdirs": 2,
+                            "change_attr": 20212
+                        },
+                        "rstat": {
+                            "version": 46,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 3,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 46,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 3,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "",
+                    "nfull": 1,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [
+                        {
+                            "dentry": "dir2",
+                            "snapid.first": "2",
+                            "snapid.last": "head",
+                            "dentry version": 0,
+                            "inode": {
+                                "ino": 1099511647931,
+                                "rdev": 0,
+                                "ctime": "2023-06-13T20:55:16.234598+0800",
+                                "btime": "2023-06-09T16:08:38.813340+0800",
+                                "mode": 16877,
+                                "uid": 0,
+                                "gid": 0,
+                                "nlink": 1,
+                                "dir_layout": {
+                                    "dir_hash": 2,
+                                    "unused1": 0,
+                                    "unused2": 0,
+                                    "unused3": 0
+                                },
+                                "layout": {
+                                    "stripe_unit": 0,
+                                    "stripe_count": 0,
+                                    "object_size": 0,
+                                    "pool_id": -1,
+                                    "pool_ns": ""
+                                },
+                                "old_pools": [],
+                                "size": 0,
+                                "truncate_seq": 1,
+                                "truncate_size": 18446744073709551615,
+                                "truncate_from": 0,
+                                "truncate_pending": 0,
+                                "mtime": "2023-06-13T20:55:16.234598+0800",
+                                "atime": "2023-06-09T16:08:38.813340+0800",
+                                "time_warp_seq": 0,
+                                "change_attr": 3,
+                                "export_pin": 1,
+                                "export_ephemeral_random_pin": 0,
+                                "export_ephemeral_distributed_pin": false,
+                                "client_ranges": [],
+                                "dirstat": {
+                                    "version": 3,
+                                    "mtime": "2023-06-13T20:55:16.234598+0800",
+                                    "num_files": 3,
+                                    "num_subdirs": 0,
+                                    "change_attr": 3
+                                },
+                                "rstat": {
+                                    "version": 3,
+                                    "rbytes": 18,
+                                    "rfiles": 2,
+                                    "rsubdirs": 1,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "accounted_rstat": {
+                                    "version": 2,
+                                    "rbytes": 18,
+                                    "rfiles": 2,
+                                    "rsubdirs": 1,
+                                    "rsnaps": 0,
+                                    "rctime": "2023-06-13T20:55:16.234598+0800"
+                                },
+                                "version": 80884,
+                                "file_data_version": 0,
+                                "xattr_version": 1,
+                                "backtrace_version": 80855,
+                                "stray_prior_path": "",
+                                "max_size_ever": 0,
+                                "quota": {
+                                    "max_bytes": 0,
+                                    "max_files": 0
+                                },
+                                "last_scrub_stamp": "0.000000",
+                                "last_scrub_version": 0
+                            },
+                            "xattrs": {},
+                            "frag tree": "fragtree_t()",
+                            "has_snapbl": "false",
+                            "state": "",
+                            "alternate_name": ""
+                        }
+                    ],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            },
+            {
+                "dirfrag": {
+                    "dirfrag": "0x10000004ebb"
+                },
+                "dirlump": {
+                    "fnode": {
+                        "version": 61,
+                        "snap_purged_thru": 0,
+                        "fragstat": {
+                            "version": 3,
+                            "mtime": "2023-06-14T15:30:59.491078+0800",
+                            "num_files": 2,
+                            "num_subdirs": 0,
+                            "change_attr": 4
+                        },
+                        "accounted_fragstat": {
+                            "version": 3,
+                            "mtime": "2023-06-13T20:55:16.234598+0800",
+                            "num_files": 3,
+                            "num_subdirs": 0,
+                            "change_attr": 3
+                        },
+                        "rstat": {
+                            "version": 3,
+                            "rbytes": 11,
+                            "rfiles": 1,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-14T15:30:59.491078+0800"
+                        },
+                        "accounted_rstat": {
+                            "version": 3,
+                            "rbytes": 18,
+                            "rfiles": 2,
+                            "rsubdirs": 0,
+                            "rsnaps": 0,
+                            "rctime": "2023-06-13T20:55:16.234598+0800"
+                        }
+                    },
+                    "state": "",
+                    "nfull": 0,
+                    "nremote": 0,
+                    "nnull": 0,
+                    "full bits": [],
+                    "remote bits": [],
+                    "null bits": []
+                }
+            }
+        ],
+        "roots": [],
+        "tableclient tranactions": [],
+        "renamed directory inodeno": 0,
+        "renamed directory fragments": [],
+        "inotable version": 0,
+        "SessionMap version": 0,
+        "allocated ino": 0,
+        "preallocated inos": "[]",
+        "used preallocated ino": 0,
+        "client name": {
+            "type": "unknown",
+            "num": 0
+        },
+        "inodes starting a truncate": [],
+        "inodes finishing a truncated": [],
+        "destroyed inodes": [],
+        "client requests": []
+    },
+    "subtrees": [
+        {
+            "root dirfrag": "0x101"
+        },
+        {
+            "root dirfrag": "0x10000004ebb"
+        }
+    ],
+    "ambiguous subtrees": [],
+    "expire position": 4223500
+}
+
+
+
+
+

@@ -1,0 +1,25 @@
+
+
+solve  解决问题
+resolve 解决矛盾
+
+
+
+uncommitted_leaders
+    add_uncommitted_leader    _link_remote，_unlink_local，handle_client_rename 和 EUpdate::replay （have_peers）
+    have_uncommitted_leader
+    handle_resolve
+	finish_committed_leaders    handle_peer_request_reply
+    
+
+                                                                    uncommitted_peers
+                                                                              add_uncommitted_peer       handle_peer_link_prep，handle_peer_rmdir_prep， handle_peer_rename_prep 和 EPeerUpdate::replay
+                                                                              send_peer_resolves
+																			  finish_uncommitted_peer    EPeerUpdate::replay：EPeerUpdate::OP_COMMIT 或 EPeerUpdate::OP_ROLLBACK
+																			                             _committed_peer 或 finish_rollback
+																			                             handle_resolve_ack
+																			  get_uncommitted_peer
+																			  
+
+
+
