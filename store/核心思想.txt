@@ -6,3 +6,15 @@ monitor选主：
 mds避免双主：
 1、mds跟monitor2个心跳周期无响应则将自己标记为非正常状态。
 2、monitor与mds3个心跳周期无响应则将对应的mds标记为非正常状态，发起mds切换。
+
+
+
+
+Inode保存                                                         lustre             ceph              h                  c
+inode和dentry分开保存                                                                                  Y
+inode直接嵌入dentry                                                                    Y                                   Y
+
+
+后一种对硬连接支持不友好，需要通过扩展表来解决
+
+
