@@ -30,6 +30,16 @@
  * delay extent tree at the first commit.  But for better understand
  * what it does, it has been rename to extent status tree.
  *
+ * 根据在 Ext4 开发者研讨会之前的讨论，
+ * 我们将引入一种名为 io 树的新结构，以跟踪所有范围的状态，
+ * 以便解决我们遇到的一些问题（例如，预留空间警告），并提供范围级别的锁定。
+ * 延迟范围树是实现这一目标的第一步。
+ * 它最初由杨永强构建。当时它被称为延迟范围树，
+ * 其目标仅仅是跟踪内存中的延迟范围，以简化 fiemap 和 bigalloc 的实现，
+ * 并引入 lseek SEEK_DATA/SEEK_HOLE 支持。这就是为什么它在第一次提交时仍然被称为延迟范围树。
+ * 但为了更好地理解它的功能，它已经被重命名为范围状态树。
+ *
+ *
  * Step1:
  * Currently the first step has been done.  All delayed extents are
  * tracked in the tree.  It maintains the delayed extent when a delayed
@@ -39,6 +49,13 @@
  *
  * The following comment describes the implemenmtation of extent
  * status tree and future works.
+ *
+ * 第一步：
+ * 目前，第一步已经完成。所有延迟范围都在树中被跟踪。
+ * 当发出延迟分配时，它会维护延迟范围，当延迟范围被写入或失效时，延迟范围也会被维护。
+ * 因此，fiemap 和 bigalloc 的实现被简化了，并引入了 SEEK_DATA/SEEK_HOLE。
+ *
+ * 以下注释描述了范围状态树的实现和未来的工作。
  *
  * Step2:
  * In this step all extent status are tracked by extent status tree.
@@ -52,49 +69,74 @@
  * hole extents in the tree will be reclaimed by this shrinker when we
  * are under high memory pressure.  Delayed extents will not be
  * reclimed because fiemap, bigalloc, and seek_data/hole need it.
+ *
+ * 第二步：
+ *
+ * 在这一步中，范围状态树跟踪所有范围的状态。
+ * 因此，我们可以在查找范围树之前，先尝试在这个树中查找块映射。
+ * 因此，单个范围缓存可以被移除，因为范围状态树可以更好地完成这项工作。
+ * 状态树中的范围是按需加载的。因此，范围状态树可能不包含文件中的所有范围。
+ * 同时，我们定义了一个缩减器来从范围状态树中回收内存，因为碎片化的范围树会使状态树占用太多内存。
+ * 当我们在高内存压力下时，树中的已写入/未写入/空洞范围将被这个缩减器回收。
+ * 延迟范围不会被回收，因为 fiemap、bigalloc 和 seek_data/hole 需要它。
+ *
  */
 
 /*
  * Extent status tree implementation for ext4.
+ * 范围状态树跟踪所有范围的状态。
  *
  *
  * ==========================================================================
  * Extent status tree tracks all extent status.
  *
+ * 范围状态树跟踪所有范围的状态。
+ *
  * 1. Why we need to implement extent status tree?
+ *
+ * 为什么我们需要实现范围状态树？
  *
  * Without extent status tree, ext4 identifies a delayed extent by looking
  * up page cache, this has several deficiencies - complicated, buggy,
  * and inefficient code.
+ * 没有范围状态树，ext4 通过查找页面缓存来识别延迟范围，这有几个缺点——代码复杂、有漏洞、效率低下。
  *
  * FIEMAP, SEEK_HOLE/DATA, bigalloc, and writeout all need to know if a
  * block or a range of blocks are belonged to a delayed extent.
+ * FIEMAP、SEEK_HOLE/DATA、bigalloc 和写入操作都需要知道一个块或一系列块是否属于一个延迟范围。
  *
  * Let us have a look at how they do without extent status tree.
  *   --	FIEMAP
  *	FIEMAP looks up page cache to identify delayed allocations from holes.
+ FIEMAP 查找页面缓存以识别延迟分配和空洞。
  *
  *   --	SEEK_HOLE/DATA
  *	SEEK_HOLE/DATA has the same problem as FIEMAP.
+ SEEK_HOLE/DATA 与 FIEMAP 有相同的问题。
  *
  *   --	bigalloc
  *	bigalloc looks up page cache to figure out if a block is
  *	already under delayed allocation or not to determine whether
  *	quota reserving is needed for the cluster.
+ bigalloc 查找页面缓存，以确定一个块是否已经处于延迟分配状态，以决定是否需要为集群预留配额。
  *
  *   --	writeout
  *	Writeout looks up whole page cache to see if a buffer is
  *	mapped, If there are not very many delayed buffers, then it is
  *	time consuming.
+ 写入操作查找整个页面缓存以查看一个缓冲区是否已映射。如果没有很多延迟缓冲区，那么这是耗时的。
  *
  * With extent status tree implementation, FIEMAP, SEEK_HOLE/DATA,
  * bigalloc and writeout can figure out if a block or a range of
  * blocks is under delayed allocation(belonged to a delayed extent) or
  * not by searching the extent tree.
  *
+ * 有了范围状态树的实现，FIEMAP、SEEK_HOLE/DATA、bigalloc 和写入操作可以通过搜索范围树来确定一个块或一系列块是否处于延迟分配状态（属于一个延迟范围）。
+ *
  *
  * ==========================================================================
  * 2. Ext4 extent status tree impelmentation
+ * Ext4 范围状态树实现
  *
  *   --	extent
  *	A extent is a range of blocks which are contiguous logically and
@@ -102,93 +144,105 @@
  *	a in-memory struct, there is no corresponding on-disk data.  There
  *	is no limit on length of extent, so an extent can contain as many
  *	blocks as they are contiguous logically and physically.
+ 范围是一系列逻辑上和物理上连续的块。与范围树中的范围不同，ext4 中的范围是一个内存中的结构，
+ 没有对应的磁盘数据。范围的长度没有限制，因此一个范围可以包含尽可能多的逻辑上和物理上连续的块。
  *
  *   --	extent status tree
  *	Every inode has an extent status tree and all allocation blocks
  *	are added to the tree with different status.  The extent in the
  *	tree are ordered by logical block no.
+ 每个索引节点都有一个范围状态树，所有分配的块都以不同的状态添加到树中。树中的范围按逻辑块号排序。
  *
  *   --	operations on a extent status tree
  *	There are three important operations on a delayed extent tree: find
  *	next extent, adding a extent(a range of blocks) and removing a extent.
+ 对延迟范围树有三种重要的操作：查找下一个范围、添加一个范围（一系列块）和移除一个范围。
  *
  *   --	race on a extent status tree
  *	Extent status tree is protected by inode->i_es_lock.
+ 范围状态树由 inode->i_es_lock 保护。
  *
  *   --	memory consumption
  *      Fragmented extent tree will make extent status tree cost too much
  *      memory.  Hence, we will reclaim written/unwritten/hole extents from
  *      the tree under a heavy memory pressure.
+ * 碎片化的范围树会使范围状态树占用太多内存。因此，当内存压力很大时，我们将从树中回收已写入/未写入/空洞范围。
  *
  *
  * ==========================================================================
  * 3. Performance analysis
  *
- *   --	overhead
+ *   --	overhead  开销
  *	1. There is a cache extent for write access, so if writes are
  *	not very random, adding space operaions are in O(1) time.
+ 有一个用于写入访问的缓存范围，因此如果写入不是非常随机的，添加空间操作可以在 O(1) 时间内完成。
  *
- *   --	gain
+ *   --	gain  收益
  *	2. Code is much simpler, more readable, more maintainable and
  *	more efficient.
+ 代码更简单、更易读、更易维护、更高效。
  *
  *
  * ==========================================================================
- * 4. TODO list
+ * 4. TODO list 待办事项列表
  *
- *   -- Refactor delayed space reservation
+ *   -- Refactor delayed space reservation 重构延迟空间预留
  *
- *   -- Extent-level locking
+ *   -- Extent-level locking  范围级别的锁定
  */
 
 static struct kmem_cache *ext4_es_cachep;
 
 static int __es_insert_extent(struct inode *inode, struct extent_status *newes);
 static int __es_remove_extent(struct inode *inode, ext4_lblk_t lblk,
-			      ext4_lblk_t end);
+                              ext4_lblk_t end);
 static int es_reclaim_extents(struct ext4_inode_info *ei, int *nr_to_scan);
 static int __es_shrink(struct ext4_sb_info *sbi, int nr_to_scan,
-		       struct ext4_inode_info *locked_ei);
+                       struct ext4_inode_info *locked_ei);
 
+/*
+创建和销毁一个内存缓存池（kmem_cache），用于管理 struct extent_status 结构的内存分配。
+*/
 int __init ext4_init_es(void)
 {
-	ext4_es_cachep = kmem_cache_create("ext4_extent_status",
-					   sizeof(struct extent_status),
-					   0, (SLAB_RECLAIM_ACCOUNT), NULL);
-	if (ext4_es_cachep == NULL)
-		return -ENOMEM;
-	return 0;
+    ext4_es_cachep = kmem_cache_create("ext4_extent_status",
+                                       sizeof(struct extent_status),
+                                       0, (SLAB_RECLAIM_ACCOUNT), NULL);
+    if (ext4_es_cachep == NULL)
+        return -ENOMEM;
+    return 0;
 }
 
 void ext4_exit_es(void)
 {
-	kmem_cache_destroy(ext4_es_cachep);
+    kmem_cache_destroy(ext4_es_cachep);
 }
 
 void ext4_es_init_tree(struct ext4_es_tree *tree)
 {
-	tree->root = RB_ROOT;
-	tree->cache_es = NULL;
+    tree->root = RB_ROOT;
+    tree->cache_es = NULL;
 }
 
 #ifdef ES_DEBUG__
 static void ext4_es_print_tree(struct inode *inode)
 {
-	struct ext4_es_tree *tree;
-	struct rb_node *node;
+    struct ext4_es_tree *tree;
+    struct rb_node *node;
 
-	printk(KERN_DEBUG "status extents for inode %lu:", inode->i_ino);
-	tree = &EXT4_I(inode)->i_es_tree;
-	node = rb_first(&tree->root);
-	while (node) {
-		struct extent_status *es;
-		es = rb_entry(node, struct extent_status, rb_node);
-		printk(KERN_DEBUG " [%u/%u) %llu %x",
-		       es->es_lblk, es->es_len,
-		       ext4_es_pblock(es), ext4_es_status(es));
-		node = rb_next(node);
-	}
-	printk(KERN_DEBUG "\n");
+    printk(KERN_DEBUG "status extents for inode %lu:", inode->i_ino);
+    tree = &EXT4_I(inode)->i_es_tree;
+    node = rb_first(&tree->root);
+    while (node)
+    {
+        struct extent_status *es;
+        es = rb_entry(node, struct extent_status, rb_node);
+        printk(KERN_DEBUG " [%u/%u) %llu %x",
+               es->es_lblk, es->es_len,
+               ext4_es_pblock(es), ext4_es_status(es));
+        node = rb_next(node);
+    }
+    printk(KERN_DEBUG "\n");
 }
 #else
 #define ext4_es_print_tree(inode)
@@ -196,8 +250,8 @@ static void ext4_es_print_tree(struct inode *inode)
 
 static inline ext4_lblk_t ext4_es_end(struct extent_status *es)
 {
-	BUG_ON(es->es_lblk + es->es_len < es->es_lblk);
-	return es->es_lblk + es->es_len - 1;
+    BUG_ON(es->es_lblk + es->es_len < es->es_lblk);
+    return es->es_lblk + es->es_len - 1; // 返回范围的最后一个逻辑块号
 }
 
 /*
@@ -205,31 +259,32 @@ static inline ext4_lblk_t ext4_es_end(struct extent_status *es)
  * it can't be found, try to find next extent.
  */
 static struct extent_status *__es_tree_search(struct rb_root *root,
-					      ext4_lblk_t lblk)
+                                              ext4_lblk_t lblk)
 {
-	struct rb_node *node = root->rb_node;
-	struct extent_status *es = NULL;
+    struct rb_node *node = root->rb_node;
+    struct extent_status *es = NULL;
 
-	while (node) {
-		es = rb_entry(node, struct extent_status, rb_node);
-		if (lblk < es->es_lblk)
-			node = node->rb_left;
-		else if (lblk > ext4_es_end(es))
-			node = node->rb_right;
-		else
-			return es;
-	}
+    while (node)
+    {
+        es = rb_entry(node, struct extent_status, rb_node);
+        if (lblk < es->es_lblk)
+            node = node->rb_left;
+        else if (lblk > ext4_es_end(es))
+            node = node->rb_right;
+        else
+            return es;
+    }
 
-	if (es && lblk < es->es_lblk)
-		return es;
+    if (es && lblk < es->es_lblk)
+        return es;
 
-	if (es && lblk > ext4_es_end(es)) {
-		node = rb_next(&es->rb_node);
-		return node ? rb_entry(node, struct extent_status, rb_node) :
-			      NULL;
-	}
+    if (es && lblk > ext4_es_end(es))
+    {
+        node = rb_next(&es->rb_node);
+        return node ? rb_entry(node, struct extent_status, rb_node) : NULL;
+    }
 
-	return NULL;
+    return NULL;
 }
 
 /*
@@ -242,132 +297,140 @@ static struct extent_status *__es_tree_search(struct rb_root *root,
  * @es: delayed extent that we found
  */
 void ext4_es_find_delayed_extent_range(struct inode *inode,
-				 ext4_lblk_t lblk, ext4_lblk_t end,
-				 struct extent_status *es)
+                                       ext4_lblk_t lblk, ext4_lblk_t end,
+                                       struct extent_status *es)
 {
-	struct ext4_es_tree *tree = NULL;
-	struct extent_status *es1 = NULL;
-	struct rb_node *node;
+    struct ext4_es_tree *tree = NULL;
+    struct extent_status *es1 = NULL;
+    struct rb_node *node;
 
-	BUG_ON(es == NULL);
-	BUG_ON(end < lblk);
-	trace_ext4_es_find_delayed_extent_range_enter(inode, lblk);
+    BUG_ON(es == NULL);
+    BUG_ON(end < lblk);
+    trace_ext4_es_find_delayed_extent_range_enter(inode, lblk);
 
-	read_lock(&EXT4_I(inode)->i_es_lock);
-	tree = &EXT4_I(inode)->i_es_tree;
+    read_lock(&EXT4_I(inode)->i_es_lock);
+    tree = &EXT4_I(inode)->i_es_tree;
 
-	/* find extent in cache firstly */
-	es->es_lblk = es->es_len = es->es_pblk = 0;
-	if (tree->cache_es) {
-		es1 = tree->cache_es;
-		if (in_range(lblk, es1->es_lblk, es1->es_len)) {
-			es_debug("%u cached by [%u/%u) %llu %x\n",
-				 lblk, es1->es_lblk, es1->es_len,
-				 ext4_es_pblock(es1), ext4_es_status(es1));
-			goto out;
-		}
-	}
+    /* find extent in cache firstly */
+    es->es_lblk = es->es_len = es->es_pblk = 0;
+    if (tree->cache_es)
+    {
+        es1 = tree->cache_es;
+        if (in_range(lblk, es1->es_lblk, es1->es_len))
+        {
+            es_debug("%u cached by [%u/%u) %llu %x\n",
+                     lblk, es1->es_lblk, es1->es_len,
+                     ext4_es_pblock(es1), ext4_es_status(es1));
+            goto out;
+        }
+    }
 
-	es1 = __es_tree_search(&tree->root, lblk);
+    es1 = __es_tree_search(&tree->root, lblk);
 
 out:
-	if (es1 && !ext4_es_is_delayed(es1)) {
-		while ((node = rb_next(&es1->rb_node)) != NULL) {
-			es1 = rb_entry(node, struct extent_status, rb_node);
-			if (es1->es_lblk > end) {
-				es1 = NULL;
-				break;
-			}
-			if (ext4_es_is_delayed(es1))
-				break;
-		}
-	}
+    if (es1 && !ext4_es_is_delayed(es1))
+    {
+        while ((node = rb_next(&es1->rb_node)) != NULL)
+        {
+            es1 = rb_entry(node, struct extent_status, rb_node);
+            if (es1->es_lblk > end)
+            {
+                es1 = NULL;
+                break;
+            }
+            if (ext4_es_is_delayed(es1))
+                break;
+        }
+    }
 
-	if (es1 && ext4_es_is_delayed(es1)) {
-		tree->cache_es = es1;
-		es->es_lblk = es1->es_lblk;
-		es->es_len = es1->es_len;
-		es->es_pblk = es1->es_pblk;
-	}
+    if (es1 && ext4_es_is_delayed(es1))
+    {
+        tree->cache_es = es1;
+        es->es_lblk = es1->es_lblk;
+        es->es_len = es1->es_len;
+        es->es_pblk = es1->es_pblk;
+    }
 
-	read_unlock(&EXT4_I(inode)->i_es_lock);
+    read_unlock(&EXT4_I(inode)->i_es_lock);
 
-	trace_ext4_es_find_delayed_extent_range_exit(inode, es);
+    trace_ext4_es_find_delayed_extent_range_exit(inode, es);
 }
 
 static void ext4_es_list_add(struct inode *inode)
 {
-	struct ext4_inode_info *ei = EXT4_I(inode);
-	struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
+    struct ext4_inode_info *ei = EXT4_I(inode);
+    struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
 
-	if (!list_empty(&ei->i_es_list))
-		return;
+    if (!list_empty(&ei->i_es_list))
+        return;
 
-	spin_lock(&sbi->s_es_lock);
-	if (list_empty(&ei->i_es_list)) {
-		list_add_tail(&ei->i_es_list, &sbi->s_es_list);
-		sbi->s_es_nr_inode++;
-	}
-	spin_unlock(&sbi->s_es_lock);
+    spin_lock(&sbi->s_es_lock);
+    if (list_empty(&ei->i_es_list))
+    {
+        list_add_tail(&ei->i_es_list, &sbi->s_es_list);
+        sbi->s_es_nr_inode++;
+    }
+    spin_unlock(&sbi->s_es_lock);
 }
 
 static void ext4_es_list_del(struct inode *inode)
 {
-	struct ext4_inode_info *ei = EXT4_I(inode);
-	struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
+    struct ext4_inode_info *ei = EXT4_I(inode);
+    struct ext4_sb_info *sbi = EXT4_SB(inode->i_sb);
 
-	spin_lock(&sbi->s_es_lock);
-	if (!list_empty(&ei->i_es_list)) {
-		list_del_init(&ei->i_es_list);
-		sbi->s_es_nr_inode--;
-		WARN_ON_ONCE(sbi->s_es_nr_inode < 0);
-	}
-	spin_unlock(&sbi->s_es_lock);
+    spin_lock(&sbi->s_es_lock);
+    if (!list_empty(&ei->i_es_list))
+    {
+        list_del_init(&ei->i_es_list);
+        sbi->s_es_nr_inode--;
+        WARN_ON_ONCE(sbi->s_es_nr_inode < 0);
+    }
+    spin_unlock(&sbi->s_es_lock);
 }
 
 static struct extent_status *
 ext4_es_alloc_extent(struct inode *inode, ext4_lblk_t lblk, ext4_lblk_t len,
-		     ext4_fsblk_t pblk)
+                     ext4_fsblk_t pblk)
 {
-	struct extent_status *es;
-	es = kmem_cache_alloc(ext4_es_cachep, GFP_ATOMIC);
-	if (es == NULL)
-		return NULL;
-	es->es_lblk = lblk;
-	es->es_len = len;
-	es->es_pblk = pblk;
+    struct extent_status *es;
+    es = kmem_cache_alloc(ext4_es_cachep, GFP_ATOMIC);
+    if (es == NULL)
+        return NULL;
+    es->es_lblk = lblk;
+    es->es_len = len;
+    es->es_pblk = pblk;
 
-	/*
-	 * We don't count delayed extent because we never try to reclaim them
-	 */
-	if (!ext4_es_is_delayed(es)) {
-		if (!EXT4_I(inode)->i_es_shk_nr++)
-			ext4_es_list_add(inode);
-		percpu_counter_inc(&EXT4_SB(inode->i_sb)->
-					s_es_stats.es_stats_shk_cnt);
-	}
+    /*
+     * We don't count delayed extent because we never try to reclaim them
+     */
+    if (!ext4_es_is_delayed(es))
+    {
+        if (!EXT4_I(inode)->i_es_shk_nr++)
+            ext4_es_list_add(inode);
+        percpu_counter_inc(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_shk_cnt);
+    }
 
-	EXT4_I(inode)->i_es_all_nr++;
-	percpu_counter_inc(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_all_cnt);
+    EXT4_I(inode)->i_es_all_nr++;
+    percpu_counter_inc(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_all_cnt);
 
-	return es;
+    return es;
 }
 
 static void ext4_es_free_extent(struct inode *inode, struct extent_status *es)
 {
-	EXT4_I(inode)->i_es_all_nr--;
-	percpu_counter_dec(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_all_cnt);
+    EXT4_I(inode)->i_es_all_nr--;
+    percpu_counter_dec(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_all_cnt);
 
-	/* Decrease the shrink counter when this es is not delayed */
-	if (!ext4_es_is_delayed(es)) {
-		BUG_ON(EXT4_I(inode)->i_es_shk_nr == 0);
-		if (!--EXT4_I(inode)->i_es_shk_nr)
-			ext4_es_list_del(inode);
-		percpu_counter_dec(&EXT4_SB(inode->i_sb)->
-					s_es_stats.es_stats_shk_cnt);
-	}
+    /* Decrease the shrink counter when this es is not delayed */
+    if (!ext4_es_is_delayed(es))
+    {
+        BUG_ON(EXT4_I(inode)->i_es_shk_nr == 0);
+        if (!--EXT4_I(inode)->i_es_shk_nr)
+            ext4_es_list_del(inode);
+        percpu_counter_dec(&EXT4_SB(inode->i_sb)->s_es_stats.es_stats_shk_cnt);
+    }
 
-	kmem_cache_free(ext4_es_cachep, es);
+    kmem_cache_free(ext4_es_cachep, es);
 }
 
 /*
@@ -378,307 +441,340 @@ static void ext4_es_free_extent(struct inode *inode, struct extent_status *es)
  *  - status is equal
  */
 static int ext4_es_can_be_merged(struct extent_status *es1,
-				 struct extent_status *es2)
+                                 struct extent_status *es2)
 {
-	if (ext4_es_type(es1) != ext4_es_type(es2))
-		return 0;
+    if (ext4_es_type(es1) != ext4_es_type(es2))
+        return 0;
 
-	if (((__u64) es1->es_len) + es2->es_len > EXT_MAX_BLOCKS) {
-		pr_warn("ES assertion failed when merging extents. "
-			"The sum of lengths of es1 (%d) and es2 (%d) "
-			"is bigger than allowed file size (%d)\n",
-			es1->es_len, es2->es_len, EXT_MAX_BLOCKS);
-		WARN_ON(1);
-		return 0;
-	}
+    if (((__u64)es1->es_len) + es2->es_len > EXT_MAX_BLOCKS)
+    {
+        pr_warn("ES assertion failed when merging extents. "
+                "The sum of lengths of es1 (%d) and es2 (%d) "
+                "is bigger than allowed file size (%d)\n",
+                es1->es_len, es2->es_len, EXT_MAX_BLOCKS);
+        WARN_ON(1);
+        return 0;
+    }
 
-	if (((__u64) es1->es_lblk) + es1->es_len != es2->es_lblk)
-		return 0;
+    if (((__u64)es1->es_lblk) + es1->es_len != es2->es_lblk)
+        return 0;
 
-	if ((ext4_es_is_written(es1) || ext4_es_is_unwritten(es1)) &&
-	    (ext4_es_pblock(es1) + es1->es_len == ext4_es_pblock(es2)))
-		return 1;
+    if ((ext4_es_is_written(es1) || ext4_es_is_unwritten(es1)) &&
+        (ext4_es_pblock(es1) + es1->es_len == ext4_es_pblock(es2)))
+        return 1;
 
-	if (ext4_es_is_hole(es1))
-		return 1;
+    if (ext4_es_is_hole(es1))
+        return 1;
 
-	/* we need to check delayed extent is without unwritten status */
-	if (ext4_es_is_delayed(es1) && !ext4_es_is_unwritten(es1))
-		return 1;
+    /* we need to check delayed extent is without unwritten status */
+    if (ext4_es_is_delayed(es1) && !ext4_es_is_unwritten(es1))
+        return 1;
 
-	return 0;
+    return 0;
 }
 
 static struct extent_status *
 ext4_es_try_to_merge_left(struct inode *inode, struct extent_status *es)
 {
-	struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
-	struct extent_status *es1;
-	struct rb_node *node;
+    struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
+    struct extent_status *es1;
+    struct rb_node *node;
 
-	node = rb_prev(&es->rb_node);
-	if (!node)
-		return es;
+    node = rb_prev(&es->rb_node);
+    if (!node)
+        return es;
 
-	es1 = rb_entry(node, struct extent_status, rb_node);
-	if (ext4_es_can_be_merged(es1, es)) {
-		es1->es_len += es->es_len;
-		if (ext4_es_is_referenced(es))
-			ext4_es_set_referenced(es1);
-		rb_erase(&es->rb_node, &tree->root);
-		ext4_es_free_extent(inode, es);
-		es = es1;
-	}
+    es1 = rb_entry(node, struct extent_status, rb_node);
+    if (ext4_es_can_be_merged(es1, es))
+    {
+        es1->es_len += es->es_len;
+        if (ext4_es_is_referenced(es))
+            ext4_es_set_referenced(es1);
+        rb_erase(&es->rb_node, &tree->root);
+        ext4_es_free_extent(inode, es);
+        es = es1;
+    }
 
-	return es;
+    return es;
 }
 
 static struct extent_status *
 ext4_es_try_to_merge_right(struct inode *inode, struct extent_status *es)
 {
-	struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
-	struct extent_status *es1;
-	struct rb_node *node;
+    struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
+    struct extent_status *es1;
+    struct rb_node *node;
 
-	node = rb_next(&es->rb_node);
-	if (!node)
-		return es;
+    node = rb_next(&es->rb_node);
+    if (!node)
+        return es;
 
-	es1 = rb_entry(node, struct extent_status, rb_node);
-	if (ext4_es_can_be_merged(es, es1)) {
-		es->es_len += es1->es_len;
-		if (ext4_es_is_referenced(es1))
-			ext4_es_set_referenced(es);
-		rb_erase(node, &tree->root);
-		ext4_es_free_extent(inode, es1);
-	}
+    es1 = rb_entry(node, struct extent_status, rb_node);
+    if (ext4_es_can_be_merged(es, es1))
+    {
+        es->es_len += es1->es_len;
+        if (ext4_es_is_referenced(es1))
+            ext4_es_set_referenced(es);
+        rb_erase(node, &tree->root);
+        ext4_es_free_extent(inode, es1);
+    }
 
-	return es;
+    return es;
 }
 
 #ifdef ES_AGGRESSIVE_TEST
-#include "ext4_extents.h"	/* Needed when ES_AGGRESSIVE_TEST is defined */
+#include "ext4_extents.h" /* Needed when ES_AGGRESSIVE_TEST is defined */
 
 static void ext4_es_insert_extent_ext_check(struct inode *inode,
-					    struct extent_status *es)
+                                            struct extent_status *es)
 {
-	struct ext4_ext_path *path = NULL;
-	struct ext4_extent *ex;
-	ext4_lblk_t ee_block;
-	ext4_fsblk_t ee_start;
-	unsigned short ee_len;
-	int depth, ee_status, es_status;
+    struct ext4_ext_path *path = NULL;
+    struct ext4_extent *ex;
+    ext4_lblk_t ee_block;
+    ext4_fsblk_t ee_start;
+    unsigned short ee_len;
+    int depth, ee_status, es_status;
 
-	path = ext4_find_extent(inode, es->es_lblk, NULL, EXT4_EX_NOCACHE);
-	if (IS_ERR(path))
-		return;
+    path = ext4_find_extent(inode, es->es_lblk, NULL, EXT4_EX_NOCACHE);
+    if (IS_ERR(path))
+        return;
 
-	depth = ext_depth(inode);
-	ex = path[depth].p_ext;
+    depth = ext_depth(inode);
+    ex = path[depth].p_ext;
 
-	if (ex) {
+    if (ex)
+    {
 
-		ee_block = le32_to_cpu(ex->ee_block);
-		ee_start = ext4_ext_pblock(ex);
-		ee_len = ext4_ext_get_actual_len(ex);
+        ee_block = le32_to_cpu(ex->ee_block);
+        ee_start = ext4_ext_pblock(ex);
+        ee_len = ext4_ext_get_actual_len(ex);
 
-		ee_status = ext4_ext_is_unwritten(ex) ? 1 : 0;
-		es_status = ext4_es_is_unwritten(es) ? 1 : 0;
+        ee_status = ext4_ext_is_unwritten(ex) ? 1 : 0;
+        es_status = ext4_es_is_unwritten(es) ? 1 : 0;
 
-		/*
-		 * Make sure ex and es are not overlap when we try to insert
-		 * a delayed/hole extent.
-		 */
-		if (!ext4_es_is_written(es) && !ext4_es_is_unwritten(es)) {
-			if (in_range(es->es_lblk, ee_block, ee_len)) {
-				pr_warn("ES insert assertion failed for "
-					"inode: %lu we can find an extent "
-					"at block [%d/%d/%llu/%c], but we "
-					"want to add a delayed/hole extent "
-					"[%d/%d/%llu/%x]\n",
-					inode->i_ino, ee_block, ee_len,
-					ee_start, ee_status ? 'u' : 'w',
-					es->es_lblk, es->es_len,
-					ext4_es_pblock(es), ext4_es_status(es));
-			}
-			goto out;
-		}
+        /*
+         * Make sure ex and es are not overlap when we try to insert
+         * a delayed/hole extent.
+         */
+        if (!ext4_es_is_written(es) && !ext4_es_is_unwritten(es))
+        {
+            if (in_range(es->es_lblk, ee_block, ee_len))
+            {
+                pr_warn("ES insert assertion failed for "
+                        "inode: %lu we can find an extent "
+                        "at block [%d/%d/%llu/%c], but we "
+                        "want to add a delayed/hole extent "
+                        "[%d/%d/%llu/%x]\n",
+                        inode->i_ino, ee_block, ee_len,
+                        ee_start, ee_status ? 'u' : 'w',
+                        es->es_lblk, es->es_len,
+                        ext4_es_pblock(es), ext4_es_status(es));
+            }
+            goto out;
+        }
 
-		/*
-		 * We don't check ee_block == es->es_lblk, etc. because es
-		 * might be a part of whole extent, vice versa.
-		 */
-		if (es->es_lblk < ee_block ||
-		    ext4_es_pblock(es) != ee_start + es->es_lblk - ee_block) {
-			pr_warn("ES insert assertion failed for inode: %lu "
-				"ex_status [%d/%d/%llu/%c] != "
-				"es_status [%d/%d/%llu/%c]\n", inode->i_ino,
-				ee_block, ee_len, ee_start,
-				ee_status ? 'u' : 'w', es->es_lblk, es->es_len,
-				ext4_es_pblock(es), es_status ? 'u' : 'w');
-			goto out;
-		}
+        /*
+         * We don't check ee_block == es->es_lblk, etc. because es
+         * might be a part of whole extent, vice versa.
+         */
+        if (es->es_lblk < ee_block ||
+            ext4_es_pblock(es) != ee_start + es->es_lblk - ee_block)
+        {
+            pr_warn("ES insert assertion failed for inode: %lu "
+                    "ex_status [%d/%d/%llu/%c] != "
+                    "es_status [%d/%d/%llu/%c]\n",
+                    inode->i_ino,
+                    ee_block, ee_len, ee_start,
+                    ee_status ? 'u' : 'w', es->es_lblk, es->es_len,
+                    ext4_es_pblock(es), es_status ? 'u' : 'w');
+            goto out;
+        }
 
-		if (ee_status ^ es_status) {
-			pr_warn("ES insert assertion failed for inode: %lu "
-				"ex_status [%d/%d/%llu/%c] != "
-				"es_status [%d/%d/%llu/%c]\n", inode->i_ino,
-				ee_block, ee_len, ee_start,
-				ee_status ? 'u' : 'w', es->es_lblk, es->es_len,
-				ext4_es_pblock(es), es_status ? 'u' : 'w');
-		}
-	} else {
-		/*
-		 * We can't find an extent on disk.  So we need to make sure
-		 * that we don't want to add an written/unwritten extent.
-		 */
-		if (!ext4_es_is_delayed(es) && !ext4_es_is_hole(es)) {
-			pr_warn("ES insert assertion failed for inode: %lu "
-				"can't find an extent at block %d but we want "
-				"to add a written/unwritten extent "
-				"[%d/%d/%llu/%x]\n", inode->i_ino,
-				es->es_lblk, es->es_lblk, es->es_len,
-				ext4_es_pblock(es), ext4_es_status(es));
-		}
-	}
+        if (ee_status ^ es_status)
+        {
+            pr_warn("ES insert assertion failed for inode: %lu "
+                    "ex_status [%d/%d/%llu/%c] != "
+                    "es_status [%d/%d/%llu/%c]\n",
+                    inode->i_ino,
+                    ee_block, ee_len, ee_start,
+                    ee_status ? 'u' : 'w', es->es_lblk, es->es_len,
+                    ext4_es_pblock(es), es_status ? 'u' : 'w');
+        }
+    }
+    else
+    {
+        /*
+         * We can't find an extent on disk.  So we need to make sure
+         * that we don't want to add an written/unwritten extent.
+         */
+        if (!ext4_es_is_delayed(es) && !ext4_es_is_hole(es))
+        {
+            pr_warn("ES insert assertion failed for inode: %lu "
+                    "can't find an extent at block %d but we want "
+                    "to add a written/unwritten extent "
+                    "[%d/%d/%llu/%x]\n",
+                    inode->i_ino,
+                    es->es_lblk, es->es_lblk, es->es_len,
+                    ext4_es_pblock(es), ext4_es_status(es));
+        }
+    }
 out:
-	ext4_ext_drop_refs(path);
-	kfree(path);
+    ext4_ext_drop_refs(path);
+    kfree(path);
 }
 
 static void ext4_es_insert_extent_ind_check(struct inode *inode,
-					    struct extent_status *es)
+                                            struct extent_status *es)
 {
-	struct ext4_map_blocks map;
-	int retval;
+    struct ext4_map_blocks map;
+    int retval;
 
-	/*
-	 * Here we call ext4_ind_map_blocks to lookup a block mapping because
-	 * 'Indirect' structure is defined in indirect.c.  So we couldn't
-	 * access direct/indirect tree from outside.  It is too dirty to define
-	 * this function in indirect.c file.
-	 */
+    /*
+     * Here we call ext4_ind_map_blocks to lookup a block mapping because
+     * 'Indirect' structure is defined in indirect.c.  So we couldn't
+     * access direct/indirect tree from outside.  It is too dirty to define
+     * this function in indirect.c file.
+     */
 
-	map.m_lblk = es->es_lblk;
-	map.m_len = es->es_len;
+    map.m_lblk = es->es_lblk;
+    map.m_len = es->es_len;
 
-	retval = ext4_ind_map_blocks(NULL, inode, &map, 0);
-	if (retval > 0) {
-		if (ext4_es_is_delayed(es) || ext4_es_is_hole(es)) {
-			/*
-			 * We want to add a delayed/hole extent but this
-			 * block has been allocated.
-			 */
-			pr_warn("ES insert assertion failed for inode: %lu "
-				"We can find blocks but we want to add a "
-				"delayed/hole extent [%d/%d/%llu/%x]\n",
-				inode->i_ino, es->es_lblk, es->es_len,
-				ext4_es_pblock(es), ext4_es_status(es));
-			return;
-		} else if (ext4_es_is_written(es)) {
-			if (retval != es->es_len) {
-				pr_warn("ES insert assertion failed for "
-					"inode: %lu retval %d != es_len %d\n",
-					inode->i_ino, retval, es->es_len);
-				return;
-			}
-			if (map.m_pblk != ext4_es_pblock(es)) {
-				pr_warn("ES insert assertion failed for "
-					"inode: %lu m_pblk %llu != "
-					"es_pblk %llu\n",
-					inode->i_ino, map.m_pblk,
-					ext4_es_pblock(es));
-				return;
-			}
-		} else {
-			/*
-			 * We don't need to check unwritten extent because
-			 * indirect-based file doesn't have it.
-			 */
-			BUG_ON(1);
-		}
-	} else if (retval == 0) {
-		if (ext4_es_is_written(es)) {
-			pr_warn("ES insert assertion failed for inode: %lu "
-				"We can't find the block but we want to add "
-				"a written extent [%d/%d/%llu/%x]\n",
-				inode->i_ino, es->es_lblk, es->es_len,
-				ext4_es_pblock(es), ext4_es_status(es));
-			return;
-		}
-	}
+    retval = ext4_ind_map_blocks(NULL, inode, &map, 0);
+    if (retval > 0)
+    {
+        if (ext4_es_is_delayed(es) || ext4_es_is_hole(es))
+        {
+            /*
+             * We want to add a delayed/hole extent but this
+             * block has been allocated.
+             */
+            pr_warn("ES insert assertion failed for inode: %lu "
+                    "We can find blocks but we want to add a "
+                    "delayed/hole extent [%d/%d/%llu/%x]\n",
+                    inode->i_ino, es->es_lblk, es->es_len,
+                    ext4_es_pblock(es), ext4_es_status(es));
+            return;
+        }
+        else if (ext4_es_is_written(es))
+        {
+            if (retval != es->es_len)
+            {
+                pr_warn("ES insert assertion failed for "
+                        "inode: %lu retval %d != es_len %d\n",
+                        inode->i_ino, retval, es->es_len);
+                return;
+            }
+            if (map.m_pblk != ext4_es_pblock(es))
+            {
+                pr_warn("ES insert assertion failed for "
+                        "inode: %lu m_pblk %llu != "
+                        "es_pblk %llu\n",
+                        inode->i_ino, map.m_pblk,
+                        ext4_es_pblock(es));
+                return;
+            }
+        }
+        else
+        {
+            /*
+             * We don't need to check unwritten extent because
+             * indirect-based file doesn't have it.
+             */
+            BUG_ON(1);
+        }
+    }
+    else if (retval == 0)
+    {
+        if (ext4_es_is_written(es))
+        {
+            pr_warn("ES insert assertion failed for inode: %lu "
+                    "We can't find the block but we want to add "
+                    "a written extent [%d/%d/%llu/%x]\n",
+                    inode->i_ino, es->es_lblk, es->es_len,
+                    ext4_es_pblock(es), ext4_es_status(es));
+            return;
+        }
+    }
 }
 
 static inline void ext4_es_insert_extent_check(struct inode *inode,
-					       struct extent_status *es)
+                                               struct extent_status *es)
 {
-	/*
-	 * We don't need to worry about the race condition because
-	 * caller takes i_data_sem locking.
-	 */
-	BUG_ON(!rwsem_is_locked(&EXT4_I(inode)->i_data_sem));
-	if (ext4_test_inode_flag(inode, EXT4_INODE_EXTENTS))
-		ext4_es_insert_extent_ext_check(inode, es);
-	else
-		ext4_es_insert_extent_ind_check(inode, es);
+    /*
+     * We don't need to worry about the race condition because
+     * caller takes i_data_sem locking.
+     */
+    BUG_ON(!rwsem_is_locked(&EXT4_I(inode)->i_data_sem));
+    if (ext4_test_inode_flag(inode, EXT4_INODE_EXTENTS))
+        ext4_es_insert_extent_ext_check(inode, es);
+    else
+        ext4_es_insert_extent_ind_check(inode, es);
 }
 #else
 static inline void ext4_es_insert_extent_check(struct inode *inode,
-					       struct extent_status *es)
+                                               struct extent_status *es)
 {
 }
 #endif
 
 static int __es_insert_extent(struct inode *inode, struct extent_status *newes)
 {
-	struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
-	struct rb_node **p = &tree->root.rb_node;
-	struct rb_node *parent = NULL;
-	struct extent_status *es;
+    struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
+    struct rb_node **p = &tree->root.rb_node;
+    struct rb_node *parent = NULL;
+    struct extent_status *es;
 
-	while (*p) {
-		parent = *p;
-		es = rb_entry(parent, struct extent_status, rb_node);
+    while (*p)
+    {
+        parent = *p;
+        es = rb_entry(parent, struct extent_status, rb_node);
 
-		if (newes->es_lblk < es->es_lblk) {
-			if (ext4_es_can_be_merged(newes, es)) {
-				/*
-				 * Here we can modify es_lblk directly
-				 * because it isn't overlapped.
-				 */
-				es->es_lblk = newes->es_lblk;
-				es->es_len += newes->es_len;
-				if (ext4_es_is_written(es) ||
-				    ext4_es_is_unwritten(es))
-					ext4_es_store_pblock(es,
-							     newes->es_pblk);
-				es = ext4_es_try_to_merge_left(inode, es);
-				goto out;
-			}
-			p = &(*p)->rb_left;
-		} else if (newes->es_lblk > ext4_es_end(es)) {
-			if (ext4_es_can_be_merged(es, newes)) {
-				es->es_len += newes->es_len;
-				es = ext4_es_try_to_merge_right(inode, es);
-				goto out;
-			}
-			p = &(*p)->rb_right;
-		} else {
-			BUG_ON(1);
-			return -EINVAL;
-		}
-	}
+        if (newes->es_lblk < es->es_lblk)
+        {
+            if (ext4_es_can_be_merged(newes, es))
+            {
+                /*
+                 * Here we can modify es_lblk directly
+                 * because it isn't overlapped.
+                 */
+                es->es_lblk = newes->es_lblk;
+                es->es_len += newes->es_len;
+                if (ext4_es_is_written(es) ||
+                    ext4_es_is_unwritten(es))
+                    ext4_es_store_pblock(es,
+                                         newes->es_pblk);
+                es = ext4_es_try_to_merge_left(inode, es);
+                goto out;
+            }
+            p = &(*p)->rb_left;
+        }
+        else if (newes->es_lblk > ext4_es_end(es))
+        {
+            if (ext4_es_can_be_merged(es, newes))
+            {
+                es->es_len += newes->es_len;
+                es = ext4_es_try_to_merge_right(inode, es);
+                goto out;
+            }
+            p = &(*p)->rb_right;
+        }
+        else
+        {
+            BUG_ON(1);
+            return -EINVAL;
+        }
+    }
 
-	es = ext4_es_alloc_extent(inode, newes->es_lblk, newes->es_len,
-				  newes->es_pblk);
-	if (!es)
-		return -ENOMEM;
-	rb_link_node(&es->rb_node, parent, p);
-	rb_insert_color(&es->rb_node, &tree->root);
+    es = ext4_es_alloc_extent(inode, newes->es_lblk, newes->es_len,
+                              newes->es_pblk);
+    if (!es)
+        return -ENOMEM;
+    rb_link_node(&es->rb_node, parent, p);
+    rb_insert_color(&es->rb_node, &tree->root);
 
 out:
-	tree->cache_es = es;
-	return 0;
+    tree->cache_es = es;
+    return 0;
 }
 
 /*
@@ -688,54 +784,56 @@ out:
  * Return 0 on success, error code on failure.
  */
 int ext4_es_insert_extent(struct inode *inode, ext4_lblk_t lblk,
-			  ext4_lblk_t len, ext4_fsblk_t pblk,
-			  unsigned int status)
+                          ext4_lblk_t len, ext4_fsblk_t pblk,
+                          unsigned int status)
 {
-	struct extent_status newes;
-	ext4_lblk_t end = lblk + len - 1;
-	int err = 0;
+    struct extent_status newes;
+    ext4_lblk_t end = lblk + len - 1;
+    int err = 0;
 
-	es_debug("add [%u/%u) %llu %x to extent status tree of inode %lu\n",
-		 lblk, len, pblk, status, inode->i_ino);
+    es_debug("add [%u/%u) %llu %x to extent status tree of inode %lu\n",
+             lblk, len, pblk, status, inode->i_ino);
 
-	if (!len)
-		return 0;
+    if (!len)
+        return 0;
 
-	BUG_ON(end < lblk);
+    BUG_ON(end < lblk);
 
-	if ((status & EXTENT_STATUS_DELAYED) &&
-	    (status & EXTENT_STATUS_WRITTEN)) {
-		ext4_warning(inode->i_sb, "Inserting extent [%u/%u] as "
-				" delayed and written which can potentially "
-				" cause data loss.", lblk, len);
-		WARN_ON(1);
-	}
+    if ((status & EXTENT_STATUS_DELAYED) &&
+        (status & EXTENT_STATUS_WRITTEN))
+    {
+        ext4_warning(inode->i_sb, "Inserting extent [%u/%u] as "
+                                  " delayed and written which can potentially "
+                                  " cause data loss.",
+                     lblk, len);
+        WARN_ON(1);
+    }
 
-	newes.es_lblk = lblk;
-	newes.es_len = len;
-	ext4_es_store_pblock_status(&newes, pblk, status);
-	trace_ext4_es_insert_extent(inode, &newes);
+    newes.es_lblk = lblk;
+    newes.es_len = len;
+    ext4_es_store_pblock_status(&newes, pblk, status);
+    trace_ext4_es_insert_extent(inode, &newes);
 
-	ext4_es_insert_extent_check(inode, &newes);
+    ext4_es_insert_extent_check(inode, &newes);
 
-	write_lock(&EXT4_I(inode)->i_es_lock);
-	err = __es_remove_extent(inode, lblk, end);
-	if (err != 0)
-		goto error;
+    write_lock(&EXT4_I(inode)->i_es_lock);
+    err = __es_remove_extent(inode, lblk, end);
+    if (err != 0)
+        goto error;
 retry:
-	err = __es_insert_extent(inode, &newes);
-	if (err == -ENOMEM && __es_shrink(EXT4_SB(inode->i_sb),
-					  128, EXT4_I(inode)))
-		goto retry;
-	if (err == -ENOMEM && !ext4_es_is_delayed(&newes))
-		err = 0;
+    err = __es_insert_extent(inode, &newes);
+    if (err == -ENOMEM && __es_shrink(EXT4_SB(inode->i_sb),
+                                      128, EXT4_I(inode)))
+        goto retry;
+    if (err == -ENOMEM && !ext4_es_is_delayed(&newes))
+        err = 0;
 
 error:
-	write_unlock(&EXT4_I(inode)->i_es_lock);
+    write_unlock(&EXT4_I(inode)->i_es_lock);
 
-	ext4_es_print_tree(inode);
+    ext4_es_print_tree(inode);
 
-	return err;
+    return err;
 }
 
 /*
@@ -744,29 +842,29 @@ error:
  * question already.
  */
 void ext4_es_cache_extent(struct inode *inode, ext4_lblk_t lblk,
-			  ext4_lblk_t len, ext4_fsblk_t pblk,
-			  unsigned int status)
+                          ext4_lblk_t len, ext4_fsblk_t pblk,
+                          unsigned int status)
 {
-	struct extent_status *es;
-	struct extent_status newes;
-	ext4_lblk_t end = lblk + len - 1;
+    struct extent_status *es;
+    struct extent_status newes;
+    ext4_lblk_t end = lblk + len - 1;
 
-	newes.es_lblk = lblk;
-	newes.es_len = len;
-	ext4_es_store_pblock_status(&newes, pblk, status);
-	trace_ext4_es_cache_extent(inode, &newes);
+    newes.es_lblk = lblk;
+    newes.es_len = len;
+    ext4_es_store_pblock_status(&newes, pblk, status);
+    trace_ext4_es_cache_extent(inode, &newes);
 
-	if (!len)
-		return;
+    if (!len)
+        return;
 
-	BUG_ON(end < lblk);
+    BUG_ON(end < lblk);
 
-	write_lock(&EXT4_I(inode)->i_es_lock);
+    write_lock(&EXT4_I(inode)->i_es_lock);
 
-	es = __es_tree_search(&EXT4_I(inode)->i_es_tree.root, lblk);
-	if (!es || es->es_lblk > end)
-		__es_insert_extent(inode, &newes);
-	write_unlock(&EXT4_I(inode)->i_es_lock);
+    es = __es_tree_search(&EXT4_I(inode)->i_es_tree.root, lblk);
+    if (!es || es->es_lblk > end)
+        __es_insert_extent(inode, &newes);
+    write_unlock(&EXT4_I(inode)->i_es_lock);
 }
 
 /*
@@ -777,163 +875,181 @@ void ext4_es_cache_extent(struct inode *inode, ext4_lblk_t lblk,
  * Return: 1 on found, 0 on not
  */
 int ext4_es_lookup_extent(struct inode *inode, ext4_lblk_t lblk,
-			  struct extent_status *es)
+                          struct extent_status *es)
 {
-	struct ext4_es_tree *tree;
-	struct ext4_es_stats *stats;
-	struct extent_status *es1 = NULL;
-	struct rb_node *node;
-	int found = 0;
+    struct ext4_es_tree *tree;
+    struct ext4_es_stats *stats;
+    struct extent_status *es1 = NULL;
+    struct rb_node *node;
+    int found = 0;
 
-	trace_ext4_es_lookup_extent_enter(inode, lblk);
-	es_debug("lookup extent in block %u\n", lblk);
+    trace_ext4_es_lookup_extent_enter(inode, lblk);
+    es_debug("lookup extent in block %u\n", lblk);
 
-	tree = &EXT4_I(inode)->i_es_tree;
-	read_lock(&EXT4_I(inode)->i_es_lock);
+    tree = &EXT4_I(inode)->i_es_tree;
+    read_lock(&EXT4_I(inode)->i_es_lock);
 
-	/* find extent in cache firstly */
-	es->es_lblk = es->es_len = es->es_pblk = 0;
-	if (tree->cache_es) {
-		es1 = tree->cache_es;
-		if (in_range(lblk, es1->es_lblk, es1->es_len)) {
-			es_debug("%u cached by [%u/%u)\n",
-				 lblk, es1->es_lblk, es1->es_len);
-			found = 1;
-			goto out;
-		}
-	}
+    /* find extent in cache firstly */
+    es->es_lblk = es->es_len = es->es_pblk = 0;
+    if (tree->cache_es)
+    {
+        es1 = tree->cache_es;
+        if (in_range(lblk, es1->es_lblk, es1->es_len))
+        {
+            es_debug("%u cached by [%u/%u)\n",
+                     lblk, es1->es_lblk, es1->es_len);
+            found = 1;
+            goto out;
+        }
+    }
 
-	node = tree->root.rb_node;
-	while (node) {
-		es1 = rb_entry(node, struct extent_status, rb_node);
-		if (lblk < es1->es_lblk)
-			node = node->rb_left;
-		else if (lblk > ext4_es_end(es1))
-			node = node->rb_right;
-		else {
-			found = 1;
-			break;
-		}
-	}
+    node = tree->root.rb_node;
+    while (node)
+    {
+        es1 = rb_entry(node, struct extent_status, rb_node);
+        if (lblk < es1->es_lblk)
+            node = node->rb_left;
+        else if (lblk > ext4_es_end(es1))
+            node = node->rb_right;
+        else
+        {
+            found = 1;
+            break;
+        }
+    }
 
 out:
-	stats = &EXT4_SB(inode->i_sb)->s_es_stats;
-	if (found) {
-		BUG_ON(!es1);
-		es->es_lblk = es1->es_lblk;
-		es->es_len = es1->es_len;
-		es->es_pblk = es1->es_pblk;
-		if (!ext4_es_is_referenced(es1))
-			ext4_es_set_referenced(es1);
-		stats->es_stats_cache_hits++;
-	} else {
-		stats->es_stats_cache_misses++;
-	}
+    stats = &EXT4_SB(inode->i_sb)->s_es_stats;
+    if (found)
+    {
+        BUG_ON(!es1);
+        es->es_lblk = es1->es_lblk;
+        es->es_len = es1->es_len;
+        es->es_pblk = es1->es_pblk;
+        if (!ext4_es_is_referenced(es1))
+            ext4_es_set_referenced(es1);
+        stats->es_stats_cache_hits++;
+    }
+    else
+    {
+        stats->es_stats_cache_misses++;
+    }
 
-	read_unlock(&EXT4_I(inode)->i_es_lock);
+    read_unlock(&EXT4_I(inode)->i_es_lock);
 
-	trace_ext4_es_lookup_extent_exit(inode, es, found);
-	return found;
+    trace_ext4_es_lookup_extent_exit(inode, es, found);
+    return found;
 }
 
 static int __es_remove_extent(struct inode *inode, ext4_lblk_t lblk,
-			      ext4_lblk_t end)
+                              ext4_lblk_t end)
 {
-	struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
-	struct rb_node *node;
-	struct extent_status *es;
-	struct extent_status orig_es;
-	ext4_lblk_t len1, len2;
-	ext4_fsblk_t block;
-	int err;
+    struct ext4_es_tree *tree = &EXT4_I(inode)->i_es_tree;
+    struct rb_node *node;
+    struct extent_status *es;
+    struct extent_status orig_es;
+    ext4_lblk_t len1, len2;
+    ext4_fsblk_t block;
+    int err;
 
 retry:
-	err = 0;
-	es = __es_tree_search(&tree->root, lblk);
-	if (!es)
-		goto out;
-	if (es->es_lblk > end)
-		goto out;
+    err = 0;
+    es = __es_tree_search(&tree->root, lblk);
+    if (!es)
+        goto out;
+    if (es->es_lblk > end)
+        goto out;
 
-	/* Simply invalidate cache_es. */
-	tree->cache_es = NULL;
+    /* Simply invalidate cache_es. */
+    tree->cache_es = NULL;
 
-	orig_es.es_lblk = es->es_lblk;
-	orig_es.es_len = es->es_len;
-	orig_es.es_pblk = es->es_pblk;
+    orig_es.es_lblk = es->es_lblk;
+    orig_es.es_len = es->es_len;
+    orig_es.es_pblk = es->es_pblk;
 
-	len1 = lblk > es->es_lblk ? lblk - es->es_lblk : 0;
-	len2 = ext4_es_end(es) > end ? ext4_es_end(es) - end : 0;
-	if (len1 > 0)
-		es->es_len = len1;
-	if (len2 > 0) {
-		if (len1 > 0) {
-			struct extent_status newes;
+    len1 = lblk > es->es_lblk ? lblk - es->es_lblk : 0;
+    len2 = ext4_es_end(es) > end ? ext4_es_end(es) - end : 0;
+    if (len1 > 0)
+        es->es_len = len1;
+    if (len2 > 0)
+    {
+        if (len1 > 0)
+        {
+            struct extent_status newes;
 
-			newes.es_lblk = end + 1;
-			newes.es_len = len2;
-			block = 0x7FDEADBEEFULL;
-			if (ext4_es_is_written(&orig_es) ||
-			    ext4_es_is_unwritten(&orig_es))
-				block = ext4_es_pblock(&orig_es) +
-					orig_es.es_len - len2;
-			ext4_es_store_pblock_status(&newes, block,
-						    ext4_es_status(&orig_es));
-			err = __es_insert_extent(inode, &newes);
-			if (err) {
-				es->es_lblk = orig_es.es_lblk;
-				es->es_len = orig_es.es_len;
-				if ((err == -ENOMEM) &&
-				    __es_shrink(EXT4_SB(inode->i_sb),
-							128, EXT4_I(inode)))
-					goto retry;
-				goto out;
-			}
-		} else {
-			es->es_lblk = end + 1;
-			es->es_len = len2;
-			if (ext4_es_is_written(es) ||
-			    ext4_es_is_unwritten(es)) {
-				block = orig_es.es_pblk + orig_es.es_len - len2;
-				ext4_es_store_pblock(es, block);
-			}
-		}
-		goto out;
-	}
+            newes.es_lblk = end + 1;
+            newes.es_len = len2;
+            block = 0x7FDEADBEEFULL;
+            if (ext4_es_is_written(&orig_es) ||
+                ext4_es_is_unwritten(&orig_es))
+                block = ext4_es_pblock(&orig_es) +
+                        orig_es.es_len - len2;
+            ext4_es_store_pblock_status(&newes, block,
+                                        ext4_es_status(&orig_es));
+            err = __es_insert_extent(inode, &newes);
+            if (err)
+            {
+                es->es_lblk = orig_es.es_lblk;
+                es->es_len = orig_es.es_len;
+                if ((err == -ENOMEM) &&
+                    __es_shrink(EXT4_SB(inode->i_sb),
+                                128, EXT4_I(inode)))
+                    goto retry;
+                goto out;
+            }
+        }
+        else
+        {
+            es->es_lblk = end + 1;
+            es->es_len = len2;
+            if (ext4_es_is_written(es) ||
+                ext4_es_is_unwritten(es))
+            {
+                block = orig_es.es_pblk + orig_es.es_len - len2;
+                ext4_es_store_pblock(es, block);
+            }
+        }
+        goto out;
+    }
 
-	if (len1 > 0) {
-		node = rb_next(&es->rb_node);
-		if (node)
-			es = rb_entry(node, struct extent_status, rb_node);
-		else
-			es = NULL;
-	}
+    if (len1 > 0)
+    {
+        node = rb_next(&es->rb_node);
+        if (node)
+            es = rb_entry(node, struct extent_status, rb_node);
+        else
+            es = NULL;
+    }
 
-	while (es && ext4_es_end(es) <= end) {
-		node = rb_next(&es->rb_node);
-		rb_erase(&es->rb_node, &tree->root);
-		ext4_es_free_extent(inode, es);
-		if (!node) {
-			es = NULL;
-			break;
-		}
-		es = rb_entry(node, struct extent_status, rb_node);
-	}
+    while (es && ext4_es_end(es) <= end)
+    {
+        node = rb_next(&es->rb_node);
+        rb_erase(&es->rb_node, &tree->root);
+        ext4_es_free_extent(inode, es);
+        if (!node)
+        {
+            es = NULL;
+            break;
+        }
+        es = rb_entry(node, struct extent_status, rb_node);
+    }
 
-	if (es && es->es_lblk < end + 1) {
-		ext4_lblk_t orig_len = es->es_len;
+    if (es && es->es_lblk < end + 1)
+    {
+        ext4_lblk_t orig_len = es->es_len;
 
-		len1 = ext4_es_end(es) - end;
-		es->es_lblk = end + 1;
-		es->es_len = len1;
-		if (ext4_es_is_written(es) || ext4_es_is_unwritten(es)) {
-			block = es->es_pblk + orig_len - len1;
-			ext4_es_store_pblock(es, block);
-		}
-	}
+        len1 = ext4_es_end(es) - end;
+        es->es_lblk = end + 1;
+        es->es_len = len1;
+        if (ext4_es_is_written(es) || ext4_es_is_unwritten(es))
+        {
+            block = es->es_pblk + orig_len - len1;
+            ext4_es_store_pblock(es, block);
+        }
+    }
 
 out:
-	return err;
+    return err;
 }
 
 /*
@@ -942,238 +1058,246 @@ out:
  * Return 0 on success, error code on failure.
  */
 int ext4_es_remove_extent(struct inode *inode, ext4_lblk_t lblk,
-			  ext4_lblk_t len)
+                          ext4_lblk_t len)
 {
-	ext4_lblk_t end;
-	int err = 0;
+    ext4_lblk_t end;
+    int err = 0;
 
-	trace_ext4_es_remove_extent(inode, lblk, len);
-	es_debug("remove [%u/%u) from extent status tree of inode %lu\n",
-		 lblk, len, inode->i_ino);
+    trace_ext4_es_remove_extent(inode, lblk, len);
+    es_debug("remove [%u/%u) from extent status tree of inode %lu\n",
+             lblk, len, inode->i_ino);
 
-	if (!len)
-		return err;
+    if (!len)
+        return err;
 
-	end = lblk + len - 1;
-	BUG_ON(end < lblk);
+    end = lblk + len - 1;
+    BUG_ON(end < lblk);
 
-	/*
-	 * ext4_clear_inode() depends on us taking i_es_lock unconditionally
-	 * so that we are sure __es_shrink() is done with the inode before it
-	 * is reclaimed.
-	 */
-	write_lock(&EXT4_I(inode)->i_es_lock);
-	err = __es_remove_extent(inode, lblk, end);
-	write_unlock(&EXT4_I(inode)->i_es_lock);
-	ext4_es_print_tree(inode);
-	return err;
+    /*
+     * ext4_clear_inode() depends on us taking i_es_lock unconditionally
+     * so that we are sure __es_shrink() is done with the inode before it
+     * is reclaimed.
+     */
+    write_lock(&EXT4_I(inode)->i_es_lock);
+    err = __es_remove_extent(inode, lblk, end);
+    write_unlock(&EXT4_I(inode)->i_es_lock);
+    ext4_es_print_tree(inode);
+    return err;
 }
 
 static int __es_shrink(struct ext4_sb_info *sbi, int nr_to_scan,
-		       struct ext4_inode_info *locked_ei)
+                       struct ext4_inode_info *locked_ei)
 {
-	struct ext4_inode_info *ei;
-	struct ext4_es_stats *es_stats;
-	ktime_t start_time;
-	u64 scan_time;
-	int nr_to_walk;
-	int nr_shrunk = 0;
-	int retried = 0, nr_skipped = 0;
+    struct ext4_inode_info *ei;
+    struct ext4_es_stats *es_stats;
+    ktime_t start_time;
+    u64 scan_time;
+    int nr_to_walk;
+    int nr_shrunk = 0;
+    int retried = 0, nr_skipped = 0;
 
-	es_stats = &sbi->s_es_stats;
-	start_time = ktime_get();
+    es_stats = &sbi->s_es_stats;
+    start_time = ktime_get();
 
 retry:
-	spin_lock(&sbi->s_es_lock);
-	nr_to_walk = sbi->s_es_nr_inode;
-	while (nr_to_walk-- > 0) {
-		if (list_empty(&sbi->s_es_list)) {
-			spin_unlock(&sbi->s_es_lock);
-			goto out;
-		}
-		ei = list_first_entry(&sbi->s_es_list, struct ext4_inode_info,
-				      i_es_list);
-		/* Move the inode to the tail */
-		list_move_tail(&ei->i_es_list, &sbi->s_es_list);
+    spin_lock(&sbi->s_es_lock);
+    nr_to_walk = sbi->s_es_nr_inode;
+    while (nr_to_walk-- > 0)
+    {
+        if (list_empty(&sbi->s_es_list))
+        {
+            spin_unlock(&sbi->s_es_lock);
+            goto out;
+        }
+        ei = list_first_entry(&sbi->s_es_list, struct ext4_inode_info,
+                              i_es_list);
+        /* Move the inode to the tail */
+        list_move_tail(&ei->i_es_list, &sbi->s_es_list);
 
-		/*
-		 * Normally we try hard to avoid shrinking precached inodes,
-		 * but we will as a last resort.
-		 */
-		if (!retried && ext4_test_inode_state(&ei->vfs_inode,
-						EXT4_STATE_EXT_PRECACHED)) {
-			nr_skipped++;
-			continue;
-		}
+        /*
+         * Normally we try hard to avoid shrinking precached inodes,
+         * but we will as a last resort.
+         */
+        if (!retried && ext4_test_inode_state(&ei->vfs_inode,
+                                              EXT4_STATE_EXT_PRECACHED))
+        {
+            nr_skipped++;
+            continue;
+        }
 
-		if (ei == locked_ei || !write_trylock(&ei->i_es_lock)) {
-			nr_skipped++;
-			continue;
-		}
-		/*
-		 * Now we hold i_es_lock which protects us from inode reclaim
-		 * freeing inode under us
-		 */
-		spin_unlock(&sbi->s_es_lock);
+        if (ei == locked_ei || !write_trylock(&ei->i_es_lock))
+        {
+            nr_skipped++;
+            continue;
+        }
+        /*
+         * Now we hold i_es_lock which protects us from inode reclaim
+         * freeing inode under us
+         */
+        spin_unlock(&sbi->s_es_lock);
 
-		nr_shrunk += es_reclaim_extents(ei, &nr_to_scan);
-		write_unlock(&ei->i_es_lock);
+        nr_shrunk += es_reclaim_extents(ei, &nr_to_scan);
+        write_unlock(&ei->i_es_lock);
 
-		if (nr_to_scan <= 0)
-			goto out;
-		spin_lock(&sbi->s_es_lock);
-	}
-	spin_unlock(&sbi->s_es_lock);
+        if (nr_to_scan <= 0)
+            goto out;
+        spin_lock(&sbi->s_es_lock);
+    }
+    spin_unlock(&sbi->s_es_lock);
 
-	/*
-	 * If we skipped any inodes, and we weren't able to make any
-	 * forward progress, try again to scan precached inodes.
-	 */
-	if ((nr_shrunk == 0) && nr_skipped && !retried) {
-		retried++;
-		goto retry;
-	}
+    /*
+     * If we skipped any inodes, and we weren't able to make any
+     * forward progress, try again to scan precached inodes.
+     */
+    if ((nr_shrunk == 0) && nr_skipped && !retried)
+    {
+        retried++;
+        goto retry;
+    }
 
-	if (locked_ei && nr_shrunk == 0)
-		nr_shrunk = es_reclaim_extents(locked_ei, &nr_to_scan);
+    if (locked_ei && nr_shrunk == 0)
+        nr_shrunk = es_reclaim_extents(locked_ei, &nr_to_scan);
 
 out:
-	scan_time = ktime_to_ns(ktime_sub(ktime_get(), start_time));
-	if (likely(es_stats->es_stats_scan_time))
-		es_stats->es_stats_scan_time = (scan_time +
-				es_stats->es_stats_scan_time*3) / 4;
-	else
-		es_stats->es_stats_scan_time = scan_time;
-	if (scan_time > es_stats->es_stats_max_scan_time)
-		es_stats->es_stats_max_scan_time = scan_time;
-	if (likely(es_stats->es_stats_shrunk))
-		es_stats->es_stats_shrunk = (nr_shrunk +
-				es_stats->es_stats_shrunk*3) / 4;
-	else
-		es_stats->es_stats_shrunk = nr_shrunk;
+    scan_time = ktime_to_ns(ktime_sub(ktime_get(), start_time));
+    if (likely(es_stats->es_stats_scan_time))
+        es_stats->es_stats_scan_time = (scan_time +
+                                        es_stats->es_stats_scan_time * 3) /
+                                       4;
+    else
+        es_stats->es_stats_scan_time = scan_time;
+    if (scan_time > es_stats->es_stats_max_scan_time)
+        es_stats->es_stats_max_scan_time = scan_time;
+    if (likely(es_stats->es_stats_shrunk))
+        es_stats->es_stats_shrunk = (nr_shrunk +
+                                     es_stats->es_stats_shrunk * 3) /
+                                    4;
+    else
+        es_stats->es_stats_shrunk = nr_shrunk;
 
-	trace_ext4_es_shrink(sbi->s_sb, nr_shrunk, scan_time,
-			     nr_skipped, retried);
-	return nr_shrunk;
+    trace_ext4_es_shrink(sbi->s_sb, nr_shrunk, scan_time,
+                         nr_skipped, retried);
+    return nr_shrunk;
 }
 
 static unsigned long ext4_es_count(struct shrinker *shrink,
-				   struct shrink_control *sc)
+                                   struct shrink_control *sc)
 {
-	unsigned long nr;
-	struct ext4_sb_info *sbi;
+    unsigned long nr;
+    struct ext4_sb_info *sbi;
 
-	sbi = container_of(shrink, struct ext4_sb_info, s_es_shrinker);
-	nr = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
-	trace_ext4_es_shrink_count(sbi->s_sb, sc->nr_to_scan, nr);
-	return nr;
+    sbi = container_of(shrink, struct ext4_sb_info, s_es_shrinker);
+    nr = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
+    trace_ext4_es_shrink_count(sbi->s_sb, sc->nr_to_scan, nr);
+    return nr;
 }
 
 static unsigned long ext4_es_scan(struct shrinker *shrink,
-				  struct shrink_control *sc)
+                                  struct shrink_control *sc)
 {
-	struct ext4_sb_info *sbi = container_of(shrink,
-					struct ext4_sb_info, s_es_shrinker);
-	int nr_to_scan = sc->nr_to_scan;
-	int ret, nr_shrunk;
+    struct ext4_sb_info *sbi = container_of(shrink,
+                                            struct ext4_sb_info, s_es_shrinker);
+    int nr_to_scan = sc->nr_to_scan;
+    int ret, nr_shrunk;
 
-	ret = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
-	trace_ext4_es_shrink_scan_enter(sbi->s_sb, nr_to_scan, ret);
+    ret = percpu_counter_read_positive(&sbi->s_es_stats.es_stats_shk_cnt);
+    trace_ext4_es_shrink_scan_enter(sbi->s_sb, nr_to_scan, ret);
 
-	if (!nr_to_scan)
-		return ret;
+    if (!nr_to_scan)
+        return ret;
 
-	nr_shrunk = __es_shrink(sbi, nr_to_scan, NULL);
+    nr_shrunk = __es_shrink(sbi, nr_to_scan, NULL);
 
-	trace_ext4_es_shrink_scan_exit(sbi->s_sb, nr_shrunk, ret);
-	return nr_shrunk;
+    trace_ext4_es_shrink_scan_exit(sbi->s_sb, nr_shrunk, ret);
+    return nr_shrunk;
 }
 
 int ext4_seq_es_shrinker_info_show(struct seq_file *seq, void *v)
 {
-	struct ext4_sb_info *sbi = EXT4_SB((struct super_block *) seq->private);
-	struct ext4_es_stats *es_stats = &sbi->s_es_stats;
-	struct ext4_inode_info *ei, *max = NULL;
-	unsigned int inode_cnt = 0;
+    struct ext4_sb_info *sbi = EXT4_SB((struct super_block *)seq->private);
+    struct ext4_es_stats *es_stats = &sbi->s_es_stats;
+    struct ext4_inode_info *ei, *max = NULL;
+    unsigned int inode_cnt = 0;
 
-	if (v != SEQ_START_TOKEN)
-		return 0;
+    if (v != SEQ_START_TOKEN)
+        return 0;
 
-	/* here we just find an inode that has the max nr. of objects */
-	spin_lock(&sbi->s_es_lock);
-	list_for_each_entry(ei, &sbi->s_es_list, i_es_list) {
-		inode_cnt++;
-		if (max && max->i_es_all_nr < ei->i_es_all_nr)
-			max = ei;
-		else if (!max)
-			max = ei;
-	}
-	spin_unlock(&sbi->s_es_lock);
+    /* here we just find an inode that has the max nr. of objects */
+    spin_lock(&sbi->s_es_lock);
+    list_for_each_entry(ei, &sbi->s_es_list, i_es_list)
+    {
+        inode_cnt++;
+        if (max && max->i_es_all_nr < ei->i_es_all_nr)
+            max = ei;
+        else if (!max)
+            max = ei;
+    }
+    spin_unlock(&sbi->s_es_lock);
 
-	seq_printf(seq, "stats:\n  %lld objects\n  %lld reclaimable objects\n",
-		   percpu_counter_sum_positive(&es_stats->es_stats_all_cnt),
-		   percpu_counter_sum_positive(&es_stats->es_stats_shk_cnt));
-	seq_printf(seq, "  %lu/%lu cache hits/misses\n",
-		   es_stats->es_stats_cache_hits,
-		   es_stats->es_stats_cache_misses);
-	if (inode_cnt)
-		seq_printf(seq, "  %d inodes on list\n", inode_cnt);
+    seq_printf(seq, "stats:\n  %lld objects\n  %lld reclaimable objects\n",
+               percpu_counter_sum_positive(&es_stats->es_stats_all_cnt),
+               percpu_counter_sum_positive(&es_stats->es_stats_shk_cnt));
+    seq_printf(seq, "  %lu/%lu cache hits/misses\n",
+               es_stats->es_stats_cache_hits,
+               es_stats->es_stats_cache_misses);
+    if (inode_cnt)
+        seq_printf(seq, "  %d inodes on list\n", inode_cnt);
 
-	seq_printf(seq, "average:\n  %llu us scan time\n",
-	    div_u64(es_stats->es_stats_scan_time, 1000));
-	seq_printf(seq, "  %lu shrunk objects\n", es_stats->es_stats_shrunk);
-	if (inode_cnt)
-		seq_printf(seq,
-		    "maximum:\n  %lu inode (%u objects, %u reclaimable)\n"
-		    "  %llu us max scan time\n",
-		    max->vfs_inode.i_ino, max->i_es_all_nr, max->i_es_shk_nr,
-		    div_u64(es_stats->es_stats_max_scan_time, 1000));
+    seq_printf(seq, "average:\n  %llu us scan time\n",
+               div_u64(es_stats->es_stats_scan_time, 1000));
+    seq_printf(seq, "  %lu shrunk objects\n", es_stats->es_stats_shrunk);
+    if (inode_cnt)
+        seq_printf(seq,
+                   "maximum:\n  %lu inode (%u objects, %u reclaimable)\n"
+                   "  %llu us max scan time\n",
+                   max->vfs_inode.i_ino, max->i_es_all_nr, max->i_es_shk_nr,
+                   div_u64(es_stats->es_stats_max_scan_time, 1000));
 
-	return 0;
+    return 0;
 }
 
 int ext4_es_register_shrinker(struct ext4_sb_info *sbi)
 {
-	int err;
+    int err;
 
-	/* Make sure we have enough bits for physical block number */
-	BUILD_BUG_ON(ES_SHIFT < 48);
-	INIT_LIST_HEAD(&sbi->s_es_list);
-	sbi->s_es_nr_inode = 0;
-	spin_lock_init(&sbi->s_es_lock);
-	sbi->s_es_stats.es_stats_shrunk = 0;
-	sbi->s_es_stats.es_stats_cache_hits = 0;
-	sbi->s_es_stats.es_stats_cache_misses = 0;
-	sbi->s_es_stats.es_stats_scan_time = 0;
-	sbi->s_es_stats.es_stats_max_scan_time = 0;
-	err = percpu_counter_init(&sbi->s_es_stats.es_stats_all_cnt, 0, GFP_KERNEL);
-	if (err)
-		return err;
-	err = percpu_counter_init(&sbi->s_es_stats.es_stats_shk_cnt, 0, GFP_KERNEL);
-	if (err)
-		goto err1;
+    /* Make sure we have enough bits for physical block number */
+    BUILD_BUG_ON(ES_SHIFT < 48);
+    INIT_LIST_HEAD(&sbi->s_es_list);
+    sbi->s_es_nr_inode = 0;
+    spin_lock_init(&sbi->s_es_lock);
+    sbi->s_es_stats.es_stats_shrunk = 0;
+    sbi->s_es_stats.es_stats_cache_hits = 0;
+    sbi->s_es_stats.es_stats_cache_misses = 0;
+    sbi->s_es_stats.es_stats_scan_time = 0;
+    sbi->s_es_stats.es_stats_max_scan_time = 0;
+    err = percpu_counter_init(&sbi->s_es_stats.es_stats_all_cnt, 0, GFP_KERNEL);
+    if (err)
+        return err;
+    err = percpu_counter_init(&sbi->s_es_stats.es_stats_shk_cnt, 0, GFP_KERNEL);
+    if (err)
+        goto err1;
 
-	sbi->s_es_shrinker.scan_objects = ext4_es_scan;
-	sbi->s_es_shrinker.count_objects = ext4_es_count;
-	sbi->s_es_shrinker.seeks = DEFAULT_SEEKS;
-	err = register_shrinker(&sbi->s_es_shrinker);
-	if (err)
-		goto err2;
+    sbi->s_es_shrinker.scan_objects = ext4_es_scan;
+    sbi->s_es_shrinker.count_objects = ext4_es_count;
+    sbi->s_es_shrinker.seeks = DEFAULT_SEEKS;
+    err = register_shrinker(&sbi->s_es_shrinker);
+    if (err)
+        goto err2;
 
-	return 0;
+    return 0;
 
 err2:
-	percpu_counter_destroy(&sbi->s_es_stats.es_stats_shk_cnt);
+    percpu_counter_destroy(&sbi->s_es_stats.es_stats_shk_cnt);
 err1:
-	percpu_counter_destroy(&sbi->s_es_stats.es_stats_all_cnt);
-	return err;
+    percpu_counter_destroy(&sbi->s_es_stats.es_stats_all_cnt);
+    return err;
 }
 
 void ext4_es_unregister_shrinker(struct ext4_sb_info *sbi)
 {
-	percpu_counter_destroy(&sbi->s_es_stats.es_stats_all_cnt);
-	percpu_counter_destroy(&sbi->s_es_stats.es_stats_shk_cnt);
-	unregister_shrinker(&sbi->s_es_shrinker);
+    percpu_counter_destroy(&sbi->s_es_stats.es_stats_all_cnt);
+    percpu_counter_destroy(&sbi->s_es_stats.es_stats_shk_cnt);
+    unregister_shrinker(&sbi->s_es_shrinker);
 }
 
 /*
@@ -1185,70 +1309,73 @@ void ext4_es_unregister_shrinker(struct ext4_sb_info *sbi)
  * ei->i_es_shrink_lblk to where we should continue scanning.
  */
 static int es_do_reclaim_extents(struct ext4_inode_info *ei, ext4_lblk_t end,
-				 int *nr_to_scan, int *nr_shrunk)
+                                 int *nr_to_scan, int *nr_shrunk)
 {
-	struct inode *inode = &ei->vfs_inode;
-	struct ext4_es_tree *tree = &ei->i_es_tree;
-	struct extent_status *es;
-	struct rb_node *node;
+    struct inode *inode = &ei->vfs_inode;
+    struct ext4_es_tree *tree = &ei->i_es_tree;
+    struct extent_status *es;
+    struct rb_node *node;
 
-	es = __es_tree_search(&tree->root, ei->i_es_shrink_lblk);
-	if (!es)
-		goto out_wrap;
-	node = &es->rb_node;
-	while (*nr_to_scan > 0) {
-		if (es->es_lblk > end) {
-			ei->i_es_shrink_lblk = end + 1;
-			return 0;
-		}
+    es = __es_tree_search(&tree->root, ei->i_es_shrink_lblk);
+    if (!es)
+        goto out_wrap;
+    node = &es->rb_node;
+    while (*nr_to_scan > 0)
+    {
+        if (es->es_lblk > end)
+        {
+            ei->i_es_shrink_lblk = end + 1;
+            return 0;
+        }
 
-		(*nr_to_scan)--;
-		node = rb_next(&es->rb_node);
-		/*
-		 * We can't reclaim delayed extent from status tree because
-		 * fiemap, bigallic, and seek_data/hole need to use it.
-		 */
-		if (ext4_es_is_delayed(es))
-			goto next;
-		if (ext4_es_is_referenced(es)) {
-			ext4_es_clear_referenced(es);
-			goto next;
-		}
+        (*nr_to_scan)--;
+        node = rb_next(&es->rb_node);
+        /*
+         * We can't reclaim delayed extent from status tree because
+         * fiemap, bigallic, and seek_data/hole need to use it.
+         */
+        if (ext4_es_is_delayed(es))
+            goto next;
+        if (ext4_es_is_referenced(es))
+        {
+            ext4_es_clear_referenced(es);
+            goto next;
+        }
 
-		rb_erase(&es->rb_node, &tree->root);
-		ext4_es_free_extent(inode, es);
-		(*nr_shrunk)++;
-next:
-		if (!node)
-			goto out_wrap;
-		es = rb_entry(node, struct extent_status, rb_node);
-	}
-	ei->i_es_shrink_lblk = es->es_lblk;
-	return 1;
+        rb_erase(&es->rb_node, &tree->root);
+        ext4_es_free_extent(inode, es);
+        (*nr_shrunk)++;
+    next:
+        if (!node)
+            goto out_wrap;
+        es = rb_entry(node, struct extent_status, rb_node);
+    }
+    ei->i_es_shrink_lblk = es->es_lblk;
+    return 1;
 out_wrap:
-	ei->i_es_shrink_lblk = 0;
-	return 0;
+    ei->i_es_shrink_lblk = 0;
+    return 0;
 }
 
 static int es_reclaim_extents(struct ext4_inode_info *ei, int *nr_to_scan)
 {
-	struct inode *inode = &ei->vfs_inode;
-	int nr_shrunk = 0;
-	ext4_lblk_t start = ei->i_es_shrink_lblk;
-	static DEFINE_RATELIMIT_STATE(_rs, DEFAULT_RATELIMIT_INTERVAL,
-				      DEFAULT_RATELIMIT_BURST);
+    struct inode *inode = &ei->vfs_inode;
+    int nr_shrunk = 0;
+    ext4_lblk_t start = ei->i_es_shrink_lblk;
+    static DEFINE_RATELIMIT_STATE(_rs, DEFAULT_RATELIMIT_INTERVAL,
+                                  DEFAULT_RATELIMIT_BURST);
 
-	if (ei->i_es_shk_nr == 0)
-		return 0;
+    if (ei->i_es_shk_nr == 0)
+        return 0;
 
-	if (ext4_test_inode_state(inode, EXT4_STATE_EXT_PRECACHED) &&
-	    __ratelimit(&_rs))
-		ext4_warning(inode->i_sb, "forced shrink of precached extents");
+    if (ext4_test_inode_state(inode, EXT4_STATE_EXT_PRECACHED) &&
+        __ratelimit(&_rs))
+        ext4_warning(inode->i_sb, "forced shrink of precached extents");
 
-	if (!es_do_reclaim_extents(ei, EXT_MAX_BLOCKS, nr_to_scan, &nr_shrunk) &&
-	    start != 0)
-		es_do_reclaim_extents(ei, start - 1, nr_to_scan, &nr_shrunk);
+    if (!es_do_reclaim_extents(ei, EXT_MAX_BLOCKS, nr_to_scan, &nr_shrunk) &&
+        start != 0)
+        es_do_reclaim_extents(ei, start - 1, nr_to_scan, &nr_shrunk);
 
-	ei->i_es_tree.cache_es = NULL;
-	return nr_shrunk;
+    ei->i_es_tree.cache_es = NULL;
+    return nr_shrunk;
 }
