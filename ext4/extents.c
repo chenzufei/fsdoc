@@ -947,6 +947,15 @@ static void ext4_ext_show_move(struct inode *inode, struct ext4_ext_path *path,
 #define ext4_ext_show_move(inode, path, newblock, level)
 #endif
 
+/*
+释放扩展树（extent tree）路径中的缓冲区引用。
+场景:
+文件关闭
+文件删除
+文件系统卸载
+扩展树路径被更新
+内存管理
+*/
 void ext4_ext_drop_refs(struct ext4_ext_path *path)
 {
     int depth, i;
@@ -966,7 +975,11 @@ void ext4_ext_drop_refs(struct ext4_ext_path *path)
  * ext4_ext_binsearch_idx:
  * binary search for the closest index of the given block
  * the header must be checked before calling this
+ *
+ * 在扩展树的索引部分进行二分查找，找到包含指定逻辑块号的扩展索引项。
+ * 二分查找的时间复杂度为 O(logn)
  */
+
 static void
 ext4_ext_binsearch_idx(struct inode *inode,
                        struct ext4_ext_path *path, ext4_lblk_t block)
@@ -976,25 +989,37 @@ ext4_ext_binsearch_idx(struct inode *inode,
 
     ext_debug("binsearch for %u(idx):  ", block);
 
+    // 获取扩展树的第一个索引项。
+    // l是left
+    /*
+    这里为什么要加1？
+    在二分查找中，l 和 r 的初始值需要确保查找范围是闭区间 [l, r]。
+    如果 l 不加 1，初始范围会变成 [EXT_FIRST_INDEX(eh), EXT_LAST_INDEX(eh)]，这会导致以下问题：
+    如果 l 不加 1，初始范围会包括第一个索引项。在二分查找过程中，当 l 和 r 相等时，m 会指向同一个索引项。
+    如果目标块号 block 正好等于第一个索引项的逻辑块号，二分查找会进入死循环，因为 l 和 r 会一直相等。
+    */
     l = EXT_FIRST_INDEX(eh) + 1;
+
+    // 获取扩展树的最后一个索引项。 r是right
     r = EXT_LAST_INDEX(eh);
+
     while (l <= r)
     {
         m = l + (r - l) / 2;
         if (block < le32_to_cpu(m->ei_block))
-            r = m - 1;
+            r = m - 1; // 目标块号在左半部分，更新右边界
         else
-            l = m + 1;
+            l = m + 1; // 目标块号在右半部分，更新左边界
         ext_debug("%p(%u):%p(%u):%p(%u) ", l, le32_to_cpu(l->ei_block),
                   m, le32_to_cpu(m->ei_block),
                   r, le32_to_cpu(r->ei_block));
     }
 
-    path->p_idx = l - 1;
+    path->p_idx = l - 1; // l - 1 指向目标索引项
     ext_debug("  -> %u->%lld ", le32_to_cpu(path->p_idx->ei_block),
               ext4_idx_pblock(path->p_idx));
 
-#ifdef CHECK_BINSEARCH
+#ifdef CHECK_BINSEARCH // 验证二分查找结果
     {
         struct ext4_extent_idx *chix, *ix;
         int k;
@@ -1027,6 +1052,10 @@ ext4_ext_binsearch_idx(struct inode *inode,
  * ext4_ext_binsearch:
  * binary search for closest extent of the given block
  * the header must be checked before calling this
+ *
+ * 在扩展树的叶节点（extent leaf node）中进行二分查找的函数。
+ * 它的主要目的是找到包含指定逻辑块号（logical block number）的扩展项（extent）。
+ *
  */
 static void
 ext4_ext_binsearch(struct inode *inode,
@@ -1086,6 +1115,9 @@ ext4_ext_binsearch(struct inode *inode,
 #endif
 }
 
+/*
+初始化 ext4 文件系统的扩展树（extent tree）。
+*/
 int ext4_ext_tree_init(handle_t *handle, struct inode *inode)
 {
     struct ext4_extent_header *eh;
@@ -1099,6 +1131,9 @@ int ext4_ext_tree_init(handle_t *handle, struct inode *inode)
     return 0;
 }
 
+/*
+查找特定逻辑块号（logical block number）对应的扩展项（extent）的函数。它通过遍历扩展树（extent tree）来找到目标扩展项。
+*/
 struct ext4_ext_path *
 ext4_find_extent(struct inode *inode, ext4_lblk_t block,
                  struct ext4_ext_path **orig_path, int flags)
@@ -1111,7 +1146,7 @@ ext4_find_extent(struct inode *inode, ext4_lblk_t block,
 
     eh = ext_inode_hdr(inode);
     depth = ext_depth(inode);
-    if (depth < 0 || depth > EXT4_MAX_EXTENT_DEPTH)
+    if (depth < 0 || depth > EXT4_MAX_EXTENT_DEPTH) // ext4树的深度不大于5
     {
         EXT4_ERROR_INODE(inode, "inode has invalid extent depth: %d",
                          depth);
@@ -1121,7 +1156,7 @@ ext4_find_extent(struct inode *inode, ext4_lblk_t block,
 
     if (path)
     {
-        ext4_ext_drop_refs(path);
+        ext4_ext_drop_refs(path); // 如果路径已经存在，释放路径中的缓冲区引用。
         if (depth > path[0].p_maxdepth)
         {
             kfree(path);
@@ -1147,11 +1182,13 @@ ext4_find_extent(struct inode *inode, ext4_lblk_t block,
         ext_debug("depth %d: num %d, max %d\n",
                   ppos, le16_to_cpu(eh->eh_entries), le16_to_cpu(eh->eh_max));
 
+        // 使用 ext4_ext_binsearch_idx 在索引节点中进行二分查找，找到目标索引项。
         ext4_ext_binsearch_idx(inode, path + ppos, block);
         path[ppos].p_block = ext4_idx_pblock(path[ppos].p_idx);
         path[ppos].p_depth = i;
         path[ppos].p_ext = NULL;
 
+        // 读取目标索引项指向的块，继续向下查找。
         bh = read_extent_tree_block(inode, path[ppos].p_block, --i,
                                     flags);
         if (IS_ERR(bh))
@@ -1171,16 +1208,18 @@ ext4_find_extent(struct inode *inode, ext4_lblk_t block,
     path[ppos].p_idx = NULL;
 
     /* find extent */
+    // 在叶节点中使用 ext4_ext_binsearch 查找目标扩展项。
     ext4_ext_binsearch(inode, path + ppos, block);
     /* if not an empty leaf */
     if (path[ppos].p_ext)
         path[ppos].p_block = ext4_ext_pblock(path[ppos].p_ext);
 
-    ext4_ext_show_path(inode, path);
+    ext4_ext_show_path(inode, path); // 打印路径信息
 
     return path;
 
 err:
+    // 如果发生错误，释放路径中的缓冲区引用，释放路径内存，返回错误指针。
     ext4_ext_drop_refs(path);
     kfree(path);
     if (orig_path)
