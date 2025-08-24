@@ -1231,6 +1231,8 @@ err:
  * ext4_ext_insert_index:
  * insert new index [@logical;@ptr] into the block at @curp;
  * check where to insert: before @curp or after @curp
+ *
+ * 主要功能是在索引节点的索引结构中插入一个新的索引项。它会根据逻辑块号的位置，将新的索引项插入到合适的位置，并更新索引结构。
  */
 static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
                                  struct ext4_ext_path *curp,
@@ -1239,10 +1241,12 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
     struct ext4_extent_idx *ix;
     int len, err;
 
+    // 获取对索引结构的访问权限。
     err = ext4_ext_get_access(handle, inode, curp);
     if (err)
         return err;
 
+    // 如果逻辑块号与当前索引项的块号相同，说明索引结构已经存在该逻辑块号
     if (unlikely(logical == le32_to_cpu(curp->p_idx->ei_block)))
     {
         EXT4_ERROR_INODE(inode,
@@ -1251,6 +1255,7 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
         return -EFSCORRUPTED;
     }
 
+    // 索引结构的条目数已经达到了最大值
     if (unlikely(le16_to_cpu(curp->p_hdr->eh_entries) >= le16_to_cpu(curp->p_hdr->eh_max)))
     {
         EXT4_ERROR_INODE(inode,
@@ -1260,6 +1265,10 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
         return -EFSCORRUPTED;
     }
 
+    /*
+    根据逻辑块号与当前索引项的块号的大小关系，确定插入位置。
+    如果逻辑块号大于当前索引项的块号，则插入到当前索引项之后；否则插入到当前索引项之前。
+    */
     if (logical > le32_to_cpu(curp->p_idx->ei_block))
     {
         /* insert after */
@@ -1273,6 +1282,7 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
         ix = curp->p_idx;
     }
 
+    // 计算需要移动的索引项数量，并将它们向后移动一个位置，为新索引项腾出空间。
     len = EXT_LAST_INDEX(curp->p_hdr) - ix + 1;
     BUG_ON(len < 0);
     if (len > 0)
@@ -1283,22 +1293,26 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
         memmove(ix + 1, ix, len * sizeof(struct ext4_extent_idx));
     }
 
+    // 插入位置是否超出索引结构的最大范围。
     if (unlikely(ix > EXT_MAX_INDEX(curp->p_hdr)))
     {
         EXT4_ERROR_INODE(inode, "ix > EXT_MAX_INDEX!");
         return -EFSCORRUPTED;
     }
 
+    // 将新的索引项插入到指定位置，并更新索引结构的条目数。
     ix->ei_block = cpu_to_le32(logical);
     ext4_idx_store_pblock(ix, ptr);
     le16_add_cpu(&curp->p_hdr->eh_entries, 1);
 
+    // 再次检查插入后的索引项位置是否超出索引结构的最大范围。
     if (unlikely(ix > EXT_LAST_INDEX(curp->p_hdr)))
     {
         EXT4_ERROR_INODE(inode, "ix > EXT_LAST_INDEX!");
         return -EFSCORRUPTED;
     }
 
+    // 调用 ext4_ext_dirty 函数标记索引结构为脏，表示需要将其写入磁盘。
     err = ext4_ext_dirty(handle, inode, curp);
     ext4_std_error(inode->i_sb, err);
 
@@ -1314,6 +1328,12 @@ static int ext4_ext_insert_index(handle_t *handle, struct inode *inode,
  * - moves remaining extents and index entries (right to the split point)
  *   into the newly allocated blocks
  * - initializes subtree
+ *
+ *
+ * 用于处理索引结构分裂的函数。当一个索引块或叶节点块已满，需要分裂时，这个函数会被调用。
+ * 它会创建新的索引块或叶节点块，并将数据从旧的块移动到新的块中，以保持索引结构的平衡。
+ *
+ *
  */
 static int ext4_ext_split(handle_t *handle, struct inode *inode,
                           unsigned int flags,
@@ -1342,14 +1362,14 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
     }
     if (path[depth].p_ext != EXT_MAX_EXTENT(path[depth].p_hdr))
     {
-        border = path[depth].p_ext[1].ee_block;
+        border = path[depth].p_ext[1].ee_block; // 将下一个叶节点的起始块号作为分裂点。
         ext_debug("leaf will be split."
                   " next leaf starts at %d\n",
                   le32_to_cpu(border));
     }
     else
     {
-        border = newext->ee_block;
+        border = newext->ee_block; // 将新扩展的起始块号作为分裂点。
         ext_debug("leaf will be added."
                   " next leaf starts at %d\n",
                   le32_to_cpu(border));
@@ -1367,6 +1387,7 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
      * We need this to handle errors and free blocks
      * upon them.
      */
+    // 分配一个数组 ablocks 来存储新分配的块号。
     ablocks = kcalloc(depth, sizeof(ext4_fsblk_t), GFP_NOFS);
     if (!ablocks)
         return -ENOMEM;
@@ -1419,6 +1440,7 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
         goto cleanup;
     }
     /* start copy from next extent */
+    // 将旧叶节点块中的扩展移动到新的叶节点块。
     m = EXT_MAX_EXTENT(path[depth].p_hdr) - path[depth].p_ext++;
     ext4_ext_show_move(inode, path, newblock, depth);
     if (m)
@@ -1463,6 +1485,7 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
         ext_debug("create %d intermediate indices\n", k);
     /* insert new index into current index block */
     /* current depth stored in i var */
+    // 创建中间索引块
     i = depth - 1;
     while (k--)
     {
@@ -1539,6 +1562,7 @@ static int ext4_ext_split(handle_t *handle, struct inode *inode,
     }
 
     /* insert new index */
+    // 插入新的索引项
     err = ext4_ext_insert_index(handle, inode, path + at,
                                 le32_to_cpu(border), newblock);
 
